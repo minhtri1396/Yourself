@@ -35,7 +35,6 @@
 		4428B5721ED4B18F0007DD70 /* DAOFCheerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428B5711ED4B18F0007DD70 /* DAOFCheerUp.swift */; };
 		4428B5741ED4B25E0007DD70 /* DAOFTimeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428B5731ED4B25E0007DD70 /* DAOFTimeStats.swift */; };
 		4428B5AA1ED4DC940007DD70 /* YourselfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428B5A91ED4DC940007DD70 /* YourselfTests.swift */; };
-		4428B5B21ED4DCD00007DD70 /* FirebaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428B5B11ED4DCD00007DD70 /* FirebaseTests.swift */; };
 		442E56781ED38DE5009411BB /* DAOFIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442E56771ED38DE5009411BB /* DAOFIntent.swift */; };
 		444AD96B1ED07B1200D6D5D3 /* DAOTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AD96A1ED07B1200D6D5D3 /* DAOTimestamp.swift */; };
 		444AD96D1ED0853800D6D5D3 /* DTOTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AD96C1ED0853800D6D5D3 /* DTOTimestamp.swift */; };
@@ -99,7 +98,6 @@
 		4428B5A71ED4DC930007DD70 /* YourselfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YourselfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4428B5A91ED4DC940007DD70 /* YourselfTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourselfTests.swift; sourceTree = "<group>"; };
 		4428B5AB1ED4DC940007DD70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4428B5B11ED4DCD00007DD70 /* FirebaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseTests.swift; sourceTree = "<group>"; };
 		442E56771ED38DE5009411BB /* DAOFIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOFIntent.swift; sourceTree = "<group>"; };
 		444AD96A1ED07B1200D6D5D3 /* DAOTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOTimestamp.swift; sourceTree = "<group>"; };
 		444AD96C1ED0853800D6D5D3 /* DTOTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOTimestamp.swift; sourceTree = "<group>"; };
@@ -306,7 +304,6 @@
 			children = (
 				4428B5A91ED4DC940007DD70 /* YourselfTests.swift */,
 				4428B5AB1ED4DC940007DD70 /* Info.plist */,
-				4428B5B11ED4DCD00007DD70 /* FirebaseTests.swift */,
 			);
 			path = YourselfTests;
 			sourceTree = "<group>";
@@ -652,7 +649,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4428B5B21ED4DCD00007DD70 /* FirebaseTests.swift in Sources */,
 				4428B5AA1ED4DC940007DD70 /* YourselfTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -864,6 +860,7 @@
 				4428B5AF1ED4DC940007DD70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

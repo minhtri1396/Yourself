@@ -18,10 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FIRApp.configure()
+        if IsUnitTesting() {
+        } else {
+            FIRApp.configure()
+        }
         DAOSuper.Connect(nameDB: "Yourself.db")
         
         return true
+    }
+    
+    private func IsUnitTesting() -> Bool {
+        return ProcessInfo.processInfo.environment["TEST"] != nil
     }
     
     @available(iOS 9.0, *)

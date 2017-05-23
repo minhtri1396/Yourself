@@ -12,6 +12,9 @@ target 'Yourself' do
 
   target 'YourselfTests' do
     inherit! :complete
+    pod 'Firebase/Database'
+    pod 'Firebase/Auth'
+    pod 'GoogleSignIn'
   end
 
 end

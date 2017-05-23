@@ -17,21 +17,6 @@ class SpedingNotesList: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        DAOFTime.BUIDER.GetAll() {
-            times in
-            if let times = times as? [DTOTime] {
-                for time in times {
-                    print("DMT id: \(time.id)\n")
-                    print("DMT content: \(time.content)\n")
-                    print("DMT startTime: \(time.startTime)\n")
-                    print("DMT appointment: \(time.appointment)\n")
-                    print("DMT finishTime: \(time.finishTime)\n")
-                    print("DMT state: \(time.state)\n")
-                    print("DMT tag: \(time.tag)\n\n")
-                }
-            }
-        }
     }
     
 }

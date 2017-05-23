@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		245CC7527F395DEF0BE81F81 /* Pods_Yourself_YourselfTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB723C075B185DA7003F0D3E /* Pods_Yourself_YourselfTests.framework */; };
 		2B3D90DE467A97BA41983E9A /* Pods_Yourself.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9714A1251E960A32587353 /* Pods_Yourself.framework */; };
 		441B4C201EBAE38300C5A90B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B4C1F1EBAE38300C5A90B /* AppDelegate.swift */; };
 		441B4C271EBAE38400C5A90B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 441B4C251EBAE38400C5A90B /* Main.storyboard */; };
@@ -33,6 +34,8 @@
 		4423EA801EC6636200C4F32C /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4423EA7F1EC6636200C4F32C /* AppManager.swift */; };
 		4428B5721ED4B18F0007DD70 /* DAOFCheerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428B5711ED4B18F0007DD70 /* DAOFCheerUp.swift */; };
 		4428B5741ED4B25E0007DD70 /* DAOFTimeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428B5731ED4B25E0007DD70 /* DAOFTimeStats.swift */; };
+		4428B5AA1ED4DC940007DD70 /* YourselfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428B5A91ED4DC940007DD70 /* YourselfTests.swift */; };
+		4428B5B21ED4DCD00007DD70 /* FirebaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428B5B11ED4DCD00007DD70 /* FirebaseTests.swift */; };
 		442E56781ED38DE5009411BB /* DAOFIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442E56771ED38DE5009411BB /* DAOFIntent.swift */; };
 		444AD96B1ED07B1200D6D5D3 /* DAOTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AD96A1ED07B1200D6D5D3 /* DAOTimestamp.swift */; };
 		444AD96D1ED0853800D6D5D3 /* DTOTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AD96C1ED0853800D6D5D3 /* DTOTimestamp.swift */; };
@@ -53,6 +56,16 @@
 		44A626AD1EC59F07008D9B79 /* DAOFSuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A626AC1EC59F07008D9B79 /* DAOFSuper.swift */; };
 		44D912F61EC72DB800370691 /* OfflineSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912F51EC72DB800370691 /* OfflineSignInController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4428B5AC1ED4DC940007DD70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 441B4C141EBAE38300C5A90B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 441B4C1B1EBAE38300C5A90B;
+			remoteInfo = Yourself;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		441B4C1C1EBAE38300C5A90B /* Yourself.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yourself.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +96,10 @@
 		4423EA7F1EC6636200C4F32C /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		4428B5711ED4B18F0007DD70 /* DAOFCheerUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOFCheerUp.swift; sourceTree = "<group>"; };
 		4428B5731ED4B25E0007DD70 /* DAOFTimeStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOFTimeStats.swift; sourceTree = "<group>"; };
+		4428B5A71ED4DC930007DD70 /* YourselfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YourselfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4428B5A91ED4DC940007DD70 /* YourselfTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourselfTests.swift; sourceTree = "<group>"; };
+		4428B5AB1ED4DC940007DD70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4428B5B11ED4DCD00007DD70 /* FirebaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseTests.swift; sourceTree = "<group>"; };
 		442E56771ED38DE5009411BB /* DAOFIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOFIntent.swift; sourceTree = "<group>"; };
 		444AD96A1ED07B1200D6D5D3 /* DAOTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOTimestamp.swift; sourceTree = "<group>"; };
 		444AD96C1ED0853800D6D5D3 /* DTOTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOTimestamp.swift; sourceTree = "<group>"; };
@@ -105,6 +122,9 @@
 		735C97E30A32E303970E69AF /* Pods-Yourself.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yourself.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yourself/Pods-Yourself.release.xcconfig"; sourceTree = "<group>"; };
 		7FAC1628BD1D4BB66BD055DF /* Pods-Yourself.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yourself.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yourself/Pods-Yourself.debug.xcconfig"; sourceTree = "<group>"; };
 		9F9714A1251E960A32587353 /* Pods_Yourself.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yourself.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4D1C916C88C917A10B7462D /* Pods-Yourself-YourselfTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yourself-YourselfTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yourself-YourselfTests/Pods-Yourself-YourselfTests.release.xcconfig"; sourceTree = "<group>"; };
+		C6049552A7ABED083EBC6C12 /* Pods-Yourself-YourselfTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yourself-YourselfTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yourself-YourselfTests/Pods-Yourself-YourselfTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CB723C075B185DA7003F0D3E /* Pods_Yourself_YourselfTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yourself_YourselfTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +137,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4428B5A41ED4DC930007DD70 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				245CC7527F395DEF0BE81F81 /* Pods_Yourself_YourselfTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -124,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				441B4C1E1EBAE38300C5A90B /* Yourself */,
+				4428B5A81ED4DC940007DD70 /* YourselfTests */,
 				441B4C1D1EBAE38300C5A90B /* Products */,
 				441B4C4B1EBB103D00C5A90B /* Frameworks */,
 				DD9B056A6AEFAEBD91CEC5AD /* Pods */,
@@ -134,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				441B4C1C1EBAE38300C5A90B /* Yourself.app */,
+				4428B5A71ED4DC930007DD70 /* YourselfTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -196,6 +226,7 @@
 			children = (
 				441B4C4C1EBB103E00C5A90B /* libsqlite3.tbd */,
 				9F9714A1251E960A32587353 /* Pods_Yourself.framework */,
+				CB723C075B185DA7003F0D3E /* Pods_Yourself_YourselfTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -268,6 +299,16 @@
 				4423EA7F1EC6636200C4F32C /* AppManager.swift */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		4428B5A81ED4DC940007DD70 /* YourselfTests */ = {
+			isa = PBXGroup;
+			children = (
+				4428B5A91ED4DC940007DD70 /* YourselfTests.swift */,
+				4428B5AB1ED4DC940007DD70 /* Info.plist */,
+				4428B5B11ED4DCD00007DD70 /* FirebaseTests.swift */,
+			);
+			path = YourselfTests;
 			sourceTree = "<group>";
 		};
 		44615FFB1ED4965B0070AC8D /* Database */ = {
@@ -356,6 +397,8 @@
 			children = (
 				7FAC1628BD1D4BB66BD055DF /* Pods-Yourself.debug.xcconfig */,
 				735C97E30A32E303970E69AF /* Pods-Yourself.release.xcconfig */,
+				C6049552A7ABED083EBC6C12 /* Pods-Yourself-YourselfTests.debug.xcconfig */,
+				B4D1C916C88C917A10B7462D /* Pods-Yourself-YourselfTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -383,6 +426,27 @@
 			productReference = 441B4C1C1EBAE38300C5A90B /* Yourself.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4428B5A61ED4DC930007DD70 /* YourselfTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4428B5B01ED4DC940007DD70 /* Build configuration list for PBXNativeTarget "YourselfTests" */;
+			buildPhases = (
+				0B1B0555F241D6A916987B7C /* [CP] Check Pods Manifest.lock */,
+				4428B5A31ED4DC930007DD70 /* Sources */,
+				4428B5A41ED4DC930007DD70 /* Frameworks */,
+				4428B5A51ED4DC930007DD70 /* Resources */,
+				985095241ABA7B00305BA386 /* [CP] Embed Pods Frameworks */,
+				53007D8D6167AFDCC0504913 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4428B5AD1ED4DC940007DD70 /* PBXTargetDependency */,
+			);
+			name = YourselfTests;
+			productName = YourselfTests;
+			productReference = 4428B5A71ED4DC930007DD70 /* YourselfTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -396,6 +460,11 @@
 					441B4C1B1EBAE38300C5A90B = {
 						CreatedOnToolsVersion = 8.0;
 						ProvisioningStyle = Automatic;
+					};
+					4428B5A61ED4DC930007DD70 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 441B4C1B1EBAE38300C5A90B;
 					};
 				};
 			};
@@ -413,6 +482,7 @@
 			projectRoot = "";
 			targets = (
 				441B4C1B1EBAE38300C5A90B /* Yourself */,
+				4428B5A61ED4DC930007DD70 /* YourselfTests */,
 			);
 		};
 /* End PBXProject section */
@@ -429,9 +499,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4428B5A51ED4DC930007DD70 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0B1B0555F241D6A916987B7C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		2771DCCCA3093F6CCA0DA39A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -445,6 +537,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Yourself/Pods-Yourself-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		53007D8D6167AFDCC0504913 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Yourself-YourselfTests/Pods-Yourself-YourselfTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		985095241ABA7B00305BA386 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Yourself-YourselfTests/Pods-Yourself-YourselfTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CC403606F11C93D6F185E258 /* [CP] Copy Pods Resources */ = {
@@ -526,7 +648,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4428B5A31ED4DC930007DD70 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4428B5B21ED4DCD00007DD70 /* FirebaseTests.swift in Sources */,
+				4428B5AA1ED4DC940007DD70 /* YourselfTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4428B5AD1ED4DC940007DD70 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 441B4C1B1EBAE38300C5A90B /* Yourself */;
+			targetProxy = 4428B5AC1ED4DC940007DD70 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		441B4C251EBAE38400C5A90B /* Main.storyboard */ = {
@@ -669,6 +808,34 @@
 			};
 			name = Release;
 		};
+		4428B5AE1ED4DC940007DD70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6049552A7ABED083EBC6C12 /* Pods-Yourself-YourselfTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = YourselfTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "DMT-TQT.YourselfTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Yourself.app/Yourself";
+			};
+			name = Debug;
+		};
+		4428B5AF1ED4DC940007DD70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4D1C916C88C917A10B7462D /* Pods-Yourself-YourselfTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = YourselfTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "DMT-TQT.YourselfTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Yourself.app/Yourself";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -689,6 +856,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		4428B5B01ED4DC940007DD70 /* Build configuration list for PBXNativeTarget "YourselfTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4428B5AE1ED4DC940007DD70 /* Debug */,
+				4428B5AF1ED4DC940007DD70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

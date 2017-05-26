@@ -43,6 +43,7 @@
 		44615FF81ED480850070AC8D /* DAOFAlternatives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44615FF71ED480850070AC8D /* DAOFAlternatives.swift */; };
 		44615FFA1ED492E00070AC8D /* DAOFTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44615FF91ED492E00070AC8D /* DAOFTime.swift */; };
 		44615FFD1ED496960070AC8D /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44615FFC1ED496960070AC8D /* DB.swift */; };
+		448F27001ED8C26D00E5922D /* DAOTrash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448F26FF1ED8C26D00E5922D /* DAOTrash.swift */; };
 		44A6269A1EC57A22008D9B79 /* DTOJars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A626991EC57A22008D9B79 /* DTOJars.swift */; };
 		44A6269C1EC5800D008D9B79 /* DTOIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A6269B1EC5800D008D9B79 /* DTOIntent.swift */; };
 		44A6269E1EC580A9008D9B79 /* DTOAlternatives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A6269D1EC580A9008D9B79 /* DTOAlternatives.swift */; };
@@ -106,6 +107,7 @@
 		44615FF71ED480850070AC8D /* DAOFAlternatives.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOFAlternatives.swift; sourceTree = "<group>"; };
 		44615FF91ED492E00070AC8D /* DAOFTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOFTime.swift; sourceTree = "<group>"; };
 		44615FFC1ED496960070AC8D /* DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
+		448F26FF1ED8C26D00E5922D /* DAOTrash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOTrash.swift; sourceTree = "<group>"; };
 		44A626991EC57A22008D9B79 /* DTOJars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOJars.swift; sourceTree = "<group>"; };
 		44A6269B1EC5800D008D9B79 /* DTOIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOIntent.swift; sourceTree = "<group>"; };
 		44A6269D1EC580A9008D9B79 /* DTOAlternatives.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOAlternatives.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				441B4C501EBB119600C5A90B /* DAOSuper.swift */,
 				44A626A51EC590CD008D9B79 /* DAOUser.swift */,
 				444AD96A1ED07B1200D6D5D3 /* DAOTimestamp.swift */,
+				448F26FF1ED8C26D00E5922D /* DAOTrash.swift */,
 				44A626981EC579DC008D9B79 /* JARS */,
 				44A626951EC579AA008D9B79 /* Time */,
 			);
@@ -642,6 +645,7 @@
 				44A6269E1EC580A9008D9B79 /* DTOAlternatives.swift in Sources */,
 				441B4C5C1EBB16F300C5A90B /* DAOTimeStats.swift in Sources */,
 				444AD96D1ED0853800D6D5D3 /* DTOTimestamp.swift in Sources */,
+				448F27001ED8C26D00E5922D /* DAOTrash.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -51,7 +51,12 @@ class DAOJars: DAOSuper {
     
     func Delete(type: JARS_TYPE) -> Bool {
         let query = "DELETE FROM JARSManagement_\(DAOSuper.userID) WHERE type=\(type.rawValue);"
-        return super.ExecQuery(query: query)
+        let result = super.ExecQuery(query: query)
+        if result {
+            _ = DAOTrash.BUILDER.Insert(tableName: super.GetName(), recordID: "\(type.rawValue)")
+        }
+        
+        return result
     }
     
     // User's information (used when uid changed)

@@ -40,7 +40,12 @@ class DAOAlternatives: DAOSuper {
     
     func Delete(timestamp: Int64) -> Bool {
         let query = "DELETE FROM Alternatives_\(DAOSuper.userID) WHERE timestamp=\(timestamp);"
-        return super.ExecQuery(query: query)
+        let result = super.ExecQuery(query: query)
+        if result {
+            _ = DAOTrash.BUILDER.Insert(tableName: super.GetName(), recordID: "\(timestamp)")
+        }
+        
+        return result
     }
     
     // User's information (used when uid changed)

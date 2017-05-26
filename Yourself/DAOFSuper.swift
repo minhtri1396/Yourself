@@ -106,6 +106,10 @@ class DAOFSuper: DB {
         return nil
     }
     
+    func Sync() {
+        
+    }
+    
     func Remove(at name: String) {
         DAOFSuper.firebase_ref!
             .child("users")

@@ -156,6 +156,7 @@ class GAccount {
             DAOCheerUp.BUILDER.CreateTable()
             DAOTimeStats.BUILDER.CreateTable()
             DAOTimestamp.BUILDER.CreateTable()
+            DAOTrash.BUILDER.CreateTable()
         }
     }
     

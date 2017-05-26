@@ -95,5 +95,6 @@ class DAOUser: DAOSuper {
         DAOCheerUp.BUILDER.Move(to: newUID)
         DAOTimeStats.BUILDER.Move(to: newUID)
         DAOTimestamp.BUILDER.Move(to: newUID)
+        DAOTrash.BUILDER.Move(to: newUID)
     }
 }

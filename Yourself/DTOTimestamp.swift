@@ -1,4 +1,4 @@
-class Timestamp {
+class DTOTimestamp {
     let id: String
     var value: Int64
     

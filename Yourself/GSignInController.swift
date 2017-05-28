@@ -43,6 +43,10 @@ class GSignInController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegat
             [unowned self] (email, result) in
             if result {
                 self.displayMainScreen(email: email)
+            } else {
+                self.offSignInWaitingView.isHidden = true
+                self.gglSignInWaitingView.isHidden = true
+                self.progressView.isHidden = true
             }
         }
     }

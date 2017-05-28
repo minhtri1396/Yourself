@@ -21,7 +21,7 @@ class DAOFSuper: DB {
             .setValue(Double(timestamp)) // we cast timestamp to Double cause Firebase will be crashed when we try writting a Int64 value
     }
     
-    func GetTimestamp(closure: @escaping (Timestamp) -> Void) {
+    func GetTimestamp(closure: @escaping (DTOTimestamp) -> Void) {
         let daoName = self.connectedDAO.GetName()
         
         let timestampRef = DAOFSuper.firebase_ref!
@@ -32,19 +32,19 @@ class DAOFSuper: DB {
         timestampRef.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             if let timestamp = snapshot.value as? Int {
-                closure(Timestamp(
+                closure(DTOTimestamp(
                     id: daoName,
                     value: (Int64)(timestamp)
                 ))
             } else {
-                closure(Timestamp(
+                closure(DTOTimestamp(
                     id: daoName,
                     value: 0
                 ))
             }
         }) { (error) in
             print("1412573_1412591 -> ERROR GETTING TIMESTAMP OF \(daoName)\n")
-            closure(Timestamp(
+            closure(DTOTimestamp(
                 id: daoName,
                 value: 0
             ))
@@ -104,10 +104,6 @@ class DAOFSuper: DB {
     // This method is necessary when we need to get any record from Firebase
     func ParseValues(_ values: NSDictionary, with id: String) -> Any? {
         return nil
-    }
-    
-    func Sync() {
-        
     }
     
     func Remove(at name: String) {

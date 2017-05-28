@@ -7,7 +7,7 @@ class DAOCheerUp: DAOSuper {
     }
     
     func CreateTable() {
-        super.CreateTable(query: "CREATE TABLE if not exists CheerUp_\(DAOSuper.userID)(timestamp INT64 NOT NULL PRIMARY KEY, content NVARCHAR(128));")
+        super.CreateTable(query: "CREATE TABLE if not exists \(self.GetName())_\(DAOSuper.userID) (timestamp INT64 NOT NULL PRIMARY KEY, content NVARCHAR(128));")
     }
     
     func Select(query: String) -> [Int64 : DTOCheerUp] {
@@ -26,29 +26,38 @@ class DAOCheerUp: DAOSuper {
         return cheerUpTuples
     }
     
-    func Insert(cheerUpTuple: DTOCheerUp) -> Bool {
-        let query = "INSERT INTO CheerUp_\(DAOSuper.userID)(timestamp, content) VALUES (\(cheerUpTuple.timestamp), '\(cheerUpTuple.content)');"
+    func GetCheerUp(with timestamp: Int64) -> DTOCheerUp? {
+        return super.Get(withWhere: "timestamp=\(timestamp)") {
+            statement in
+            return DTOCheerUp(
+                timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
+                content: String(cString: sqlite3_column_text(statement, 1))
+            )
+        } as! DTOCheerUp?
+    }
+    
+    func GetAll() -> [DTOCheerUp] {
+        let records = super.GetAll() {
+            statement in
+            return DTOCheerUp(
+                timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
+                content: String(cString: sqlite3_column_text(statement, 1))
+            )
+        }
+        
+        return records as! [DTOCheerUp]
+    }
+    
+    func Add(cheerUpTuple: DTOCheerUp) -> Bool {
+        let query = "INSERT INTO \(self.GetName())_\(DAOSuper.userID) (timestamp, content) VALUES (\(cheerUpTuple.timestamp), '\(cheerUpTuple.content)');"
         return super.ExecQuery(query: query)
     }
     
     func Update(cheerUpTuple: DTOCheerUp) -> Bool {
-        let query = "UPDATE CheerUp_\(DAOSuper.userID) SET content='\(cheerUpTuple.content)' WHERE timestamp=\(cheerUpTuple.timestamp);"
-        return super.ExecQuery(query: query)
+        return super.Update(withSet: "content='\(cheerUpTuple.content)'", withWhere: "timestamp=\(cheerUpTuple.timestamp)")
     }
     
     func Delete(timestamp: Int64) -> Bool {
-        let query = "DELETE FROM CheerUp_\(DAOSuper.userID) WHERE timestamp=\(timestamp);"
-        let result = super.ExecQuery(query: query)
-        if result {
-            _ = DAOTrash.BUILDER.Insert(tableName: super.GetName(), recordID: "\(timestamp)")
-        }
-        
-        return result
-    }
-    
-    // User's information (used when uid changed)
-    func Move(to newUID: String) {
-        let query = "ALTER TABLE CheerUp_\(DAOSuper.userID) RENAME TO CheerUp_\(newUID);"
-        _ = super.ExecQuery(query: query)
+        return super.Delete(withWhere: "timestamp=\(timestamp)", id: "\(timestamp)")
     }
 }

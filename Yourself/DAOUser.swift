@@ -36,6 +36,31 @@ class DAOUser: DAOSuper {
         return false
     }
     
+    // DAOUser won't use this method
+    override func Get(withWhere: String, closure: (OpaquePointer) -> Any) -> Any? {
+        return nil
+    }
+    
+    // DAOUser won't use this method
+    override func GetAll(parse: (OpaquePointer) -> Any) -> [Any] {
+        return []
+    }
+    
+    // DAOUser won't use this method
+    override  func Update(withSet: String, withWhere: String) -> Bool {
+        return false
+    }
+    
+    // DAOUser won't use this method
+    override func Delete(withWhere: String, id: String) -> Bool {
+        return false
+    }
+    
+    // DAOUser won't use this method
+    override func DeleteAll() -> Bool {
+        return false
+    }
+    
     func GetUser(by email: String) -> DTOUser? {
         let query = "SELECT * FROM User WHERE email='\(email)'"
         let statement = super.PrepareQuery(query: query)
@@ -79,7 +104,7 @@ class DAOUser: DAOSuper {
     }
     
     func DeleteCurrentUser() {
-        let tableNames = ["JARSManagement_\(DAOSuper.userID)", "Intent_\(DAOSuper.userID)", "Alternatives_\(DAOSuper.userID)", "Time_\(DAOSuper.userID)", "CheerUp_\(DAOSuper.userID)", "TimeStats_\(DAOSuper.userID)"]
+        let tableNames = ["DAOJARSManagement_\(DAOSuper.userID)", "DAOIntent_\(DAOSuper.userID)", "DAOAlternatives_\(DAOSuper.userID)", "DAOTime_\(DAOSuper.userID)", "DAOCheerUp_\(DAOSuper.userID)", "DAOTimeStats_\(DAOSuper.userID)", "DAOTimestamp_\(DAOSuper.userID)", "DAOTrash_\(DAOSuper.userID)"]
         for tableName in tableNames {
             _ = super.ExecQuery(query: "DELETE TABLE \(tableName)")
         }
@@ -87,7 +112,7 @@ class DAOUser: DAOSuper {
     
     // User's information (used when uid changed)
     // Note: after invoking this method, remember change value of DAOSuper.userID to newUID manually
-    func Move(to newUID: String) {
+    override func Move(to newUID: String) {
         DAOJars.BUILDER.Move(to: newUID)
         DAOIntent.BUILDER.Move(to: newUID)
         DAOAlternatives.BUILDER.Move(to: newUID)

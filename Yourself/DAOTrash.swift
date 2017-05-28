@@ -7,11 +7,11 @@ class DAOTrash: DAOSuper {
     }
     
     func CreateTable() {
-        super.CreateTable(query: "CREATE TABLE if not exists Trash_\(DAOSuper.userID)(tableName NVARCHAR(50) NOT NULL, recordID NVARCHAR(50) NOT NULL, PRIMARY KEY (tableName, recordID));")
+        super.CreateTable(query: "CREATE TABLE if not exists \(self.GetName())_\(DAOSuper.userID) (tableName NVARCHAR(50) NOT NULL, recordID NVARCHAR(50) NOT NULL, PRIMARY KEY (tableName, recordID));")
     }
     
-    func Select(tableName: String, recordID: String) -> [String] {
-        let query = "SELECT recordID FROM Trash_\(DAOSuper.userID) WHERE tableName='\(tableName)' AND recordID='\(recordID)'"
+    func GetTrash(tableName: String, recordID: String) -> [String] {
+        let query = "SELECT recordID FROM \(self.GetName())_\(DAOSuper.userID) WHERE tableName='\(tableName)' AND recordID='\(recordID)'"
         let statement = super.PrepareQuery(query: query)
         
         var records = [String]()
@@ -24,18 +24,7 @@ class DAOTrash: DAOSuper {
     }
     
     func Insert(tableName: String, recordID: String) -> Bool {
-        let query = "INSERT INTO Trash_\(DAOSuper.userID)(tableName, recordID) VALUES (\(tableName), \(recordID));"
+        let query = "INSERT INTO \(self.GetName())_\(DAOSuper.userID)(tableName, recordID) VALUES ('\(tableName)', '\(recordID)');"
         return super.ExecQuery(query: query)
-    }
-    
-    func DeleteAll() -> Bool {
-        let query = "DELETE FROM Trash_\(DAOSuper.userID);"
-        return super.ExecQuery(query: query)
-    }
-    
-    // User's information (used when uid changed)
-    func Move(to newUID: String) {
-        let query = "ALTER TABLE Trash_\(DAOSuper.userID) RENAME TO Trash_\(newUID);"
-        _ = super.ExecQuery(query: query)
     }
 }

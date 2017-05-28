@@ -75,7 +75,7 @@
          <EnvironmentVariable
             key = "TEST"
             value = "1"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
       <AdditionalOptions>

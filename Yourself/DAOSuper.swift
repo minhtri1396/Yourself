@@ -37,8 +37,8 @@ class DAOSuper: DB {
         return nil
     }
     
-    //********************* EXECUTE QUERY **********************
-    func ExecStatement(statement: OpaquePointer) -> Bool {
+    //********************* EXECUTE STATEMENT **********************
+    private func ExecStatement(statement: inout OpaquePointer) -> Bool {
         if sqlite3_step(statement) == SQLITE_DONE {
             print("1412573_1412591 -> DONE EXECUTING\n")
             sqlite3_finalize(statement)
@@ -54,20 +54,20 @@ class DAOSuper: DB {
     //***************** CREATE TABLE ***********************
     func CreateTable(query: String) {
         print("1412573_1412591 -> EXECUTE CREATING QUERY: \(query)\n")
-        if let statement = PrepareQuery(query: query) {
-            _ = ExecStatement(statement: statement)
+        if var statement = PrepareQuery(query: query) {
+            _ = ExecStatement(statement: &statement)
         }
     }
     
     //**************** INSERT, UPDATE, DELETE ****************
     func ExecQuery(query: String) -> Bool {
         print("1412573_1412591 -> EXECUTE: \(query)\n")
-        let statement = PrepareQuery(query: query)
-        let result = (statement != nil) && ExecStatement(statement: statement!)
+        var statement = PrepareQuery(query: query)
+        let result = (statement != nil) && ExecStatement(statement: &statement!)
         
         // Update timestamp when the table changed
         if result && self.isShouldSaveTimestamp {
-            DAOTimestamp.BUILDER.UpdateOrInsert(timestamp: Timestamp(
+            DAOTimestamp.BUILDER.UpdateOrInsert(timestamp: DTOTimestamp(
                 id: self.GetName(),
                 value: Date().ticks
             ))
@@ -81,6 +81,58 @@ class DAOSuper: DB {
         if sqlite3_close(DAOSuper.db!) != SQLITE_OK {
             print("1412573_1412591 -> ERROR CLOSING DATABASE\n")
         }
+    }
+    
+    func Get(withWhere: String, closure: (OpaquePointer) -> Any) -> Any? {
+        let query = "SELECT * FROM \(self.GetName())_\(DAOSuper.userID) WHERE \(withWhere);"
+        let statement = self.PrepareQuery(query: query)
+        
+        if sqlite3_step(statement) == SQLITE_ROW {
+            return closure(statement!)
+        }
+        
+        sqlite3_finalize(statement)
+        return nil
+    }
+    
+    func GetAll(parse: (OpaquePointer) -> Any) -> [Any] {
+        let query = "SELECT * FROM \(self.GetName())_\(DAOSuper.userID)"
+        let statement = self.PrepareQuery(query: query)
+        
+        var records = [Any]()
+        while sqlite3_step(statement) == SQLITE_ROW {
+            let record = parse(statement!)
+            records.append(record)
+        }
+        
+        sqlite3_finalize(statement)
+        return records
+    }
+    
+    func Update(withSet: String, withWhere: String) -> Bool {
+        let query = "UPDATE \(self.GetName())_\(DAOSuper.userID) SET \(withSet) WHERE \(withWhere);"
+        return self.ExecQuery(query: query)
+    }
+    
+    func Delete(withWhere: String, id: String) -> Bool {
+        let query = "DELETE FROM \(self.GetName())_\(DAOSuper.userID) WHERE \(withWhere);"
+        let result = self.ExecQuery(query: query)
+        if result {
+            _ = DAOTrash.BUILDER.Insert(tableName: self.GetName(), recordID: "\(id)")
+        }
+        
+        return result
+    }
+    
+    func DeleteAll() -> Bool {
+        let query = "DELETE FROM \(self.GetName())_\(DAOSuper.userID);"
+        return self.ExecQuery(query: query)
+    }
+    
+    // User's information (used when uid changed)
+    func Move(to newUID: String) {
+        let query = "ALTER TABLE \(self.GetName())_\(DAOSuper.userID) RENAME TO \(self.GetName())_\(newUID);"
+        _ = self.ExecQuery(query: query)
     }
     
 }

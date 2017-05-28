@@ -44,8 +44,8 @@ class DAOCheerUp: DAOSuper {
         return super.ExecQuery(query: query)
     }
     
-    func Update(cheerUpTuple: DTOCheerUp) -> Bool {
-        return super.Update(withSet: "content='\(cheerUpTuple.content)'", withWhere: "timestamp=\(cheerUpTuple.timestamp)")
+    func Update(cheerUp: DTOCheerUp) -> Bool {
+        return super.Update(withSet: "content='\(cheerUp.content)'", withWhere: "timestamp=\(cheerUp.timestamp)")
     }
     
     func Delete(timestamp: Int64) -> Bool {

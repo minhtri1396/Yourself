@@ -50,8 +50,8 @@ class DAOTimeStats: DAOSuper {
         return super.ExecQuery(query: query)
     }
     
-    func Update(timeStatsTuple: DTOTimeStats) -> Bool {
-        return super.Update(withSet: "totalCompletionTime=\(timeStatsTuple.totalCompletionTime), numberSuccessNotes=\(timeStatsTuple.numberSuccessNotes), numberFailNotes=\(timeStatsTuple.numberFailNotes), totalNumberNotes=\(timeStatsTuple.totalNumberNotes)", withWhere: "timestamp=\(timeStatsTuple.timestamp)")
+    func Update(timeStats: DTOTimeStats) -> Bool {
+        return super.Update(withSet: "totalCompletionTime=\(timeStats.totalCompletionTime), numberSuccessNotes=\(timeStats.numberSuccessNotes), numberFailNotes=\(timeStats.numberFailNotes), totalNumberNotes=\(timeStats.totalNumberNotes)", withWhere: "timestamp=\(timeStats.timestamp)")
     }
     
     func Delete(timestamp: Int64) -> Bool {

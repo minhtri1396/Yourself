@@ -207,15 +207,90 @@ class DAOTests: XCTestCase {
             XCTAssertEqual(DAOTime.BUILDER.GetTime(with: info.id)!.tag, info.tag)
         }
         
+        // Delete
+        XCTAssertTrue(DAOTime.BUILDER.Delete(id: 1412573))
+        XCTAssertNil(DAOTime.BUILDER.GetTime(with: 1412573))
+        
         // Delete all
         XCTAssertTrue(DAOTime.BUILDER.DeleteAll())
     }
     
-    func testDAOTrash() {
-        let trashes = DAOTrash.BUILDER.GetTrash(tableName: "DAOIntent")
-        XCTAssertEqual(trashes.count, 1)
-        XCTAssertEqual(trashes[0], "1412573")
+    func testDAOCheerUp() {
+        // Delete all
+        XCTAssertTrue(DAOCheerUp.BUILDER.DeleteAll())
+        
+        // Add
+        XCTAssertTrue(DAOCheerUp.BUILDER.Add(cheerUp: DTOCheerUp(timestamp: 1412573, content: "Dao Minh Tri")))
+        XCTAssertTrue(DAOCheerUp.BUILDER.Add(cheerUp: DTOCheerUp(timestamp: 1412591, content: "Tran Quang Trung")))
+        // Add again
+        XCTAssertFalse(DAOCheerUp.BUILDER.Add(cheerUp: DTOCheerUp(timestamp: 1412573, content: "Dao Minh Tri 123")))
+        // Get
+        let cheerUp = DAOCheerUp.BUILDER.GetCheerUp(with: 1412573)!
+        XCTAssertEqual(cheerUp.timestamp, 1412573)
+        XCTAssertEqual(cheerUp.content, "Dao Minh Tri")
+        // Update
+        cheerUp.content = "Dao Minh Tri 1396"
+        _ = DAOCheerUp.BUILDER.Update(cheerUp: cheerUp)
+        XCTAssertEqual(cheerUp.timestamp, 1412573)
+        XCTAssertEqual(cheerUp.content, "Dao Minh Tri 1396")
+        // Get all
+        let allInfo = DAOCheerUp.BUILDER.GetAll() as! [DTOCheerUp]
+        XCTAssertEqual(allInfo.count, 2)
+        for info in allInfo {
+            XCTAssertEqual(DAOCheerUp.BUILDER.GetCheerUp(with: info.timestamp)!.content, info.content)
+        }
+        
+        // Delete
+        XCTAssertTrue(DAOCheerUp.BUILDER.Delete(timestamp: 1412573))
+        XCTAssertNil(DAOCheerUp.BUILDER.GetCheerUp(with: 1412573))
+        
+        // Delete all
+        XCTAssertTrue(DAOCheerUp.BUILDER.DeleteAll())
     }
+    
+    func testDAOTimeStats() {
+        // Delete all
+        XCTAssertTrue(DAOTimeStats.BUILDER.DeleteAll())
+        
+        // Add
+        XCTAssertTrue(DAOTimeStats.BUILDER.Add(timeStats: DTOTimeStats(timestamp: 1412573, totalCompletionTime: 10, numberSuccessNotes: 10, numberFailNotes: 8, totalNumberNotes: 9)))
+        XCTAssertTrue(DAOTimeStats.BUILDER.Add(timeStats: DTOTimeStats(timestamp: 1412591, totalCompletionTime: 10, numberSuccessNotes: 10, numberFailNotes: 9, totalNumberNotes: 8)))
+        // Add again
+        XCTAssertFalse(DAOTimeStats.BUILDER.Add(timeStats: DTOTimeStats(timestamp: 1412573, totalCompletionTime: 10, numberSuccessNotes: 10, numberFailNotes: 8, totalNumberNotes: 9)))
+        // Get
+        let timeStats = DAOTimeStats.BUILDER.GetTimeStats(with: 1412573)!
+        XCTAssertEqual(timeStats.totalCompletionTime, 10)
+        XCTAssertEqual(timeStats.numberSuccessNotes, 10)
+        XCTAssertEqual(timeStats.numberFailNotes, 8)
+        XCTAssertEqual(timeStats.totalNumberNotes, 9)
+        // Update
+        timeStats.totalCompletionTime = 5
+        _ = DAOTimeStats.BUILDER.Update(timeStats: timeStats)
+        XCTAssertEqual(timeStats.totalCompletionTime, 5)
+        
+        // Get all
+        let allInfo = DAOTimeStats.BUILDER.GetAll() as! [DTOTimeStats]
+        XCTAssertEqual(allInfo.count, 2)
+        for info in allInfo {
+            XCTAssertEqual(DAOTimeStats.BUILDER.GetTimeStats(with: info.timestamp)!.totalCompletionTime, info.totalCompletionTime)
+            XCTAssertEqual(DAOTimeStats.BUILDER.GetTimeStats(with: info.timestamp)!.numberSuccessNotes, info.numberSuccessNotes)
+            XCTAssertEqual(DAOTimeStats.BUILDER.GetTimeStats(with: info.timestamp)!.numberFailNotes, info.numberFailNotes)
+            XCTAssertEqual(DAOTimeStats.BUILDER.GetTimeStats(with: info.timestamp)!.totalNumberNotes, info.totalNumberNotes)
+        }
+        
+        // Delete
+        XCTAssertTrue(DAOTimeStats.BUILDER.Delete(timestamp: 1412573))
+        XCTAssertNil(DAOTimeStats.BUILDER.GetTimeStats(with: 1412573))
+        
+        // Delete all
+        XCTAssertTrue(DAOTimeStats.BUILDER.DeleteAll())
+    }
+    
+//    func testDAOTrash() {
+//        let trashes = DAOTrash.BUILDER.GetTrash(tableName: "DAOIntent")
+//        XCTAssertEqual(trashes.count, 1)
+//        XCTAssertEqual(trashes[0], "1412573")
+//    }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.

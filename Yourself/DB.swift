@@ -9,13 +9,11 @@ class DB {
                 
                 if result {
                     DAOFJars.BUIDER.Sync()
-//                    DAOFIntent.BUIDER.Sync()
-//                    DAOFAlternatives.BUIDER.Sync()
-//                    DAOFTime.BUIDER.Sync()
-//                    DAOFCheerUp.BUIDER.Sync()
-//                    DAOFTimeStats.BUIDER.Sync()
-                    
-                    _ = DAOTrash.BUILDER.DeleteAll()
+                    DAOFIntent.BUIDER.Sync()
+                    DAOFAlternatives.BUIDER.Sync()
+                    DAOFTime.BUIDER.Sync()
+                    DAOFCheerUp.BUIDER.Sync()
+                    DAOFTimeStats.BUIDER.Sync()
                 }
                 
                 closure(result)

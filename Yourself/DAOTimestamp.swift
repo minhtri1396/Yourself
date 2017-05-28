@@ -6,19 +6,17 @@ class DAOTimestamp: DAOSuper {
     }
     
     func GetTimestamp(of tableName: String) -> Int64 {
-        let timestamp = super.Get(withWhere: "id='\(tableName)'") {
-            statement in
-            return (Int64)(sqlite3_column_int64(statement, 1))
-        }
+        let timestamp = super.Get(withWhere: "id='\(tableName)'")
         
         if timestamp != nil{
-            return timestamp as! Int64
+            return (timestamp as! DTOTimestamp).value
         }
         
         return 0
     }
     
-    override func ParseValues(_ statement: OpaquePointer) -> Any {
+    // This method will be used by super class when we get any record from DB
+    override func ParseStatement(_ statement: OpaquePointer) -> Any {
         return DTOTimestamp(
             id: String(cString: sqlite3_column_text(statement, 0)),
             value: (Int64)(sqlite3_column_int64(statement, 1))

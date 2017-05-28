@@ -29,18 +29,11 @@ class DAOAlternatives: DAOSuper {
     }
     
     func GetAlternative(with timestamp: Int64) -> DTOAlternatives? {
-        return super.Get(withWhere: "timestamp=\(timestamp)") {
-            statement in
-            return DTOAlternatives(
-                timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
-                owner: JARS_TYPE(rawValue: String(cString: sqlite3_column_text(statement, 1)))!,
-                alts: JARS_TYPE(rawValue: String(cString: sqlite3_column_text(statement, 2)))!,
-                money: (Double)(sqlite3_column_double(statement, 3))
-            )
-        } as! DTOAlternatives?
+        return super.Get(withWhere: "timestamp=\(timestamp)") as! DTOAlternatives?
     }
     
-    override func ParseValues(_ statement: OpaquePointer) -> Any {
+    // This method will be used by super class when we get any record from DB
+    override func ParseStatement(_ statement: OpaquePointer) -> Any {
         return DTOAlternatives(
             timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
             owner: JARS_TYPE(rawValue: String(cString: sqlite3_column_text(statement, 1)))!,

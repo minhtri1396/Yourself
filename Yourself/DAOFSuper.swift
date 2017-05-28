@@ -106,38 +106,6 @@ class DAOFSuper: DB {
         return nil
     }
     
-    func Sync() {
-        self.GetTimestamp() {
-            timestamp in // timestamp got from Firebase
-            let currentTimestamp = DAOTimestamp.BUILDER.GetTimestamp(of: self.connectedDAO.GetName())
-            if timestamp.value > currentTimestamp {
-                self.GetAll() {
-                    records in
-                    if let records = records {
-                        _ = self.connectedDAO.DeleteAll()
-                        for record in records {
-                            _ = self.connectedDAO.Add(record)
-                        }
-                        _ = DAOTrash.BUILDER.DeleteAll()
-                    }
-                }
-            } else if timestamp.value < currentTimestamp{
-                let trashes = DAOTrash.BUILDER.GetTrash(tableName: self.connectedDAO.GetName())
-                
-                for trash in trashes {
-                    self.Remove(at: trash)
-                }
-                
-                _ = DAOTrash.BUILDER.DeleteAll()
-                
-                let records = self.connectedDAO.GetAll()
-                for record in records {
-                    
-                }
-            }
-        }
-    }
-    
     func Remove(at name: String) {
         DAOFSuper.firebase_ref!
             .child("users")
@@ -158,4 +126,41 @@ class DAOFSuper: DB {
         
         self.SetTimestamp(timestamp: Date().ticks)
     }
+    
+    func Sync() {
+        self.GetTimestamp() {
+            timestamp in // timestamp got from Firebase
+            let daoName = self.connectedDAO.GetName()
+            let currentTimestamp = DAOTimestamp.BUILDER.GetTimestamp(of: daoName)
+            if timestamp.value > currentTimestamp {
+                self.GetAll() { // get all records from Firebase
+                    records in
+                    if let records = records {
+                        _ = self.connectedDAO.DeleteAll()
+                        _ = DAOTrash.BUILDER.Delete(tableName: daoName) // take out trash
+                        for record in records {
+                            _ = self.connectedDAO.Add(record) // update DB
+                        }
+                    }
+                }
+            } else if timestamp.value < currentTimestamp{
+                let trash = DAOTrash.BUILDER.GetTrash(tableName: daoName)
+                
+                for recordID in trash {
+                    self.Remove(at: recordID) // delete on Firebase
+                }
+                
+                _ = DAOTrash.BUILDER.Delete(tableName: daoName) // take out trash
+                
+                let records = self.connectedDAO.GetAll()
+                for record in records {
+                    self.UpdateOrInsert(record) // upload to Firebase
+                }
+            }
+        }
+    }
+    
+    // Every subclass should override this method
+    // This method is necessary when we need to upload any record to Firebase
+    func UpdateOrInsert(_ record: Any) {}
 }

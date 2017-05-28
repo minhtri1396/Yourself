@@ -27,16 +27,11 @@ class DAOCheerUp: DAOSuper {
     }
     
     func GetCheerUp(with timestamp: Int64) -> DTOCheerUp? {
-        return super.Get(withWhere: "timestamp=\(timestamp)") {
-            statement in
-            return DTOCheerUp(
-                timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
-                content: String(cString: sqlite3_column_text(statement, 1))
-            )
-        } as! DTOCheerUp?
+        return super.Get(withWhere: "timestamp=\(timestamp)") as! DTOCheerUp?
     }
     
-    override func ParseValues(_ statement: OpaquePointer) -> Any {
+    // This method will be used by super class when we get any record from DB
+    override func ParseStatement(_ statement: OpaquePointer) -> Any {
         return DTOCheerUp(
             timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
             content: String(cString: sqlite3_column_text(statement, 1))

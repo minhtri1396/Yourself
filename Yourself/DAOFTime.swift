@@ -5,7 +5,8 @@ class DAOFTime: DAOFSuper {
     
     // Update or insert an Time object to Firebase
     // We cast Int64 to Double cause Firebase will be crashed when we try writting a Int64 value
-    func UpdateOrInsert(time: DTOTime) {
+    override func UpdateOrInsert(_ record: Any) {
+        let time = record as! DTOTime
         let ref = super.GetRef().child("\(time.id)")
         
         ref.child("content").setValue(time.content)

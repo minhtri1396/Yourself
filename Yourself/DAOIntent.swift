@@ -11,18 +11,11 @@ class DAOIntent: DAOSuper {
     }
     
     func GetIntent(with timestamp: Int64) -> DTOIntent? {
-        return super.Get(withWhere: "timestamp=\(timestamp)") {
-            statement in
-            return DTOIntent(
-                timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
-                type: JARS_TYPE(rawValue: String(cString: sqlite3_column_text(statement, 1)))!,
-                content: String(cString: sqlite3_column_text(statement, 2)),
-                money: (Double)(sqlite3_column_double(statement, 3))
-            )
-        } as! DTOIntent?
+        return super.Get(withWhere: "timestamp=\(timestamp)") as! DTOIntent?
     }
     
-    override func ParseValues(_ statement: OpaquePointer) -> Any {
+    // This method will be used by super class when we get any record from DB
+    override func ParseStatement(_ statement: OpaquePointer) -> Any {
         return DTOIntent(
             timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
             type: JARS_TYPE(rawValue: String(cString: sqlite3_column_text(statement, 1)))!,

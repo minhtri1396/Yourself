@@ -4,7 +4,8 @@ class DAOFAlternatives: DAOFSuper {
     static let BUIDER = DAOFAlternatives(connectedDAO: DAOAlternatives.BUILDER)
     
     // Update or insert an Alternatives object to Firebase
-    func UpdateOrInsert(alternatives: DTOAlternatives) {
+    override func UpdateOrInsert(_ record: Any) {
+        let alternatives = record as! DTOAlternatives
         let ref = super.GetRef().child("\(alternatives.timestamp)")
         
         ref.child("owner").setValue(alternatives.owner.rawValue)

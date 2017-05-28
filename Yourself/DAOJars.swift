@@ -11,19 +11,11 @@ class DAOJars: DAOSuper {
     }
     
     func GetJARS(with type: JARS_TYPE) -> DTOJars? {
-        return super.Get(withWhere: "type='\(type.rawValue)'") {
-            statement in
-            let jars = DTOJars(
-                type: JARS_TYPE(rawValue: String(cString: sqlite3_column_text(statement, 0)))!,
-                money: (Double)(sqlite3_column_double(statement, 1))
-            )
-            jars.percent = (Double)(sqlite3_column_double(statement, 2))
-            
-            return jars
-        } as! DTOJars?
+        return super.Get(withWhere: "type='\(type.rawValue)'") as! DTOJars?
     }
     
-    override func ParseValues(_ statement: OpaquePointer) -> Any {
+    // This method will be used by super class when we get any record from DB
+    override func ParseStatement(_ statement: OpaquePointer) -> Any {
         let jars = DTOJars(
             type: JARS_TYPE(rawValue: String(cString: sqlite3_column_text(statement, 0)))!,
             money: (Double)(sqlite3_column_double(statement, 1))

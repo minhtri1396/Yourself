@@ -4,7 +4,8 @@ class DAOFJars: DAOFSuper {
     static let BUIDER = DAOFJars(connectedDAO: DAOJars.BUILDER)
     
     // Update or insert an Jars object to Firebase
-    func UpdateOrInsert(jars: DTOJars) {
+    override func UpdateOrInsert(_ record: Any) {
+        let jars = record as! DTOJars
         let ref = super.GetRef().child(jars.type.rawValue)
         
         ref.child("money").setValue(jars.money)
@@ -23,4 +24,6 @@ class DAOFJars: DAOFSuper {
         
         return jars
     }
+    
+    // This method will be used by super class when we get any record from DB to upload to Firebase
 }

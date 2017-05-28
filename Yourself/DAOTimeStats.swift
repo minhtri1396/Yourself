@@ -30,19 +30,11 @@ class DAOTimeStats: DAOSuper {
     }
     
     func GetTimeStats(with timestamp: Int64) -> DTOTimeStats? {
-        return super.Get(withWhere: "timestamp=\(timestamp)") {
-            statement in
-            return DTOTimeStats(
-                timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
-                totalCompletionTime: (Int64)(sqlite3_column_int64(statement, 1)),
-                numberSuccessNotes: (Int32)(sqlite3_column_int(statement, 2)),
-                numberFailNotes: (Int32)(sqlite3_column_int(statement, 3)),
-                totalNumberNotes: (Int32)(sqlite3_column_int(statement, 4))
-            )
-        } as! DTOTimeStats?
+        return super.Get(withWhere: "timestamp=\(timestamp)") as! DTOTimeStats?
     }
     
-    override func ParseValues(_ statement: OpaquePointer) -> Any {
+    // This method will be used by super class when we get any record from DB
+    override func ParseStatement(_ statement: OpaquePointer) -> Any {
         return DTOTimeStats(
             timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
             totalCompletionTime: (Int64)(sqlite3_column_int64(statement, 1)),

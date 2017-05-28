@@ -32,21 +32,11 @@ class DAOTime: DAOSuper {
     }
     
     func GetTime(with id: Int64) -> DTOTime? {
-        return super.Get(withWhere: "id=\(id)") {
-            statement in
-            return DTOTime(
-                id: (Int64)(sqlite3_column_int64(statement, 0)),
-                content: String(cString: sqlite3_column_text(statement, 1)),
-                startTime: (Int64)(sqlite3_column_int64(statement, 2)),
-                appointment: (Int64)(sqlite3_column_int64(statement, 3)),
-                finishTime: (Int64)(sqlite3_column_int64(statement, 4)),
-                state: TAG_STATE(rawValue: (Int)(sqlite3_column_int(statement, 5)))!,
-                tag: TAG(rawValue: (Int)(sqlite3_column_int(statement, 6)))!
-            )
-        } as! DTOTime?
+        return super.Get(withWhere: "id=\(id)") as! DTOTime?
     }
     
-    override func ParseValues(_ statement: OpaquePointer) -> Any {
+    // This method will be used by super class when we get any record from DB
+    override func ParseStatement(_ statement: OpaquePointer) -> Any {
         return DTOTime(
             id: (Int64)(sqlite3_column_int64(statement, 0)),
             content: String(cString: sqlite3_column_text(statement, 1)),

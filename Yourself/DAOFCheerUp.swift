@@ -4,7 +4,8 @@ class DAOFCheerUp: DAOFSuper {
     static let BUIDER = DAOFCheerUp(connectedDAO: DAOCheerUp.BUILDER)
     
     // Update or insert an CheerUp object to Firebase
-    func UpdateOrInsert(cheerUp: DTOCheerUp) {
+    override func UpdateOrInsert(_ record: Any) {
+        let cheerUp = record as! DTOCheerUp
         let ref = super.GetRef().child("\(cheerUp.timestamp)")
         
         ref.child("content").setValue(cheerUp.content)

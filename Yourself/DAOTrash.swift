@@ -27,4 +27,12 @@ class DAOTrash: DAOSuper {
         let query = "INSERT INTO \(self.GetName())_\(DAOSuper.userID)(tableName, recordID) VALUES ('\(tableName)', '\(recordID)');"
         return super.ExecQuery(query: query)
     }
+    
+    func Delete(tableName: String, recordID: String) -> Bool {
+        return super.Delete(withWhere: "tableName='\(tableName)' AND recordID='\(recordID)'", id: nil)
+    }
+    
+    func Delete(tableName: String) -> Bool {
+        return super.Delete(withWhere: "tableName='\(tableName)'", id: nil)
+    }
 }

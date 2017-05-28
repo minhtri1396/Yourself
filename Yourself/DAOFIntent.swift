@@ -4,7 +4,8 @@ class DAOFIntent: DAOFSuper {
     static let BUIDER = DAOFIntent(connectedDAO: DAOIntent.BUILDER)
     
     // Update or insert an Intent object to Firebase
-    func UpdateOrInsert(intent: DTOIntent) {
+    override func UpdateOrInsert(_ record: Any) {
+        let intent = record as! DTOIntent
         let ref = super.GetRef().child("\(intent.timestamp)")
         
         ref.child("type").setValue(intent.type.rawValue)

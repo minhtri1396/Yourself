@@ -83,12 +83,12 @@ class DAOSuper: DB {
         }
     }
     
-    func Get(withWhere: String, closure: (OpaquePointer) -> Any) -> Any? {
+    func Get(withWhere: String) -> Any? {
         let query = "SELECT * FROM \(self.GetName())_\(DAOSuper.userID) WHERE \(withWhere);"
         let statement = self.PrepareQuery(query: query)
         
         if sqlite3_step(statement) == SQLITE_ROW {
-            return closure(statement!)
+            return self.ParseStatement(statement!)
         }
         
         sqlite3_finalize(statement)
@@ -101,7 +101,7 @@ class DAOSuper: DB {
         
         var records = [Any]()
         while sqlite3_step(statement) == SQLITE_ROW {
-            let record = self.ParseValues(statement!)
+            let record = self.ParseStatement(statement!)
             records.append(record)
         }
         
@@ -110,8 +110,8 @@ class DAOSuper: DB {
     }
     
     // Every subclass should override this method
-    // This method is necessary when we need to get all values from DB
-    func ParseValues(_ statement: OpaquePointer) -> Any {
+    // This method is necessary when we need to get (all) records from DB
+    func ParseStatement(_ statement: OpaquePointer) -> Any {
         return ""
     }
     
@@ -124,11 +124,14 @@ class DAOSuper: DB {
         return self.ExecQuery(query: query)
     }
     
-    func Delete(withWhere: String, id: String) -> Bool {
+    // If id param = nil, we won't save deleting history
+    func Delete(withWhere: String, id: String?) -> Bool {
         let query = "DELETE FROM \(self.GetName())_\(DAOSuper.userID) WHERE \(withWhere);"
         let result = self.ExecQuery(query: query)
         if result {
-            _ = DAOTrash.BUILDER.Insert(tableName: self.GetName(), recordID: "\(id)")
+            if let id = id {
+                _ = DAOTrash.BUILDER.Insert(tableName: self.GetName(), recordID: "\(id)")
+            }
         }
         
         return result

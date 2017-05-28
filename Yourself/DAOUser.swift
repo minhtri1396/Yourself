@@ -37,7 +37,7 @@ class DAOUser: DAOSuper {
     }
     
     // DAOUser won't use this method
-    override func Get(withWhere: String, closure: (OpaquePointer) -> Any) -> Any? {
+    override func Get(withWhere: String) -> Any? {
         return nil
     }
     
@@ -52,7 +52,7 @@ class DAOUser: DAOSuper {
     }
     
     // DAOUser won't use this method
-    override func Delete(withWhere: String, id: String) -> Bool {
+    override func Delete(withWhere: String, id: String?) -> Bool {
         return false
     }
     

@@ -23,22 +23,18 @@ class DAOJars: DAOSuper {
         } as! DTOJars?
     }
     
-    func GetAll() -> [DTOJars] {
-        let records = super.GetAll() {
-            statement in
-            let jars = DTOJars(
-                type: JARS_TYPE(rawValue: String(cString: sqlite3_column_text(statement, 0)))!,
-                money: (Double)(sqlite3_column_double(statement, 1))
-            )
-            jars.percent = (Double)(sqlite3_column_double(statement, 2))
-            
-            return jars
-        }
+    override func ParseValues(_ statement: OpaquePointer) -> Any {
+        let jars = DTOJars(
+            type: JARS_TYPE(rawValue: String(cString: sqlite3_column_text(statement, 0)))!,
+            money: (Double)(sqlite3_column_double(statement, 1))
+        )
+        jars.percent = (Double)(sqlite3_column_double(statement, 2))
         
-        return records as! [DTOJars]
+        return jars
     }
     
-    func Add(jars: DTOJars) -> Bool {
+    override func Add(_ value: Any) -> Bool {
+        let jars = value as! DTOJars
         let query = "INSERT INTO \(self.GetName())_\(DAOSuper.userID) (type, money, per) VALUES ('\(jars.type.rawValue)', \(jars.money), \(jars.percent));"
         
         return super.ExecQuery(query: query)

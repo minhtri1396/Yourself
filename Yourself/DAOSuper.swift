@@ -95,19 +95,29 @@ class DAOSuper: DB {
         return nil
     }
     
-    func GetAll(parse: (OpaquePointer) -> Any) -> [Any] {
+    func GetAll() -> [Any] {
         let query = "SELECT * FROM \(self.GetName())_\(DAOSuper.userID)"
         let statement = self.PrepareQuery(query: query)
         
         var records = [Any]()
         while sqlite3_step(statement) == SQLITE_ROW {
-            let record = parse(statement!)
+            let record = self.ParseValues(statement!)
             records.append(record)
         }
         
         sqlite3_finalize(statement)
         return records
     }
+    
+    // Every subclass should override this method
+    // This method is necessary when we need to get all values from DB
+    func ParseValues(_ statement: OpaquePointer) -> Any {
+        return ""
+    }
+    
+    // Every subclass should override this method
+    // This method is necessary when we need to add any value to DB
+    func Add(_ value: Any) -> Bool { return false; }
     
     func Update(withSet: String, withWhere: String) -> Bool {
         let query = "UPDATE \(self.GetName())_\(DAOSuper.userID) SET \(withSet) WHERE \(withWhere);"

@@ -42,7 +42,7 @@ class DAOUser: DAOSuper {
     }
     
     // DAOUser won't use this method
-    override func GetAll(parse: (OpaquePointer) -> Any) -> [Any] {
+    override func GetAll() -> [Any] {
         return []
     }
     

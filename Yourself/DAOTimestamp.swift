@@ -18,16 +18,11 @@ class DAOTimestamp: DAOSuper {
         return 0
     }
     
-    func GetAll() -> [DTOTimestamp] {
-        let records = super.GetAll() {
-            statement in
-            return DTOTimestamp(
-                id: String(cString: sqlite3_column_text(statement, 0)),
-                value: (Int64)(sqlite3_column_int64(statement, 1))
-            )
-        }
-        
-        return records as! [DTOTimestamp]
+    override func ParseValues(_ statement: OpaquePointer) -> Any {
+        return DTOTimestamp(
+            id: String(cString: sqlite3_column_text(statement, 0)),
+            value: (Int64)(sqlite3_column_int64(statement, 1))
+        )
     }
     
     func UpdateOrInsert(timestamp: DTOTimestamp) {

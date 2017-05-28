@@ -23,17 +23,4 @@ class DAOFJars: DAOFSuper {
         
         return jars
     }
-    
-    func Sync() {
-        super.GetTimestamp() {
-            timestamp in
-            let currentTimestamp = DAOTimestamp.BUILDER.GetTimestamp(of: super.connectedDAO.GetName())
-            if timestamp.value > currentTimestamp {
-//                super.RemoveAll()
-//                super.connectedDAO
-            } else if timestamp.value < currentTimestamp{
-                
-            }
-        }
-    }
 }

@@ -106,6 +106,38 @@ class DAOFSuper: DB {
         return nil
     }
     
+    func Sync() {
+        self.GetTimestamp() {
+            timestamp in // timestamp got from Firebase
+            let currentTimestamp = DAOTimestamp.BUILDER.GetTimestamp(of: self.connectedDAO.GetName())
+            if timestamp.value > currentTimestamp {
+                self.GetAll() {
+                    records in
+                    if let records = records {
+                        _ = self.connectedDAO.DeleteAll()
+                        for record in records {
+                            _ = self.connectedDAO.Add(record)
+                        }
+                        _ = DAOTrash.BUILDER.DeleteAll()
+                    }
+                }
+            } else if timestamp.value < currentTimestamp{
+                let trashes = DAOTrash.BUILDER.GetTrash(tableName: self.connectedDAO.GetName())
+                
+                for trash in trashes {
+                    self.Remove(at: trash)
+                }
+                
+                _ = DAOTrash.BUILDER.DeleteAll()
+                
+                let records = self.connectedDAO.GetAll()
+                for record in records {
+                    
+                }
+            }
+        }
+    }
+    
     func Remove(at name: String) {
         DAOFSuper.firebase_ref!
             .child("users")

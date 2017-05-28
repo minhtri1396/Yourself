@@ -10,8 +10,8 @@ class DAOTrash: DAOSuper {
         super.CreateTable(query: "CREATE TABLE if not exists \(self.GetName())_\(DAOSuper.userID) (tableName NVARCHAR(50) NOT NULL, recordID NVARCHAR(50) NOT NULL, PRIMARY KEY (tableName, recordID));")
     }
     
-    func GetTrash(tableName: String, recordID: String) -> [String] {
-        let query = "SELECT recordID FROM \(self.GetName())_\(DAOSuper.userID) WHERE tableName='\(tableName)' AND recordID='\(recordID)'"
+    func GetTrash(tableName: String) -> [String] {
+        let query = "SELECT recordID FROM \(self.GetName())_\(DAOSuper.userID) WHERE tableName='\(tableName)';"
         let statement = super.PrepareQuery(query: query)
         
         var records = [String]()

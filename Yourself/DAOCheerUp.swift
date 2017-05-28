@@ -36,20 +36,16 @@ class DAOCheerUp: DAOSuper {
         } as! DTOCheerUp?
     }
     
-    func GetAll() -> [DTOCheerUp] {
-        let records = super.GetAll() {
-            statement in
-            return DTOCheerUp(
-                timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
-                content: String(cString: sqlite3_column_text(statement, 1))
-            )
-        }
-        
-        return records as! [DTOCheerUp]
+    override func ParseValues(_ statement: OpaquePointer) -> Any {
+        return DTOCheerUp(
+            timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
+            content: String(cString: sqlite3_column_text(statement, 1))
+        )
     }
     
-    func Add(cheerUpTuple: DTOCheerUp) -> Bool {
-        let query = "INSERT INTO \(self.GetName())_\(DAOSuper.userID) (timestamp, content) VALUES (\(cheerUpTuple.timestamp), '\(cheerUpTuple.content)');"
+    override func Add(_ value: Any) -> Bool {
+        let cheerUp = value as! DTOCheerUp
+        let query = "INSERT INTO \(self.GetName())_\(DAOSuper.userID) (timestamp, content) VALUES (\(cheerUp.timestamp), '\(cheerUp.content)');"
         return super.ExecQuery(query: query)
     }
     

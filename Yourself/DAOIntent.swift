@@ -22,21 +22,17 @@ class DAOIntent: DAOSuper {
         } as! DTOIntent?
     }
     
-    func GetAll() -> [DTOIntent] {
-        let records = super.GetAll() {
-            statement in
-            return DTOIntent(
-                timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
-                type: JARS_TYPE(rawValue: String(cString: sqlite3_column_text(statement, 1)))!,
-                content: String(cString: sqlite3_column_text(statement, 2)),
-                money: (Double)(sqlite3_column_double(statement, 3))
-            )
-        }
-        
-        return records as! [DTOIntent]
+    override func ParseValues(_ statement: OpaquePointer) -> Any {
+        return DTOIntent(
+            timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
+            type: JARS_TYPE(rawValue: String(cString: sqlite3_column_text(statement, 1)))!,
+            content: String(cString: sqlite3_column_text(statement, 2)),
+            money: (Double)(sqlite3_column_double(statement, 3))
+        )
     }
     
-    func Add(intent: DTOIntent) -> Bool {
+    override func Add(_ value: Any) -> Bool {
+        let intent = value as! DTOIntent
         let query = "INSERT INTO \(self.GetName())_\(DAOSuper.userID) (timestamp, type, content, money) VALUES (\(intent.timestamp), '\(intent.type)', '\(intent.content)', \(intent.money));"
         return super.ExecQuery(query: query)
     }

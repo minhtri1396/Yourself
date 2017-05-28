@@ -46,24 +46,20 @@ class DAOTime: DAOSuper {
         } as! DTOTime?
     }
     
-    func GetAll() -> [DTOTime] {
-        let records = super.GetAll() {
-            statement in
-            return DTOTime(
-                id: (Int64)(sqlite3_column_int64(statement, 0)),
-                content: String(cString: sqlite3_column_text(statement, 1)),
-                startTime: (Int64)(sqlite3_column_int64(statement, 2)),
-                appointment: (Int64)(sqlite3_column_int64(statement, 3)),
-                finishTime: (Int64)(sqlite3_column_int64(statement, 4)),
-                state: TAG_STATE(rawValue: (Int)(sqlite3_column_int(statement, 5)))!,
-                tag: TAG(rawValue: (Int)(sqlite3_column_int(statement, 6)))!
-            )
-        }
-        
-        return records as! [DTOTime]
+    override func ParseValues(_ statement: OpaquePointer) -> Any {
+        return DTOTime(
+            id: (Int64)(sqlite3_column_int64(statement, 0)),
+            content: String(cString: sqlite3_column_text(statement, 1)),
+            startTime: (Int64)(sqlite3_column_int64(statement, 2)),
+            appointment: (Int64)(sqlite3_column_int64(statement, 3)),
+            finishTime: (Int64)(sqlite3_column_int64(statement, 4)),
+            state: TAG_STATE(rawValue: (Int)(sqlite3_column_int(statement, 5)))!,
+            tag: TAG(rawValue: (Int)(sqlite3_column_int(statement, 6)))!
+        )
     }
-        
-    func Add(time: DTOTime) -> Bool {
+    
+    override func Add(_ value: Any) -> Bool {
+        let time = value as! DTOTime
         let query = "INSERT INTO \(self.GetName())_\(DAOSuper.userID) (id, content, startTime, appointment, finishTime, state, tag) VALUES (\(time.id), '\(time.content)', \(time.startTime), \(time.appointment), \(time.finishTime), \(time.state.rawValue), \(time.tag.rawValue));"
         return super.ExecQuery(query: query)
     }

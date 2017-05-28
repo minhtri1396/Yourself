@@ -40,21 +40,17 @@ class DAOAlternatives: DAOSuper {
         } as! DTOAlternatives?
     }
     
-    func GetAll() -> [DTOAlternatives] {
-        let records = super.GetAll() {
-            statement in
-            return DTOAlternatives(
-                timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
-                owner: JARS_TYPE(rawValue: String(cString: sqlite3_column_text(statement, 1)))!,
-                alts: JARS_TYPE(rawValue: String(cString: sqlite3_column_text(statement, 2)))!,
-                money: (Double)(sqlite3_column_double(statement, 3))
-            )
-        }
-        
-        return records as! [DTOAlternatives]
+    override func ParseValues(_ statement: OpaquePointer) -> Any {
+        return DTOAlternatives(
+            timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
+            owner: JARS_TYPE(rawValue: String(cString: sqlite3_column_text(statement, 1)))!,
+            alts: JARS_TYPE(rawValue: String(cString: sqlite3_column_text(statement, 2)))!,
+            money: (Double)(sqlite3_column_double(statement, 3))
+        )
     }
     
-    func Add(alts: DTOAlternatives) -> Bool {
+    override func Add(_ value: Any) -> Bool {
+        let alts = value as! DTOAlternatives
         let query = "INSERT INTO \(self.GetName())_\(DAOSuper.userID) (timestamp, owner, alts, money) VALUES (\(alts.timestamp), '\(alts.owner)', '\(alts.alts)', \(alts.money));"
         return super.ExecQuery(query: query)
     }

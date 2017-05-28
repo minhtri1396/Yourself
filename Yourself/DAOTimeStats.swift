@@ -42,23 +42,19 @@ class DAOTimeStats: DAOSuper {
         } as! DTOTimeStats?
     }
     
-    func GetAll() -> [DTOTimeStats] {
-        let records = super.GetAll() {
-            statement in
-            return DTOTimeStats(
-                timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
-                totalCompletionTime: (Int64)(sqlite3_column_int64(statement, 1)),
-                numberSuccessNotes: (Int32)(sqlite3_column_int(statement, 2)),
-                numberFailNotes: (Int32)(sqlite3_column_int(statement, 3)),
-                totalNumberNotes: (Int32)(sqlite3_column_int(statement, 4))
-            )
-        }
-        
-        return records as! [DTOTimeStats]
+    override func ParseValues(_ statement: OpaquePointer) -> Any {
+        return DTOTimeStats(
+            timestamp: (Int64)(sqlite3_column_int64(statement, 0)),
+            totalCompletionTime: (Int64)(sqlite3_column_int64(statement, 1)),
+            numberSuccessNotes: (Int32)(sqlite3_column_int(statement, 2)),
+            numberFailNotes: (Int32)(sqlite3_column_int(statement, 3)),
+            totalNumberNotes: (Int32)(sqlite3_column_int(statement, 4))
+        )
     }
     
-    func Add(timeStatsTuple: DTOTimeStats) -> Bool {
-        let query = "INSERT INTO \(self.GetName())_\(DAOSuper.userID) (timestamp, totalCompletionTime, numberSuccessNotes, numberFailNotes, totalNumberNotes) VALUES (\(timeStatsTuple.timestamp), \(timeStatsTuple.totalCompletionTime), \(timeStatsTuple.numberSuccessNotes), \(timeStatsTuple.numberFailNotes), \(timeStatsTuple.totalNumberNotes));"
+    override func Add(_ value: Any) -> Bool {
+        let timeStats = value as! DTOTimeStats
+        let query = "INSERT INTO \(self.GetName())_\(DAOSuper.userID) (timestamp, totalCompletionTime, numberSuccessNotes, numberFailNotes, totalNumberNotes) VALUES (\(timeStats.timestamp), \(timeStats.totalCompletionTime), \(timeStats.numberSuccessNotes), \(timeStats.numberFailNotes), \(timeStats.totalNumberNotes));"
         return super.ExecQuery(query: query)
     }
     

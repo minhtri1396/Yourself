@@ -75,7 +75,7 @@ class DAOTests: XCTestCase {
         XCTAssertEqual(Int(DAOJars.BUILDER.GetJARS(with: JARS_TYPE.NEC)!.percent * 100), 40)
         XCTAssertEqual(Int(DAOJars.BUILDER.GetJARS(with: JARS_TYPE.PLAY)!.percent * 100), 50)
         // Get all
-        let allInfo = DAOJars.BUILDER.GetAll()
+        let allInfo = DAOJars.BUILDER.GetAll() as! [DTOJars]
         XCTAssertEqual(allInfo.count, 6)
         for info in allInfo {
             // Get money
@@ -118,7 +118,7 @@ class DAOTests: XCTestCase {
         XCTAssertEqual(intent.content, "DEFGHJK")
         XCTAssertEqual(intent.money, 550000)
         // Get all
-        let allInfo = DAOIntent.BUILDER.GetAll()
+        let allInfo = DAOIntent.BUILDER.GetAll() as! [DTOIntent]
         XCTAssertEqual(allInfo.count, 2)
         for info in allInfo {
             XCTAssertEqual(DAOIntent.BUILDER.GetIntent(with: info.timestamp)!.type, info.type)
@@ -157,7 +157,7 @@ class DAOTests: XCTestCase {
         XCTAssertEqual(alts.alts, JARS_TYPE.EDU)
         XCTAssertEqual(alts.money, 250000)
         // Get all
-        let allInfo = DAOAlternatives.BUILDER.GetAll()
+        let allInfo = DAOAlternatives.BUILDER.GetAll() as! [DTOAlternatives]
         XCTAssertEqual(allInfo.count, 2)
         for info in allInfo {
             XCTAssertEqual(DAOAlternatives.BUILDER.GetAlternative(with: info.timestamp)!.owner, info.owner)
@@ -197,7 +197,7 @@ class DAOTests: XCTestCase {
         XCTAssertEqual(time.state, TAG_STATE.DOING)
         XCTAssertEqual(time.tag, TAG.FOOD)
         // Get all
-        let allInfo = DAOTime.BUILDER.GetAll()
+        let allInfo = DAOTime.BUILDER.GetAll() as! [DTOTime]
         XCTAssertEqual(allInfo.count, 2)
         for info in allInfo {
             XCTAssertEqual(DAOTime.BUILDER.GetTime(with: info.id)!.startTime, info.startTime)
@@ -209,6 +209,12 @@ class DAOTests: XCTestCase {
         
         // Delete all
         XCTAssertTrue(DAOTime.BUILDER.DeleteAll())
+    }
+    
+    func testDAOTrash() {
+        let trashes = DAOTrash.BUILDER.GetTrash(tableName: "DAOIntent")
+        XCTAssertEqual(trashes.count, 1)
+        XCTAssertEqual(trashes[0], "1412573")
     }
     
     func testPerformanceExample() {

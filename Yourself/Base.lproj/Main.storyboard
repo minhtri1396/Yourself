@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rHB-im-4Nd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rHB-im-4Nd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -510,6 +510,7 @@
                         <outlet property="backButton" destination="CFQ-B4-F76" id="ExW-w1-Dam"/>
                         <outlet property="emailTextField" destination="hia-mN-iB3" id="Ce7-sN-VAN"/>
                         <outlet property="instructionLabel" destination="LNh-gv-Afu" id="f3x-sN-Lfy"/>
+                        <outlet property="scrollView" destination="Z5v-bl-WbK" id="Ygp-YW-2cr"/>
                         <outlet property="signInButton" destination="JW5-FR-wvt" id="Vqc-u1-LJs"/>
                         <outlet property="titleLabel" destination="ULm-iH-W1V" id="5Ex-Bh-Huy"/>
                     </connections>

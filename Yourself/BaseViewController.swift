@@ -27,10 +27,14 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
         }
     }
     
+    // strIdentifier is similar Storyboard ID
     func openViewControllerBasedOnIdentifier(_ strIdentifier:String){
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let spendingStatistics = storyBoard.instantiateViewController(withIdentifier: strIdentifier)
-        self.present(spendingStatistics, animated: true, completion: nil)
+        let view = storyBoard.instantiateViewController(withIdentifier: strIdentifier)
+        if strIdentifier == "GSignInController" {
+            GAccount.Instance.SignOut()
+        }
+        self.present(view, animated: true, completion: nil)
     }
     
     func addSlideMenuButton(){

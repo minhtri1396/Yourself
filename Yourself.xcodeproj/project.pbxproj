@@ -51,6 +51,7 @@
 		44615FFD1ED496960070AC8D /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44615FFC1ED496960070AC8D /* DB.swift */; };
 		446A72B41EDA1046005FDE55 /* DAOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A72B31EDA1046005FDE55 /* DAOTests.swift */; };
 		448F27001ED8C26D00E5922D /* DAOTrash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448F26FF1ED8C26D00E5922D /* DAOTrash.swift */; };
+		449F51A01EDBEDE9007121FE /* TimeNoteAddingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F519F1EDBEDE9007121FE /* TimeNoteAddingViewController.swift */; };
 		44A6269A1EC57A22008D9B79 /* DTOJars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A626991EC57A22008D9B79 /* DTOJars.swift */; };
 		44A6269C1EC5800D008D9B79 /* DTOIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A6269B1EC5800D008D9B79 /* DTOIntent.swift */; };
 		44A6269E1EC580A9008D9B79 /* DTOAlternatives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A6269D1EC580A9008D9B79 /* DTOAlternatives.swift */; };
@@ -122,6 +123,7 @@
 		44615FFC1ED496960070AC8D /* DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
 		446A72B31EDA1046005FDE55 /* DAOTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOTests.swift; sourceTree = "<group>"; };
 		448F26FF1ED8C26D00E5922D /* DAOTrash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOTrash.swift; sourceTree = "<group>"; };
+		449F519F1EDBEDE9007121FE /* TimeNoteAddingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeNoteAddingViewController.swift; sourceTree = "<group>"; };
 		44A626991EC57A22008D9B79 /* DTOJars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOJars.swift; sourceTree = "<group>"; };
 		44A6269B1EC5800D008D9B79 /* DTOIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOIntent.swift; sourceTree = "<group>"; };
 		44A6269D1EC580A9008D9B79 /* DTOAlternatives.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOAlternatives.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				441B4C451EBAF3D600C5A90B /* TimeDayStats.swift */,
 				441B4C471EBAF40300C5A90B /* TimeMonthStats.swift */,
 				441B4C491EBAF44400C5A90B /* TimeYearStats.swift */,
+				449F519F1EDBEDE9007121FE /* TimeNoteAddingViewController.swift */,
 			);
 			name = Time;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				444AD96B1ED07B1200D6D5D3 /* DAOTimestamp.swift in Sources */,
 				441B4C4A1EBAF44400C5A90B /* TimeYearStats.swift in Sources */,
 				44A626A61EC590CD008D9B79 /* DAOUser.swift in Sources */,
+				449F51A01EDBEDE9007121FE /* TimeNoteAddingViewController.swift in Sources */,
 				441B4C441EBAF1DB00C5A90B /* SpendingYearStats.swift in Sources */,
 				441B4C381EBAE58A00C5A90B /* SpendingNotesList.swift in Sources */,
 				44A6269E1EC580A9008D9B79 /* DTOAlternatives.swift in Sources */,

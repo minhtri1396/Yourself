@@ -19,19 +19,11 @@
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN" customClass="SpendingNotesList">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEn-n2-uQk">
-                                <frame key="frameInset" minX="280" minY="63" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="StatsButton_Tapped:" destination="9pv-A4-QxB" eventType="touchUpInside" id="3e0-Sr-2Mj"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="PuX-xO-PUl"/>
+                    <navigationItem key="navigationItem" id="PuX-xO-PUl">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mcr-S6-GLL"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -104,7 +96,7 @@
             </objects>
             <point key="canvasLocation" x="2788" y="-0.44977511244377816"/>
         </scene>
-        <!--Second-->
+        <!--Time Notes List-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="TimeNotesList" customModule="Yourself" customModuleProvider="target" sceneMemberID="viewController">
@@ -127,11 +119,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <navigationItem key="navigationItem" id="KVg-SE-Jmz"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-262" y="680"/>
+            <point key="canvasLocation" x="676" y="679.61019490254876"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="6WE-al-RhE">
@@ -188,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ns-5I-8D1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1871" y="781"/>
+            <point key="canvasLocation" x="2808.8000000000002" y="780.35982008995506"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mVm-DG-fSR">
@@ -226,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGO-Ng-Kxj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3927.1999999999998" y="469.1154422788606"/>
+            <point key="canvasLocation" x="4866.3999999999996" y="469.1154422788606"/>
         </scene>
         <!--Item-->
         <scene sceneID="sQK-9h-j1C">
@@ -531,7 +523,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="1bt-p1-Hdo" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="jpp-TT-kfC" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="oZw-yh-jHf" kind="relationship" relationship="viewControllers" id="TPL-de-umc"/>
                     </connections>
                 </tabBarController>
@@ -764,10 +756,10 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellMenu" id="X7D-yE-q3v">
-                                        <rect key="frame" x="0.0" y="22" width="1000" height="54"/>
+                                        <rect key="frame" x="0.0" y="22" width="315" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X7D-yE-q3v" id="5nY-i4-d8A">
-                                            <frame key="frameInset" width="1000" height="53"/>
+                                            <frame key="frameInset" width="315" height="53"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bqN-fh-djC">
@@ -855,7 +847,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1bt-p1-Hdo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FvY-Zp-qMG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FvY-Zp-qMG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -867,6 +859,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJ3-CF-2zZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-263.19999999999999" y="-0.44977511244377816"/>
+        </scene>
+        <!--Second-->
+        <scene sceneID="lPx-Ap-OCF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jpp-TT-kfC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Yf5-XL-5Yt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="1CF-lm-6LJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9rl-8c-VcV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-263.19999999999999" y="679.61019490254876"/>
         </scene>
     </scenes>
     <resources>

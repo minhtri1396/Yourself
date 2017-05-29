@@ -7,11 +7,6 @@ class SpedingNotesList: BaseViewController {
     // MARK: *** Data model
     
     // MARK: *** UI events
-    @IBAction func StatsButton_Tapped(_ sender: AnyObject) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let spendingStatistics = storyBoard.instantiateViewController(withIdentifier: "SpendingStatistics")
-        self.present(spendingStatistics, animated: true, completion: nil)
-    }
     
     // MARK: *** UIViewController
     override func viewDidLoad() {

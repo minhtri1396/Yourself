@@ -420,18 +420,6 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FXD-vg-zkP">
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JW5-FR-wvt">
-                                                <color key="backgroundColor" red="0.17480419359999999" green="0.3950678815" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="PL3-mx-I2r"/>
-                                                </constraints>
-                                                <state key="normal" title="ĐĂNG NHẬP">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="SignInButton_Tapped:" destination="sdE-qB-7eu" eventType="touchUpInside" id="zrA-j7-9DH"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFQ-B4-F76">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="75" id="GHM-WN-iAW"/>
@@ -444,10 +432,10 @@
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNh-gv-Afu">
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="ROq-Gm-xGT"/>
+                                                    <constraint firstAttribute="height" constant="114" id="LuT-4F-mqh"/>
                                                 </constraints>
                                                 <string key="text">Email này sẽ được dùng khi bạn đồng bộ dữ liệu lên Cloud (nếu bạn cần). Do đó, bạn nên nhập đúng email mà bạn dự định dùng trong ứng dụng này.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -459,20 +447,33 @@
                                                 <color key="textColor" red="0.17480419359999999" green="0.3950678815" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JW5-FR-wvt">
+                                                <color key="backgroundColor" red="0.17480419359999999" green="0.3950678815" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="VQ1-sw-u5w"/>
+                                                </constraints>
+                                                <state key="normal" title="ĐĂNG NHẬP">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="SignInButton_Tapped:" destination="sdE-qB-7eu" eventType="touchUpInside" id="zrA-j7-9DH"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="JW5-FR-wvt" secondAttribute="trailing" constant="16" id="2LE-20-xmj"/>
-                                            <constraint firstItem="JW5-FR-wvt" firstAttribute="leading" secondItem="FXD-vg-zkP" secondAttribute="leading" constant="16" id="3v3-Iy-oIl"/>
-                                            <constraint firstAttribute="trailing" secondItem="LNh-gv-Afu" secondAttribute="trailing" constant="16" id="4QP-Wf-j8e"/>
-                                            <constraint firstItem="LNh-gv-Afu" firstAttribute="leading" secondItem="FXD-vg-zkP" secondAttribute="leading" constant="16" id="IKR-Kw-e7h"/>
+                                            <constraint firstItem="JW5-FR-wvt" firstAttribute="top" secondItem="LNh-gv-Afu" secondAttribute="bottom" constant="13" id="FO5-l8-RzU"/>
                                             <constraint firstItem="ULm-iH-W1V" firstAttribute="top" secondItem="CFQ-B4-F76" secondAttribute="bottom" constant="15" id="N9d-4I-cLR"/>
+                                            <constraint firstAttribute="trailing" secondItem="LNh-gv-Afu" secondAttribute="trailing" constant="16" id="NLc-fr-eJI"/>
+                                            <constraint firstItem="LNh-gv-Afu" firstAttribute="top" secondItem="ULm-iH-W1V" secondAttribute="bottom" constant="81" id="OZh-th-Z9B"/>
                                             <constraint firstItem="CFQ-B4-F76" firstAttribute="leading" secondItem="FXD-vg-zkP" secondAttribute="leading" constant="16" id="YCK-vV-Kxv"/>
-                                            <constraint firstItem="JW5-FR-wvt" firstAttribute="top" secondItem="LNh-gv-Afu" secondAttribute="bottom" constant="15" id="f1p-NN-5ZP"/>
+                                            <constraint firstAttribute="trailing" secondItem="JW5-FR-wvt" secondAttribute="trailing" constant="16" id="cHb-zV-jp3"/>
+                                            <constraint firstItem="LNh-gv-Afu" firstAttribute="leading" secondItem="FXD-vg-zkP" secondAttribute="leading" constant="16" id="nKi-pA-RKL"/>
                                             <constraint firstAttribute="height" constant="325" id="qr2-up-YwA"/>
                                             <constraint firstItem="CFQ-B4-F76" firstAttribute="top" secondItem="FXD-vg-zkP" secondAttribute="top" constant="20" id="sEs-Ii-sSK"/>
                                             <constraint firstAttribute="trailing" secondItem="ULm-iH-W1V" secondAttribute="trailing" constant="16" id="vFa-tl-OdI"/>
                                             <constraint firstItem="ULm-iH-W1V" firstAttribute="leading" secondItem="FXD-vg-zkP" secondAttribute="leading" constant="16" id="vmt-91-A1j"/>
+                                            <constraint firstItem="JW5-FR-wvt" firstAttribute="leading" secondItem="FXD-vg-zkP" secondAttribute="leading" constant="16" id="wYG-CM-YVU"/>
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tài khoản google (gmail) của bạn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hia-mN-iB3">
@@ -491,7 +492,6 @@
                                     <constraint firstAttribute="trailing" secondItem="hia-mN-iB3" secondAttribute="trailing" constant="16" id="QXp-ux-ojn"/>
                                     <constraint firstItem="FXD-vg-zkP" firstAttribute="centerX" secondItem="Z5v-bl-WbK" secondAttribute="centerX" id="SeC-hM-jFs"/>
                                     <constraint firstItem="FXD-vg-zkP" firstAttribute="leading" secondItem="Z5v-bl-WbK" secondAttribute="leading" id="VxU-wi-M8n"/>
-                                    <constraint firstItem="LNh-gv-Afu" firstAttribute="top" secondItem="hia-mN-iB3" secondAttribute="bottom" constant="10" id="fl1-82-neo"/>
                                     <constraint firstItem="hia-mN-iB3" firstAttribute="leading" secondItem="Z5v-bl-WbK" secondAttribute="leading" constant="16" id="ouT-yt-syO"/>
                                     <constraint firstItem="FXD-vg-zkP" firstAttribute="top" secondItem="Z5v-bl-WbK" secondAttribute="top" id="zY0-yg-Iog"/>
                                 </constraints>
@@ -717,6 +717,24 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1401" y="-760"/>
+        </scene>
+        <!--Time Note Adding View Controller-->
+        <scene sceneID="9s3-dH-fOM">
+            <objects>
+                <viewController id="AuR-dB-f9M" customClass="TimeNoteAddingViewController" customModule="Yourself" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WUm-mQ-Hd0"/>
+                        <viewControllerLayoutGuide type="bottom" id="BBT-yA-scH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mks-Wz-Pfo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LSe-85-sQl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-618" y="-759"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="05y-Kf-WzD">

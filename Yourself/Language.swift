@@ -84,7 +84,7 @@ class Language {
             ["Notice"], // MESSAGE_TITLE
             ["Email is not allowned empty!\nPlease try again!", "Your email is invalid!\nPlease check again!"], // MESSAGE
             ["Your google account(gmail)"], // PLACEHOLDER
-            ["Application exclusively for you", "This email will be used when you sync your data to Cloud (If you needed it. Therefor, you should enter the correct email you intend to use in this app" ] // REMINDING
+            ["Application exclusively for you", "This email will be used when you sync your data to Cloud (If you needed it). So, you should enter the correct email you intend to use in this app (it should be gmail account)." ] // REMINDING
         ],
         [
             ["Thống kê", "Thiết lập"], // OPTIONS
@@ -94,7 +94,7 @@ class Language {
             ["Thông báo", "Bàn ăn", "Khu vực", "Thức ăn", "Nước uống"], // MESSAGE_TITLE
             ["Email không được bỏ trống!\nVui lòng thử lại", "Email của bạn không tồn tại!\nVui lòng kiểm tra lại!"], //MESSAGE
             ["Tài khoản google(gmail) của bạn"], // PLACEHOLDER
-            ["Ứng dụng dành riêng cho bạn", "Email này sẽ được dùng khi bạn đồng bộ dữ liệu lên Cloud (nếu bạn cần). Do đó, bạn nên nhập đúng email mà bạn dự định dùng trong ứng dụng này."  ] // REMINDING
+            ["Ứng dụng dành riêng cho bạn", "Email này sẽ được dùng khi bạn đồng bộ dữ liệu lên Cloud (nếu bạn cần). Do đó, bạn nên nhập đúng email mà bạn dự định dùng trong ứng dụng này (Nên dùng tài khoản gmail)."  ] // REMINDING
         ]
     ]
     

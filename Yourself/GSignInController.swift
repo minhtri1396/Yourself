@@ -60,18 +60,27 @@ class GSignInController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegat
             displayMainScreen(email: user.email)
         }
         
+        
         // Initialize google sign-in
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
+        
         // Initialize offline sign in button tapping
         let offSignInTap = UITapGestureRecognizer(target: self, action: #selector(OfflineSignInButton_Tapped(sender:)))
         offSignInTap.numberOfTapsRequired = 1
         offSignInButton.addGestureRecognizer(offSignInTap)
+        
         // Initialize google sign in button tapping
         let gglSignInTap = UITapGestureRecognizer(target: self, action: #selector(GGLSignInButton_Tapped(sender:)))
         gglSignInTap.numberOfTapsRequired = 1
         gglSignInButton.addGestureRecognizer(gglSignInTap)
+        
+        
+        //
+        self.offSignInLabel.text = Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.LOGIN_OFFLINE)
+        self.gglSignInLabel.text = Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.LOGIN_GOOGLE)
+        self.subTitleLabel.text = Language.BUILDER.get(group: Group.REMINDING, view: RemindingViews.LOGIN)
     }
     
     private func displayMainScreen(email: String) {

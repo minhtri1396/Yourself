@@ -40,6 +40,12 @@
 		444AD96D1ED0853800D6D5D3 /* DTOTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AD96C1ED0853800D6D5D3 /* DTOTimestamp.swift */; };
 		444AD96F1ED0910E00D6D5D3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AD96E1ED0910E00D6D5D3 /* Extensions.swift */; };
 		444AD9711ED0973800D6D5D3 /* DAOFJars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AD9701ED0973800D6D5D3 /* DAOFJars.swift */; };
+		445FE8E91EDBDFF00044616C /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445FE8E41EDBDFF00044616C /* Alert.swift */; };
+		445FE8EA1EDBDFF00044616C /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445FE8E51EDBDFF00044616C /* Keyboard.swift */; };
+		445FE8EB1EDBDFF00044616C /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445FE8E61EDBDFF00044616C /* Language.swift */; };
+		445FE8EC1EDBDFF00044616C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445FE8E71EDBDFF00044616C /* BaseViewController.swift */; };
+		445FE8ED1EDBDFF00044616C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445FE8E81EDBDFF00044616C /* MenuViewController.swift */; };
+		445FE8EF1EDBE0360044616C /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445FE8EE1EDBE0360044616C /* SettingsController.swift */; };
 		44615FF81ED480850070AC8D /* DAOFAlternatives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44615FF71ED480850070AC8D /* DAOFAlternatives.swift */; };
 		44615FFA1ED492E00070AC8D /* DAOFTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44615FF91ED492E00070AC8D /* DAOFTime.swift */; };
 		44615FFD1ED496960070AC8D /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44615FFC1ED496960070AC8D /* DB.swift */; };
@@ -105,6 +111,12 @@
 		444AD96C1ED0853800D6D5D3 /* DTOTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOTimestamp.swift; sourceTree = "<group>"; };
 		444AD96E1ED0910E00D6D5D3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		444AD9701ED0973800D6D5D3 /* DAOFJars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOFJars.swift; sourceTree = "<group>"; };
+		445FE8E41EDBDFF00044616C /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		445FE8E51EDBDFF00044616C /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		445FE8E61EDBDFF00044616C /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		445FE8E71EDBDFF00044616C /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		445FE8E81EDBDFF00044616C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		445FE8EE1EDBE0360044616C /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		44615FF71ED480850070AC8D /* DAOFAlternatives.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOFAlternatives.swift; sourceTree = "<group>"; };
 		44615FF91ED492E00070AC8D /* DAOFTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOFTime.swift; sourceTree = "<group>"; };
 		44615FFC1ED496960070AC8D /* DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
@@ -207,6 +219,7 @@
 		441B4C351EBAE3F200C5A90B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				445FE8EE1EDBE0360044616C /* SettingsController.swift */,
 				4423EA781EC6376B00C4F32C /* Login */,
 				4423EA771EC6375B00C4F32C /* JARS */,
 				4423EA761EC6374300C4F32C /* Time */,
@@ -300,6 +313,11 @@
 			isa = PBXGroup;
 			children = (
 				4423EA7F1EC6636200C4F32C /* AppManager.swift */,
+				445FE8E41EDBDFF00044616C /* Alert.swift */,
+				445FE8E51EDBDFF00044616C /* Keyboard.swift */,
+				445FE8E61EDBDFF00044616C /* Language.swift */,
+				445FE8E71EDBDFF00044616C /* BaseViewController.swift */,
+				445FE8E81EDBDFF00044616C /* MenuViewController.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -612,6 +630,7 @@
 				441B4C461EBAF3D600C5A90B /* TimeDayStats.swift in Sources */,
 				441B4C201EBAE38300C5A90B /* AppDelegate.swift in Sources */,
 				4428B5721ED4B18F0007DD70 /* DAOFCheerUp.swift in Sources */,
+				445FE8EB1EDBDFF00044616C /* Language.swift in Sources */,
 				441B4C5E1EBB16FE00C5A90B /* DTOTimeStats.swift in Sources */,
 				444AD96F1ED0910E00D6D5D3 /* Extensions.swift in Sources */,
 				441B4C541EBB13E500C5A90B /* DAOTime.swift in Sources */,
@@ -621,11 +640,14 @@
 				44A6269C1EC5800D008D9B79 /* DTOIntent.swift in Sources */,
 				44615FF81ED480850070AC8D /* DAOFAlternatives.swift in Sources */,
 				44A626A81EC5917E008D9B79 /* DTOUser.swift in Sources */,
+				445FE8EC1EDBDFF00044616C /* BaseViewController.swift in Sources */,
 				44A626A41EC58139008D9B79 /* DAOAlternatives.swift in Sources */,
 				44A626A21EC58126008D9B79 /* DAOIntent.swift in Sources */,
 				4428B5741ED4B25E0007DD70 /* DAOFTimeStats.swift in Sources */,
 				441B4C421EBAF19400C5A90B /* SpendingMonthStats.swift in Sources */,
+				445FE8EA1EDBDFF00044616C /* Keyboard.swift in Sources */,
 				441B4C481EBAF40300C5A90B /* TimeMonthStats.swift in Sources */,
+				445FE8EF1EDBE0360044616C /* SettingsController.swift in Sources */,
 				44A626A01EC5811C008D9B79 /* DAOJars.swift in Sources */,
 				441B4C561EBB13F200C5A90B /* DTOTime.swift in Sources */,
 				44A626AD1EC59F07008D9B79 /* DAOFSuper.swift in Sources */,
@@ -634,8 +656,10 @@
 				4423EA7A1EC637AA00C4F32C /* GSignInController.swift in Sources */,
 				441B4C581EBB16CA00C5A90B /* DTOCheerUp.swift in Sources */,
 				4423EA801EC6636200C4F32C /* AppManager.swift in Sources */,
+				445FE8E91EDBDFF00044616C /* Alert.swift in Sources */,
 				44D912F61EC72DB800370691 /* OfflineSignInController.swift in Sources */,
 				441B4C5A1EBB16D800C5A90B /* DAOCheerUp.swift in Sources */,
+				445FE8ED1EDBDFF00044616C /* MenuViewController.swift in Sources */,
 				4423EA7D1EC64BCB00C4F32C /* GAccount.swift in Sources */,
 				441B4C3A1EBAE5E000C5A90B /* TimeNotesList.swift in Sources */,
 				44615FFA1ED492E00070AC8D /* DAOFTime.swift in Sources */,

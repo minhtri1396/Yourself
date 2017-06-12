@@ -45,12 +45,12 @@ class SettingsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if Language.BUILDER.Lang == LangType.ENG {
-            self.bristishFlag.isHidden = true
-        } else {
-            self.vietnamFlag.isHidden = true
-        }
-        setContent()
+//        if Language.BUILDER.Lang == LangType.ENG {
+//            self.bristishFlag.isHidden = true
+//        } else {
+//            self.vietnamFlag.isHidden = true
+//        }
+        ///setContent()
     }
 
     override func didReceiveMemoryWarning() {

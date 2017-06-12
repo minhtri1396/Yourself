@@ -6,10 +6,11 @@ class TimeNotesList: BaseViewController {
     // MARK: *** Data model
     
     // MARK: *** UI events
-    @IBAction func StatsButton_Tapped(_ sender: AnyObject) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let timeStatistics = storyBoard.instantiateViewController(withIdentifier: "TimeStatistics")
-        self.present(timeStatistics, animated: true, completion: nil)
+    
+    @IBAction func AddNoteTime_Tapped(_ sender: AnyObject) {
+        let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let addNoteView = mainStoryboard.instantiateViewController(withIdentifier: "TimeNoteAddingViewController") as! TimeNoteAddingViewController
+        self.present(addNoteView, animated: true, completion: nil)
     }
     
     // MARK: *** UIViewController

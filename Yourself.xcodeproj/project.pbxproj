@@ -29,6 +29,7 @@
 		441B4C5A1EBB16D800C5A90B /* DAOCheerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B4C591EBB16D800C5A90B /* DAOCheerUp.swift */; };
 		441B4C5C1EBB16F300C5A90B /* DAOTimeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B4C5B1EBB16F300C5A90B /* DAOTimeStats.swift */; };
 		441B4C5E1EBB16FE00C5A90B /* DTOTimeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B4C5D1EBB16FE00C5A90B /* DTOTimeStats.swift */; };
+		441B4D891EDC920B000ED24C /* MoneyAddingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B4D881EDC920B000ED24C /* MoneyAddingController.swift */; };
 		4423EA7A1EC637AA00C4F32C /* GSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4423EA791EC637AA00C4F32C /* GSignInController.swift */; };
 		4423EA7D1EC64BCB00C4F32C /* GAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4423EA7C1EC64BCB00C4F32C /* GAccount.swift */; };
 		4423EA801EC6636200C4F32C /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4423EA7F1EC6636200C4F32C /* AppManager.swift */; };
@@ -99,6 +100,7 @@
 		441B4C591EBB16D800C5A90B /* DAOCheerUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOCheerUp.swift; sourceTree = "<group>"; };
 		441B4C5B1EBB16F300C5A90B /* DAOTimeStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOTimeStats.swift; sourceTree = "<group>"; };
 		441B4C5D1EBB16FE00C5A90B /* DTOTimeStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOTimeStats.swift; sourceTree = "<group>"; };
+		441B4D881EDC920B000ED24C /* MoneyAddingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyAddingController.swift; sourceTree = "<group>"; };
 		4423EA791EC637AA00C4F32C /* GSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSignInController.swift; sourceTree = "<group>"; };
 		4423EA7C1EC64BCB00C4F32C /* GAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GAccount.swift; sourceTree = "<group>"; };
 		4423EA7F1EC6636200C4F32C /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				441B4C3F1EBAF18000C5A90B /* SpendingDayStats.swift */,
 				441B4C411EBAF19400C5A90B /* SpendingMonthStats.swift */,
 				441B4C431EBAF1DB00C5A90B /* SpendingYearStats.swift */,
+				441B4D881EDC920B000ED24C /* MoneyAddingController.swift */,
 			);
 			name = JARS;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				441B4C511EBB119600C5A90B /* DAOSuper.swift in Sources */,
 				44615FFD1ED496960070AC8D /* DB.swift in Sources */,
 				44A6269C1EC5800D008D9B79 /* DTOIntent.swift in Sources */,
+				441B4D891EDC920B000ED24C /* MoneyAddingController.swift in Sources */,
 				44615FF81ED480850070AC8D /* DAOFAlternatives.swift in Sources */,
 				44A626A81EC5917E008D9B79 /* DTOUser.swift in Sources */,
 				445FE8EC1EDBDFF00044616C /* BaseViewController.swift in Sources */,

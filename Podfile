@@ -10,6 +10,7 @@ target 'Yourself' do
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
   pod 'SCLAlertView'
+  pod 'BEMCheckBox'
 
   target 'YourselfTests' do
     inherit! :complete

@@ -11,5 +11,4 @@
 
 #import "sqlite3.h"
 
-
 #endif /* _412573_1412591_Bridging_Header_h */

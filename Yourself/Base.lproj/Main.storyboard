@@ -32,7 +32,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="676" y="-0.44977511244377816"/>
+            <point key="canvasLocation" x="817" y="20"/>
         </scene>
         <!--Money Adding Controller-->
         <scene sceneID="Iuc-Hg-X7N">
@@ -1212,19 +1212,10 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="he9-MF-HTK" customClass="BEMCheckBox">
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="27" id="Qiw-hB-MaV"/>
-                                                                    <constraint firstAttribute="width" constant="33" id="oWO-bL-gfE"/>
-                                                                </constraints>
-                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="aaZ-Fa-urf" firstAttribute="leading" secondItem="m8v-8D-K3l" secondAttribute="leading" constant="8" id="02B-eB-oLa"/>
-                                                            <constraint firstItem="he9-MF-HTK" firstAttribute="centerX" secondItem="m8v-8D-K3l" secondAttribute="centerX" id="3iL-HC-WPu"/>
-                                                            <constraint firstItem="he9-MF-HTK" firstAttribute="top" secondItem="m8v-8D-K3l" secondAttribute="top" constant="14" id="8KE-EO-JjC"/>
                                                             <constraint firstItem="3Dq-BZ-Ran" firstAttribute="leading" secondItem="aaZ-Fa-urf" secondAttribute="trailing" constant="8" id="CDH-I8-SaX"/>
                                                             <constraint firstItem="kO4-D3-vlV" firstAttribute="centerY" secondItem="m8v-8D-K3l" secondAttribute="centerY" id="IWP-qB-Fck"/>
                                                             <constraint firstItem="aaZ-Fa-urf" firstAttribute="centerY" secondItem="m8v-8D-K3l" secondAttribute="centerY" id="VxE-pJ-JLc"/>
@@ -1871,14 +1862,7 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FIh-SU-QXG">
-                                <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QVX-ey-O69" customClass="BEMCheckBox">
-                                        <frame key="frameInset" minX="69" minY="100" width="137" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="537" id="HWA-yD-nJG"/>
                                 </constraints>
@@ -2085,7 +2069,6 @@
                                     <constraint firstAttribute="height" constant="152" id="BuP-1O-eKI"/>
                                     <constraint firstAttribute="trailing" secondItem="nQq-pu-MP6" secondAttribute="trailing" constant="8" id="LqC-Qh-t9M"/>
                                     <constraint firstItem="Sb2-cl-IHf" firstAttribute="centerY" secondItem="shV-ZP-WVH" secondAttribute="centerY" constant="-8" id="avA-Sz-V4m"/>
-                                    <constraint firstAttribute="width" constant="315" id="gP1-Uu-eAI"/>
                                     <constraint firstItem="Sb2-cl-IHf" firstAttribute="centerX" secondItem="shV-ZP-WVH" secondAttribute="centerX" id="k3W-Qj-sxh"/>
                                     <constraint firstItem="nQq-pu-MP6" firstAttribute="top" secondItem="Sb2-cl-IHf" secondAttribute="bottom" constant="0.5" id="u71-ME-BSW"/>
                                 </constraints>
@@ -2093,6 +2076,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="shV-ZP-WVH" firstAttribute="trailing" secondItem="P9K-5w-PTd" secondAttribute="trailing" id="9WE-ae-f2E"/>
                             <constraint firstItem="shV-ZP-WVH" firstAttribute="top" secondItem="aPT-Lp-Qmz" secondAttribute="bottom" id="XIv-aC-0dJ"/>
                             <constraint firstAttribute="trailing" secondItem="P9K-5w-PTd" secondAttribute="trailing" constant="60" id="hbV-wk-TbR"/>
                             <constraint firstItem="P9K-5w-PTd" firstAttribute="leading" secondItem="xBE-UW-twj" secondAttribute="leading" id="otC-BD-QcN"/>
@@ -2136,7 +2120,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jpp-TT-kfC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Yf5-XL-5Yt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yf5-XL-5Yt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2165,6 +2149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIZ-U9-bzX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1766" y="-666"/>
         </scene>
     </scenes>
     <resources>

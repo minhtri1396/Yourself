@@ -228,8 +228,8 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
         self.button_Back.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.BACK_BUTTON), for: .normal)
         self.button_Add.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), for: .normal)
         self.label_Title.text = Language.BUILDER.get(group: Group.TITLE, view: TitleViews.ADD_SPENDING_NOTE_TITLE)
-        self.textField_GivingMoney.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.ADD_MONEY)
-        self.textField_Notes.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.ADD_MONEY_NOTE)
+        self.textField_GivingMoney.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.TYPE_MONEY)
+        self.textField_Notes.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.TYPE_NOTE)
         
     }
     

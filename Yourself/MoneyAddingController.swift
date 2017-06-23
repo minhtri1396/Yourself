@@ -184,6 +184,7 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
         self.backButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.BACK_BUTTON), for: .normal)
         self.doneButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), for: .normal)
         self.titleLabel.text = Language.BUILDER.get(group: Group.TITLE, view: TitleViews.MONEY_ADDING_TITLE)
+        self.moneyTextField.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.TYPE_MONEY_JARS)
         
         // Set money for jars
         self.necMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .NEC).money).clean)

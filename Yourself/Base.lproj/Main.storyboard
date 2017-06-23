@@ -1212,19 +1212,10 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="he9-MF-HTK" customClass="BEMCheckBox">
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="27" id="Qiw-hB-MaV"/>
-                                                                    <constraint firstAttribute="width" constant="33" id="oWO-bL-gfE"/>
-                                                                </constraints>
-                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="aaZ-Fa-urf" firstAttribute="leading" secondItem="m8v-8D-K3l" secondAttribute="leading" constant="8" id="02B-eB-oLa"/>
-                                                            <constraint firstItem="he9-MF-HTK" firstAttribute="centerX" secondItem="m8v-8D-K3l" secondAttribute="centerX" id="3iL-HC-WPu"/>
-                                                            <constraint firstItem="he9-MF-HTK" firstAttribute="top" secondItem="m8v-8D-K3l" secondAttribute="top" constant="14" id="8KE-EO-JjC"/>
                                                             <constraint firstItem="3Dq-BZ-Ran" firstAttribute="leading" secondItem="aaZ-Fa-urf" secondAttribute="trailing" constant="8" id="CDH-I8-SaX"/>
                                                             <constraint firstItem="kO4-D3-vlV" firstAttribute="centerY" secondItem="m8v-8D-K3l" secondAttribute="centerY" id="IWP-qB-Fck"/>
                                                             <constraint firstItem="aaZ-Fa-urf" firstAttribute="centerY" secondItem="m8v-8D-K3l" secondAttribute="centerY" id="VxE-pJ-JLc"/>
@@ -2021,7 +2012,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1bt-p1-Hdo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FvY-Zp-qMG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FvY-Zp-qMG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2040,7 +2031,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jpp-TT-kfC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Yf5-XL-5Yt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yf5-XL-5Yt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -1,6 +1,6 @@
 import UIKit
 
-// http://ashishkakkad.com/2015/09/create-your-own-slider-menu drawer-in-swift/
+
 class SpedingNotesList: BaseViewController {
     // MARK: *** Local variables
     

@@ -21,10 +21,22 @@ class SpedingNotesList: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.titlesForCells = [Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.STATISTIC), Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.SYNCHRONUS), Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.SETTINGS), Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.LOGOUT)]
-        self.iconsForCells = ["Statistics", "Synchronization", "Settings", "Logout"]
-        self.indentifiers = ["SpendingStatistics", "Clound", "SettingsController", "GSignInController" ]
-        self.addSlideMenuButton()
+        super.titlesForCells = [
+            Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.MONEY_ADDING),
+            Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.STATISTIC),
+            Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.SYNCHRONUS),
+            Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.SETTINGS),
+            Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.LOGOUT)
+        ]
+        super.iconsForCells = ["Statistics", "Statistics", "Synchronization", "Settings", "Logout"]
+        super.indentifiers = ["MoneyAddingController", "SpendingStatistics", "Clound", "SettingsController", "GSignInController" ]
+        
+        super.addCallback(forIdentifier: "GSignInController") {
+            GAccount.Instance.SignOut()
+        }
+        
+        
+        super.addSlideMenuButton()
     }
     
 }

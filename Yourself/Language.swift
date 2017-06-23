@@ -43,15 +43,14 @@ class TitleViews: ViewEnum {
     public static let SPENDING_NOTE_TITLE = TitleViews(id: 1)
     public static let TIME_NOTE_TITLE = TitleViews(id: 2)
     public static let SETTINGS_TITLE = TitleViews(id: 3)
-    public static let LANGUAGE_TITLE = TitleViews(id: 4)
-    public static let DIFERENCE_SETTINGS_TITLE = TitleViews(id: 5)
 }
 
 class TableMenuViews: ViewEnum {
-    public static let STATISTIC = TableMenuViews(id: 0)
-    public static let SYNCHRONUS = TableMenuViews(id: 1)
-    public static let SETTINGS = TableMenuViews(id: 2)
-    public static let LOGOUT = TableMenuViews(id: 3)
+    public static let MONEY_ADDING = TableMenuViews(id: 0)
+    public static let STATISTIC = TableMenuViews(id: 1)
+    public static let SYNCHRONUS = TableMenuViews(id: 2)
+    public static let SETTINGS = TableMenuViews(id: 3)
+    public static let LOGOUT = TableMenuViews(id: 4)
 }
 
 
@@ -79,8 +78,8 @@ class Language {
         [
             ["Statistics", "Settings"], // OPTIONS
             ["Login Offline" ,"Login by Google" ,"Login" ,"Back", "Photo library", "Done"], // BUTTON
-            ["Login Offline", "Spending Notes", "Time Notes", "Settings", "Language", "More Settings"], // TITLE
-            ["Statistics", "Synchrocus", "Settings", "Log out"], //TABLE_MENU
+            ["Login Offline", "Spending Notes", "Time Notes", "Settings"], // TITLE
+            ["Add money", "Statistics", "Synchrocus", "Settings", "Log out"], //TABLE_MENU
             ["Notice"], // MESSAGE_TITLE
             ["Email is not allowned empty!\nPlease try again!", "Your email is invalid!\nPlease check again!"], // MESSAGE
             ["Your google account(gmail)"], // PLACEHOLDER
@@ -89,10 +88,10 @@ class Language {
         [
             ["Thống kê", "Thiết lập"], // OPTIONS
             ["Đăng nhập OFFline", "Đăng nhập bằng Google" ,"Đăng nhập" ,"Quay lại", "Kho hình ảnh", "Xong"], // BUTTON
-            ["Đăng nhập OFFLINE", "Ghi chú tài chính", "Ghi chú thời gian", "Cài đặt", "Ngôn ngữ", "Cài đặt khác"], // TITLE
-            ["Thống kê", "Đồng bộ", "Cài đặt", "Đăng xuất"], //TABLE_MENU
+            ["Đăng nhập OFFLINE", "Ghi chú tài chính", "Ghi chú thời gian", "Cài đặt"], // TITLE
+            ["Thêm tiền", "Thống kê", "Đồng bộ", "Cài đặt", "Đăng xuất"], //TABLE_MENU
             ["Thông báo", "Bàn ăn", "Khu vực", "Thức ăn", "Nước uống"], // MESSAGE_TITLE
-            ["Email không được bỏ trống!\nVui lòng thử lại", "Email của bạn không tồn tại!\nVui lòng kiểm tra lại!"], //MESSAGE
+            ["Email không được bỏ trống!\nVui lòng thử lại", "Email không hợp lệ!\nVui lòng kiểm tra lại!"], //MESSAGE
             ["Tài khoản google(gmail) của bạn"], // PLACEHOLDER
             ["Ứng dụng dành riêng cho bạn", "Email này sẽ được dùng khi bạn đồng bộ dữ liệu lên Cloud (nếu bạn cần). Do đó, bạn nên nhập đúng email mà bạn dự định dùng trong ứng dụng này (Nên dùng tài khoản gmail)."  ] // REMINDING
         ]

@@ -6,6 +6,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
     var iconsForCells = [String]()
     var titlesForCells = [String]()
     var indentifiers = [String]()
+    private var callbacks = [String: () -> Void]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,17 +23,22 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
         print("View Controller is : \(topViewController) \n", terminator: "")
         
         if index != -1 {
-            print("name1 \(indentifiers[(Int)(index)])")
             self.openViewControllerBasedOnIdentifier(indentifiers[(Int)(index)])
         }
+    }
+    
+    func addCallback(forIdentifier: String, callback: @escaping () -> Void) {
+        callbacks.updateValue(callback, forKey: forIdentifier)
     }
     
     // strIdentifier is similar Storyboard ID
     func openViewControllerBasedOnIdentifier(_ strIdentifier:String){
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
-        if strIdentifier == "GSignInController" {
-            GAccount.Instance.SignOut()
+        let callback = callbacks[strIdentifier]
+        
+        if callback != nil {
+            callback!();
         }
         
         let view = storyBoard.instantiateViewController(withIdentifier: strIdentifier)

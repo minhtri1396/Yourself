@@ -11,7 +11,12 @@ class DAOJars: DAOSuper {
     }
     
     func GetJARS(with type: JARS_TYPE) -> DTOJars? {
-        return super.Get(withWhere: "type='\(type.rawValue)'") as! DTOJars?
+        let jar = super.Get(withWhere: "type='\(type.rawValue)'")
+        if jar == nil {
+            return DTOJars(type: type, money: 0)
+        }
+        
+        return jar as! DTOJars?
     }
     
     // This method will be used by super class when we get any record from DB

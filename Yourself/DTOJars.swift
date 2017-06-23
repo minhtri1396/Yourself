@@ -7,6 +7,7 @@ enum JARS_TYPE: String {
     GIVE
 }
 
+
 class DTOJars {
     
     static let DEFAULT: [JARS_TYPE: Double] = [

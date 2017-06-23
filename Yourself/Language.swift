@@ -118,7 +118,7 @@ class Language {
             ["Chú ý", "Cảnh báo", "Chuyển tiền"], // MESSAGE_TITLE
             ["Email không được bỏ trống!\nVui lòng thử lại", "Email của bạn không tồn tại!\nVui lòng kiểm tra lại!", "Tất cả các hũ hiện không có tiền", "Hũ bạn chọn hiện không có tiền", "Chọn 1 hu3 để chuyển tiền sang"], //MESSAGE
             ["Tài khoản google(gmail) của bạn", "Nhập số tiền cần lấy ra", "Thêm ghi chú cho lần lấy tiền này" ], // PLACEHOLDER
-            ["Ứng dụng dành riêng cho bạn", "Email này sẽ được dùng khi bạn đồng bộ dữ liệu lên Cloud (nếu bạn cần). Do đó, bạn nên nhập đúng email mà bạn dự định dùng trong ứng dụng này (Nên dùng tài khoản gmail)."  ] // REMINDING
+            ["Ứng dụng dành riêng cho bạn", "Email này sẽ được dùng khi bạn đồng bộ dữ liệu lên Cloud (nếu bạn cần). Do đó, bạn nên nhập đúng email mà bạn dự định dùng trong ứng dụng này (Nên dùng tài khoản gmail)."  ], // REMINDING
             ["Login Offline" ,"Login by Google" ,"Login" ,"Back", "Photo library", "Done"], // BUTTON
             ["Login Offline", "Spending Notes", "Time Notes", "Settings"], // TITLE
             ["Add money", "Statistics", "Synchrocus", "Settings", "Log out"], //TABLE_MENU

@@ -6,8 +6,8 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
     
     // MARK: *** Local variables
     var keyboard: Keyboard?
-    var moneyOfBoxIsChoosed: Double?
-    var maxMoney: Double?
+    var moneyOfBoxIsChoosed: Double = 0
+    var maxMoney: Double = 0
 
     
     // MARK: *** Data model
@@ -98,7 +98,7 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
                 }
                 
                 if isGettingMoneyOfBoxIsChoosed(type: type) {
-                    if Double(self.textField_GivingMoney.text!)! > moneyOfBoxIsChoosed! {
+                    if Double(self.textField_GivingMoney.text!)! > moneyOfBoxIsChoosed {
                         show_SwapMoneyBox_ChoosingView()
                     }
                 }
@@ -318,17 +318,16 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
         var typeJAR = [JARS_TYPE.EDU, JARS_TYPE.FFA, JARS_TYPE.GIVE,
                        JARS_TYPE.LTSS, JARS_TYPE.NEC, JARS_TYPE.PLAY]
     
-        if maxMoney == nil {
+        if maxMoney == 0 {
             for i in 0..<typeJAR.count {
-                if let tmpMoney = DAOJars.BUILDER.GetJARS(with: typeJAR[i])?.money {
-                    if maxMoney == nil || maxMoney! < tmpMoney {
-                        maxMoney = tmpMoney
-                    }
+                let tmpMoney = DAOJars.BUILDER.GetJARS(with: typeJAR[i]).money
+                if maxMoney < tmpMoney {
+                    maxMoney = tmpMoney
                 }
             }
         }
         
-        if maxMoney == nil {
+        if maxMoney == 0 {
             let appearance = configAppearanceAlertView()
             let alertView = SCLAlertView(appearance: appearance)
             alertView.addButton("OK", target:self, selector:#selector(noMoney_Acction))
@@ -340,8 +339,8 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
     }
     
     private func isGettingMoneyOfBoxIsChoosed(type: JARS_TYPE)->Bool {
-        if let tmp = DAOJars.BUILDER.GetJARS(with: type)?.money {
-            moneyOfBoxIsChoosed = tmp
+        moneyOfBoxIsChoosed = DAOJars.BUILDER.GetJARS(with: type).money
+        if (moneyOfBoxIsChoosed != 0) {
             return true
         }
         

@@ -1,6 +1,11 @@
 import UIKit
 
 class TimeNoteAddingViewController: UIViewController {
+    
+    
+    @IBOutlet weak var naigationBar_TitleBar: UINavigationBar!
+    @IBOutlet weak var barButton_Back: UIBarButtonItem!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

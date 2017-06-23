@@ -8,6 +8,12 @@ class SpedingNotesList: BaseViewController {
     
     // MARK: *** UI events
     
+    @IBAction func AddSpendingNote_Tapped(_ sender: AnyObject) {
+        let addSpendingNoteView = self.storyboard?.instantiateViewController(withIdentifier: "AddSpendingNoteViewController" ) as! AddSpendingNoteViewController
+        self.present(addSpendingNoteView, animated: true, completion: nil)
+    }
+    
+    
     // MARK: *** UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()

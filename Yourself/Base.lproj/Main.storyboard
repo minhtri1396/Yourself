@@ -1788,11 +1788,11 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xr0-x0-Bcg">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="dGm-jw-YSt"/>
-                                    <constraint firstAttribute="width" constant="60" id="pzR-37-WAH"/>
+                                    <constraint firstAttribute="width" constant="70" id="pzR-37-WAH"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Quay lại"/>
                                 <connections>
-                                    <action selector="BackButton_Tapped:" destination="XDB-qf-2UT" eventType="touchUpInside" id="dyh-UT-hhT"/>
                                     <action selector="backButton_Tapped:" destination="XDB-qf-2UT" eventType="touchUpInside" id="1uI-pb-bde"/>
                                 </connections>
                             </button>
@@ -1801,7 +1801,7 @@
                                     <constraint firstAttribute="height" constant="21" id="L6Y-j7-BLS"/>
                                     <constraint firstAttribute="width" constant="241" id="hq5-ao-IoQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.01636124831" green="0.3647188723" blue="0.86838984490000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1812,7 +1812,7 @@
                             <constraint firstAttribute="trailing" secondItem="V42-Hg-6oB" secondAttribute="trailing" id="88k-gB-ont"/>
                             <constraint firstItem="V42-Hg-6oB" firstAttribute="leading" secondItem="3dD-0h-Da6" secondAttribute="leading" id="O7y-KI-7IB"/>
                             <constraint firstItem="kBT-RA-sMv" firstAttribute="top" secondItem="V42-Hg-6oB" secondAttribute="bottom" id="TIb-gd-sps"/>
-                            <constraint firstItem="Xr0-x0-Bcg" firstAttribute="top" secondItem="011-9T-qAN" secondAttribute="bottom" constant="8" id="Tjj-Dn-exk"/>
+                            <constraint firstItem="Xr0-x0-Bcg" firstAttribute="top" secondItem="011-9T-qAN" secondAttribute="bottom" constant="10" id="Tjj-Dn-exk"/>
                             <constraint firstItem="V42-Hg-6oB" firstAttribute="top" secondItem="Xr0-x0-Bcg" secondAttribute="bottom" constant="20" id="c38-ML-81w"/>
                             <constraint firstItem="iwS-je-b9O" firstAttribute="centerX" secondItem="3dD-0h-Da6" secondAttribute="centerX" id="ilc-yR-jdM"/>
                             <constraint firstItem="Xr0-x0-Bcg" firstAttribute="leading" secondItem="3dD-0h-Da6" secondAttribute="leading" constant="16" id="toA-RM-YnL"/>
@@ -2107,7 +2107,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1bt-p1-Hdo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FvY-Zp-qMG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FvY-Zp-qMG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2126,7 +2126,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jpp-TT-kfC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Yf5-XL-5Yt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yf5-XL-5Yt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

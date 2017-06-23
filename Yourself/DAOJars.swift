@@ -10,13 +10,13 @@ class DAOJars: DAOSuper {
         super.CreateTable(query: "CREATE TABLE if not exists \(self.GetName())_\(DAOSuper.userID) (type NVARCHAR(4) NOT NULL PRIMARY KEY, money DOUBLE, per DOUBLE);")
     }
     
-    func GetJARS(with type: JARS_TYPE) -> DTOJars? {
+    func GetJARS(with type: JARS_TYPE) -> DTOJars {
         let jar = super.Get(withWhere: "type='\(type.rawValue)'")
         if jar == nil {
             return DTOJars(type: type, money: 0)
         }
         
-        return jar as! DTOJars?
+        return jar as! DTOJars
     }
     
     // This method will be used by super class when we get any record from DB

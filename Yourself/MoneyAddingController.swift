@@ -138,12 +138,12 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
         
         configCheckBoxes()
 
-        self.necMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .NEC)!.money).clean)
-        self.ffaMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .FFA)!.money).clean)
-        self.ltssMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .LTSS)!.money).clean)
-        self.eduMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .EDU)!.money).clean)
-        self.playMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .PLAY)!.money).clean)
-        self.giveMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .GIVE)!.money).clean)
+        self.necMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .NEC).money).clean)
+        self.ffaMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .FFA).money).clean)
+        self.ltssMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .LTSS).money).clean)
+        self.eduMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .EDU).money).clean)
+        self.playMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .PLAY).money).clean)
+        self.giveMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .GIVE).money).clean)
     }
     
     private func configCheckBoxes() {

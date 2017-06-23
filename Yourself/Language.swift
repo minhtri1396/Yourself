@@ -4,8 +4,13 @@ enum LangType: Int {
     case ENG = 0, VNI
 }
 
+class LangTitles: ViewEnum {
+    public static let ENG = LangTitles(id: 0)
+    public static let VNI = LangTitles(id: 1)
+}
+
 enum Group: Int {
-    case OPTIONS = 0, BUTTON, TITLE, TABLE_MENU, MESSAGE_TITLE, MESSAGE, PLACEHOLDER, REMINDING
+    case OPTIONS = 0, BUTTON, TITLE, TABLE_MENU, MESSAGE_TITLE, MESSAGE, PLACEHOLDER, REMINDING, LANGUAGE
 }
 
 class ViewEnum {
@@ -83,7 +88,8 @@ class Language {
             ["Notice"], // MESSAGE_TITLE
             ["Email is not allowned empty!\nPlease try again!", "Your email is invalid!\nPlease check again!"], // MESSAGE
             ["Your google account(gmail)"], // PLACEHOLDER
-            ["Application exclusively for you", "This email will be used when you sync your data to Cloud (If you needed it). So, you should enter the correct email you intend to use in this app (it should be gmail account)." ] // REMINDING
+            ["Application exclusively for you", "This email will be used when you sync your data to Cloud (If you needed it). So, you should enter the correct email you intend to use in this app (it should be gmail account)." ], // REMINDING
+            ["English", "Vietnamese"] // LANGUAGE
         ],
         [
             ["Thống kê", "Thiết lập"], // OPTIONS
@@ -93,7 +99,8 @@ class Language {
             ["Thông báo", "Bàn ăn", "Khu vực", "Thức ăn", "Nước uống"], // MESSAGE_TITLE
             ["Email không được bỏ trống!\nVui lòng thử lại", "Email không hợp lệ!\nVui lòng kiểm tra lại!"], //MESSAGE
             ["Tài khoản google(gmail) của bạn"], // PLACEHOLDER
-            ["Ứng dụng dành riêng cho bạn", "Email này sẽ được dùng khi bạn đồng bộ dữ liệu lên Cloud (nếu bạn cần). Do đó, bạn nên nhập đúng email mà bạn dự định dùng trong ứng dụng này (Nên dùng tài khoản gmail)."  ] // REMINDING
+            ["Ứng dụng dành riêng cho bạn", "Email này sẽ được dùng khi bạn đồng bộ dữ liệu lên Cloud (nếu bạn cần). Do đó, bạn nên nhập đúng email mà bạn dự định dùng trong ứng dụng này (Nên dùng tài khoản gmail)."  ], // REMINDING
+            ["Tiếng Anh", "Tiếng Việt"] // LANGUAGE
         ]
     ]
     

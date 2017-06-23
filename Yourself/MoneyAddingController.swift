@@ -1,5 +1,6 @@
 import UIKit
 import BEMCheckBox
+import SCLAlertView
 
 class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
     // MARK: *** Local variables
@@ -52,7 +53,20 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
     }
     
     @IBAction func addButton_Tapped(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
+        if let jarsTypes = isCompleted() {
+            let moneys = calcMoneyForJars(jarsTypes: jarsTypes)
+            
+            var money: Double
+            for i in 0..<jarsTypes.count {
+                money = moneys[i] + DAOJars.BUILDER.GetJARS(with: jarsTypes[i]).money
+                if (!DAOJars.BUILDER.Add(DTOJars(type: jarsTypes[i], money: money))) {
+                    _ = DAOJars.BUILDER.UpdateMoney(type: jarsTypes[i], money: money)
+                }
+            }
+            
+            
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     func didTap(_ checkBox: BEMCheckBox) {
@@ -107,14 +121,16 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        unitMoneyTitle.text = ExchangeRate.BUILDER.RateType.rawValue
+        unitMoneyTitle.text = "(" + ExchangeRate.BUILDER.RateType.rawValue + ")"
         
+        // Set keyboard type
         if ExchangeRate.BUILDER.RateType == .VND {
             moneyTextField.keyboardType = UIKeyboardType.numberPad
         } else {
             moneyTextField.keyboardType = UIKeyboardType.decimalPad
         }
-            
+        
+        // Set border for jars
         let borderColor = UIColor(colorLiteralRed: 224/255, green: 224/255, blue: 224/255, alpha: 1).cgColor
         self.necView.layer.borderWidth = 1
         self.necView.layer.borderColor = borderColor
@@ -134,16 +150,8 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
         self.giveView.layer.borderWidth = 1
         self.giveView.layer.borderColor = borderColor
         
-        
-        
         configCheckBoxes()
-
-        self.necMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .NEC).money).clean)
-        self.ffaMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .FFA).money).clean)
-        self.ltssMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .LTSS).money).clean)
-        self.eduMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .EDU).money).clean)
-        self.playMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .PLAY).money).clean)
-        self.giveMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .GIVE).money).clean)
+        setContent()
     }
     
     private func configCheckBoxes() {
@@ -170,5 +178,91 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
         self.giveCheckBox.onAnimationType = BEMAnimationType.fill
         self.giveCheckBox.offAnimationType = BEMAnimationType.fill
         self.giveCheckBox.delegate = self
+    }
+    
+    private func setContent() {
+        self.backButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.BACK_BUTTON), for: .normal)
+        self.doneButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), for: .normal)
+        self.titleLabel.text = Language.BUILDER.get(group: Group.TITLE, view: TitleViews.MONEY_ADDING_TITLE)
+        self.moneyTextField.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.TYPE_MONEY_JARS)
+        
+        // Set money for jars
+        self.necMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .NEC).money).clean)
+        self.ffaMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .FFA).money).clean)
+        self.ltssMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .LTSS).money).clean)
+        self.eduMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .EDU).money).clean)
+        self.playMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .PLAY).money).clean)
+        self.giveMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .GIVE).money).clean)
+    }
+    
+    private func isCompleted() -> [JARS_TYPE]? {
+        let appearance = SCLAlertView.SCLAppearance(
+            kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
+            kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+            kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
+            showCloseButton: true,
+            showCircularIcon: true
+        )
+        let alertView = SCLAlertView(appearance: appearance)
+        
+        if let _ = Double(moneyTextField.text!) {
+            var jarsTypes = [JARS_TYPE]()
+            if self.necCheckBox.on {
+                jarsTypes.append(JARS_TYPE.NEC)
+            }
+            
+            if self.ffaCheckBox.on {
+                jarsTypes.append(JARS_TYPE.FFA)
+            }
+            
+            if self.ltssCheckBox.on {
+                jarsTypes.append(JARS_TYPE.LTSS)
+            }
+            
+            if self.eduCheckBox.on {
+                jarsTypes.append(JARS_TYPE.EDU)
+            }
+            
+            if self.playCheckBox.on {
+                jarsTypes.append(JARS_TYPE.PLAY)
+            }
+            
+            if self.giveCheckBox.on {
+                jarsTypes.append(JARS_TYPE.GIVE)
+            }
+            
+            if jarsTypes.count > 0 {
+                return jarsTypes
+            }
+            
+            alertView.showInfo("", subTitle: "You must choose jar(s) which you want to set money for!")
+        } else {
+            alertView.showInfo("", subTitle: "You must set money before continuing!")
+        }
+        
+        return nil
+    }
+    
+    private func calcMoneyForJars(jarsTypes: [JARS_TYPE]) -> [Double] {
+        var percentSum: Double = 0
+        for type in jarsTypes {
+            percentSum.add(DAOJars.BUILDER.GetJARS(with: type).percent)
+        }
+        
+        var moneys = [Double]()
+        var moneySum: Double = 0
+        let money = (Double(moneyTextField.text!)! / ExchangeRate.BUILDER.Rate)
+        var jars: DTOJars
+        for type in jarsTypes {
+            jars = DAOJars.BUILDER.GetJARS(with: type)
+            moneys.append((money * jars.percent) / percentSum)
+            moneySum += moneys[moneys.count - 1]
+        }
+        
+        if moneySum != money {
+            moneys[moneys.count - 1] += money - moneySum
+        }
+        
+        return moneys
     }
 }

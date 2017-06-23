@@ -548,18 +548,18 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAx-id-dQk">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="F25-fR-hms"/>
+                                            <constraint firstAttribute="width" constant="70" id="F25-fR-hms"/>
                                             <constraint firstAttribute="height" constant="30" id="oAt-zD-OGr"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="Back">
+                                        <state key="normal" title="Quay lại">
                                             <color key="titleColor" red="0.17480419359999999" green="0.3950678815" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="backButton_Tapped:" destination="did-yB-Lge" eventType="touchUpInside" id="J0z-co-VWJ"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thêm tiền" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kh0-M3-PEv">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thêm tiền" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kh0-M3-PEv">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="PhY-tH-iQz"/>
                                         </constraints>
@@ -569,7 +569,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JfZ-oO-q0y">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="D7F-4B-cmU"/>
+                                            <constraint firstAttribute="width" constant="70" id="D7F-4B-cmU"/>
                                             <constraint firstAttribute="height" constant="30" id="PoC-wT-ui4"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -595,11 +595,11 @@
                                     <constraint firstItem="L0F-ve-g9y" firstAttribute="top" secondItem="kh0-M3-PEv" secondAttribute="bottom" constant="4" id="7z1-SS-o2P"/>
                                     <constraint firstItem="kh0-M3-PEv" firstAttribute="centerY" secondItem="jxm-Wu-Rfc" secondAttribute="centerY" id="HtI-la-Ayz"/>
                                     <constraint firstItem="JfZ-oO-q0y" firstAttribute="centerY" secondItem="jxm-Wu-Rfc" secondAttribute="centerY" id="QIf-t6-zni"/>
-                                    <constraint firstAttribute="trailing" secondItem="JfZ-oO-q0y" secondAttribute="trailing" constant="16" id="Sm1-c2-4zb"/>
+                                    <constraint firstAttribute="trailing" secondItem="JfZ-oO-q0y" secondAttribute="trailing" constant="8" id="Sm1-c2-4zb"/>
                                     <constraint firstItem="kh0-M3-PEv" firstAttribute="leading" secondItem="sAx-id-dQk" secondAttribute="trailing" constant="16" id="UyX-2S-07f"/>
                                     <constraint firstItem="JfZ-oO-q0y" firstAttribute="leading" secondItem="kh0-M3-PEv" secondAttribute="trailing" constant="16" id="ZyP-1k-wk1"/>
                                     <constraint firstItem="L0F-ve-g9y" firstAttribute="leading" secondItem="jxm-Wu-Rfc" secondAttribute="leading" id="gSk-ew-SdQ"/>
-                                    <constraint firstItem="sAx-id-dQk" firstAttribute="leading" secondItem="jxm-Wu-Rfc" secondAttribute="leading" constant="16" id="oSy-7r-0Cx"/>
+                                    <constraint firstItem="sAx-id-dQk" firstAttribute="leading" secondItem="jxm-Wu-Rfc" secondAttribute="leading" constant="10" id="oSy-7r-0Cx"/>
                                     <constraint firstAttribute="trailing" secondItem="L0F-ve-g9y" secondAttribute="trailing" id="u0S-Sn-xE8"/>
                                     <constraint firstAttribute="height" constant="70" id="yHP-ri-Hxy"/>
                                 </constraints>
@@ -1212,19 +1212,10 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="he9-MF-HTK" customClass="BEMCheckBox">
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="27" id="Qiw-hB-MaV"/>
-                                                                    <constraint firstAttribute="width" constant="33" id="oWO-bL-gfE"/>
-                                                                </constraints>
-                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="aaZ-Fa-urf" firstAttribute="leading" secondItem="m8v-8D-K3l" secondAttribute="leading" constant="8" id="02B-eB-oLa"/>
-                                                            <constraint firstItem="he9-MF-HTK" firstAttribute="centerX" secondItem="m8v-8D-K3l" secondAttribute="centerX" id="3iL-HC-WPu"/>
-                                                            <constraint firstItem="he9-MF-HTK" firstAttribute="top" secondItem="m8v-8D-K3l" secondAttribute="top" constant="14" id="8KE-EO-JjC"/>
                                                             <constraint firstItem="3Dq-BZ-Ran" firstAttribute="leading" secondItem="aaZ-Fa-urf" secondAttribute="trailing" constant="8" id="CDH-I8-SaX"/>
                                                             <constraint firstItem="kO4-D3-vlV" firstAttribute="centerY" secondItem="m8v-8D-K3l" secondAttribute="centerY" id="IWP-qB-Fck"/>
                                                             <constraint firstItem="aaZ-Fa-urf" firstAttribute="centerY" secondItem="m8v-8D-K3l" secondAttribute="centerY" id="VxE-pJ-JLc"/>

@@ -38,6 +38,14 @@ class SettingsController: UIViewController, BEMCheckBoxDelegate {
         _ = DAOJars.BUILDER.UpdatePercent(type: .PLAY, percent: Double(playTextField.text!)!)
         _ = DAOJars.BUILDER.UpdatePercent(type: .GIVE, percent: Double(giveTextField.text!)!)
         
+        if ExchangeRate.BUILDER.RateType == .DOLLAR {
+            ExchangeRate.BUILDER.Rate = 1
+        } else if ExchangeRate.BUILDER.RateType == .EURO {
+            ExchangeRate.BUILDER.Rate = 0.89
+        } else {
+            ExchangeRate.BUILDER.Rate = 22722.50
+        }
+        
         self.dismiss(animated: true, completion: nil)
     }
     

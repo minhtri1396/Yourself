@@ -48,6 +48,7 @@ class TitleViews: ViewEnum {
     public static let SPENDING_NOTE_TITLE = TitleViews(id: 1)
     public static let TIME_NOTE_TITLE = TitleViews(id: 2)
     public static let SETTINGS_TITLE = TitleViews(id: 3)
+    public static let MONEY_ADDING_TITLE = TitleViews(id: 4)
 }
 
 class TableMenuViews: ViewEnum {
@@ -83,7 +84,7 @@ class Language {
         [
             ["Statistics", "Settings"], // OPTIONS
             ["Login Offline" ,"Login by Google" ,"Login" ,"Back", "Photo library", "Done"], // BUTTON
-            ["Login Offline", "Spending Notes", "Time Notes", "Settings"], // TITLE
+            ["Login Offline", "Spending Notes", "Time Notes", "Settings", "Add money"], // TITLE
             ["Add money", "Statistics", "Synchrocus", "Settings", "Log out"], //TABLE_MENU
             ["Notice"], // MESSAGE_TITLE
             ["Email is not allowned empty!\nPlease try again!", "Your email is invalid!\nPlease check again!"], // MESSAGE
@@ -94,7 +95,7 @@ class Language {
         [
             ["Thống kê", "Thiết lập"], // OPTIONS
             ["Đăng nhập OFFline", "Đăng nhập bằng Google" ,"Đăng nhập" ,"Quay lại", "Kho hình ảnh", "Xong"], // BUTTON
-            ["Đăng nhập OFFLINE", "Ghi chú tài chính", "Ghi chú thời gian", "Cài đặt"], // TITLE
+            ["Đăng nhập OFFLINE", "Ghi chú tài chính", "Ghi chú thời gian", "Cài đặt", "Thêm tiền"], // TITLE
             ["Thêm tiền", "Thống kê", "Đồng bộ", "Cài đặt", "Đăng xuất"], //TABLE_MENU
             ["Thông báo", "Bàn ăn", "Khu vực", "Thức ăn", "Nước uống"], // MESSAGE_TITLE
             ["Email không được bỏ trống!\nVui lòng thử lại", "Email không hợp lệ!\nVui lòng kiểm tra lại!"], //MESSAGE

@@ -76,6 +76,20 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
         return defaultMenuImage;
     }
     
+    func closeMenu(_ duration: Double) {
+        let viewMenuBack : UIView = view.subviews.last!
+        
+        UIView.animate(withDuration: duration, animations: { () -> Void in
+            var frameMenu : CGRect = viewMenuBack.frame
+            frameMenu.origin.x = -1 * UIScreen.main.bounds.size.width
+            viewMenuBack.frame = frameMenu
+            viewMenuBack.layoutIfNeeded()
+            viewMenuBack.backgroundColor = UIColor.clear
+            }, completion: { (finished) -> Void in
+                viewMenuBack.removeFromSuperview()
+        })
+    }
+    
     func onSlideMenuButtonPressed(_ sender : UIButton){
         if (sender.tag == 10)
         {
@@ -83,19 +97,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
             self.slideMenuItemSelectedAtIndex(-1);
             
             sender.tag = 0;
-            
-            let viewMenuBack : UIView = view.subviews.last!
-            
-            UIView.animate(withDuration: 0.3, animations: { () -> Void in
-                var frameMenu : CGRect = viewMenuBack.frame
-                frameMenu.origin.x = -1 * UIScreen.main.bounds.size.width
-                viewMenuBack.frame = frameMenu
-                viewMenuBack.layoutIfNeeded()
-                viewMenuBack.backgroundColor = UIColor.clear
-                }, completion: { (finished) -> Void in
-                    viewMenuBack.removeFromSuperview()
-            })
-            
+            closeMenu(0.3)
             return
         }
         

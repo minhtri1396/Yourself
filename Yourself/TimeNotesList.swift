@@ -1,9 +1,19 @@
 import UIKit
 
-class TimeNotesList: BaseViewController {
+class TimeNotesList: BaseViewController, UITabBarControllerDelegate {
     // MARK: *** Local variables
     
     // MARK: *** Data model
+    
+    // MARK: *** Function
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        
+        if tabBarIndex == 0 { // tab spending note
+            super.closeMenu(0.0)
+        }
+    }
     
     // MARK: *** UI events
     
@@ -16,6 +26,7 @@ class TimeNotesList: BaseViewController {
     // MARK: *** UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
     

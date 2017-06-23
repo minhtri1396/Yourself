@@ -4,8 +4,13 @@ enum LangType: Int {
     case ENG = 0, VNI
 }
 
+class LangTitles: ViewEnum {
+    public static let ENG = LangTitles(id: 0)
+    public static let VNI = LangTitles(id: 1)
+}
+
 enum Group: Int {
-    case OPTIONS = 0, BUTTON, TITLE, TABLE_MENU, MESSAGE_TITLE, MESSAGE, PLACEHOLDER, REMINDING
+    case OPTIONS = 0, BUTTON, TITLE, TABLE_MENU, MESSAGE_TITLE, MESSAGE, PLACEHOLDER, REMINDING, LANGUAGE
 }
 
 class ViewEnum {
@@ -58,10 +63,11 @@ class TitleViews: ViewEnum {
 }
 
 class TableMenuViews: ViewEnum {
-    public static let STATISTIC = TableMenuViews(id: 0)
-    public static let SYNCHRONUS = TableMenuViews(id: 1)
-    public static let SETTINGS = TableMenuViews(id: 2)
-    public static let LOGOUT = TableMenuViews(id: 3)
+    public static let MONEY_ADDING = TableMenuViews(id: 0)
+    public static let STATISTIC = TableMenuViews(id: 1)
+    public static let SYNCHRONUS = TableMenuViews(id: 2)
+    public static let SETTINGS = TableMenuViews(id: 3)
+    public static let LOGOUT = TableMenuViews(id: 4)
 }
 
 
@@ -113,6 +119,25 @@ class Language {
             ["Email không được bỏ trống!\nVui lòng thử lại", "Email của bạn không tồn tại!\nVui lòng kiểm tra lại!", "Tất cả các hũ hiện không có tiền", "Hũ bạn chọn hiện không có tiền", "Chọn 1 hu3 để chuyển tiền sang"], //MESSAGE
             ["Tài khoản google(gmail) của bạn", "Nhập số tiền cần lấy ra", "Thêm ghi chú cho lần lấy tiền này" ], // PLACEHOLDER
             ["Ứng dụng dành riêng cho bạn", "Email này sẽ được dùng khi bạn đồng bộ dữ liệu lên Cloud (nếu bạn cần). Do đó, bạn nên nhập đúng email mà bạn dự định dùng trong ứng dụng này (Nên dùng tài khoản gmail)."  ] // REMINDING
+            ["Login Offline" ,"Login by Google" ,"Login" ,"Back", "Photo library", "Done"], // BUTTON
+            ["Login Offline", "Spending Notes", "Time Notes", "Settings"], // TITLE
+            ["Add money", "Statistics", "Synchrocus", "Settings", "Log out"], //TABLE_MENU
+            ["Notice"], // MESSAGE_TITLE
+            ["Email is not allowned empty!\nPlease try again!", "Your email is invalid!\nPlease check again!"], // MESSAGE
+            ["Your google account(gmail)"], // PLACEHOLDER
+            ["Application exclusively for you", "This email will be used when you sync your data to Cloud (If you needed it). So, you should enter the correct email you intend to use in this app (it should be gmail account)." ], // REMINDING
+            ["English", "Vietnamese"] // LANGUAGE
+        ],
+        [
+            ["Thống kê", "Thiết lập"], // OPTIONS
+            ["Đăng nhập OFFline", "Đăng nhập bằng Google" ,"Đăng nhập" ,"Quay lại", "Kho hình ảnh", "Xong"], // BUTTON
+            ["Đăng nhập OFFLINE", "Ghi chú tài chính", "Ghi chú thời gian", "Cài đặt"], // TITLE
+            ["Thêm tiền", "Thống kê", "Đồng bộ", "Cài đặt", "Đăng xuất"], //TABLE_MENU
+            ["Thông báo", "Bàn ăn", "Khu vực", "Thức ăn", "Nước uống"], // MESSAGE_TITLE
+            ["Email không được bỏ trống!\nVui lòng thử lại", "Email không hợp lệ!\nVui lòng kiểm tra lại!"], //MESSAGE
+            ["Tài khoản google(gmail) của bạn"], // PLACEHOLDER
+            ["Ứng dụng dành riêng cho bạn", "Email này sẽ được dùng khi bạn đồng bộ dữ liệu lên Cloud (nếu bạn cần). Do đó, bạn nên nhập đúng email mà bạn dự định dùng trong ứng dụng này (Nên dùng tài khoản gmail)."  ], // REMINDING
+            ["Tiếng Anh", "Tiếng Việt"] // LANGUAGE
         ]
     ]
     

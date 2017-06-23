@@ -48,34 +48,33 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
     
     // MARK: *** UI events
     @IBAction func backButton_Tapped(_ sender: AnyObject) {
-        
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func addButton_Tapped(_ sender: AnyObject) {
-        
+        self.dismiss(animated: true, completion: nil)
     }
     
     func didTap(_ checkBox: BEMCheckBox) {
         if (checkBox.on) {
             switch (checkBox) {
-            case necCheckBox:
-                necMoney.isHidden = true
+            case self.necCheckBox:
+                self.necMoney.isHidden = true
                 break;
-            case ffaCheckBox:
-                ffaMoney.isHidden = true
+            case self.ffaCheckBox:
+                self.ffaMoney.isHidden = true
                 break;
-            case ltssCheckBox:
-                ltssMoney.isHidden = true
+            case self.ltssCheckBox:
+                self.ltssMoney.isHidden = true
                 break;
-            case eduCheckBox:
-                eduMoney.isHidden = true
+            case self.eduCheckBox:
+                self.eduMoney.isHidden = true
                 break;
-            case playCheckBox:
-                playMoney.isHidden = true
+            case self.playCheckBox:
+                self.playMoney.isHidden = true
                 break;
             default:
-                giveMoney.isHidden = true
-                break;
+                self.giveMoney.isHidden = true
             }
         }
     }
@@ -83,24 +82,23 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
     func animationDidStop(for checkBox: BEMCheckBox) {
         if (!checkBox.on) {
             switch (checkBox) {
-            case necCheckBox:
-                necMoney.isHidden = false
+            case self.necCheckBox:
+                self.necMoney.isHidden = false
                 break;
-            case ffaCheckBox:
-                ffaMoney.isHidden = false
+            case self.ffaCheckBox:
+                self.ffaMoney.isHidden = false
                 break;
-            case ltssCheckBox:
-                ltssMoney.isHidden = false
+            case self.ltssCheckBox:
+                self.ltssMoney.isHidden = false
                 break;
-            case eduCheckBox:
-                eduMoney.isHidden = false
+            case self.eduCheckBox:
+                self.eduMoney.isHidden = false
                 break;
-            case playCheckBox:
-                playMoney.isHidden = false
+            case self.playCheckBox:
+                self.playMoney.isHidden = false
                 break;
             default:
-                giveMoney.isHidden = false
-                break;
+                self.giveMoney.isHidden = false
             }
         }
     }
@@ -109,51 +107,68 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        unitMoneyTitle.text = ExchangeRate.BUILDER.RateType.rawValue
+        
+        if ExchangeRate.BUILDER.RateType == .VND {
+            moneyTextField.keyboardType = UIKeyboardType.numberPad
+        } else {
+            moneyTextField.keyboardType = UIKeyboardType.decimalPad
+        }
+            
         let borderColor = UIColor(colorLiteralRed: 224/255, green: 224/255, blue: 224/255, alpha: 1).cgColor
-        necView.layer.borderWidth = 1
-        necView.layer.borderColor = borderColor
+        self.necView.layer.borderWidth = 1
+        self.necView.layer.borderColor = borderColor
         
-        ffaView.layer.borderWidth = 1
-        ffaView.layer.borderColor = borderColor
+        self.ffaView.layer.borderWidth = 1
+        self.ffaView.layer.borderColor = borderColor
         
-        ltssView.layer.borderWidth = 1
-        ltssView.layer.borderColor = borderColor
+        self.ltssView.layer.borderWidth = 1
+        self.ltssView.layer.borderColor = borderColor
         
-        eduView.layer.borderWidth = 1
-        eduView.layer.borderColor = borderColor
+        self.eduView.layer.borderWidth = 1
+        self.eduView.layer.borderColor = borderColor
         
-        playView.layer.borderWidth = 1
-        playView.layer.borderColor = borderColor
+        self.playView.layer.borderWidth = 1
+        self.playView.layer.borderColor = borderColor
         
-        giveView.layer.borderWidth = 1
-        giveView.layer.borderColor = borderColor
+        self.giveView.layer.borderWidth = 1
+        self.giveView.layer.borderColor = borderColor
+        
+        
         
         configCheckBoxes()
+
+        self.necMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .NEC).money).clean)
+        self.ffaMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .FFA).money).clean)
+        self.ltssMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .LTSS).money).clean)
+        self.eduMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .EDU).money).clean)
+        self.playMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .PLAY).money).clean)
+        self.giveMoney.text = String(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .GIVE).money).clean)
     }
     
     private func configCheckBoxes() {
-        necCheckBox.onAnimationType = BEMAnimationType.fill
-        necCheckBox.offAnimationType = BEMAnimationType.fill
-        necCheckBox.delegate = self
+        self.necCheckBox.onAnimationType = BEMAnimationType.fill
+        self.necCheckBox.offAnimationType = BEMAnimationType.fill
+        self.necCheckBox.delegate = self
         
-        ffaCheckBox.onAnimationType = BEMAnimationType.fill
-        ffaCheckBox.offAnimationType = BEMAnimationType.fill
-        ffaCheckBox.delegate = self
+        self.ffaCheckBox.onAnimationType = BEMAnimationType.fill
+        self.ffaCheckBox.offAnimationType = BEMAnimationType.fill
+        self.ffaCheckBox.delegate = self
         
-        ltssCheckBox.onAnimationType = BEMAnimationType.fill
-        ltssCheckBox.offAnimationType = BEMAnimationType.fill
-        ltssCheckBox.delegate = self
+        self.ltssCheckBox.onAnimationType = BEMAnimationType.fill
+        self.ltssCheckBox.offAnimationType = BEMAnimationType.fill
+        self.ltssCheckBox.delegate = self
         
-        eduCheckBox.onAnimationType = BEMAnimationType.fill
-        eduCheckBox.offAnimationType = BEMAnimationType.fill
-        eduCheckBox.delegate = self
+        self.eduCheckBox.onAnimationType = BEMAnimationType.fill
+        self.eduCheckBox.offAnimationType = BEMAnimationType.fill
+        self.eduCheckBox.delegate = self
         
-        playCheckBox.onAnimationType = BEMAnimationType.fill
-        playCheckBox.offAnimationType = BEMAnimationType.fill
-        playCheckBox.delegate = self
+        self.playCheckBox.onAnimationType = BEMAnimationType.fill
+        self.playCheckBox.offAnimationType = BEMAnimationType.fill
+        self.playCheckBox.delegate = self
         
-        giveCheckBox.onAnimationType = BEMAnimationType.fill
-        giveCheckBox.offAnimationType = BEMAnimationType.fill
-        giveCheckBox.delegate = self
+        self.giveCheckBox.onAnimationType = BEMAnimationType.fill
+        self.giveCheckBox.offAnimationType = BEMAnimationType.fill
+        self.giveCheckBox.delegate = self
     }
 }

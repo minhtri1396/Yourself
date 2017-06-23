@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rHB-im-4Nd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rHB-im-4Nd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -37,7 +37,7 @@
         <!--Money Adding Controller-->
         <scene sceneID="Iuc-Hg-X7N">
             <objects>
-                <viewController id="did-yB-Lge" customClass="MoneyAddingController" customModule="Yourself" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MoneyAddingController" id="did-yB-Lge" customClass="MoneyAddingController" customModule="Yourself" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wle-I6-87c"/>
                         <viewControllerLayoutGuide type="bottom" id="vWQ-Xc-OiO"/>
@@ -548,7 +548,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAx-id-dQk">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="F25-fR-hms"/>
+                                            <constraint firstAttribute="width" constant="60" id="F25-fR-hms"/>
                                             <constraint firstAttribute="height" constant="30" id="oAt-zD-OGr"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -569,7 +569,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JfZ-oO-q0y">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="D7F-4B-cmU"/>
+                                            <constraint firstAttribute="width" constant="60" id="D7F-4B-cmU"/>
                                             <constraint firstAttribute="height" constant="30" id="PoC-wT-ui4"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -1387,7 +1387,7 @@
                                                                     <constraint firstAttribute="width" constant="40" id="KuL-xX-E4i"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VNĐ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sie-zk-X00">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sie-zk-X00">
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="21" id="3wb-sG-UyC"/>
                                                                 </constraints>
@@ -1776,12 +1776,12 @@
                                             <constraint firstAttribute="height" constant="880" id="1C7-If-bIw"/>
                                             <constraint firstItem="AfE-sb-rSp" firstAttribute="leading" secondItem="on8-F2-Vct" secondAttribute="leading" id="7xB-rB-q2J"/>
                                             <constraint firstItem="njs-qQ-Bus" firstAttribute="leading" secondItem="on8-F2-Vct" secondAttribute="leading" id="9bf-gO-KUV"/>
-                                            <constraint firstItem="AfE-sb-rSp" firstAttribute="top" secondItem="njs-qQ-Bus" secondAttribute="bottom" constant="53" id="CC1-NF-w0g"/>
+                                            <constraint firstItem="AfE-sb-rSp" firstAttribute="top" secondItem="njs-qQ-Bus" secondAttribute="bottom" constant="40" id="CC1-NF-w0g"/>
                                             <constraint firstAttribute="trailing" secondItem="QEn-HB-tt2" secondAttribute="trailing" id="J4Z-BW-cNQ"/>
                                             <constraint firstAttribute="trailing" secondItem="AfE-sb-rSp" secondAttribute="trailing" id="SN0-n7-14I"/>
                                             <constraint firstItem="QEn-HB-tt2" firstAttribute="top" secondItem="on8-F2-Vct" secondAttribute="top" constant="20" id="Sgj-mY-qeV"/>
                                             <constraint firstItem="QEn-HB-tt2" firstAttribute="leading" secondItem="on8-F2-Vct" secondAttribute="leading" id="iek-Cb-3wE"/>
-                                            <constraint firstItem="njs-qQ-Bus" firstAttribute="top" secondItem="QEn-HB-tt2" secondAttribute="bottom" constant="30" id="tPz-cq-l1i"/>
+                                            <constraint firstItem="njs-qQ-Bus" firstAttribute="top" secondItem="QEn-HB-tt2" secondAttribute="bottom" constant="40" id="tPz-cq-l1i"/>
                                             <constraint firstAttribute="trailing" secondItem="njs-qQ-Bus" secondAttribute="trailing" id="v7i-NZ-Nwa"/>
                                         </constraints>
                                     </view>
@@ -1797,11 +1797,12 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xr0-x0-Bcg">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="dGm-jw-YSt"/>
-                                    <constraint firstAttribute="width" constant="60" id="pzR-37-WAH"/>
+                                    <constraint firstAttribute="width" constant="70" id="pzR-37-WAH"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Quay lại"/>
                                 <connections>
-                                    <action selector="BackButton_Tapped:" destination="XDB-qf-2UT" eventType="touchUpInside" id="GbV-IV-npQ"/>
+                                    <action selector="backButton_Tapped:" destination="XDB-qf-2UT" eventType="touchUpInside" id="1uI-pb-bde"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cài đặt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwS-je-b9O">
@@ -1809,7 +1810,7 @@
                                     <constraint firstAttribute="height" constant="21" id="L6Y-j7-BLS"/>
                                     <constraint firstAttribute="width" constant="241" id="hq5-ao-IoQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.01636124831" green="0.3647188723" blue="0.86838984490000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1820,28 +1821,33 @@
                             <constraint firstAttribute="trailing" secondItem="V42-Hg-6oB" secondAttribute="trailing" id="88k-gB-ont"/>
                             <constraint firstItem="V42-Hg-6oB" firstAttribute="leading" secondItem="3dD-0h-Da6" secondAttribute="leading" id="O7y-KI-7IB"/>
                             <constraint firstItem="kBT-RA-sMv" firstAttribute="top" secondItem="V42-Hg-6oB" secondAttribute="bottom" id="TIb-gd-sps"/>
-                            <constraint firstItem="Xr0-x0-Bcg" firstAttribute="top" secondItem="011-9T-qAN" secondAttribute="bottom" constant="8" id="Tjj-Dn-exk"/>
+                            <constraint firstItem="Xr0-x0-Bcg" firstAttribute="top" secondItem="011-9T-qAN" secondAttribute="bottom" constant="10" id="Tjj-Dn-exk"/>
                             <constraint firstItem="V42-Hg-6oB" firstAttribute="top" secondItem="Xr0-x0-Bcg" secondAttribute="bottom" constant="20" id="c38-ML-81w"/>
                             <constraint firstItem="iwS-je-b9O" firstAttribute="centerX" secondItem="3dD-0h-Da6" secondAttribute="centerX" id="ilc-yR-jdM"/>
                             <constraint firstItem="Xr0-x0-Bcg" firstAttribute="leading" secondItem="3dD-0h-Da6" secondAttribute="leading" constant="16" id="toA-RM-YnL"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="Xr0-x0-Bcg" id="1se-6T-6NO"/>
-                        <outlet property="settingsTitle" destination="iwS-je-b9O" id="azU-j1-x0N"/>
+                        <outlet property="backButton" destination="Xr0-x0-Bcg" id="oAB-Ow-DXu"/>
+                        <outlet property="bristishCheckBox" destination="kO4-D3-vlV" id="3eR-do-sJ1"/>
+                        <outlet property="bristishLabel" destination="3Dq-BZ-Ran" id="c1B-h9-pSI"/>
+                        <outlet property="dollarCheckBox" destination="ZZ3-oT-aJY" id="Y2n-nz-Q6V"/>
+                        <outlet property="eduTextField" destination="P4W-2c-Dgs" id="QQd-SQ-Dy4"/>
+                        <outlet property="euroCheckBox" destination="agJ-F2-DBj" id="d97-hN-EdL"/>
+                        <outlet property="ffaTextField" destination="d07-re-jcZ" id="RiC-wc-UaP"/>
+                        <outlet property="giveTextField" destination="MdT-QH-hzl" id="zai-du-ULM"/>
+                        <outlet property="ltssTextField" destination="LZ5-SO-c75" id="F9l-zL-bwm"/>
+                        <outlet property="necTextField" destination="ZTo-fJ-8BA" id="qWR-VM-ViV"/>
+                        <outlet property="playTextField" destination="5eI-1v-2JS" id="3Pe-Eb-CGv"/>
+                        <outlet property="settingsTitle" destination="iwS-je-b9O" id="E5f-cT-nuX"/>
+                        <outlet property="vietnameseCheckBox" destination="qKD-AD-88n" id="7I8-Xe-lI2"/>
+                        <outlet property="vietnameseLabel" destination="zVS-x6-djF" id="bdF-FS-wku"/>
+                        <outlet property="vndCheckBox" destination="gXR-t6-1jk" id="KWu-2j-trQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wfc-nk-mEi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="4wy-BY-LWJ">
-                    <connections>
-                        <action selector="BristishTapGusture_Tapped:" destination="XDB-qf-2UT" id="WV0-c5-o9x"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="Dmv-9h-oTX">
-                    <connections>
-                        <action selector="VietNamTapGusture_Tapped:" destination="XDB-qf-2UT" id="awr-y5-XJA"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="4wy-BY-LWJ"/>
+                <tapGestureRecognizer id="Dmv-9h-oTX"/>
             </objects>
             <point key="canvasLocation" x="-1402.4000000000001" y="-760.56971514242889"/>
         </scene>
@@ -2015,7 +2021,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1bt-p1-Hdo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FvY-Zp-qMG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FvY-Zp-qMG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2034,7 +2040,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jpp-TT-kfC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Yf5-XL-5Yt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yf5-XL-5Yt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

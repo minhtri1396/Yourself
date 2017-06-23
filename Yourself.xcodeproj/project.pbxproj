@@ -38,6 +38,7 @@
 		4428B5AA1ED4DC940007DD70 /* YourselfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428B5A91ED4DC940007DD70 /* YourselfTests.swift */; };
 		442E56781ED38DE5009411BB /* DAOFIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442E56771ED38DE5009411BB /* DAOFIntent.swift */; };
 		442EAA621EE4A4E900C613DE /* AddSpendingNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442EAA611EE4A4E900C613DE /* AddSpendingNoteViewController.swift */; };
+		443C4AC61EFCEC3100085440 /* ExchangeRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4AC51EFCEC3100085440 /* ExchangeRate.swift */; };
 		444AD96B1ED07B1200D6D5D3 /* DAOTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AD96A1ED07B1200D6D5D3 /* DAOTimestamp.swift */; };
 		444AD96D1ED0853800D6D5D3 /* DTOTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AD96C1ED0853800D6D5D3 /* DTOTimestamp.swift */; };
 		444AD96F1ED0910E00D6D5D3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AD96E1ED0910E00D6D5D3 /* Extensions.swift */; };
@@ -112,6 +113,7 @@
 		4428B5AB1ED4DC940007DD70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		442E56771ED38DE5009411BB /* DAOFIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOFIntent.swift; sourceTree = "<group>"; };
 		442EAA611EE4A4E900C613DE /* AddSpendingNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSpendingNoteViewController.swift; sourceTree = "<group>"; };
+		443C4AC51EFCEC3100085440 /* ExchangeRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRate.swift; sourceTree = "<group>"; };
 		444AD96A1ED07B1200D6D5D3 /* DAOTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOTimestamp.swift; sourceTree = "<group>"; };
 		444AD96C1ED0853800D6D5D3 /* DTOTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOTimestamp.swift; sourceTree = "<group>"; };
 		444AD96E1ED0910E00D6D5D3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				445FE8E61EDBDFF00044616C /* Language.swift */,
 				445FE8E71EDBDFF00044616C /* BaseViewController.swift */,
 				445FE8E81EDBDFF00044616C /* MenuViewController.swift */,
+				443C4AC51EFCEC3100085440 /* ExchangeRate.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				44A626A01EC5811C008D9B79 /* DAOJars.swift in Sources */,
 				441B4C561EBB13F200C5A90B /* DTOTime.swift in Sources */,
 				44A626AD1EC59F07008D9B79 /* DAOFSuper.swift in Sources */,
+				443C4AC61EFCEC3100085440 /* ExchangeRate.swift in Sources */,
 				441B4C401EBAF18000C5A90B /* SpendingDayStats.swift in Sources */,
 				444AD9711ED0973800D6D5D3 /* DAOFJars.swift in Sources */,
 				4423EA7A1EC637AA00C4F32C /* GSignInController.swift in Sources */,

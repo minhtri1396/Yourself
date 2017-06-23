@@ -11,6 +11,13 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var moneyTextField: UITextField!
     
+    @IBOutlet weak var necCheckBox: BEMCheckBox!
+    @IBOutlet weak var ffaCheckBox: BEMCheckBox!
+    @IBOutlet weak var ltssCheckBox: BEMCheckBox!
+    @IBOutlet weak var eduCheckBox: BEMCheckBox!
+    @IBOutlet weak var playCheckBox: BEMCheckBox!
+    @IBOutlet weak var giveCheckBox: BEMCheckBox!
+    
     @IBOutlet weak var necView: UIView!
     @IBOutlet weak var ffaView: UIView!
     @IBOutlet weak var ltssView: UIView!
@@ -48,6 +55,55 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
         
     }
     
+    func didTap(_ checkBox: BEMCheckBox) {
+        if (checkBox.on) {
+            switch (checkBox) {
+            case necCheckBox:
+                necMoney.isHidden = true
+                break;
+            case ffaCheckBox:
+                ffaMoney.isHidden = true
+                break;
+            case ltssCheckBox:
+                ltssMoney.isHidden = true
+                break;
+            case eduCheckBox:
+                eduMoney.isHidden = true
+                break;
+            case playCheckBox:
+                playMoney.isHidden = true
+                break;
+            default:
+                giveMoney.isHidden = true
+                break;
+            }
+        }
+    }
+    
+    func animationDidStop(for checkBox: BEMCheckBox) {
+        if (!checkBox.on) {
+            switch (checkBox) {
+            case necCheckBox:
+                necMoney.isHidden = false
+                break;
+            case ffaCheckBox:
+                ffaMoney.isHidden = false
+                break;
+            case ltssCheckBox:
+                ltssMoney.isHidden = false
+                break;
+            case eduCheckBox:
+                eduMoney.isHidden = false
+                break;
+            case playCheckBox:
+                playMoney.isHidden = false
+                break;
+            default:
+                giveMoney.isHidden = false
+                break;
+            }
+        }
+    }
     
     // MARK: *** UIViewController
     override func viewDidLoad() {
@@ -71,5 +127,33 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
         
         giveView.layer.borderWidth = 1
         giveView.layer.borderColor = borderColor
+        
+        configCheckBoxes()
+    }
+    
+    private func configCheckBoxes() {
+        necCheckBox.onAnimationType = BEMAnimationType.fill
+        necCheckBox.offAnimationType = BEMAnimationType.fill
+        necCheckBox.delegate = self
+        
+        ffaCheckBox.onAnimationType = BEMAnimationType.fill
+        ffaCheckBox.offAnimationType = BEMAnimationType.fill
+        ffaCheckBox.delegate = self
+        
+        ltssCheckBox.onAnimationType = BEMAnimationType.fill
+        ltssCheckBox.offAnimationType = BEMAnimationType.fill
+        ltssCheckBox.delegate = self
+        
+        eduCheckBox.onAnimationType = BEMAnimationType.fill
+        eduCheckBox.offAnimationType = BEMAnimationType.fill
+        eduCheckBox.delegate = self
+        
+        playCheckBox.onAnimationType = BEMAnimationType.fill
+        playCheckBox.offAnimationType = BEMAnimationType.fill
+        playCheckBox.delegate = self
+        
+        giveCheckBox.onAnimationType = BEMAnimationType.fill
+        giveCheckBox.offAnimationType = BEMAnimationType.fill
+        giveCheckBox.delegate = self
     }
 }

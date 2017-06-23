@@ -46,7 +46,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7eQ-B4-oNl">
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nhập tiền và chọn hủ cần thêm" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RgW-Vz-lSh">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nhập tiền và chọn hủ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RgW-Vz-lSh">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Hcb-e7-FZF"/>
                                                 </constraints>
@@ -65,7 +65,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q45-JA-zYE">
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NBq-Nc-xMt">
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <color key="textColor" red="0.36078431370000003" green="0.41960784309999999" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -74,14 +74,42 @@
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="HeJ-Wh-0zi"/>
                                                                     <constraint firstAttribute="height" constant="20" id="Wfl-Fk-JdI"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyl-XI-6XG" customClass="BEMCheckBox">
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="AzI-ze-f2e"/>
+                                                                    <constraint firstAttribute="width" constant="40" id="mja-AL-QYG"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                                        <real key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hideBox" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onFillColor">
+                                                                        <color key="value" red="0.36078431370000003" green="0.41960784309999999" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onCheckColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="Le4-bx-jlT" secondAttribute="trailing" id="Dtm-bR-tSU"/>
+                                                            <constraint firstItem="Pyl-XI-6XG" firstAttribute="centerY" secondItem="NBq-Nc-xMt" secondAttribute="centerY" id="FOF-i3-xTl"/>
+                                                            <constraint firstItem="Pyl-XI-6XG" firstAttribute="centerX" secondItem="NBq-Nc-xMt" secondAttribute="centerX" id="cBi-h4-cxs"/>
                                                             <constraint firstItem="NBq-Nc-xMt" firstAttribute="centerX" secondItem="q45-JA-zYE" secondAttribute="centerX" id="ccb-NX-ntG"/>
                                                             <constraint firstItem="Le4-bx-jlT" firstAttribute="leading" secondItem="q45-JA-zYE" secondAttribute="leading" id="e3C-zj-K5t"/>
                                                             <constraint firstItem="NBq-Nc-xMt" firstAttribute="centerY" secondItem="q45-JA-zYE" secondAttribute="centerY" constant="-10" id="scT-0u-oER"/>
@@ -111,16 +139,42 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tfk-mq-RJU">
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FFA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xBU-Nk-QrP">
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <color key="textColor" red="1" green="0.22999056500000001" blue="0.26236594299999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fng-nd-IyH" customClass="BEMCheckBox">
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="d3d-6C-ePR"/>
+                                                                    <constraint firstAttribute="width" constant="40" id="xj1-jb-Zah"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                                        <real key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hideBox" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onFillColor">
+                                                                        <color key="value" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onCheckColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 999 999 999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ymD-CN-wRb">
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="Ssa-8f-W7A"/>
                                                                     <constraint firstAttribute="height" constant="20" id="scy-Ns-y7n"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -128,7 +182,9 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="ymD-CN-wRb" secondAttribute="trailing" id="295-wT-LI2"/>
+                                                            <constraint firstItem="Fng-nd-IyH" firstAttribute="centerX" secondItem="xBU-Nk-QrP" secondAttribute="centerX" id="DB9-OW-NGH"/>
                                                             <constraint firstItem="xBU-Nk-QrP" firstAttribute="centerY" secondItem="Tfk-mq-RJU" secondAttribute="centerY" constant="-10" id="DBJ-rG-dk0"/>
+                                                            <constraint firstItem="Fng-nd-IyH" firstAttribute="centerY" secondItem="xBU-Nk-QrP" secondAttribute="centerY" id="TF0-Pz-kFO"/>
                                                             <constraint firstAttribute="bottom" secondItem="ymD-CN-wRb" secondAttribute="bottom" constant="5" id="XWj-iW-Si8"/>
                                                             <constraint firstItem="ymD-CN-wRb" firstAttribute="leading" secondItem="Tfk-mq-RJU" secondAttribute="leading" id="Yfh-z7-Dwj"/>
                                                             <constraint firstItem="xBU-Nk-QrP" firstAttribute="centerX" secondItem="Tfk-mq-RJU" secondAttribute="centerX" id="tOO-tF-c9K"/>
@@ -170,12 +226,40 @@
                                                                 <color key="textColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rzj-hr-ysa" customClass="BEMCheckBox">
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="EwR-nJ-EaV"/>
+                                                                    <constraint firstAttribute="width" constant="40" id="Sk9-vr-A6G"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                                        <real key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hideBox" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onFillColor">
+                                                                        <color key="value" red="0.48627450979999998" green="0.70196078429999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onCheckColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="T9f-fT-va0" firstAttribute="centerX" secondItem="gz7-f1-3py" secondAttribute="centerX" id="0hF-vV-YGQ"/>
                                                             <constraint firstAttribute="trailing" secondItem="1Hu-XM-gP7" secondAttribute="trailing" id="LT5-vr-XzW"/>
                                                             <constraint firstItem="1Hu-XM-gP7" firstAttribute="leading" secondItem="gz7-f1-3py" secondAttribute="leading" id="Qtt-x7-dhf"/>
+                                                            <constraint firstItem="rzj-hr-ysa" firstAttribute="centerY" secondItem="T9f-fT-va0" secondAttribute="centerY" id="o8U-AV-N7n"/>
+                                                            <constraint firstItem="rzj-hr-ysa" firstAttribute="centerX" secondItem="T9f-fT-va0" secondAttribute="centerX" id="p8B-uN-0RF"/>
                                                             <constraint firstAttribute="bottom" secondItem="1Hu-XM-gP7" secondAttribute="bottom" constant="5" id="seD-hu-p0j"/>
                                                             <constraint firstItem="T9f-fT-va0" firstAttribute="centerY" secondItem="gz7-f1-3py" secondAttribute="centerY" constant="-10" id="tfN-ip-IXi"/>
                                                         </constraints>
@@ -216,12 +300,40 @@
                                                                 <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNc-CB-5tw" customClass="BEMCheckBox">
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="40" id="VPt-Xs-GUK"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="fE0-Ms-x8n"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                                        <real key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hideBox" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onFillColor">
+                                                                        <color key="value" red="1" green="0.75686274509999996" blue="0.027450980390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onCheckColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
+                                                            <constraint firstItem="BNc-CB-5tw" firstAttribute="centerX" secondItem="uVi-Ev-PQW" secondAttribute="centerX" id="Cn6-QR-0wq"/>
                                                             <constraint firstAttribute="bottom" secondItem="cCB-Mw-v4X" secondAttribute="bottom" constant="5" id="fM6-He-zmH"/>
                                                             <constraint firstAttribute="trailing" secondItem="cCB-Mw-v4X" secondAttribute="trailing" id="ffF-ky-nne"/>
                                                             <constraint firstItem="uVi-Ev-PQW" firstAttribute="centerY" secondItem="IiF-A8-Y1d" secondAttribute="centerY" constant="-10" id="qAV-yZ-nfu"/>
+                                                            <constraint firstItem="BNc-CB-5tw" firstAttribute="centerY" secondItem="uVi-Ev-PQW" secondAttribute="centerY" id="sH6-df-iS0"/>
                                                             <constraint firstItem="cCB-Mw-v4X" firstAttribute="leading" secondItem="IiF-A8-Y1d" secondAttribute="leading" id="wWd-1y-N23"/>
                                                             <constraint firstItem="uVi-Ev-PQW" firstAttribute="centerX" secondItem="IiF-A8-Y1d" secondAttribute="centerX" id="xiM-Q1-BOx"/>
                                                         </constraints>
@@ -262,10 +374,38 @@
                                                                 <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UOA-Gl-iPk" customClass="BEMCheckBox">
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="40" id="QkP-zc-UIC"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="wEr-sW-TOC"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                                        <real key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hideBox" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onFillColor">
+                                                                        <color key="value" red="0.30196078430000001" green="0.71372549019999998" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onCheckColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="BZh-61-4yw" firstAttribute="leading" secondItem="F2z-KK-Ro8" secondAttribute="leading" id="Dmv-LL-NDc"/>
+                                                            <constraint firstItem="UOA-Gl-iPk" firstAttribute="centerX" secondItem="Oxo-rk-awH" secondAttribute="centerX" id="Ffi-n2-3dB"/>
+                                                            <constraint firstItem="UOA-Gl-iPk" firstAttribute="centerY" secondItem="Oxo-rk-awH" secondAttribute="centerY" id="IAq-mo-v86"/>
                                                             <constraint firstAttribute="bottom" secondItem="BZh-61-4yw" secondAttribute="bottom" constant="5" id="bmC-3m-I44"/>
                                                             <constraint firstAttribute="trailing" secondItem="BZh-61-4yw" secondAttribute="trailing" id="prg-iS-uoc"/>
                                                             <constraint firstItem="Oxo-rk-awH" firstAttribute="centerX" secondItem="F2z-KK-Ro8" secondAttribute="centerX" id="wwO-bX-D3x"/>
@@ -308,11 +448,39 @@
                                                                 <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ik-hm-KkI" customClass="BEMCheckBox">
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="2sY-L5-GWs"/>
+                                                                    <constraint firstAttribute="width" constant="40" id="Azm-xb-jib"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                                        <real key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hideBox" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onFillColor">
+                                                                        <color key="value" red="0.94117647059999998" green="0.38431372549999998" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="onCheckColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="blM-Bb-2BV" firstAttribute="centerX" secondItem="LR0-rQ-XoI" secondAttribute="centerX" id="9CK-sz-WBP"/>
+                                                            <constraint firstItem="3ik-hm-KkI" firstAttribute="centerY" secondItem="blM-Bb-2BV" secondAttribute="centerY" id="VL1-Ho-RsL"/>
                                                             <constraint firstItem="blM-Bb-2BV" firstAttribute="centerY" secondItem="LR0-rQ-XoI" secondAttribute="centerY" constant="-10" id="eDW-MB-cZt"/>
+                                                            <constraint firstItem="3ik-hm-KkI" firstAttribute="centerX" secondItem="blM-Bb-2BV" secondAttribute="centerX" id="pkf-Oa-OmY"/>
                                                             <constraint firstAttribute="bottom" secondItem="YJe-5w-USS" secondAttribute="bottom" constant="5" id="smN-Hu-PoX"/>
                                                             <constraint firstItem="YJe-5w-USS" firstAttribute="leading" secondItem="LR0-rQ-XoI" secondAttribute="leading" id="vM7-Pm-anE"/>
                                                             <constraint firstAttribute="trailing" secondItem="YJe-5w-USS" secondAttribute="trailing" id="vyt-yb-88O"/>
@@ -448,27 +616,33 @@
                         <outlet property="backButton" destination="sAx-id-dQk" id="S5i-5l-fnB"/>
                         <outlet property="doneButton" destination="JfZ-oO-q0y" id="5es-2q-wj1"/>
                         <outlet property="eduBar" destination="7cc-P4-CSO" id="nq7-0p-jxQ"/>
+                        <outlet property="eduCheckBox" destination="BNc-CB-5tw" id="LTI-Rl-1Ue"/>
                         <outlet property="eduMoney" destination="cCB-Mw-v4X" id="yqt-QP-J6L"/>
                         <outlet property="eduName" destination="uVi-Ev-PQW" id="8Zt-gP-GJg"/>
                         <outlet property="eduView" destination="IiF-A8-Y1d" id="2S9-VT-QEe"/>
                         <outlet property="ffaBar" destination="lSX-gf-WZj" id="y3y-xg-vlR"/>
+                        <outlet property="ffaCheckBox" destination="Fng-nd-IyH" id="dcb-AY-RF0"/>
                         <outlet property="ffaMoney" destination="ymD-CN-wRb" id="ZMX-ZK-OhY"/>
                         <outlet property="ffaName" destination="xBU-Nk-QrP" id="qCk-M8-ZlO"/>
                         <outlet property="ffaView" destination="Tfk-mq-RJU" id="HSk-aa-Naa"/>
                         <outlet property="giveBar" destination="I7j-Rt-upP" id="Jwy-FA-54b"/>
+                        <outlet property="giveCheckBox" destination="3ik-hm-KkI" id="Of1-Wt-vZe"/>
                         <outlet property="giveMoney" destination="YJe-5w-USS" id="aTG-p1-yMo"/>
                         <outlet property="giveName" destination="blM-Bb-2BV" id="6Zj-BF-RVt"/>
                         <outlet property="giveView" destination="LR0-rQ-XoI" id="DCy-AU-7nO"/>
                         <outlet property="ltssBar" destination="uiP-vP-tI9" id="kq5-Oy-OaU"/>
+                        <outlet property="ltssCheckBox" destination="rzj-hr-ysa" id="0LC-aK-8By"/>
                         <outlet property="ltssMoney" destination="1Hu-XM-gP7" id="ZbP-8t-BQu"/>
                         <outlet property="ltssName" destination="T9f-fT-va0" id="ehK-it-CQG"/>
                         <outlet property="ltssView" destination="gz7-f1-3py" id="PMt-2T-N6s"/>
                         <outlet property="moneyTextField" destination="RgW-Vz-lSh" id="Xpk-Gu-ss7"/>
                         <outlet property="necBar" destination="f9o-5p-L2s" id="ac5-kB-lNo"/>
+                        <outlet property="necCheckBox" destination="Pyl-XI-6XG" id="JbL-Pw-K1k"/>
                         <outlet property="necMoney" destination="Le4-bx-jlT" id="S5Y-Yo-lJf"/>
                         <outlet property="necName" destination="NBq-Nc-xMt" id="yaw-k3-wWG"/>
                         <outlet property="necView" destination="q45-JA-zYE" id="7yO-8E-lgN"/>
                         <outlet property="playBar" destination="lYV-uv-5XF" id="0QU-f0-spR"/>
+                        <outlet property="playCheckBox" destination="UOA-Gl-iPk" id="LeY-X2-EOF"/>
                         <outlet property="playMoney" destination="BZh-61-4yw" id="tSN-py-ofy"/>
                         <outlet property="playName" destination="Oxo-rk-awH" id="4CU-PO-GZI"/>
                         <outlet property="playView" destination="F2z-KK-Ro8" id="d9H-A0-Iuw"/>
@@ -1210,7 +1384,7 @@
                                         <rect key="frame" x="0.0" y="22" width="315" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X7D-yE-q3v" id="5nY-i4-d8A">
-                                            <frame key="frameInset" width="315" height="53"/>
+                                            <frame key="frameInset" width="315" height="53.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bqN-fh-djC">

@@ -77,17 +77,18 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
     }
     
     func closeMenu(_ duration: Double) {
-        let viewMenuBack : UIView = view.subviews.last!
+        if let viewMenuBack : UIView = view.subviews.last {
         
-        UIView.animate(withDuration: duration, animations: { () -> Void in
-            var frameMenu : CGRect = viewMenuBack.frame
-            frameMenu.origin.x = -1 * UIScreen.main.bounds.size.width
-            viewMenuBack.frame = frameMenu
-            viewMenuBack.layoutIfNeeded()
-            viewMenuBack.backgroundColor = UIColor.clear
-            }, completion: { (finished) -> Void in
-                viewMenuBack.removeFromSuperview()
-        })
+            UIView.animate(withDuration: duration, animations: { () -> Void in
+                var frameMenu : CGRect = viewMenuBack.frame
+                frameMenu.origin.x = -1 * UIScreen.main.bounds.size.width
+                viewMenuBack.frame = frameMenu
+                viewMenuBack.layoutIfNeeded()
+                viewMenuBack.backgroundColor = UIColor.clear
+                }, completion: { (finished) -> Void in
+                    viewMenuBack.removeFromSuperview()
+            })
+        }
     }
     
     func onSlideMenuButtonPressed(_ sender : UIButton){

@@ -50,6 +50,8 @@ class ButtonViews: ViewEnum {
     public static let EDU = MessageTitle(id: 9)
     public static let PLAY = MessageTitle(id: 10)
     public static let GIVE = MessageTitle(id: 11)
+    
+    public static let DEFAULT = MessageTitle(id: 12)
 }
 
 class TitleViews: ViewEnum {
@@ -102,7 +104,7 @@ class Language {
     private static let TEXT: [[[String]]] = [
         [
             ["Statistics", "Settings"], // OPTIONS
-            ["Login Offline" ,"Login by Google" ,"Login" ,"Back", "Photo library", "Done", "Necessities", "Financial Freedom Account", "Long Term Savings", "Education", "Play", "Give"], // BUTTON
+            ["Login Offline" ,"Login by Google" ,"Login" ,"Back", "Photo library", "Done", "Necessities", "Financial Freedom Account", "Long Term Savings", "Education", "Play", "Give", "Default"], // BUTTON
             ["Login Offline", "Spending Notes", "Time Notes", "Settings", "Spending Note", "Add money"], // TITLE
             ["Add money", "Statistics", "Synchrocus", "Settings", "Log out"], //TABLE_MENU
             ["Notice", "Warning", "Swap money"], // MESSAGE_TITLE
@@ -113,7 +115,7 @@ class Language {
         ],
         [
             ["Thống kê", "Thiết lập"], // OPTIONS
-            ["Đăng nhập OFFline", "Đăng nhập bằng Google" ,"Đăng nhập" ,"Quay lại", "Kho hình ảnh", "Xong", "Cần thiết", "Đầu tư", "Tiết kiệm dài hạn", "Giáo dục", "Giải trí", "Tiêu dùng"], // BUTTON
+            ["Đăng nhập OFFline", "Đăng nhập bằng Google" ,"Đăng nhập" ,"Quay lại", "Kho hình ảnh", "Xong", "Cần thiết", "Đầu tư", "Tiết kiệm dài hạn", "Giáo dục", "Giải trí", "Tiêu dùng", "Mặc định"], // BUTTON
             ["Đăng nhập OFFLINE", "Ghi chú tài chính", "Ghi chú thời gian", "Cài đặt", "Ghi chú tiền", "Thêm tiền"], // TITLE
             ["Thêm tiền", "Thống kê", "Đồng bộ", "Cài đặt", "Đăng xuất"], //TABLE_MENU
             ["Chú ý", "Cảnh báo", "Chuyển tiền"], // MESSAGE_TITLE

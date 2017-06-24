@@ -73,6 +73,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         })
     }
     
+    /* Override functions of tableview */
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellMenu")!
         

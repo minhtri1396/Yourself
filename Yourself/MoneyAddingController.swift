@@ -235,9 +235,9 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
                 return jarsTypes
             }
             
-            alertView.showInfo("", subTitle: "You must choose jar(s) which you want to set money for!")
+            alertView.showInfo("", subTitle: Language.BUILDER.get(group: Group.MESSAGE, view: Message.CHOOSE_JAR))
         } else {
-            alertView.showInfo("", subTitle: "You must set money before continuing!")
+            alertView.showInfo("", subTitle: Language.BUILDER.get(group: Group.MESSAGE, view: Message.SET_MONEY))
         }
         
         return nil

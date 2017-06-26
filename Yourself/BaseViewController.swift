@@ -1,11 +1,14 @@
 import Foundation
+import Firebase
+import GoogleSignIn
 import UIKit
 
-class BaseViewController: UIViewController, SlideMenuDelegate {
+class BaseViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate, SlideMenuDelegate {
     
     var iconsForCells = [String]()
     var titlesForCells = [String]()
     var indentifiers = [String]()
+    var notIndentifiers = [String]()
     
     private var menuVC: MenuViewController!
     private var callbacks = [String: () -> Void]()
@@ -20,14 +23,36 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
         menuVC.view.frame=CGRect(x: 0 - UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        // Initialize google sign-in
+        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         menuVC.close()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    //////////////////////////////////////////////////////////////
+    //******************** GOOGLE SIGN IN **********************//
+    //////////////////////////////////////////////////////////////
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        GAccount.Instance.Sign(signIn, didSignInFor: user, withError: error)
     }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+    }
+    
+    
+    
+    //////////////////////////////////////////////////////////////
+    //*********** SLIDE MENU (MENU OF BURGER BUTTON) ***********//
+    //////////////////////////////////////////////////////////////
     
     func slideMenuItemSelectedAtIndex(_ index: Int32) {
         if index != -1 {
@@ -41,16 +66,17 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
     
     // strIdentifier is similar Storyboard ID
     func openViewControllerBasedOnIdentifier(_ strIdentifier:String){
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        
         let callback = callbacks[strIdentifier]
         
         if callback != nil {
             callback!();
         }
         
-        let view = storyBoard.instantiateViewController(withIdentifier: strIdentifier)
-        self.present(view, animated: true, completion: nil)
+        if !notIndentifiers.contains(strIdentifier) {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let view = storyBoard.instantiateViewController(withIdentifier: strIdentifier)
+            self.present(view, animated: true, completion: nil)
+        }
     }
     
     func addSlideMenuButton(){
@@ -84,10 +110,6 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
         return defaultMenuImage;
     }
     
-    func closeSlideMenu() {
-        menuVC.close()
-    }
-    
     func onSlideMenuButtonPressed(_ sender : UIButton){
         if (menuVC.isShowing) {
             menuVC.close()
@@ -96,8 +118,6 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
             for i in 0..<titlesForCells.count {
                 menuVC.arrayMenuOptions.append(["title":titlesForCells[i], "icon":iconsForCells[i]])
             }
-        
-//            menuVC.view.layoutIfNeeded()
             
             // menuVC and menuVC.view will be removed from self when we invoke menuVC.close()
             self.view.addSubview(menuVC.view)

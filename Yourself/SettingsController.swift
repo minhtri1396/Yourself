@@ -107,12 +107,12 @@ class SettingsController: UIViewController, BEMCheckBoxDelegate {
     
     
     @IBAction func backButton_Tapped(_ sender: AnyObject) {
-        _ = DAOJars.BUILDER.UpdatePercent(type: .NEC, percent: Double(necTextField.text!)!)
-        _ = DAOJars.BUILDER.UpdatePercent(type: .FFA, percent: Double(ffaTextField.text!)!)
-        _ = DAOJars.BUILDER.UpdatePercent(type: .LTSS, percent: Double(ltssTextField.text!)!)
-        _ = DAOJars.BUILDER.UpdatePercent(type: .EDU, percent: Double(eduTextField.text!)!)
-        _ = DAOJars.BUILDER.UpdatePercent(type: .PLAY, percent: Double(playTextField.text!)!)
-        _ = DAOJars.BUILDER.UpdatePercent(type: .GIVE, percent: Double(giveTextField.text!)!)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .NEC, percent: necPercent / 100)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .FFA, percent: ffaPercent / 100)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .LTSS, percent: ltssPercent / 100)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .EDU, percent: eduPercent / 100)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .PLAY, percent: playPercent / 100)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .GIVE, percent: givePercent / 100)
         
         if ExchangeRate.BUILDER.RateType == .DOLLAR {
             ExchangeRate.BUILDER.Rate = 1

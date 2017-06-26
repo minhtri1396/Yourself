@@ -27,6 +27,7 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         super.titlesForCells = [
             Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.MONEY_ADDING),
             Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.STATISTIC),
@@ -35,10 +36,22 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate {
             Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.LOGOUT)
         ]
         super.iconsForCells = ["Statistics", "Statistics", "Synchronization", "Settings", "Logout"]
-        super.indentifiers = ["MoneyAddingController", "SpendingStatistics", "Clound", "SettingsController", "GSignInController" ]
+        super.indentifiers = ["MoneyAddingController", "SpendingStatistics", "Synchronization", "SettingsController", "GSignInController" ]
+        super.notIndentifiers = ["Synchronization"]
         
         super.addCallback(forIdentifier: "GSignInController") {
             GAccount.Instance.SignOut()
+        }
+        
+        super.addCallback(forIdentifier: "Synchronization") {
+            DB.Sync() {
+                (result) in
+                if result {
+                    Alert.show(title: "Success", msg: "Sync completed!", vc: self)
+                } else {
+                    Alert.show(title: "Failure", msg: "Sync failed!", vc: self)
+                }
+            }
         }
         
         

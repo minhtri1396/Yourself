@@ -127,7 +127,7 @@ class DAOFSuper: DB {
         self.SetTimestamp(timestamp: Date().ticks)
     }
     
-    func Sync() {
+    func Sync(id: Int, closure: @escaping (Int) -> Void) {
         self.GetTimestamp() {
             timestamp in // timestamp got from Firebase
             let daoName = self.connectedDAO.GetName()
@@ -157,6 +157,8 @@ class DAOFSuper: DB {
                     self.UpdateOrInsert(record) // upload to Firebase
                 }
             }
+            
+            closure(id) // callback
         }
     }
     

@@ -46,6 +46,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tblMenuOptions.reloadData()
+        label_Username.text = GAccount.Instance.SignInUsingAccount()?.email
     }
     
     

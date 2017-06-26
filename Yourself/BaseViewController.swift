@@ -6,11 +6,22 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
     var iconsForCells = [String]()
     var titlesForCells = [String]()
     var indentifiers = [String]()
+    
+    private var menuVC: MenuViewController!
     private var callbacks = [String: () -> Void]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        menuVC = self.storyboard!.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        menuVC.delegate = self
+        
+        // Hide slide menu (to can set animation when it is showed in the first time)
+        menuVC.view.frame=CGRect(x: 0 - UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        menuVC.close()
     }
     
     override func didReceiveMemoryWarning() {
@@ -19,9 +30,6 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
     }
     
     func slideMenuItemSelectedAtIndex(_ index: Int32) {
-        let topViewController : UIViewController = self.navigationController!.topViewController!
-        print("View Controller is : \(topViewController) \n", terminator: "")
-        
         if index != -1 {
             self.openViewControllerBasedOnIdentifier(indentifiers[(Int)(index)])
         }
@@ -76,56 +84,26 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
         return defaultMenuImage;
     }
     
-    func closeMenu(_ duration: Double) {
-        if let viewMenuBack : UIView = view.subviews.last {
-        
-            UIView.animate(withDuration: duration, animations: { () -> Void in
-                var frameMenu : CGRect = viewMenuBack.frame
-                frameMenu.origin.x = -1 * UIScreen.main.bounds.size.width
-                viewMenuBack.frame = frameMenu
-                viewMenuBack.layoutIfNeeded()
-                viewMenuBack.backgroundColor = UIColor.clear
-                }, completion: { (finished) -> Void in
-                    viewMenuBack.removeFromSuperview()
-            })
-        }
+    func closeSlideMenu() {
+        menuVC.close()
     }
     
     func onSlideMenuButtonPressed(_ sender : UIButton){
-        if (sender.tag == 10)
-        {
-            // To Hide Menu If it already there
-            self.slideMenuItemSelectedAtIndex(-1);
+        if (menuVC.isShowing) {
+            menuVC.close()
+        } else {
+            menuVC.arrayMenuOptions.removeAll()
+            for i in 0..<titlesForCells.count {
+                menuVC.arrayMenuOptions.append(["title":titlesForCells[i], "icon":iconsForCells[i]])
+            }
+        
+//            menuVC.view.layoutIfNeeded()
             
-            sender.tag = 0;
-            closeMenu(0.3)
-            return
+            // menuVC and menuVC.view will be removed from self when we invoke menuVC.close()
+            self.view.addSubview(menuVC.view)
+            self.addChildViewController(menuVC)
+            
+            menuVC.show()
         }
-        
-        sender.isEnabled = false
-        sender.tag = 10
-        
-        let menuVC : MenuViewController = self.storyboard!.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-        
-        menuVC.btnMenu = sender
-        menuVC.delegate = self
-        
-        for i in 0..<titlesForCells.count {
-            menuVC.arrayMenuOptions.append(["title":titlesForCells[i], "icon":iconsForCells[i]])
-        }
-        
-        
-        self.view.addSubview(menuVC.view)
-        self.addChildViewController(menuVC)
-        
-        menuVC.view.layoutIfNeeded()
-        
-        
-        menuVC.view.frame=CGRect(x: 0 - UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height);
-        
-        UIView.animate(withDuration: 0.3, animations: { () -> Void in
-            menuVC.view.frame=CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height);
-            sender.isEnabled = true
-            }, completion:nil)
     }
 }

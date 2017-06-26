@@ -6,15 +6,8 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate {
     
     // MARK: *** Data model
     
-    // MARK: *** Fuction
     
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        let tabBarIndex = tabBarController.selectedIndex
-        
-        if tabBarIndex == 1 { // tab spending note
-            super.closeMenu(0.0)
-        }
-    }
+    // MARK: *** Fuction
     
     
     // MARK: *** UI events

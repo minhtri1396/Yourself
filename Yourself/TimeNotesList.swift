@@ -7,14 +7,6 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate {
     
     // MARK: *** Function
     
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        let tabBarIndex = tabBarController.selectedIndex
-        
-        if tabBarIndex == 0 { // tab spending note
-            super.closeMenu(0.0)
-        }
-    }
-    
     // MARK: *** UI events
     
     @IBAction func AddNoteTime_Tapped(_ sender: AnyObject) {

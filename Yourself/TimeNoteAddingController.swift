@@ -12,8 +12,40 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
     @IBOutlet weak var toLabel: UIView!
     @IBOutlet weak var contentTextView: UITextView!
     
+    @IBOutlet weak var familyTag: UIView!
+    @IBOutlet weak var familyTagLabel: UILabel!
+    @IBOutlet weak var familyUntag: UIView!
+    
+    @IBOutlet weak var friendTag: UIView!
+    @IBOutlet weak var friendTagLabel: UILabel!
+    @IBOutlet weak var friendUntag: UIView!
+    
+    @IBOutlet weak var personalTag: UIView!
+    @IBOutlet weak var personalTagLabel: UILabel!
+    @IBOutlet weak var personalUntag: UIView!
+    
+    @IBOutlet weak var workTag: UIView!
+    @IBOutlet weak var workTagLabel: UILabel!
+    @IBOutlet weak var workUntag: UIView!
+    
+    @IBOutlet weak var relaxTag: UIView!
+    @IBOutlet weak var relaxTagLabel: UILabel!
+    @IBOutlet weak var relaxUntag: UIView!
+    
+    @IBOutlet weak var studyTag: UIView!
+    @IBOutlet weak var studyTagLabel: UILabel!
+    @IBOutlet weak var studyUntag: UIView!
+    
+    @IBOutlet weak var loveTag: UIView!
+    @IBOutlet weak var loveTagLabel: UILabel!
+    @IBOutlet weak var loveUntag: UIView!
+    
     // MARK: *** UI events
     @IBAction func backButtonTapped(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func doneButtonTapped(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
     }
     

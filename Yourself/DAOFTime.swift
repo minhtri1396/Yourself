@@ -14,7 +14,7 @@ class DAOFTime: DAOFSuper {
         ref.child("appointment").setValue(Double(time.appointment))
         ref.child("finishTime").setValue(Double(time.finishTime))
         ref.child("state").setValue(time.state)
-        ref.child("tag").setValue(time.tag.rawValue)
+        ref.child("tag").setValue(time.tag)
         
         super.SetTimestamp(timestamp: Date().ticks)
     }
@@ -28,7 +28,7 @@ class DAOFTime: DAOFSuper {
             appointment: Int64(values["appointment"] as! Double),
             finishTime: Int64(values["finishTime"] as! Double),
             state: TAG_STATE(rawValue: values["state"] as! Int)!,
-            tag: TAG(rawValue: values["tag"] as! Int)!
+            tag: values["tag"] as! Int
         )
     }
     

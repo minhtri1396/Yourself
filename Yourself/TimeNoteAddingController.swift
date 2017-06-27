@@ -2,6 +2,7 @@ import UIKit
 
 class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     // MARK: *** Local variables
+    private var tagMasks: [Bool]!
     
     // MARK: *** Data model
     @IBOutlet weak var backButton: UIButton!
@@ -46,41 +47,65 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
     }
     
     @IBAction func doneButtonTapped(_ sender: AnyObject) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-mm-yyyy" //Your date format
+        let startTime = dateFormatter.date(from: startTimeTextField.text!)!.ticks
+        let appointmentTime = dateFormatter.date(from: appointmentTimeTextField.text!)!.ticks
+        
+        let dtoTime = DTOTime(id: Date().ticks, content: contentTextView.text, startTime: startTime, appointment: appointmentTime, finishTime: 0, state: TAG_STATE.NOT_TIME)
+        dtoTime.setTags(tags: self.getAllChosenTags())
+        
+        _ = DAOTime.BUILDER.Add(dtoTime) // save to DB
+        
         self.dismiss(animated: true, completion: nil)
     }
     
     func tagTapped(sender: UITapGestureRecognizer) {
         if sender.view == familyTag {
+            tagMasks[TAG.FAMILY.rawValue] = false
             familyUntag.isHidden = false
         } else if sender.view == friendTag {
+            tagMasks[TAG.FRIEND.rawValue] = false
             friendUntag.isHidden = false
         } else if sender.view == personalTag {
+            tagMasks[TAG.PERSONAL.rawValue] = false
             personalUntag.isHidden = false
         } else if sender.view == workTag {
+            tagMasks[TAG.WORK.rawValue] = false
             workUntag.isHidden = false
         } else if sender.view == relaxTag {
+            tagMasks[TAG.RELAX.rawValue] = false
             relaxUntag.isHidden = false
         } else if sender.view == studyTag {
+            tagMasks[TAG.STUDY.rawValue] = false
             studyUntag.isHidden = false
         } else if sender.view == loveTag {
+            tagMasks[TAG.LOVE.rawValue] = false
             loveUntag.isHidden = false
         }
     }
     
     func untagTapped(sender: UITapGestureRecognizer) {
         if sender.view == familyUntag {
+            tagMasks[TAG.FAMILY.rawValue] = true
             familyUntag.isHidden = true
         } else if sender.view == friendUntag {
+            tagMasks[TAG.FRIEND.rawValue] = true
             friendUntag.isHidden = true
         } else if sender.view == personalUntag {
+            tagMasks[TAG.PERSONAL.rawValue] = true
             personalUntag.isHidden = true
         } else if sender.view == workUntag {
+            tagMasks[TAG.WORK.rawValue] = true
             workUntag.isHidden = true
         } else if sender.view == relaxUntag {
+            tagMasks[TAG.RELAX.rawValue] = true
             relaxUntag.isHidden = true
         } else if sender.view == studyUntag {
+            tagMasks[TAG.STUDY.rawValue] = true
             studyUntag.isHidden = true
         } else if sender.view == loveUntag {
+            tagMasks[TAG.LOVE.rawValue] = true
             loveUntag.isHidden = true
         }
     }
@@ -134,6 +159,8 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
         self.contentTextView.layer.borderColor = borderColor
         
         setGestureRecognizers()
+        
+        tagMasks = [false, false, false, false, false, false, false]
     }
     
     private func setGestureRecognizers() {
@@ -157,6 +184,19 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
         
         self.loveTag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tagTapped(sender:))))
         self.loveUntag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(untagTapped(sender:))))
+    }
+    
+    private func getAllChosenTags() -> [TAG] {
+        var tags = [TAG](), iTag = 0
+        
+        for tagMask in tagMasks {
+            if tagMask {
+                tags.append(TAG(rawValue: iTag)!)
+            }
+            iTag += 1
+        }
+        
+        return tags
     }
     
 }

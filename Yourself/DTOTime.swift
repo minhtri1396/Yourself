@@ -1,5 +1,5 @@
 enum TAG: Int {
-    case FOOD = 0, OTHERS
+    case FAMILY = 0, PERSONAL, FRIEND, STUDY, WORK, LOVE, RELAX, OTHERS
 }
 
 enum TAG_STATE: Int {

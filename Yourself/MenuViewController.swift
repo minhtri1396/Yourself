@@ -26,14 +26,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var arrayMenuOptions = [Dictionary<String,String>]()
     
     /**
-     *  Menu button which was tapped to display the menu
-     */
-    var btnMenu : UIButton!
-    
-    /**
      *  Delegate of the MenuVC
      */
     var delegate : SlideMenuDelegate?
+    
+    var isShowing = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,12 +46,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tblMenuOptions.reloadData()
+        label_Username.text = GAccount.Instance.SignInUsingAccount()?.email
     }
     
     
-    @IBAction func onCloseMenuClick(_ button:UIButton!){
-        btnMenu.tag = 0
-        
+    @IBAction func cellTapped(_ button:UIButton!) {
         if (self.delegate != nil) {
             var index = Int32(button.tag)
             if(button == self.btnCloseMenuOverlay){
@@ -63,14 +59,31 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             delegate?.slideMenuItemSelectedAtIndex(index)
         }
         
-        UIView.animate(withDuration: 0.3, animations: { () -> Void in
-            self.view.frame = CGRect(x: -UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width,height: UIScreen.main.bounds.size.height)
-            self.view.layoutIfNeeded()
-            self.view.backgroundColor = UIColor.clear
-            }, completion: { (finished) -> Void in
-                self.view.removeFromSuperview()
-                self.removeFromParentViewController()
-        })
+        self.close()
+    }
+    
+    func show() {
+        if !isShowing {
+            isShowing = true
+            UIView.animate(withDuration: 0.3, animations: {
+                    [unowned self] () in
+                    self.view.frame=CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height);
+                }, completion:nil
+            )
+        }
+    }
+    
+    func close() {
+        if isShowing {
+            isShowing = false
+            UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                self.view.frame = CGRect(x: -UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width,height: UIScreen.main.bounds.size.height)
+                self.view.backgroundColor = UIColor.clear
+                }, completion: { (finished) -> Void in
+                    self.view.removeFromSuperview()
+                    self.removeFromParentViewController()
+            })
+        }
     }
     
     /* Override functions of tableview */
@@ -95,7 +108,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let btn = UIButton(type: UIButtonType.custom)
         btn.tag = indexPath.row
-        self.onCloseMenuClick(btn)
+        self.cellTapped(btn)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

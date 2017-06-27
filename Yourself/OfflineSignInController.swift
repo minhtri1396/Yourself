@@ -39,6 +39,7 @@ class OfflineSignInController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.backButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.BACK_BUTTON), for: .normal)
         self.signInButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.LOGIN_BUTTON), for: .normal)
         self.emailTextField.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.GMAIL_LOGIN_OFFLINE)

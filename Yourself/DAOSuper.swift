@@ -61,9 +61,7 @@ class DAOSuper: DB {
     
     //**************** INSERT, UPDATE, DELETE ****************
     func ExecQuery(query: String) -> Bool {
-        print("1412573_1412591 -> EXECUTE: \(query)\n")
-        var statement = PrepareQuery(query: query)
-        let result = (statement != nil) && ExecStatement(statement: &statement!)
+        let result = ExecQueryWithoutSavingTimestamp(query: query)
         
         // Update timestamp when the table changed
         if result && self.isShouldSaveTimestamp {
@@ -74,6 +72,12 @@ class DAOSuper: DB {
         }
         
         return result
+    }
+    
+    private func ExecQueryWithoutSavingTimestamp(query: String) -> Bool {
+        print("1412573_1412591 -> EXECUTE: \(query)\n")
+        var statement = PrepareQuery(query: query)
+        return (statement != nil) && ExecStatement(statement: &statement!)
     }
     
     // Remember close DB when app finished
@@ -145,7 +149,7 @@ class DAOSuper: DB {
     // User's information (used when uid changed)
     func Move(to newUID: String) {
         let query = "ALTER TABLE \(self.GetName())_\(DAOSuper.userID) RENAME TO \(self.GetName())_\(newUID);"
-        _ = self.ExecQuery(query: query)
+        _ = self.ExecQueryWithoutSavingTimestamp(query: query)
     }
     
 }

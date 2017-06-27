@@ -113,6 +113,12 @@ class SettingsController: UIViewController, BEMCheckBoxDelegate {
         _ = DAOJars.BUILDER.UpdatePercent(type: .EDU, percent: eduPercent)
         _ = DAOJars.BUILDER.UpdatePercent(type: .PLAY, percent: playPercent)
         _ = DAOJars.BUILDER.UpdatePercent(type: .GIVE, percent: givePercent)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .NEC, percent: necPercent / 100)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .FFA, percent: ffaPercent / 100)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .LTSS, percent: ltssPercent / 100)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .EDU, percent: eduPercent / 100)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .PLAY, percent: playPercent / 100)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .GIVE, percent: givePercent / 100)
         
         if ExchangeRate.BUILDER.RateType == .DOLLAR {
             ExchangeRate.BUILDER.Rate = 1

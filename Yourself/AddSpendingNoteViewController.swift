@@ -66,9 +66,19 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
    
     
     func didTap(_ checkBox: BEMCheckBox) {
+        if self.textField_GivingMoney.text! == "" {
+            let appearance = configAppearanceAlertView()
+            let alertView = SCLAlertView(appearance: appearance)
+            
+            alertView.addButton(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE) , target:self, selector:#selector(AddSpendingNoteViewController.noMoney_Acction))
+            
+            alertView.showWarning(Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), subTitle: Language.BUILDER.get(group: Group.MESSAGE, view: Message.GIVINGMONEY_EMPTY))
+            checkBox.on = false
+            return
+        }
+        
         if (checkBox.on) {
             var type = JARS_TYPE.EDU
-
             if isFindingMaxMoney() {
                 switch (checkBox) {
                 case self.necCheckBox:
@@ -99,7 +109,7 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
                 
                 if isGettingMoneyOfBoxIsChoosed(type: type) {
                     if Double(self.textField_GivingMoney.text!)! > moneyOfBoxIsChoosed {
-                        show_SwapMoneyBox_ChoosingView()
+                        show_SwapMoneyBox_ChoosingView(type: type)
                     }
                 }
             }
@@ -140,7 +150,7 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
     
     /* Message box event */
     
-    //----------- No meny massage box
+    //----------- No money massage box
     
     func noMoney_Acction() {
         
@@ -197,6 +207,7 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
         configBorderBox()
         configCheckBoxes()
         configLanguge()
+        configLabelMoney()
         
         keyboard = Keyboard(arrTextField: [self.textField_Notes, self.textField_GivingMoney])
         keyboard?.createDoneButton()
@@ -299,16 +310,44 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
         self.giveCheckBox.delegate = self
     }
     
-    private func show_SwapMoneyBox_ChoosingView() {
+    private func configLabelMoney() {
+        self.necMoney.text = String(Int(DAOJars.BUILDER.GetJARS(with: .NEC).money))
+        self.ffaMoney.text = String(Int(DAOJars.BUILDER.GetJARS(with: .FFA).money))
+        self.ltssMoney.text = String(Int(DAOJars.BUILDER.GetJARS(with: .LTSS).money))
+        self.eduMoney.text = String(Int(DAOJars.BUILDER.GetJARS(with: .EDU).money))
+        self.playMoney.text = String(Int(DAOJars.BUILDER.GetJARS(with: .PLAY).money))
+        self.giveMoney.text = String(Int(DAOJars.BUILDER.GetJARS(with: .GIVE).money))
+    }
+    
+    private func show_SwapMoneyBox_ChoosingView(type: JARS_TYPE) {
         let appearance = configAppearanceAlertView()
         let alertView = SCLAlertView(appearance: appearance)
         
-        alertView.addButton(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.NEC), target:self, selector:#selector(AddSpendingNoteViewController.necessities_Acction))
-        alertView.addButton(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.FRA), target:self,selector:#selector(AddSpendingNoteViewController.financialFreedomAccount_Acction))
-        alertView.addButton(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.LTS), target:self, selector:#selector(AddSpendingNoteViewController.longTermSavings_Acction))
-        alertView.addButton(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.EDU), target:self, selector:#selector(AddSpendingNoteViewController.education_Acction))
-        alertView.addButton(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.PLAY), target:self, selector:#selector(AddSpendingNoteViewController.play_Acction))
-        alertView.addButton(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.GIVE), target:self, selector:#selector(AddSpendingNoteViewController.give_Acction))
+        var currentUnit = "VND"
+        if ExchangeRate.BUILDER.RateType == .DOLLAR {
+            currentUnit = "$"
+        } else if ExchangeRate.BUILDER.RateType == .EURO {
+            currentUnit = "EURO"
+        }
+        
+        if type != .NEC {
+            alertView.addButton(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.NEC) + " (" + self.necMoney.text! + " " + currentUnit + ")", target:self, selector:#selector(AddSpendingNoteViewController.necessities_Acction))
+        }
+        if type != .FFA {
+            alertView.addButton(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.FRA) + " (" + self.ffaMoney.text! + " " + currentUnit + ")", target:self,selector:#selector(AddSpendingNoteViewController.financialFreedomAccount_Acction))
+        }
+        if type != .LTSS {
+            alertView.addButton(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.LTS) + " (" + self.ltssMoney.text! + " " + currentUnit + ")", target:self, selector:#selector(AddSpendingNoteViewController.longTermSavings_Acction))
+        }
+        if type != .EDU {
+            alertView.addButton(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.EDU) + " (" + self.eduMoney.text! + " " + currentUnit + ")", target:self, selector:#selector(AddSpendingNoteViewController.education_Acction))
+        }
+        if type != .PLAY {
+            alertView.addButton(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.PLAY) + " (" + self.playMoney.text! + " " + currentUnit + ")", target:self, selector:#selector(AddSpendingNoteViewController.play_Acction))
+        }
+        if type != .GIVE {
+            alertView.addButton(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.GIVE) + " (" + self.giveMoney.text! + " " + currentUnit + ")", target:self, selector:#selector(AddSpendingNoteViewController.give_Acction))
+        }
         
         alertView.showSuccess(Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.SWAP_MONEY), subTitle: Language.BUILDER.get(group: Group.MESSAGE, view: Message.CHOOSEBOX_SWAPMONEY))
     }

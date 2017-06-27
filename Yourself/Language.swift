@@ -84,7 +84,8 @@ class Message: ViewEnum {
     public static let ALLBOX_NOMONEY = MessageTitle(id: 2)
     public static let BOXCHOOED_NOMONEY = MessageTitle(id: 3)
     public static let CHOOSEBOX_SWAPMONEY = MessageTitle(id: 4)
-    
+    public static let GIVINGMONEY_EMPTY = MessageTitle(id: 5)
+    public static let NOTEGIVINGMONEY_EMPTY = MessageTitle(id: 6)
 }
 
 class PlaceholderViews: ViewEnum {
@@ -108,7 +109,7 @@ class Language {
             ["Login Offline", "Spending Notes", "Time Notes", "Settings", "Spending Note", "Add money"], // TITLE
             ["Add money", "Statistics", "Synchrocus", "Settings", "Log out"], //TABLE_MENU
             ["Notice", "Warning", "Swap money"], // MESSAGE_TITLE
-            ["Email is not allowned empty!\nPlease try again!", "Your email is invalid!\nPlease check again!", "Your all box is no money", "Box which is choosed is no money", "Choose one box to swap money"], // MESSAGE
+            ["Email is not allowned empty!\nPlease try again!", "Your email is invalid!\nPlease check again!", "Your all box is no money", "Box which is choosed is no money", "Choose one box to swap money", "Giving money is not allow to empty", "Note for giving money is not allow to empty"], // MESSAGE
             ["Your google account(gmail)", "Type money which needs using", "Type note", "Type money to add to jar(s)"], // PLACEHOLDER
             ["Application exclusively for you", "This email will be used when you sync your data to Cloud (If you needed it). So, you should enter the correct email you intend to use in this app (it should be gmail account)." ], // REMINDING
             ["English", "Vietnamese"] // LANGUAGE
@@ -119,7 +120,7 @@ class Language {
             ["Đăng nhập OFFLINE", "Ghi chú tài chính", "Ghi chú thời gian", "Cài đặt", "Ghi chú tiền", "Thêm tiền"], // TITLE
             ["Thêm tiền", "Thống kê", "Đồng bộ", "Cài đặt", "Đăng xuất"], //TABLE_MENU
             ["Chú ý", "Cảnh báo", "Chuyển tiền"], // MESSAGE_TITLE
-            ["Email không được bỏ trống!\nVui lòng thử lại", "Email của bạn không tồn tại!\nVui lòng kiểm tra lại!", "Tất cả các hũ hiện không có tiền", "Hũ bạn chọn hiện không có tiền", "Chọn 1 hủ để chuyển tiền sang"], //MESSAGE
+            ["Email không được bỏ trống!\nVui lòng thử lại", "Email của bạn không tồn tại!\nVui lòng kiểm tra lại!", "Tất cả các hũ hiện không có tiền", "Hũ bạn chọn hiện không có tiền", "Chọn 1 hủ để chuyển tiền sang", "Tiền chi không được rỗng", "Ghi chú chi tiền không được rỗng"], //MESSAGE
             ["Tài khoản google(gmail) của bạn", "Nhập số tiền cần dùng", "Thêm ghi chú cho lần lấy tiền này", "Nhập tiền và chọn hủ"], // PLACEHOLDER
             ["Ứng dụng dành riêng cho bạn", "Email này sẽ được dùng khi bạn đồng bộ dữ liệu lên Cloud (nếu bạn cần). Do đó, bạn nên nhập đúng email mà bạn dự định dùng trong ứng dụng này (Nên dùng tài khoản gmail)."  ], // REMINDING
             ["Tiếng Anh", "Tiếng Việt"] // LANGUAGE

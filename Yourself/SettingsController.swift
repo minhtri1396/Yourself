@@ -90,9 +90,9 @@ class SettingsController: UIViewController, BEMCheckBoxDelegate {
         vietnameseCheckBox.on = true
         bristishCheckBox.on = false
         
-        ExchangeRate.BUILDER.RateType = .VND
-        vndCheckBox.on = true
-        dollarCheckBox.on = false
+        ExchangeRate.BUILDER.RateType = .DOLLAR
+        vndCheckBox.on = false
+        dollarCheckBox.on = true
         euroCheckBox.on = false
         
         setValueForNEC(newValue: 55.0)
@@ -107,12 +107,12 @@ class SettingsController: UIViewController, BEMCheckBoxDelegate {
     
     
     @IBAction func backButton_Tapped(_ sender: AnyObject) {
-        _ = DAOJars.BUILDER.UpdatePercent(type: .NEC, percent: Double(necTextField.text!)!)
-        _ = DAOJars.BUILDER.UpdatePercent(type: .FFA, percent: Double(ffaTextField.text!)!)
-        _ = DAOJars.BUILDER.UpdatePercent(type: .LTSS, percent: Double(ltssTextField.text!)!)
-        _ = DAOJars.BUILDER.UpdatePercent(type: .EDU, percent: Double(eduTextField.text!)!)
-        _ = DAOJars.BUILDER.UpdatePercent(type: .PLAY, percent: Double(playTextField.text!)!)
-        _ = DAOJars.BUILDER.UpdatePercent(type: .GIVE, percent: Double(giveTextField.text!)!)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .NEC, percent: necPercent)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .FFA, percent: ffaPercent)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .LTSS, percent: ltssPercent)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .EDU, percent: eduPercent)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .PLAY, percent: playPercent)
+        _ = DAOJars.BUILDER.UpdatePercent(type: .GIVE, percent: givePercent)
         
         if ExchangeRate.BUILDER.RateType == .DOLLAR {
             ExchangeRate.BUILDER.Rate = 1
@@ -347,6 +347,7 @@ class SettingsController: UIViewController, BEMCheckBoxDelegate {
     
     private func setLanguage() {
         self.backButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.BACK_BUTTON), for: .normal)
+        self.defaultButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DEFAULT), for: .normal)
         self.settingsTitle.text = Language.BUILDER.get(group: Group.TITLE, view: TitleViews.SETTINGS_TITLE)
         self.bristishLabel.text = Language.BUILDER.get(group: Group.LANGUAGE, view: LangTitles.ENG)
         self.vietnameseLabel.text = Language.BUILDER.get(group: Group.LANGUAGE, view: LangTitles.VNI)

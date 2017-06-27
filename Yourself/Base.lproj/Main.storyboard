@@ -3012,6 +3012,20 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PlP-Y7-1CP">
+                                                <frame key="frameInset" minX="27" minY="416" width="322" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.9413320422" green="0.8779103962" blue="0.2335279378" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osq-kv-Y2F">
+                                                <frame key="frameInset" minX="27" minY="456" width="322" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -3093,10 +3107,21 @@
                                             <action selector="addButton_Tapped:" destination="vIc-5B-tsi" eventType="touchUpInside" id="gAP-at-bDj"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Dollar)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1He-NT-TMp">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="S0L-8x-mXK"/>
+                                            <constraint firstAttribute="width" constant="111" id="gkA-kx-Me6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="njC-c3-i1N" firstAttribute="leading" secondItem="HiB-0I-Fil" secondAttribute="trailing" constant="16" id="3zJ-ME-8Md"/>
+                                    <constraint firstItem="1He-NT-TMp" firstAttribute="top" secondItem="HiB-0I-Fil" secondAttribute="bottom" constant="8" id="5lP-tt-mzU"/>
+                                    <constraint firstItem="1He-NT-TMp" firstAttribute="centerX" secondItem="3C0-5s-D7w" secondAttribute="centerX" id="F9I-fA-naJ"/>
                                     <constraint firstItem="HiB-0I-Fil" firstAttribute="centerY" secondItem="3C0-5s-D7w" secondAttribute="centerY" id="O9B-6w-zgT"/>
                                     <constraint firstItem="4v3-rs-gEe" firstAttribute="leading" secondItem="3C0-5s-D7w" secondAttribute="leading" constant="16" id="P5i-YD-gvd"/>
                                     <constraint firstItem="HiB-0I-Fil" firstAttribute="leading" secondItem="4v3-rs-gEe" secondAttribute="trailing" constant="16" id="UWP-qq-sBc"/>
@@ -3159,7 +3184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tnO-j1-A0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="143" y="-761"/>
+            <point key="canvasLocation" x="141.59999999999999" y="-761.46926536731644"/>
         </scene>
     </scenes>
     <resources>

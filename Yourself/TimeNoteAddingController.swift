@@ -49,6 +49,42 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
         self.dismiss(animated: true, completion: nil)
     }
     
+    func tagTapped(sender: UITapGestureRecognizer) {
+        if sender.view == familyTag {
+            familyUntag.isHidden = false
+        } else if sender.view == friendTag {
+            friendUntag.isHidden = false
+        } else if sender.view == personalTag {
+            personalUntag.isHidden = false
+        } else if sender.view == workTag {
+            workUntag.isHidden = false
+        } else if sender.view == relaxTag {
+            relaxUntag.isHidden = false
+        } else if sender.view == studyTag {
+            studyUntag.isHidden = false
+        } else if sender.view == loveTag {
+            loveUntag.isHidden = false
+        }
+    }
+    
+    func untagTapped(sender: UITapGestureRecognizer) {
+        if sender.view == familyUntag {
+            familyUntag.isHidden = true
+        } else if sender.view == friendUntag {
+            friendUntag.isHidden = true
+        } else if sender.view == personalUntag {
+            personalUntag.isHidden = true
+        } else if sender.view == workUntag {
+            workUntag.isHidden = true
+        } else if sender.view == relaxUntag {
+            relaxUntag.isHidden = true
+        } else if sender.view == studyUntag {
+            studyUntag.isHidden = true
+        } else if sender.view == loveUntag {
+            loveUntag.isHidden = true
+        }
+    }
+    
     // Format Date dd-MM-yyyy
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -96,6 +132,31 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
         let borderColor = UIColor(colorLiteralRed: 224/255, green: 224/255, blue: 224/255, alpha: 1).cgColor
         self.contentTextView.layer.borderWidth = 1
         self.contentTextView.layer.borderColor = borderColor
+        
+        setGestureRecognizers()
+    }
+    
+    private func setGestureRecognizers() {
+        self.familyTag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tagTapped(sender:))))
+        self.familyUntag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(untagTapped(sender:))))
+        
+        self.friendTag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tagTapped(sender:))))
+        self.friendUntag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(untagTapped(sender:))))
+        
+        self.personalTag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tagTapped(sender:))))
+        self.personalUntag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(untagTapped(sender:))))
+        
+        self.workTag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tagTapped(sender:))))
+        self.workUntag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(untagTapped(sender:))))
+        
+        self.relaxTag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tagTapped(sender:))))
+        self.relaxUntag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(untagTapped(sender:))))
+        
+        self.studyTag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tagTapped(sender:))))
+        self.studyUntag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(untagTapped(sender:))))
+        
+        self.loveTag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tagTapped(sender:))))
+        self.loveUntag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(untagTapped(sender:))))
     }
     
 }

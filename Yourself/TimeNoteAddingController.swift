@@ -47,17 +47,19 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
     }
     
     @IBAction func doneButtonTapped(_ sender: AnyObject) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-mm-yyyy" //Your date format
-        let startTime = dateFormatter.date(from: startTimeTextField.text!)!.ticks
-        let appointmentTime = dateFormatter.date(from: appointmentTimeTextField.text!)!.ticks
-        
-        let dtoTime = DTOTime(id: Date().ticks, content: contentTextView.text, startTime: startTime, appointment: appointmentTime, finishTime: 0, state: TAG_STATE.NOT_TIME)
-        dtoTime.setTags(tags: self.getAllChosenTags())
-        
-        _ = DAOTime.BUILDER.Add(dtoTime) // save to DB
-        
-        self.dismiss(animated: true, completion: nil)
+        if isFilledCompletely() {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-mm-yyyy" //Your date format
+            let startTime = dateFormatter.date(from: startTimeTextField.text!)!.ticks
+            let appointmentTime = dateFormatter.date(from: appointmentTimeTextField.text!)!.ticks
+            
+            let dtoTime = DTOTime(id: Date().ticks, content: contentTextView.text, startTime: startTime, appointment: appointmentTime, finishTime: 0, state: TAG_STATE.NOT_TIME)
+            dtoTime.setTags(tags: self.getAllChosenTags())
+            
+            _ = DAOTime.BUILDER.Add(dtoTime) // save to DB
+            
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     func tagTapped(sender: UITapGestureRecognizer) {
@@ -197,6 +199,13 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
         }
         
         return tags
+    }
+    
+    private func isFilledCompletely() -> Bool {
+        if contentTextView.text.isEmpty {
+            
+        }
+        return true
     }
     
 }

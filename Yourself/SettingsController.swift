@@ -56,34 +56,53 @@ class SettingsController: UIViewController, BEMCheckBoxDelegate {
     
     // MARK: *** UI events
     
+    func _necComponentChangedValue(sender: UISlider!) {
+        let newValue = ceil((sender.value + 2.5) / 5) * 5
+        calculusJARSPercent(type: .NEC, deviantValue: newValue - Float(necPercent))
+        setValueForNEC(newValue: Double(newValue))
+        roundPercentJAR()
+    }
     
-    @IBAction func sliderNECPercentValueChange(_ sender: AnyObject) {
-        updateValueForSlider(type: .NEC, newValue: self.necSlider.value)
+    func _ffaComponentChangedValue(sender: UISlider!) {
+        let newValue = Int((sender.value + 2.5) / 5) * 5
+        calculusJARSPercent(type: .FFA, deviantValue: Float(newValue) - Float(ffaPercent))
+        setValueForFFA(newValue: Double(newValue))
+        roundPercentJAR()
     }
     
     
-    @IBAction func sliderFFAPercentValueChange(_ sender: AnyObject) {
-        updateValueForSlider(type: .FFA, newValue: self.ffaSlider.value)
-    }
-    
-    @IBAction func sliderLTSSPercentValueChange(_ sender: AnyObject) {
-        updateValueForSlider(type: .LTSS, newValue: self.ltssSlider.value)
-    }
-    
-    
-    @IBAction func sliderEDUPercentValueChange(_ sender: AnyObject) {
-        updateValueForSlider(type: .EDU, newValue: self.eduSlider.value)
+    func _ltssComponentChangedValue(sender: UISlider!) {
+        let newValue = Int((sender.value + 2.5) / 5) * 5
+        calculusJARSPercent(type: .LTSS, deviantValue: Float(newValue) - Float(ltssPercent))
+        setValueForLTSS(newValue: Double(newValue))
+        roundPercentJAR()
     }
     
     
-    @IBAction func sliderPLAYPercentValueChange(_ sender: AnyObject) {
-        updateValueForSlider(type: .PLAY, newValue: self.playSlider.value)
+    func _eduComponentChangedValue(sender: UISlider!) {
+        let newValue = Int((sender.value + 2.5) / 5) * 5
+        calculusJARSPercent(type: .EDU, deviantValue: Float(newValue) - Float(eduPercent))
+        setValueForEDU(newValue: Double(newValue))
+        roundPercentJAR()
     }
     
     
-    @IBAction func sliderGIVEPercentValueChange(_ sender: AnyObject) {
-        updateValueForSlider(type: .GIVE, newValue: self.giveSlider.value)
+    func _playComponentChangedValue(sender: UISlider!) {
+        let newValue = Int((sender.value + 2.5) / 5) * 5
+        calculusJARSPercent(type: .PLAY, deviantValue: Float(newValue) - Float(playPercent))
+        setValueForPLAY(newValue: Double(newValue))
+        roundPercentJAR()
     }
+    
+    
+    func _giveComponentChangedValue(sender: UISlider!) {
+        let newValue = Int((sender.value + 2.5) / 5) * 5
+        calculusJARSPercent(type: .GIVE, deviantValue: Float(newValue) - Float(givePercent))
+        setValueForGIVE(newValue: Double(newValue))
+        roundPercentJAR()
+    }
+    
+    
     
     @IBAction func defaultButton_Tapped(_ sender: AnyObject) {
         Language.BUILDER.Lang = .VNI
@@ -107,12 +126,6 @@ class SettingsController: UIViewController, BEMCheckBoxDelegate {
     
     
     @IBAction func backButton_Tapped(_ sender: AnyObject) {
-        _ = DAOJars.BUILDER.UpdatePercent(type: .NEC, percent: necPercent)
-        _ = DAOJars.BUILDER.UpdatePercent(type: .FFA, percent: ffaPercent)
-        _ = DAOJars.BUILDER.UpdatePercent(type: .LTSS, percent: ltssPercent)
-        _ = DAOJars.BUILDER.UpdatePercent(type: .EDU, percent: eduPercent)
-        _ = DAOJars.BUILDER.UpdatePercent(type: .PLAY, percent: playPercent)
-        _ = DAOJars.BUILDER.UpdatePercent(type: .GIVE, percent: givePercent)
         _ = DAOJars.BUILDER.UpdatePercent(type: .NEC, percent: necPercent / 100)
         _ = DAOJars.BUILDER.UpdatePercent(type: .FFA, percent: ffaPercent / 100)
         _ = DAOJars.BUILDER.UpdatePercent(type: .LTSS, percent: ltssPercent / 100)
@@ -131,8 +144,6 @@ class SettingsController: UIViewController, BEMCheckBoxDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    
     // MARK: *** UIViewController
 
     override func viewDidLoad() {
@@ -147,15 +158,11 @@ class SettingsController: UIViewController, BEMCheckBoxDelegate {
         playPercent = DAOJars.BUILDER.GetJARS(with: .PLAY).percent.round(numberOfDecimal: 2) * 100
         givePercent = DAOJars.BUILDER.GetJARS(with: .GIVE).percent.round(numberOfDecimal: 2) * 100
         
-        self.necSlider.value = Float(necPercent)
-        self.ffaSlider.value = Float(ffaPercent)
-        self.ltssSlider.value = Float(ltssPercent)
-        self.eduSlider.value = Float(eduPercent)
-        self.playSlider.value = Float(playPercent)
-        self.giveSlider.value = Float(givePercent)
         
         configCheckbox()
         configTextField()
+        configSlider()
+        
         setLanguage()
     }
 
@@ -200,92 +207,29 @@ class SettingsController: UIViewController, BEMCheckBoxDelegate {
             break
         }
     }
-    
-    private func updateValueForSlider(type: JARS_TYPE, newValue: Float) {
-        var value = newValue
-        if value >= 100 {
-            value = 200
-        }
-        
-        switch (type) {
-            
-        case .NEC:
-            calculusJARSPercent(type: .NEC, deviantValue: value - Float(necPercent))
-            setValueForNEC(newValue: Double(newValue))
-            break
-            
-        case .FFA:
-            calculusJARSPercent(type: .FFA, deviantValue: value - Float(ffaPercent))
-            setValueForFFA(newValue: Double(newValue))
-            break
-            
-        case .LTSS:
-            calculusJARSPercent(type: .LTSS, deviantValue: value - Float(ltssPercent))
-            setValueForLTSS(newValue: Double(newValue))
-            break
-            
-        case .EDU:
-            calculusJARSPercent(type: .EDU, deviantValue: newValue - Float(eduPercent))
-            setValueForEDU(newValue: Double(newValue))
-            break
-            
-        case .PLAY:
-            calculusJARSPercent(type: .PLAY, deviantValue: value - Float(playPercent))
-            setValueForPLAY(newValue: Double(newValue))
-            break
-            
-        case .GIVE:
-            calculusJARSPercent(type: .GIVE, deviantValue: value - Float(givePercent))
-            setValueForGIVE(newValue: Double(newValue))
-            break
-            
-        default:
-            break
-        }
-    }
+
     
     private func calculusJARSPercent(type: JARS_TYPE, deviantValue: Float) {
-        let eachDeviantValue = deviantValue / (-5)
+        let delta = -(deviantValue / 5)
         
-        if type != .NEC {
-            setValueForNEC(newValue: necPercent + Double(eachDeviantValue))
-        }
-        
-        if type != .FFA {
-            setValueForFFA(newValue: ffaPercent + Double(eachDeviantValue))
-        }
-        
-        if type != .LTSS {
-            setValueForLTSS(newValue: ltssPercent + Double(eachDeviantValue))
-        }
-        
-        if type != .EDU {
-            setValueForEDU(newValue: eduPercent + Double(eachDeviantValue))
-        }
-        
-        
-        if type != .PLAY {
-            setValueForPLAY(newValue: playPercent + Double(eachDeviantValue))
-        }
-        
-        if type != .GIVE {
-            setValueForGIVE(newValue: givePercent + Double(eachDeviantValue))
-        }
-        
-        let test = 100 - Int(necPercent) - Int(ffaPercent) - Int(ltssPercent) - Int(eduPercent) - Int(playPercent) - Int(givePercent)
-        if test != 0 {
-            setValueForGIVE(newValue: givePercent + Double(test))
-        }
+        setValueForNEC(newValue: necPercent + Double(delta))
+        setValueForFFA(newValue: ffaPercent + Double(delta))
+        setValueForLTSS(newValue: ltssPercent + Double(delta))
+        setValueForEDU(newValue: eduPercent + Double(delta))
+        setValueForPLAY(newValue: playPercent + Double(delta))
+        setValueForGIVE(newValue: givePercent + Double(delta))
     }
     
     private func setValueForNEC(newValue: Double) {
         var value = newValue
         
-        if newValue < 0 {
+        if value < 0 {
             value = 0
+            solveNegativePercentJAR(JAR_TYPEMAX: findJARPercentMax(JAR_TYPE_NOW: .NEC)!, value: value)
         }
         
         necPercent = value
+        
         self.necSlider.value = Float(value)
         self.necTextField.text = String(Int(value))
     }
@@ -294,10 +238,12 @@ class SettingsController: UIViewController, BEMCheckBoxDelegate {
         var value = newValue
         
         if value < 0 {
+            solveNegativePercentJAR(JAR_TYPEMAX: findJARPercentMax(JAR_TYPE_NOW: .FFA)!, value: value)
             value = 0
         }
         
         ffaPercent = value
+        
         self.ffaSlider.value = Float(value)
         self.ffaTextField.text = String(Int(value))
     }
@@ -306,22 +252,26 @@ class SettingsController: UIViewController, BEMCheckBoxDelegate {
         var value = newValue
         
         if value < 0 {
+            solveNegativePercentJAR(JAR_TYPEMAX: findJARPercentMax(JAR_TYPE_NOW: .LTSS)!, value: value)
             value = 0
         }
         
         ltssPercent = value
+        
         self.ltssSlider.value = Float(value)
         self.ltssTextField.text = String(Int(value))
     }
     
     private func setValueForEDU(newValue: Double) {
         var value = newValue
-        
+
         if value < 0 {
+            solveNegativePercentJAR(JAR_TYPEMAX: findJARPercentMax(JAR_TYPE_NOW: .EDU)!, value: value)
             value = 0
         }
         
         eduPercent = value
+        
         self.eduSlider.value = Float(value)
         self.eduTextField.text = String(Int(value))
     }
@@ -330,10 +280,12 @@ class SettingsController: UIViewController, BEMCheckBoxDelegate {
         var value = newValue
         
         if value < 0 {
+            solveNegativePercentJAR(JAR_TYPEMAX: findJARPercentMax(JAR_TYPE_NOW: .PLAY)!, value: value)
             value = 0
         }
         
         playPercent = value
+        
         self.playSlider.value = Float(value)
         self.playTextField.text = String(Int(value))
     }
@@ -342,10 +294,12 @@ class SettingsController: UIViewController, BEMCheckBoxDelegate {
         var value = newValue
         
         if value < 0 {
+            solveNegativePercentJAR(JAR_TYPEMAX: findJARPercentMax(JAR_TYPE_NOW: .GIVE)!, value: value)
             value = 0
         }
         
         givePercent = value
+        
         self.giveSlider.value = Float(value)
         self.giveTextField.text = String(Int(value))
     }
@@ -364,6 +318,96 @@ class SettingsController: UIViewController, BEMCheckBoxDelegate {
         self.eduLabel.text = Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.EDU)
         self.playLabel.text = Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.PLAY)
         self.giveLabel.text = Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.GIVE)
+    }
+    
+    private func findJARPercentMax(JAR_TYPE_NOW: JARS_TYPE)->JARS_TYPE? {
+        var max:Double = -1
+        var typeMax:JARS_TYPE?
+        
+        if max < necPercent && JAR_TYPE_NOW != .NEC {
+            max = necPercent
+            typeMax = .NEC
+        }
+        
+        if max < ffaPercent && JAR_TYPE_NOW != .FFA {
+            max = ffaPercent
+            typeMax = .FFA
+        }
+        
+        if max < ltssPercent && JAR_TYPE_NOW != .LTSS {
+            max = ltssPercent
+            typeMax = .LTSS
+        }
+        
+        if max < eduPercent && JAR_TYPE_NOW != .EDU{
+            max = eduPercent
+            typeMax = .EDU
+        }
+        
+        if max < playPercent && JAR_TYPE_NOW != .PLAY {
+            max = playPercent
+            typeMax = .PLAY
+        }
+        
+        if max < givePercent && JAR_TYPE_NOW != .GIVE{
+            max = givePercent
+            typeMax = .GIVE
+        }
+        
+        return typeMax
+    }
+    
+    private func solveNegativePercentJAR(JAR_TYPEMAX: JARS_TYPE, value: Double) {
+        if JAR_TYPEMAX == .NEC {
+            setValueForNEC(newValue: necPercent + value)
+        }
+        else if JAR_TYPEMAX == .FFA {
+            setValueForFFA(newValue: ffaPercent + value)
+        }
+        else if JAR_TYPEMAX == .LTSS {
+            setValueForLTSS(newValue: ltssPercent + value)
+        }
+        else if JAR_TYPEMAX == .EDU {
+            setValueForEDU(newValue: eduPercent + value)
+        }
+        else if JAR_TYPEMAX == .PLAY {
+            setValueForPLAY(newValue: playPercent + value)
+        }
+        else if JAR_TYPEMAX == .GIVE {
+            setValueForGIVE(newValue: givePercent + value)
+        }
+    }
+    
+    private func roundPercentJAR() {
+        let check = 100 - Int(necPercent) - Int(ffaPercent) - Int(ltssPercent) - Int(eduPercent) - Int(playPercent) - Int(givePercent)
+        
+        if check != 0 {
+            setValueForGIVE(newValue: givePercent + Double(check))
+        }
+    }
+    
+    private func configSlider() {
+        self.necSlider.value = Float(necPercent)
+        self.ffaSlider.value = Float(ffaPercent)
+        self.ltssSlider.value = Float(ltssPercent)
+        self.eduSlider.value = Float(eduPercent)
+        self.playSlider.value = Float(playPercent)
+        self.giveSlider.value = Float(givePercent)
+        
+        self.necSlider.isContinuous = false
+        self.ffaSlider.isContinuous = false
+        self.ltssSlider.isContinuous = false
+        self.eduSlider.isContinuous = false
+        self.playSlider.isContinuous = false
+        self.giveSlider.isContinuous = false
+        
+        
+        self.necSlider.addTarget(self, action:  #selector(_necComponentChangedValue),for: .valueChanged)
+        self.ffaSlider.addTarget(self, action:  #selector(_ffaComponentChangedValue),for: .valueChanged)
+        self.ltssSlider.addTarget(self, action:  #selector(_ltssComponentChangedValue),for: .valueChanged)
+        self.eduSlider.addTarget(self, action:  #selector(_eduComponentChangedValue),for: .valueChanged)
+        self.playSlider.addTarget(self, action:  #selector(_playComponentChangedValue),for: .valueChanged)
+        self.giveSlider.addTarget(self, action:  #selector(_giveComponentChangedValue),for: .valueChanged)
     }
     
     private func configCheckbox() {

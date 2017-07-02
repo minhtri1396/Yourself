@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rHB-im-4Nd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rHB-im-4Nd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -1461,9 +1461,6 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="5lU-gv-l9N"/>
                                                                 </constraints>
-                                                                <connections>
-                                                                    <action selector="sliderNECPercentValueChange:" destination="XDB-qf-2UT" eventType="valueChanged" id="J8R-BP-KbR"/>
-                                                                </connections>
                                                             </slider>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1504,9 +1501,6 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="UrX-sw-98G"/>
                                                                 </constraints>
-                                                                <connections>
-                                                                    <action selector="sliderFFAPercentValueChange:" destination="XDB-qf-2UT" eventType="valueChanged" id="Zgc-mA-5i9"/>
-                                                                </connections>
                                                             </slider>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How much" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SCh-Yl-gjI">
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1574,9 +1568,6 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="F07-TY-wqA"/>
                                                                 </constraints>
-                                                                <connections>
-                                                                    <action selector="sliderEDUPercentValueChange:" destination="XDB-qf-2UT" eventType="valueChanged" id="qDS-lp-tkx"/>
-                                                                </connections>
                                                             </slider>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1635,9 +1626,6 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="a4l-9Z-Dt9"/>
                                                                 </constraints>
-                                                                <connections>
-                                                                    <action selector="sliderPLAYPercentValueChange:" destination="XDB-qf-2UT" eventType="valueChanged" id="qxo-1g-eR6"/>
-                                                                </connections>
                                                             </slider>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1704,9 +1692,6 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="DB5-eJ-KAd"/>
                                                                 </constraints>
-                                                                <connections>
-                                                                    <action selector="sliderGIVEPercentValueChange:" destination="XDB-qf-2UT" eventType="valueChanged" id="Rsf-ZI-2qd"/>
-                                                                </connections>
                                                             </slider>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1765,9 +1750,6 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="EF3-Cy-8q5"/>
                                                                 </constraints>
-                                                                <connections>
-                                                                    <action selector="sliderLTSSPercentValueChange:" destination="XDB-qf-2UT" eventType="valueChanged" id="NsJ-SP-640"/>
-                                                                </connections>
                                                             </slider>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2246,7 +2228,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1bt-p1-Hdo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FvY-Zp-qMG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FvY-Zp-qMG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2265,7 +2247,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jpp-TT-kfC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Yf5-XL-5Yt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yf5-XL-5Yt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3159,18 +3141,12 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PlP-Y7-1CP">
-                                                <frame key="frameInset" minX="27" minY="416" width="322" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bạn đã chuyển:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PlP-Y7-1CP">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="KEc-gG-8sh"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.9413320422" green="0.8779103962" blue="0.2335279378" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osq-kv-Y2F">
-                                                <frame key="frameInset" minX="27" minY="456" width="322" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.111617288839313" green="0.6672087421905375" blue="0.9413320422" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3197,8 +3173,10 @@
                                             <constraint firstItem="fQO-1Y-89n" firstAttribute="width" secondItem="2Ca-Kj-v9w" secondAttribute="width" multiplier="1/3" constant="-20" id="N3a-1Y-BOn"/>
                                             <constraint firstItem="P3r-VW-yL4" firstAttribute="width" secondItem="2Ca-Kj-v9w" secondAttribute="width" multiplier="1/3" constant="-20" id="Qyb-57-eIV"/>
                                             <constraint firstItem="fQO-1Y-89n" firstAttribute="centerX" secondItem="2Ca-Kj-v9w" secondAttribute="centerX" id="R3V-Zr-2TV"/>
+                                            <constraint firstItem="PlP-Y7-1CP" firstAttribute="leading" secondItem="2Ca-Kj-v9w" secondAttribute="leading" constant="27" id="VvE-tx-G2C"/>
                                             <constraint firstItem="feP-RQ-UWE" firstAttribute="width" secondItem="2Ca-Kj-v9w" secondAttribute="width" multiplier="1/3" constant="-20" id="aly-bC-8vq"/>
                                             <constraint firstItem="fQO-1Y-89n" firstAttribute="height" secondItem="2Ca-Kj-v9w" secondAttribute="width" multiplier="1/3" constant="-20" id="axW-XL-zqN"/>
+                                            <constraint firstItem="PlP-Y7-1CP" firstAttribute="top" secondItem="P3r-VW-yL4" secondAttribute="bottom" constant="72" id="fhC-A2-yhc"/>
                                             <constraint firstItem="xMd-aU-4mF" firstAttribute="width" secondItem="2Ca-Kj-v9w" secondAttribute="width" multiplier="1/3" constant="-20" id="kLH-XG-th7"/>
                                             <constraint firstItem="Qzp-X0-FYw" firstAttribute="leading" secondItem="2Ca-Kj-v9w" secondAttribute="leading" constant="16" id="mvT-ed-vCl"/>
                                             <constraint firstAttribute="trailing" secondItem="feP-RQ-UWE" secondAttribute="trailing" constant="8" id="nag-77-6rj"/>
@@ -3206,6 +3184,7 @@
                                             <constraint firstAttribute="trailing" secondItem="cap-0n-jv9" secondAttribute="trailing" constant="16" id="toJ-Tt-3lK"/>
                                             <constraint firstItem="o9R-3b-2O6" firstAttribute="centerX" secondItem="2Ca-Kj-v9w" secondAttribute="centerX" id="uBB-Cw-roY"/>
                                             <constraint firstItem="o9R-3b-2O6" firstAttribute="width" secondItem="2Ca-Kj-v9w" secondAttribute="width" multiplier="1/3" constant="-20" id="v8l-fu-ngj"/>
+                                            <constraint firstAttribute="trailing" secondItem="PlP-Y7-1CP" secondAttribute="trailing" constant="27" id="wWN-f6-Pqh"/>
                                             <constraint firstItem="feP-RQ-UWE" firstAttribute="top" secondItem="Qzp-X0-FYw" secondAttribute="bottom" constant="40" id="yit-6s-a3g"/>
                                         </constraints>
                                     </view>
@@ -3251,7 +3230,7 @@
                                             <color key="titleColor" red="0.17480419359999999" green="0.3950678815" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="addButton_Tapped:" destination="vIc-5B-tsi" eventType="touchUpInside" id="gAP-at-bDj"/>
+                                            <action selector="doneButton_Tapped:" destination="vIc-5B-tsi" eventType="touchUpInside" id="hld-eM-aMl"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Dollar)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1He-NT-TMp">
@@ -3324,9 +3303,11 @@
                         <outlet property="playMoney" destination="D0P-K8-B5X" id="Rq3-5E-wb3"/>
                         <outlet property="playName" destination="h05-vO-8EF" id="Ezo-LP-04l"/>
                         <outlet property="playView" destination="o9R-3b-2O6" id="iWv-hs-zHD"/>
+                        <outlet property="reaplaceMoney" destination="PlP-Y7-1CP" id="F1r-BT-I8e"/>
                         <outlet property="scrollView" destination="Gw4-Ka-NhS" id="Ygs-1s-nwq"/>
                         <outlet property="textField_GivingMoney" destination="cap-0n-jv9" id="zzP-KC-9aJ"/>
                         <outlet property="textField_Notes" destination="Qzp-X0-FYw" id="9a6-Sl-5cP"/>
+                        <outlet property="typeMoney" destination="1He-NT-TMp" id="DZi-zw-qBn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tnO-j1-A0r" userLabel="First Responder" sceneMemberID="firstResponder"/>

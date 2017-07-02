@@ -2,13 +2,20 @@ import UIKit
 import SCLAlertView
 import BEMCheckBox
 
-class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
+class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMCheckBoxDelegate {
     
     // MARK: *** Local variables
     var keyboard: Keyboard?
+    
     var moneyOfBoxIsChoosed: Double = 0
+    var moneyOfBoxReplace: Double = 0
     var maxMoney: Double = 0
-
+    
+    var type: JARS_TYPE? = nil
+    var typeReplace: JARS_TYPE? = nil
+    
+    private var preCheckBox: BEMCheckBox?
+    
     
     // MARK: *** Data model
     
@@ -56,30 +63,76 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
     @IBOutlet weak var eduMoney: UILabel!
     @IBOutlet weak var playMoney: UILabel!
     @IBOutlet weak var giveMoney: UILabel!
-        
+    
+    
+    @IBOutlet weak var typeMoney: UILabel!
+    @IBOutlet weak var reaplaceMoney: UILabel!
+    
+    
     // MARK: *** UI events
+    
+    @IBAction func doneButton_Tapped(_ sender: AnyObject) {
+        if (self.textField_GivingMoney.text?.characters.count)! > 0 {
+           
+            // cap nhat tien
+            
+            let timestamp = Date().ticks
+            let moneyGiving = Double(self.textField_GivingMoney.text!)!
+            let getMoneyIfHaving = moneyOfBoxIsChoosed - moneyGiving
+           
+            _ = DAOIntent.BUILDER.Add(DTOIntent(timestamp: timestamp, type: type!, content: self.textField_Notes.text!, money: moneyGiving))
+            
+            if typeReplace != nil {
+                moneyOfBoxReplace = moneyOfBoxReplace - (-getMoneyIfHaving)
+                _ = DAOJars.BUILDER.UpdateMoney(type: typeReplace!, money: moneyOfBoxReplace)
+                moneyOfBoxIsChoosed = 0
+            }
+            else {
+                typeReplace = type
+                moneyOfBoxReplace = 0
+            }
+            
+            _ = DAOJars.BUILDER.UpdateMoney(type: type!, money: moneyOfBoxReplace)
+            
+            _ = DAOAlternatives.BUILDER.Add(DTOAlternatives(timestamp: timestamp, owner: type!, alts: typeReplace!, money: moneyOfBoxReplace))
+        }
+    }
     
     
     @IBAction func backButton_Tapped(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if maxMoney == 0 {
+            Alert.show(type: 0, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.ALLBOX_NOMONEY), selector: #selector(AddSpendingNoteViewController.non_Acction), vc: self)
+            textField.resignFirstResponder()
+            return false
+        }
+        
+        if (textField.text?.characters.count)! > 0 {
+            if Double((textField.text! + string))! > maxMoney {
+                textField.text = maxMoney.clean
+            }
+        }
+        
+        return true
+    }
    
     
     func didTap(_ checkBox: BEMCheckBox) {
         if self.textField_GivingMoney.text! == "" {
-            let appearance = configAppearanceAlertView()
-            let alertView = SCLAlertView(appearance: appearance)
-            
-            alertView.addButton(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE) , target:self, selector:#selector(AddSpendingNoteViewController.noMoney_Acction))
-            
-            alertView.showWarning(Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), subTitle: Language.BUILDER.get(group: Group.MESSAGE, view: Message.GIVINGMONEY_EMPTY))
+            Alert.show(type: 0, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.GIVINGMONEY_EMPTY), selector: #selector(AddSpendingNoteViewController.non_Acction), vc: self)
             checkBox.on = false
             return
         }
         
         if (checkBox.on) {
-            var type = JARS_TYPE.EDU
-            if isFindingMaxMoney() {
+            
+            setUnCheckForAllBox(checkBox: checkBox)
+            
+            if maxMoney != 0 {
                 switch (checkBox) {
                 case self.necCheckBox:
                     self.necMoney.isHidden = true
@@ -107,13 +160,19 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
                     break;
                 }
                 
-                if isGettingMoneyOfBoxIsChoosed(type: type) {
-                    if Double(self.textField_GivingMoney.text!)! > moneyOfBoxIsChoosed {
-                        show_SwapMoneyBox_ChoosingView(type: type)
+                if isGettingMoneyOfBoxIsChoosed(type: type!) {
+                    if Double(self.textField_GivingMoney.text!)! > maxMoney {
+                        
+                    }
+                    else {
+                        if Double(self.textField_GivingMoney.text!)! > moneyOfBoxIsChoosed {
+                            show_SwapMoneyBox_ChoosingView(type: type!)
+                        }
                     }
                 }
             }
             else {
+                Alert.show(type: 0, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.ALLBOX_NOMONEY), selector: #selector(AddSpendingNoteViewController.non_Acction), vc: self)
                 checkBox.on = false
             }
         }
@@ -152,34 +211,42 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
     
     //----------- No money massage box
     
-    func noMoney_Acction() {
-        
+    func non_Acction() {
+       
     }
+    
+    
     
     //----------- Choose box to replace message box
     
     func necessities_Acction() {
-        
+        typeReplace = .NEC
+        show_LabelNotification(labelMoneyOfGettingBox: self.necMoney, nameBox: Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.NEC))
     }
     
     func financialFreedomAccount_Acction() {
-        print("First button tapped")
+        typeReplace = .FFA
+        show_LabelNotification(labelMoneyOfGettingBox: self.ffaMoney, nameBox: Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.FRA))
     }
     
     func longTermSavings_Acction() {
-        print("First button tapped")
+        typeReplace = .LTSS
+        show_LabelNotification(labelMoneyOfGettingBox: self.ltssMoney, nameBox: Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.LTS))
     }
     
     func education_Acction() {
-        print("First button tapped")
+        typeReplace = .EDU
+        show_LabelNotification(labelMoneyOfGettingBox: self.eduMoney, nameBox: Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.EDU))
     }
     
     func play_Acction() {
-        print("First button tapped")
+        typeReplace = .PLAY
+        show_LabelNotification(labelMoneyOfGettingBox: self.playMoney, nameBox: Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.PLAY))
     }
     
     func give_Acction() {
-        print("First button tapped")
+        typeReplace = .GIVE
+        show_LabelNotification(labelMoneyOfGettingBox: self.giveMoney, nameBox: Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.GIVE))
     }
     
     /* Key board event */
@@ -200,6 +267,7 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.textField_GivingMoney.delegate = self
         
         
         configBarBox()
@@ -208,6 +276,9 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
         configCheckBoxes()
         configLanguge()
         configLabelMoney()
+        configLabelNotification()
+        
+        maxMoney = getMaxMoney()
         
         keyboard = Keyboard(arrTextField: [self.textField_Notes, self.textField_GivingMoney])
         keyboard?.createDoneButton()
@@ -311,12 +382,64 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
     }
     
     private func configLabelMoney() {
-        self.necMoney.text = String(Int(DAOJars.BUILDER.GetJARS(with: .NEC).money))
-        self.ffaMoney.text = String(Int(DAOJars.BUILDER.GetJARS(with: .FFA).money))
-        self.ltssMoney.text = String(Int(DAOJars.BUILDER.GetJARS(with: .LTSS).money))
-        self.eduMoney.text = String(Int(DAOJars.BUILDER.GetJARS(with: .EDU).money))
-        self.playMoney.text = String(Int(DAOJars.BUILDER.GetJARS(with: .PLAY).money))
-        self.giveMoney.text = String(Int(DAOJars.BUILDER.GetJARS(with: .GIVE).money))
+        self.necMoney.text = String(Int(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .NEC).money)))
+        self.ffaMoney.text = String(Int(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .FFA).money)))
+        self.ltssMoney.text = String(Int(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .LTSS).money)))
+        self.eduMoney.text = String(Int(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .EDU).money)))
+        self.playMoney.text = String(Int(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .PLAY).money)))
+        self.giveMoney.text = String(Int(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .GIVE).money)))
+    }
+    
+    private func configLabelNotification() {
+        if ExchangeRate.BUILDER.RateType == .VND {
+            self.typeMoney.text = "VND"
+        }
+        else if ExchangeRate.BUILDER.RateType == .EURO {
+            self.typeMoney.text = "EURO"
+        }
+        else {
+            self.typeMoney.text = "DOLLAR"
+        }
+        
+        self.reaplaceMoney.isHidden = true
+        self.reaplaceMoney.text = Language.BUILDER.get(group: Group.TITLE, view: TitleViews.REPLACE)
+    }
+    
+    private func setUnCheckForAllBox(checkBox: BEMCheckBox) {
+        
+        if preCheckBox != nil {
+            preCheckBox?.on = false
+            
+            switch (preCheckBox!) {
+            case self.necCheckBox:
+                self.necMoney.isHidden = false
+                break;
+            case self.ffaCheckBox:
+                self.ffaMoney.isHidden = false
+                break;
+            case self.ltssCheckBox:
+                self.ltssMoney.isHidden = false
+                break;
+            case self.eduCheckBox:
+                self.eduMoney.isHidden = false
+                break;
+            case self.playCheckBox:
+                self.playMoney.isHidden = false
+                break;
+            default:
+                self.giveMoney.isHidden = false
+                break;
+            }
+        }
+        
+        preCheckBox = checkBox
+    }
+  
+    private func show_LabelNotification(labelMoneyOfGettingBox: UILabel, nameBox: String) {
+        moneyOfBoxReplace = Double(labelMoneyOfGettingBox.text!)! - Double(self.textField_GivingMoney.text!)!
+        labelMoneyOfGettingBox.text = moneyOfBoxReplace.clean
+        self.reaplaceMoney.isHidden = false
+        self.reaplaceMoney.text = self.reaplaceMoney.text! + " " + nameBox + " " + moneyOfBoxReplace.clean
     }
     
     private func show_SwapMoneyBox_ChoosingView(type: JARS_TYPE) {
@@ -349,45 +472,34 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
             alertView.addButton(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.GIVE) + " (" + self.giveMoney.text! + " " + currentUnit + ")", target:self, selector:#selector(AddSpendingNoteViewController.give_Acction))
         }
         
-        alertView.showSuccess(Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.SWAP_MONEY), subTitle: Language.BUILDER.get(group: Group.MESSAGE, view: Message.CHOOSEBOX_SWAPMONEY))
+        alertView.addButton(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.CANCEL), target:self, selector:#selector(AddSpendingNoteViewController.non_Acction))
+        
+        alertView.showInfo(Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.SWAP_MONEY), subTitle: Language.BUILDER.get(group: Group.MESSAGE, view: Message.CHOOSEBOX_SWAPMONEY))
     }
     
-    private func isFindingMaxMoney()->Bool {
+    private func getMaxMoney()->Double {
         
         var typeJAR = [JARS_TYPE.EDU, JARS_TYPE.FFA, JARS_TYPE.GIVE,
                        JARS_TYPE.LTSS, JARS_TYPE.NEC, JARS_TYPE.PLAY]
+        var max_Money:Double = 0
     
-        if maxMoney == 0 {
-            for i in 0..<typeJAR.count {
-                let tmpMoney = DAOJars.BUILDER.GetJARS(with: typeJAR[i]).money
-                if maxMoney < tmpMoney {
-                    maxMoney = tmpMoney
-                }
+        for i in 0..<typeJAR.count {
+            let tmp = ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: typeJAR[i]).money)
+            if max_Money < tmp {
+                max_Money = tmp
             }
         }
         
-        if maxMoney == 0 {
-            let appearance = configAppearanceAlertView()
-            let alertView = SCLAlertView(appearance: appearance)
-            alertView.addButton("OK", target:self, selector:#selector(noMoney_Acction))
-            alertView.showError(Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), subTitle: Language.BUILDER.get(group: Group.MESSAGE, view: Message.ALLBOX_NOMONEY))
-            
-            return false
-        }
-        return true
+        return max_Money
     }
     
     private func isGettingMoneyOfBoxIsChoosed(type: JARS_TYPE)->Bool {
-        moneyOfBoxIsChoosed = DAOJars.BUILDER.GetJARS(with: type).money
+        moneyOfBoxIsChoosed = ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: type).money)
         if (moneyOfBoxIsChoosed != 0) {
             return true
         }
         
-        let appearance = configAppearanceAlertView()
-        let alertView = SCLAlertView(appearance: appearance)
-        
-        alertView.addButton("OK", target:self, selector:#selector(noMoney_Acction))
-        alertView.showError(Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), subTitle: Language.BUILDER.get(group: Group.MESSAGE, view: Message.BOXCHOOED_NOMONEY))
+        Alert.show(type: 0, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.BOXCHOOED_NOMONEY), selector: #selector(AddSpendingNoteViewController.non_Acction), vc: self)
         
         return false
     }

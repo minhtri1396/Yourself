@@ -47,9 +47,9 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate {
             DB.Sync() {
                 (result) in
                 if result {
-                    Alert.show(title: "Success", msg: "Sync completed!", vc: self)
+                    Alert.show(type: 1, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.SYNC_SUCCESS), selector:#selector(SpedingNotesList.dont_use), vc: self)
                 } else {
-                    Alert.show(title: "Failure", msg: "Sync failed!", vc: self)
+                    Alert.show(type: 0, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.SYNC_FAIL), selector:#selector(SpedingNotesList.dont_use), vc: self)
                 }
             }
         }
@@ -58,4 +58,7 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate {
         super.addSlideMenuButton()
     }
     
+    @objc private func dont_use() {
+        
+    }
 }

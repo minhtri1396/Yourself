@@ -106,7 +106,7 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if maxMoney == 0 {
-            Alert.show(type: 0, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.ALLBOX_NOMONEY), selector: #selector(AddSpendingNoteViewController.non_Acction), vc: self)
+            Alert.show(type: ALERT_TYPE.ERROR, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.ALLBOX_NOMONEY))
             textField.resignFirstResponder()
             return false
         }
@@ -123,7 +123,9 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
     
     func didTap(_ checkBox: BEMCheckBox) {
         if self.textField_GivingMoney.text! == "" {
-            Alert.show(type: 0, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.GIVINGMONEY_EMPTY), selector: #selector(AddSpendingNoteViewController.non_Acction), vc: self)
+            Alert.show(type: ALERT_TYPE.ERROR,
+                       title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY),
+                       msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.GIVINGMONEY_EMPTY))
             checkBox.on = false
             return
         }
@@ -172,7 +174,8 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
                 }
             }
             else {
-                Alert.show(type: 0, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.ALLBOX_NOMONEY), selector: #selector(AddSpendingNoteViewController.non_Acction), vc: self)
+                Alert.show(type: ALERT_TYPE.ERROR,
+                           title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.ALLBOX_NOMONEY))
                 checkBox.on = false
             }
         }
@@ -499,7 +502,7 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
             return true
         }
         
-        Alert.show(type: 0, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.BOXCHOOED_NOMONEY), selector: #selector(AddSpendingNoteViewController.non_Acction), vc: self)
+        Alert.show(type: ALERT_TYPE.ERROR, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.BOXCHOOED_NOMONEY))
         
         return false
     }

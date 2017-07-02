@@ -22,19 +22,16 @@ class OfflineSignInController: UIViewController {
     @IBAction func SignInButton_Tapped(_ sender: AnyObject) {
         let email = emailTextField.text
         if email == nil || email!.characters.count == 0 {
-            Alert.show(type: 0, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.EMPTY_EMAIL), selector:#selector(OfflineSignInController.dont_use), vc: self)
+            Alert.show(type: ALERT_TYPE.ERROR, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.EMPTY_EMAIL))
         } else {
             if GAccount.Instance.SignInWithoutVerify(email: email!) {
                 displayMainScreen(email: email!)
             } else {
-                Alert.show(type: 0, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.INVALID_EMAIL), selector:#selector(OfflineSignInController.dont_use), vc: self)
+                Alert.show(type: ALERT_TYPE.ERROR, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.INVALID_EMAIL))
             }
         }
     }
     
-    @objc private func dont_use() {
-        
-    }
     
     // MARK: *** UIViewController
     override func viewDidLoad() {

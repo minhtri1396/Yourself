@@ -3,12 +3,15 @@ import UIKit
 class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     // MARK: *** Local variables
     private var tagMasks: [Bool]!
+    private var isTextViewEmpty: Bool!
     
     // MARK: *** Data model
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var startDateTextField: UITextField!
     @IBOutlet weak var startTimeTextField: UITextField!
+    @IBOutlet weak var appointmentDateTextField: UITextField!
     @IBOutlet weak var appointmentTimeTextField: UITextField!
     @IBOutlet weak var toLabel: UIView!
     @IBOutlet weak var contentTextView: UITextView!
@@ -49,9 +52,9 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
     @IBAction func doneButtonTapped(_ sender: AnyObject) {
         if isFilledCompletely() {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-mm-yyyy" //Your date format
-            let startTime = dateFormatter.date(from: startTimeTextField.text!)!.ticks
-            let appointmentTime = dateFormatter.date(from: appointmentTimeTextField.text!)!.ticks
+            dateFormatter.dateFormat = "dd-mm-yyyy"
+            let startTime = dateFormatter.date(from: startDateTextField.text!)!.ticks
+            let appointmentTime = dateFormatter.date(from: appointmentDateTextField.text!)!.ticks
             
             let dtoTime = DTOTime(id: Date().ticks, content: contentTextView.text, startTime: startTime, appointment: appointmentTime, finishTime: 0, state: TAG_STATE.NOT_TIME)
             dtoTime.setTags(tags: self.getAllChosenTags())
@@ -112,22 +115,34 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
         }
     }
     
-    // Format Date dd-MM-yyyy
+    // Format Date dd-MM-yyyy or hh:mm
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         if !(string == "") && Int(string) == nil {
             return false
         }
         
-        // check the chars length dd -->2 at the same time calculate the dd-MM --> 5
-        if (textField.text?.characters.count == 2) || (textField.text?.characters.count == 5) {
-            //Handle backspace being pressed
-            if !(string == "") {
-                textField.text = (textField.text)! + "-" // append the text
+        if (textField == startDateTextField) || (textField == appointmentDateTextField) {
+            // check the chars length dd -->2 at the same time calculate the dd-MM --> 5
+            if (textField.text?.characters.count == 2) || (textField.text?.characters.count == 5) {
+                //Handle backspace being pressed
+                if !(string == "") {
+                    textField.text = (textField.text)! + "-" // append the text
+                }
             }
+            // check the condition not exceed 9 chars
+            return !(textField.text!.characters.count > 9 && (string.characters.count ) > range.length)
+        } else {
+            if (textField.text?.characters.count == 2) {
+                if !(string == "") {
+                    textField.text = (textField.text)! + ":" // append the text
+                }
+            }
+            return !(textField.text!.characters.count > 4 && (string.characters.count ) > range.length)
         }
-        // check the condition not exceed 9 chars
-        return !(textField.text!.characters.count > 9 && (string.characters.count ) > range.length)
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        isTextViewEmpty = textView.text.isEmpty
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -139,8 +154,11 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
+            isTextViewEmpty = true
             textView.text = "Nhập nội dung ghi chú"
             textView.textColor = UIColor.lightGray
+        } else {
+            isTextViewEmpty = false
         }
     }
     
@@ -148,12 +166,16 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        startTimeTextField.delegate = self
-        appointmentTimeTextField.delegate = self
+        self.startDateTextField.delegate = self
+        self.appointmentDateTextField.delegate = self
+        self.startTimeTextField.delegate = self
+        self.appointmentTimeTextField.delegate = self
         
-        contentTextView.text = "Nhập nội dung ghi chú"
-        contentTextView.textColor = UIColor.lightGray
-        contentTextView.delegate = self
+        isTextViewEmpty = true
+        
+        self.contentTextView.text = "Nhập nội dung ghi chú"
+        self.contentTextView.textColor = UIColor.lightGray
+        self.contentTextView.delegate = self
         
         // Set contentTextView's border
         let borderColor = UIColor(colorLiteralRed: 224/255, green: 224/255, blue: 224/255, alpha: 1).cgColor
@@ -202,10 +224,57 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
     }
     
     private func isFilledCompletely() -> Bool {
-        if contentTextView.text.isEmpty {
-            
+        if isTextViewEmpty == true {
+            Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ban can dien noi dung ghi chu")
+            return false
         }
-        return true
+        
+        if (startDateTextField.text?.isEmpty)! {
+            Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ban can xac dinh ngay bat dau ghi chu")
+            return false
+        }
+        
+        if (startTimeTextField.text?.isEmpty)! {
+            Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ban can xac dinh thoi diem bat dau ghi chu")
+            return false
+        }
+        
+        if (appointmentDateTextField.text?.isEmpty)! {
+            Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ban can xac dinh ngay ket thuc ghi chu")
+            return false
+        }
+        
+        if (appointmentTimeTextField.text?.isEmpty)! {
+            Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ban can xac dinh thoi diem ket thuc ghi chu")
+            return false
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+        
+        if let startDate = dateFormatter.date(from: startDateTextField.text! + " " + startTimeTextField.text!) {
+            if let appointmentDate = dateFormatter.date(from: appointmentDateTextField.text! + " " + appointmentTimeTextField.text!) {
+                if startDate.ticks > appointmentDate.ticks {
+                    Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ngay bat dau can phai truoc ngay ket thuc")
+                    return false
+                }
+            } else {
+                Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ngay ket thuc khong hop le")
+                return false
+            }
+        } else {
+            Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ngay bat dau khong hop le")
+            return false
+        }
+        
+        for tagMask in tagMasks {
+            if tagMask {
+                return true
+            }
+        }
+        
+        Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ban can xac dinh (cac) tag cho ghi chu")
+        return false
     }
     
 }

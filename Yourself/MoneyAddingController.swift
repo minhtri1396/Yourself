@@ -196,15 +196,6 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
     }
     
     private func isCompleted() -> [JARS_TYPE]? {
-        let appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
-            kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
-            kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
-            showCloseButton: true,
-            showCircularIcon: true
-        )
-        let alertView = SCLAlertView(appearance: appearance)
-        
         if let _ = Double(moneyTextField.text!) {
             var jarsTypes = [JARS_TYPE]()
             if self.necCheckBox.on {
@@ -235,9 +226,9 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
                 return jarsTypes
             }
             
-            alertView.showInfo("", subTitle: Language.BUILDER.get(group: Group.MESSAGE, view: Message.CHOOSE_JAR))
+            Alert.show(type: ALERT_TYPE.INFO, title: "", msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.CHOOSE_JAR))
         } else {
-            alertView.showInfo("", subTitle: Language.BUILDER.get(group: Group.MESSAGE, view: Message.SET_MONEY))
+            Alert.show(type: ALERT_TYPE.INFO, title: "", msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.SET_MONEY))
         }
         
         return nil

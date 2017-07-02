@@ -22,7 +22,7 @@ class DAOTime: DAOSuper {
                 appointment: (Int64)(sqlite3_column_int64(statement, 3)),
                 finishTime: (Int64)(sqlite3_column_int64(statement, 4)),
                 state: TAG_STATE(rawValue: (Int)(sqlite3_column_int(statement, 5)))!,
-                tag: TAG(rawValue: (Int)(sqlite3_column_int(statement, 6)))!
+                tag: (Int)(sqlite3_column_int(statement, 6))
             )
             times[time.id] = time
         }
@@ -44,18 +44,18 @@ class DAOTime: DAOSuper {
             appointment: (Int64)(sqlite3_column_int64(statement, 3)),
             finishTime: (Int64)(sqlite3_column_int64(statement, 4)),
             state: TAG_STATE(rawValue: (Int)(sqlite3_column_int(statement, 5)))!,
-            tag: TAG(rawValue: (Int)(sqlite3_column_int(statement, 6)))!
+            tag: (Int)(sqlite3_column_int(statement, 6))
         )
     }
     
     override func Add(_ value: Any) -> Bool {
         let time = value as! DTOTime
-        let query = "INSERT INTO \(self.GetName())_\(DAOSuper.userID) (id, content, startTime, appointment, finishTime, state, tag) VALUES (\(time.id), '\(time.content)', \(time.startTime), \(time.appointment), \(time.finishTime), \(time.state.rawValue), \(time.tag.rawValue));"
+        let query = "INSERT INTO \(self.GetName())_\(DAOSuper.userID) (id, content, startTime, appointment, finishTime, state, tag) VALUES (\(time.id), '\(time.content)', \(time.startTime), \(time.appointment), \(time.finishTime), \(time.state.rawValue), \(time.tag));"
         return super.ExecQuery(query: query)
     }
     
     func Update(time: DTOTime) -> Bool {
-        return super.Update(withSet: "content='\(time.content)', startTime=\(time.startTime), appointment=\(time.appointment), finishTime=\(time.finishTime), state=\(time.state.rawValue), tag=\(time.tag.rawValue)", withWhere: "id=\(time.id)")
+        return super.Update(withSet: "content='\(time.content)', startTime=\(time.startTime), appointment=\(time.appointment), finishTime=\(time.finishTime), state=\(time.state.rawValue), tag=\(time.tag)", withWhere: "id=\(time.id)")
     }
     
     func Delete(id: Int64) -> Bool {

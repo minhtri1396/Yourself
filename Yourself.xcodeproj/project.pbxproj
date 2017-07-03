@@ -43,6 +43,7 @@
 		444AD96D1ED0853800D6D5D3 /* DTOTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AD96C1ED0853800D6D5D3 /* DTOTimestamp.swift */; };
 		444AD96F1ED0910E00D6D5D3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AD96E1ED0910E00D6D5D3 /* Extensions.swift */; };
 		444AD9711ED0973800D6D5D3 /* DAOFJars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AD9701ED0973800D6D5D3 /* DAOFJars.swift */; };
+		44562B091F0ABF8A003C6632 /* ExpenseNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44562B081F0ABF8A003C6632 /* ExpenseNoteCell.swift */; };
 		445FE8E91EDBDFF00044616C /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445FE8E41EDBDFF00044616C /* Alert.swift */; };
 		445FE8EA1EDBDFF00044616C /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445FE8E51EDBDFF00044616C /* Keyboard.swift */; };
 		445FE8EB1EDBDFF00044616C /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445FE8E61EDBDFF00044616C /* Language.swift */; };
@@ -118,6 +119,7 @@
 		444AD96C1ED0853800D6D5D3 /* DTOTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOTimestamp.swift; sourceTree = "<group>"; };
 		444AD96E1ED0910E00D6D5D3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		444AD9701ED0973800D6D5D3 /* DAOFJars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOFJars.swift; sourceTree = "<group>"; };
+		44562B081F0ABF8A003C6632 /* ExpenseNoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseNoteCell.swift; sourceTree = "<group>"; };
 		445FE8E41EDBDFF00044616C /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		445FE8E51EDBDFF00044616C /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		445FE8E61EDBDFF00044616C /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
@@ -293,10 +295,9 @@
 		4423EA771EC6375B00C4F32C /* JARS */ = {
 			isa = PBXGroup;
 			children = (
+				44562B071F0ABF52003C6632 /* Stats */,
+				44562B081F0ABF8A003C6632 /* ExpenseNoteCell.swift */,
 				441B4C371EBAE58A00C5A90B /* SpendingNotesList.swift */,
-				441B4C3F1EBAF18000C5A90B /* SpendingDayStats.swift */,
-				441B4C411EBAF19400C5A90B /* SpendingMonthStats.swift */,
-				441B4C431EBAF1DB00C5A90B /* SpendingYearStats.swift */,
 				442EAA611EE4A4E900C613DE /* AddSpendingNoteViewController.swift */,
 				441B4D881EDC920B000ED24C /* MoneyAddingController.swift */,
 			);
@@ -342,6 +343,16 @@
 				4428B5AB1ED4DC940007DD70 /* Info.plist */,
 			);
 			path = YourselfTests;
+			sourceTree = "<group>";
+		};
+		44562B071F0ABF52003C6632 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				441B4C3F1EBAF18000C5A90B /* SpendingDayStats.swift */,
+				441B4C411EBAF19400C5A90B /* SpendingMonthStats.swift */,
+				441B4C431EBAF1DB00C5A90B /* SpendingYearStats.swift */,
+			);
+			name = Stats;
 			sourceTree = "<group>";
 		};
 		44615FFB1ED4965B0070AC8D /* Database */ = {
@@ -664,6 +675,7 @@
 				445FE8EF1EDBE0360044616C /* SettingsController.swift in Sources */,
 				44A626A01EC5811C008D9B79 /* DAOJars.swift in Sources */,
 				441B4C561EBB13F200C5A90B /* DTOTime.swift in Sources */,
+				44562B091F0ABF8A003C6632 /* ExpenseNoteCell.swift in Sources */,
 				44A626AD1EC59F07008D9B79 /* DAOFSuper.swift in Sources */,
 				443C4AC61EFCEC3100085440 /* ExchangeRate.swift in Sources */,
 				441B4C401EBAF18000C5A90B /* SpendingDayStats.swift in Sources */,

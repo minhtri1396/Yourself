@@ -1,10 +1,12 @@
 import UIKit
 
 
-class SpedingNotesList: BaseViewController, UITabBarControllerDelegate {
+class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableViewDelegate, UITableViewDataSource {
     // MARK: *** Local variables
     
     // MARK: *** Data model
+    @IBOutlet weak var navBar: UINavigationItem!
+    @IBOutlet weak var expenseNotesList: UITableView!
     
     
     // MARK: *** Fuction
@@ -23,7 +25,9 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.delegate = self
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        navBar.title = "EXPENSE LIST";
+        expenseNotesList.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,5 +62,21 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate {
         super.addSlideMenuButton()
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let studentCell = tableView.dequeueReusableCell(
+            withIdentifier: "ExpenseNoteCell",
+            for: indexPath) as! ExpenseNoteCell
+        // Set the student's information
+        
+        return studentCell
+    }
    
 }

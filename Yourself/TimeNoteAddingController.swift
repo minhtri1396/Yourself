@@ -2,7 +2,10 @@ import UIKit
 
 class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     // MARK: *** Local variables
+    
     private var tagMasks: [Bool]!
+    private var keyboard: Keyboard?
+    private var isShow = 0
     
     // MARK: *** Data model
     @IBOutlet weak var backButton: UIButton!
@@ -40,6 +43,9 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
     @IBOutlet weak var loveTag: UIView!
     @IBOutlet weak var loveTagLabel: UILabel!
     @IBOutlet weak var loveUntag: UIView!
+    
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // MARK: *** UI events
     @IBAction func backButtonTapped(_ sender: AnyObject) {
@@ -144,6 +150,24 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
         }
     }
     
+    /* Key board event */
+    
+    func keyboardWillShow(notification: Notification) {
+        if let contentInset = keyboard?.catchEventOfKeyboard(isScroll: true, notification: notification) {
+            if isShow == 0 {
+                isShow = 1
+                self.scrollView.setContentOffset(contentInset, animated: true)
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: Notification) {
+        if let contentInset = keyboard?.catchEventOfKeyboard(isScroll: false, notification: notification) {
+            isShow = 0
+            self.scrollView.setContentOffset(contentInset, animated: true)
+        }
+    }
+    
     // MARK: *** UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,6 +178,14 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
         contentTextView.text = "Nhập nội dung ghi chú"
         contentTextView.textColor = UIColor.lightGray
         contentTextView.delegate = self
+        
+        // keyboard
+        
+        keyboard = Keyboard(arrTextField: [self.startTimeTextField, self.appointmentTimeTextField])
+        keyboard?.createDoneButton()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         
         // Set contentTextView's border
         let borderColor = UIColor(colorLiteralRed: 224/255, green: 224/255, blue: 224/255, alpha: 1).cgColor

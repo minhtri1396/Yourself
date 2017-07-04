@@ -30,7 +30,7 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate {
             Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.SETTINGS),
             Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.LOGOUT)
         ]
-        super.iconsForCells = ["Statistics", "Synchronization", "Settings", "Logout"]
+        super.iconsForCells = ["AddMoney", "Synchronization", "Settings", "Logout"]
         super.indentifiers = ["SpendingStatistics", "Synchronization", "SettingsController", "GSignInController" ]
         super.notIndentifiers = ["Synchronization"]
         

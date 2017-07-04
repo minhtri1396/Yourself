@@ -35,7 +35,7 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate {
             Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.SETTINGS),
             Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.LOGOUT)
         ]
-        super.iconsForCells = ["Statistics", "Statistics", "Synchronization", "Settings", "Logout"]
+        super.iconsForCells = ["AddMoney", "Statistics", "Synchronization", "Settings", "Logout"]
         super.indentifiers = ["MoneyAddingController", "SpendingStatistics", "Synchronization", "SettingsController", "GSignInController" ]
         super.notIndentifiers = ["Synchronization"]
         

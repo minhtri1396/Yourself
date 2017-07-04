@@ -37,6 +37,7 @@ class Keyboard {
     func catchEventOfKeyboard(isScroll: Bool, notification: Notification)->CGPoint? {
         let infor = notification.userInfo
         let keyboard = (infor? [UIKeyboardFrameBeginUserInfoKey] as! NSValue ).cgRectValue.size
+        
         if isScroll == true {
             return CGPoint(x: 0, y: keyboard.height)
         }

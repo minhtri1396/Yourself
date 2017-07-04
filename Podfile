@@ -11,6 +11,7 @@ target 'Yourself' do
   pod 'GoogleSignIn'
   pod 'SCLAlertView'
   pod 'BEMCheckBox'
+  pod 'Charts'
 
   target 'YourselfTests' do
     inherit! :complete

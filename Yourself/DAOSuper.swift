@@ -89,6 +89,7 @@ class DAOSuper: DB {
     
     func Get(withWhere: String) -> Any? {
         let query = "SELECT * FROM \(self.GetName())_\(DAOSuper.userID) WHERE \(withWhere);"
+        print("1412573_1412591" + query)
         let statement = self.PrepareQuery(query: query)
         
         if sqlite3_step(statement) == SQLITE_ROW {

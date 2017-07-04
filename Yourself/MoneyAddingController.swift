@@ -5,6 +5,8 @@ import SCLAlertView
 class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
     // MARK: *** Local variables
     
+    private var keyboard: Keyboard?
+    
     // MARK: *** Data model
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var unitMoneyTitle: UILabel!
@@ -46,6 +48,8 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
     @IBOutlet weak var eduMoney: UILabel!
     @IBOutlet weak var playMoney: UILabel!
     @IBOutlet weak var giveMoney: UILabel!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // MARK: *** UI events
     @IBAction func backButton_Tapped(_ sender: AnyObject) {
@@ -117,6 +121,20 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
         }
     }
     
+    /* Key board event */
+    
+    func keyboardWillShow(notification: Notification) {
+        if let contentInset = keyboard?.catchEventOfKeyboard(isScroll: true, notification: notification) {
+            self.scrollView.setContentOffset(contentInset, animated: true)
+        }
+    }
+    
+    func keyboardWillHide(notification: Notification) {
+        if let contentInset = keyboard?.catchEventOfKeyboard(isScroll: false, notification: notification) {
+            self.scrollView.setContentOffset(contentInset, animated: true)
+        }
+    }
+    
     // MARK: *** UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,6 +167,12 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
         
         self.giveView.layer.borderWidth = 1
         self.giveView.layer.borderColor = borderColor
+        
+        keyboard = Keyboard(arrTextField: [self.moneyTextField])
+        keyboard?.createDoneButton()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         
         configCheckBoxes()
         setContent()

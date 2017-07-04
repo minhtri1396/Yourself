@@ -22,6 +22,16 @@ extension Date {
     static func convertTimestampToDateString(timeStamp: Int64)->String {
         // convert timestamp to date
         return convertDateToDateString(date: Date(timeIntervalSince1970: TimeInterval(timeStamp)))
+    func isValid() -> Bool {
+        let calendar = Calendar.current
+        
+        let year = calendar.component(.year, from: self)
+        let month = calendar.component(.month, from: self)
+        let day = calendar.component(.day, from: self)
+        
+        
+        
+        return true
     }
 }
 

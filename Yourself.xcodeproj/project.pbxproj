@@ -283,10 +283,8 @@
 		4423EA761EC6374300C4F32C /* Time */ = {
 			isa = PBXGroup;
 			children = (
+				44562B0C1F0AD4FF003C6632 /* Stats */,
 				441B4C391EBAE5E000C5A90B /* TimeNotesList.swift */,
-				441B4C451EBAF3D600C5A90B /* TimeDayStats.swift */,
-				441B4C471EBAF40300C5A90B /* TimeMonthStats.swift */,
-				441B4C491EBAF44400C5A90B /* TimeYearStats.swift */,
 				449F519F1EDBEDE9007121FE /* TimeNoteAddingController.swift */,
 			);
 			name = Time;
@@ -351,6 +349,16 @@
 				441B4C3F1EBAF18000C5A90B /* SpendingDayStats.swift */,
 				441B4C411EBAF19400C5A90B /* SpendingMonthStats.swift */,
 				441B4C431EBAF1DB00C5A90B /* SpendingYearStats.swift */,
+			);
+			name = Stats;
+			sourceTree = "<group>";
+		};
+		44562B0C1F0AD4FF003C6632 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				441B4C451EBAF3D600C5A90B /* TimeDayStats.swift */,
+				441B4C471EBAF40300C5A90B /* TimeMonthStats.swift */,
+				441B4C491EBAF44400C5A90B /* TimeYearStats.swift */,
 			);
 			name = Stats;
 			sourceTree = "<group>";

@@ -1,6 +1,5 @@
 import UIKit
 
-
 class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableViewDelegate, UITableViewDataSource {
     // MARK: *** Local variables
     
@@ -19,6 +18,9 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
         self.present(addSpendingNoteView, animated: true, completion: nil)
     }
     
+    func cellTapped(sender: UITapGestureRecognizer) {
+        
+    }
     
     // MARK: *** UIViewController
     
@@ -71,12 +73,12 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let studentCell = tableView.dequeueReusableCell(
+        let cell = tableView.dequeueReusableCell(
             withIdentifier: "ExpenseNoteCell",
             for: indexPath) as! ExpenseNoteCell
         // Set the student's information
-        
-        return studentCell
+        cell.headerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cellTapped(sender:))))
+        return cell
     }
    
 }

@@ -11,7 +11,6 @@ target 'Yourself' do
   pod 'GoogleSignIn'
   pod 'SCLAlertView'
   pod 'BEMCheckBox'
-  pod 'FoldingCell', '~> 2.0.3'
 
   target 'YourselfTests' do
     inherit! :complete

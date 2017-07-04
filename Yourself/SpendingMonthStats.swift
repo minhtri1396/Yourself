@@ -1,9 +1,6 @@
 import UIKit
 import Charts
 
-
-
-
 class SpendingMonthStats: UIViewController {
     // MARK: *** Local variables
     

@@ -1,9 +1,14 @@
 import UIKit
 
-class TimeNotesList: BaseViewController, UITabBarControllerDelegate {
+class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableViewDelegate, UITableViewDataSource {
     // MARK: *** Local variables
+    private var selectedCellIndexPath: IndexPath?
+    private let selectedCellHeight: CGFloat = 276
+    private let unselectedCellHeight: CGFloat = 41.0
+    private var isFirstTime = true
     
     // MARK: *** Data model
+    @IBOutlet weak var timeNotesList: UITableView!
     
     // MARK: *** Function
     
@@ -15,11 +20,59 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate {
         self.present(addNoteView, animated: true, completion: nil)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedCellIndexPath = indexPath
+        
+        isFirstTime = false
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        
+        if selectedCellIndexPath != nil {
+            // This ensures, that the cell is fully visible once expanded
+            tableView.scrollToRow(at: indexPath, at: .none, animated: true)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if selectedCellIndexPath == indexPath {
+            return selectedCellHeight
+        } else if isFirstTime {
+            if indexPath.row == 0 {
+                return selectedCellHeight
+            }
+        }
+        return unselectedCellHeight
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "TimeNoteCell",
+            for: indexPath) as! TimeNoteCell
+        
+        cell.selectionStyle = .none
+        let borderColor = UIColor(colorLiteralRed: 224/255, green: 224/255, blue: 224/255, alpha: 1).cgColor
+        cell.bodyView.layer.borderWidth = 1
+        cell.bodyView.layer.borderColor = borderColor
+        
+        return cell
+    }
+    
     // MARK: *** UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.delegate = self
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        timeNotesList.delegate = self
+        timeNotesList.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,10 +104,6 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate {
         
         
         super.addSlideMenuButton()
-    }
-    
-    @objc private func dont_use() {
-        
     }
     
 }

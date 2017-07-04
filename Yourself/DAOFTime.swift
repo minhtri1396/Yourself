@@ -13,7 +13,7 @@ class DAOFTime: DAOFSuper {
         ref.child("startTime").setValue(Double(time.startTime))
         ref.child("appointment").setValue(Double(time.appointment))
         ref.child("finishTime").setValue(Double(time.finishTime))
-        ref.child("state").setValue(time.state)
+        ref.child("state").setValue(time.state.rawValue)
         ref.child("tag").setValue(time.tag)
         
         super.SetTimestamp(timestamp: Date().ticks)

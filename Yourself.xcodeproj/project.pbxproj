@@ -38,6 +38,7 @@
 		4428B5AA1ED4DC940007DD70 /* YourselfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428B5A91ED4DC940007DD70 /* YourselfTests.swift */; };
 		442E56781ED38DE5009411BB /* DAOFIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442E56771ED38DE5009411BB /* DAOFIntent.swift */; };
 		442EAA621EE4A4E900C613DE /* AddSpendingNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442EAA611EE4A4E900C613DE /* AddSpendingNoteViewController.swift */; };
+		4433E5761F0C1DF000D0EF6A /* TimeNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433E5751F0C1DEF00D0EF6A /* TimeNoteCell.swift */; };
 		443C4AC61EFCEC3100085440 /* ExchangeRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4AC51EFCEC3100085440 /* ExchangeRate.swift */; };
 		444AD96B1ED07B1200D6D5D3 /* DAOTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AD96A1ED07B1200D6D5D3 /* DAOTimestamp.swift */; };
 		444AD96D1ED0853800D6D5D3 /* DTOTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444AD96C1ED0853800D6D5D3 /* DTOTimestamp.swift */; };
@@ -114,6 +115,7 @@
 		4428B5AB1ED4DC940007DD70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		442E56771ED38DE5009411BB /* DAOFIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOFIntent.swift; sourceTree = "<group>"; };
 		442EAA611EE4A4E900C613DE /* AddSpendingNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSpendingNoteViewController.swift; sourceTree = "<group>"; };
+		4433E5751F0C1DEF00D0EF6A /* TimeNoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeNoteCell.swift; sourceTree = "<group>"; };
 		443C4AC51EFCEC3100085440 /* ExchangeRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRate.swift; sourceTree = "<group>"; };
 		444AD96A1ED07B1200D6D5D3 /* DAOTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOTimestamp.swift; sourceTree = "<group>"; };
 		444AD96C1ED0853800D6D5D3 /* DTOTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOTimestamp.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				44562B0C1F0AD4FF003C6632 /* Stats */,
+				4433E5751F0C1DEF00D0EF6A /* TimeNoteCell.swift */,
 				441B4C391EBAE5E000C5A90B /* TimeNotesList.swift */,
 				449F519F1EDBEDE9007121FE /* TimeNoteAddingController.swift */,
 			);
@@ -680,6 +683,7 @@
 				441B4C421EBAF19400C5A90B /* SpendingMonthStats.swift in Sources */,
 				445FE8EA1EDBDFF00044616C /* Keyboard.swift in Sources */,
 				441B4C481EBAF40300C5A90B /* TimeMonthStats.swift in Sources */,
+				4433E5761F0C1DF000D0EF6A /* TimeNoteCell.swift in Sources */,
 				445FE8EF1EDBE0360044616C /* SettingsController.swift in Sources */,
 				44A626A01EC5811C008D9B79 /* DAOJars.swift in Sources */,
 				441B4C561EBB13F200C5A90B /* DTOTime.swift in Sources */,

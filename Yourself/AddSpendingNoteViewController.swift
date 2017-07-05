@@ -88,7 +88,10 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
             }
             else {
                 // cap nhat tien
-                let timestamp = Date().ticks
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd-MM-yyyy"
+                
+                let timestamp = dateFormatter.date(from: self.textField_Date.text!)?.ticks
                 var moneyNeedReplacing = 0.0
                 
                 let money = ExchangeRate.BUILDER.calcMoneyForDB(money: Double(textField_GivingMoney.text!)!)
@@ -96,7 +99,7 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
                 let alpha = moneyOfBoxIsChoosed - money
                 
                 
-                _ = DAOIntent.BUILDER.Add(DTOIntent(timestamp: timestamp, type: type!, content: self.textField_Notes.text!, money: money)) // luu lai ghi cho lay tien
+                _ = DAOIntent.BUILDER.Add(DTOIntent(timestamp: timestamp!, type: type!, content: self.textField_Notes.text!, money: money)) // luu lai ghi cho lay tien
             
                 if typeReplace != nil { // th chon tien o hu khac de bo sung vao tien can lay ra
                     moneyOfBoxReplace = ExchangeRate.BUILDER.calcMoneyForDB(money: moneyOfBoxReplace)
@@ -111,7 +114,7 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
                 
                 _ = DAOJars.BUILDER.UpdateMoney(type: type!, money: moneyOfBoxIsChoosed)
             
-                _ = DAOAlternatives.BUILDER.Add(DTOAlternatives(timestamp: timestamp, owner: type!, alts: typeReplace!, money: moneyNeedReplacing))
+                _ = DAOAlternatives.BUILDER.Add(DTOAlternatives(timestamp: timestamp!, owner: type!, alts: typeReplace!, money: moneyNeedReplacing))
                 
                 self.dismiss(animated: true, completion: nil)
             }
@@ -277,6 +280,9 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
         configLabelNotification()
         
         maxMoney = getMaxMoney()
+        
+        self.textField_Date.delegate = self
+        self.textField_GivingMoney.delegate = self
         
         keyboard = Keyboard(arrTextField: [self.textField_Notes, self.textField_Date, self.textField_GivingMoney])
         keyboard?.createDoneButton()

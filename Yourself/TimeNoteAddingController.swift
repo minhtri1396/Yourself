@@ -58,11 +58,21 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
     @IBAction func doneButtonTapped(_ sender: AnyObject) {
         if isFilledCompletely() {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-mm-yyyy"
-            let startTime = dateFormatter.date(from: startDateTextField.text!)!.ticks
-            let appointmentTime = dateFormatter.date(from: appointmentDateTextField.text!)!.ticks
+            dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+            let startTime = dateFormatter.date(from: "\(startDateTextField.text!) \(startTimeTextField.text!)")!.ticks
+            let appointmentTime = dateFormatter.date(from: "\(appointmentDateTextField.text!) \(appointmentTimeTextField.text!)")!.ticks
             
-            let dtoTime = DTOTime(id: Date().ticks, content: contentTextView.text, startTime: startTime, appointment: appointmentTime, finishTime: 0, state: TAG_STATE.NOT_TIME)
+            var state: TAG_STATE
+            let curTime = Date().ticks
+            if curTime > appointmentTime {
+                state = .NOT_YET
+            } else if curTime < startTime {
+                state = .NOT_TIME
+            } else {
+                state = .DOING
+            }
+            
+            let dtoTime = DTOTime(id: Date().ticks, content: contentTextView.text, startTime: startTime, appointment: appointmentTime, finishTime: 0, state: state)
             dtoTime.setTags(tags: self.getAllChosenTags())
             
             _ = DAOTime.BUILDER.Add(dtoTime) // save to DB

@@ -15,18 +15,27 @@ extension Date {
         return calendar.component(.year, from: date)
     }
     
-    static func convertDateToDateString(date: Date)->String {
+    static func convertDateToDateString(date: Date) -> String {
+        return convertDateToDateString(date: date, withFormat: "dd-MM-yyyy")
+    }
+    
+    static func convertDateToDateString(date: Date, withFormat: String) -> String {
         // convert date to string (format: dd-MM-yyyy)s
         let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
-        dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "dd-MM-yyyy" //Specify your format that you want
+//        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+//        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = withFormat //Specify your format that you want
         return dateFormatter.string(from: date)
     }
     
-    static func convertTimestampToDateString(timeStamp: Int64)->String {
+    static func convertTimestampToDateString(timeStamp: Int64) -> String {
         // convert timestamp to date
         return convertDateToDateString(date: Date(timeIntervalSince1970: TimeInterval(timeStamp)))
+    }
+    
+    static func convertTimestampToDateString(timeStamp: Int64, withFormat: String) -> String {
+        // convert timestamp to date
+        return convertDateToDateString(date: Date(timeIntervalSince1970: TimeInterval(timeStamp)), withFormat: withFormat)
     }
 }
 

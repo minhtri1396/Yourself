@@ -10,7 +10,7 @@ class LangTitles: ViewEnum {
 }
 
 enum Group: Int {
-    case OPTIONS = 0, BUTTON, TITLE, TABLE_MENU, MESSAGE_TITLE, MESSAGE, PLACEHOLDER, REMINDING, LANGUAGE
+    case OPTIONS = 0, BUTTON, TITLE, TABLE_MENU, MESSAGE_TITLE, MESSAGE, PLACEHOLDER, REMINDING, LANGUAGE, TIME_TAG
 }
 
 class ViewEnum {
@@ -124,8 +124,18 @@ class PlaceholderViews: ViewEnum {
 }
 
 class RemindingViews: ViewEnum {
-    public static let LOGIN = MessageTitle(id: 0)
-    public static let GMAIL_LOGIN_OFFLINE = MessageTitle(id: 1)
+    public static let LOGIN = RemindingViews(id: 0)
+    public static let GMAIL_LOGIN_OFFLINE = RemindingViews(id: 1)
+}
+
+class TimeTags: ViewEnum {
+    public static let FAMILY = TimeTags(id: TAG.FAMILY.rawValue)
+    public static let PERSONAL = TimeTags(id: TAG.PERSONAL.rawValue)
+    public static let FRIEND = TimeTags(id: TAG.FRIEND.rawValue)
+    public static let STUDY = TimeTags(id: TAG.STUDY.rawValue)
+    public static let WORK = TimeTags(id: TAG.WORK.rawValue)
+    public static let LOVE = TimeTags(id: TAG.LOVE.rawValue)
+    public static let RELAX = TimeTags(id: TAG.RELAX.rawValue)
 }
 
 class Language {
@@ -140,7 +150,8 @@ class Language {
             ["Email is not allowned empty!\nPlease try again!", "Your email is invalid!\nPlease check again!", "Your all box is no money", "Box which is choosed is no money", "Choose one box to swap money", "Giving money is not allow to empty", "Note for giving money is not allow to empty", "You must choose jar(s) which you want to set money for!", "You must set money before continuing!", "Sync completed!", "Sync failed!", "You don't complete your job!!!", "No data available to darw chart", "Choose month to show statistic", "Giving money details", "No note", "Day of ", "is not exist", "Not enough money", "You should add money", "You should add date using money"], // MESSAGE
             ["Your google account(gmail)", "Type money which needs using", "Type note", "Type money to add to jar(s)", "Date using money", "Input day on month", "Input month", "Starting day", "End day", "Input note content" ], // PLACEHOLDER
             ["Application exclusively for you", "This email will be used when you sync your data to Cloud (If you needed it). So, you should enter the correct email you intend to use in this app (it should be gmail account)." ], // REMINDING
-            ["English", "Vietnamese"] // LANGUAGE
+            ["English", "Vietnamese"], // LANGUAGE
+            ["Family", "Personal", "Friend", "Study", "Work", "Love", "Relax"] // TIME_TAG
         ],
         [
             ["Thống kê", "Thiết lập"], // OPTIONS
@@ -151,7 +162,8 @@ class Language {
             ["Email không được bỏ trống!\nVui lòng thử lại", "Email của bạn không tồn tại!\nVui lòng kiểm tra lại!", "Tất cả các hũ hiện không có tiền", "Hũ bạn chọn hiện không có tiền", "Bạn cần chọn 1 hủ để chuyển tiền sang", "Tiền chi không được rỗng", "Ghi chú chi tiền không được rỗng", "Bạn chưa chọn (các) hủ cần thêm tiền!", "Bạn chưa nhập số tiền cần thêm!","Đồng bộ thành công", "Đồng bộ thất bại", "Bạn chưa hoàn thành công việc đã chọn xong!!!", "Không có dữ liệu để vẽ biểu đồ", "Chọn 1 tháng để xem thống kê", "Chi tiết chi tiền", "Không có ghi chú" , "Ngày của tháng ", "ngày không tồn tại", "Không có hủ nao có đủ tiền", "Bạn nên thêm tiền vào", "Bạn nên thêm ngày sử dụng tiền"     ], //MESSAGE
             ["Tài khoản google(gmail) của bạn", "Nhập số tiền cần dùng", "Thêm ghi chú cho lần lấy tiền này", "Nhập tiền và chọn hủ", "Ngày dùng tiền", "Nhập ngày trong tháng", "Nhập vào tháng", "Ngày bắt đầu", "Ngày kết thúc", "Nhập nội dung ghi chú" ], // PLACEHOLDER
             ["Ứng dụng dành riêng cho bạn", "Email này sẽ được dùng khi bạn đồng bộ dữ liệu lên Cloud (nếu bạn cần). Do đó, bạn nên nhập đúng email mà bạn dự định dùng trong ứng dụng này (Nên dùng tài khoản gmail)."  ], // REMINDING
-            ["Tiếng Anh", "Tiếng Việt"] // LANGUAGE
+            ["Tiếng Anh", "Tiếng Việt"], // LANGUAGE
+            ["Gia đình", "Cá nhân", "Bạn bè", "Học tập", "Công việc", "Tình cảm", "Giải trí"] // TIME_TAG
         ]
     ]
     

@@ -87,31 +87,40 @@ class MessageTitle: ViewEnum {
 }
 
 class Message: ViewEnum {
-    public static let EMPTY_EMAIL = MessageTitle(id: 0)
-    public static let INVALID_EMAIL = MessageTitle(id: 1)
-    public static let ALLBOX_NOMONEY = MessageTitle(id: 2)
-    public static let BOXCHOOED_NOMONEY = MessageTitle(id: 3)
-    public static let CHOOSEBOX_SWAPMONEY = MessageTitle(id: 4)
-    public static let GIVINGMONEY_EMPTY = MessageTitle(id: 5)
-    public static let NOTEGIVINGMONEY_EMPTY = MessageTitle(id: 6)
-    public static let CHOOSE_JAR = MessageTitle(id: 7)
-    public static let SET_MONEY = MessageTitle(id: 8)
-    public static let SYNC_SUCCESS = MessageTitle(id: 9)
-    public static let SYNC_FAIL = MessageTitle(id: 10)
-    public static let NOT_DONE = MessageTitle(id: 11)
-    public static let NO_DATA_CHARTS = MessageTitle(id: 12)
-    public static let MONTH_STATS = MessageTitle(id: 13)
-    public static let GIVING_DETAIL = MessageTitle(id: 14)
-    public static let NO_NOTE = MessageTitle(id: 15)
-    public static let COUNT_DAY = MessageTitle(id: 16)
-    public static let NOT_EXIST_DAY = MessageTitle(id: 17)
+    public static let EMPTY_EMAIL = Message(id: 0)
+    public static let INVALID_EMAIL = Message(id: 1)
+    public static let ALLBOX_NOMONEY = Message(id: 2)
+    public static let BOXCHOOED_NOMONEY = Message(id: 3)
+    public static let CHOOSEBOX_SWAPMONEY = Message(id: 4)
+    public static let GIVINGMONEY_EMPTY = Message(id: 5)
+    public static let NOTEGIVINGMONEY_EMPTY = Message(id: 6)
+    public static let CHOOSE_JAR = Message(id: 7)
+    public static let SET_MONEY = Message(id: 8)
+    public static let SYNC_SUCCESS = Message(id: 9)
+    public static let SYNC_FAIL = Message(id: 10)
+    public static let NOT_DONE = Message(id: 11)
+    public static let NO_DATA_CHARTS = Message(id: 12)
+    public static let MONTH_STATS = Message(id: 13)
+    public static let GIVING_DETAIL = Message(id: 14)
+    public static let NO_NOTE = Message(id: 15)
+    public static let COUNT_DAY = Message(id: 16)
+    public static let NOT_EXIST_DAY = Message(id: 17)
+    public static let NOT_ENOUGH_MONEY = Message(id: 18)
+    public static let NOT_ADD_MONEY = Message(id: 19)
+    public static let NOT_ADD_DATE = Message(id: 20)
 }
 
 class PlaceholderViews: ViewEnum {
-    public static let GMAIL_LOGIN_OFFLINE = MessageTitle(id: 0)
-    public static let TYPE_MONEY = MessageTitle(id: 1)
-    public static let TYPE_NOTE = MessageTitle(id: 2)
-    public static let TYPE_MONEY_JARS = MessageTitle(id: 3)
+    public static let GMAIL_LOGIN_OFFLINE = PlaceholderViews(id: 0)
+    public static let TYPE_MONEY = PlaceholderViews(id: 1)
+    public static let TYPE_NOTE = PlaceholderViews(id: 2)
+    public static let TYPE_MONEY_JARS = PlaceholderViews(id: 3)
+    public static let DATE_USE_MONEY = PlaceholderViews(id: 4)
+    public static let DATE_ON_MONTH = PlaceholderViews(id: 5)
+    public static let INPUT_MONTH = PlaceholderViews(id: 6)
+    public static let STR_DAY = PlaceholderViews(id: 7)
+    public static let END_DAY = PlaceholderViews(id: 8)
+    public static let NOTE_CONTENT = PlaceholderViews(id: 9)
 }
 
 class RemindingViews: ViewEnum {
@@ -128,19 +137,19 @@ class Language {
             ["Login Offline", "Spending Notes", "Time Notes", "Settings", "Spending Note", "Add money", "Box which is reaplaced is: ", "Day Statistic", "Month Statistic", "Year Statistic", "Money giving", "Money replacing"], // TITLE
             ["Add money", "Statistics", "Synchrocus", "Settings", "Log out"], //TABLE_MENU
             ["Notice", "Warning", "Swap money", "Choose month"], // MESSAGE_TITLE
-            ["Email is not allowned empty!\nPlease try again!", "Your email is invalid!\nPlease check again!", "Your all box is no money", "Box which is choosed is no money", "Choose one box to swap money", "Giving money is not allow to empty", "Note for giving money is not allow to empty", "You must choose jar(s) which you want to set money for!", "You must set money before continuing!", "Sync completed!", "Sync failed!", "You don't complete your job!!!", "No data available to darw chart", "Choose month to show statistic", "Giving money details", "No note", "Day of ", "is not exist"], // MESSAGE
-            ["Your google account(gmail)", "Type money which needs using", "Type note", "Type money to add to jar(s)"], // PLACEHOLDER
+            ["Email is not allowned empty!\nPlease try again!", "Your email is invalid!\nPlease check again!", "Your all box is no money", "Box which is choosed is no money", "Choose one box to swap money", "Giving money is not allow to empty", "Note for giving money is not allow to empty", "You must choose jar(s) which you want to set money for!", "You must set money before continuing!", "Sync completed!", "Sync failed!", "You don't complete your job!!!", "No data available to darw chart", "Choose month to show statistic", "Giving money details", "No note", "Day of ", "is not exist", "Not enough money", "You should add money", "You should add date using money"], // MESSAGE
+            ["Your google account(gmail)", "Type money which needs using", "Type note", "Type money to add to jar(s)", "Date using money", "Input day on month", "Input month", "Starting day", "End day", "Input note content" ], // PLACEHOLDER
             ["Application exclusively for you", "This email will be used when you sync your data to Cloud (If you needed it). So, you should enter the correct email you intend to use in this app (it should be gmail account)." ], // REMINDING
             ["English", "Vietnamese"] // LANGUAGE
         ],
         [
             ["Thống kê", "Thiết lập"], // OPTIONS
             ["Đăng nhập OFFline", "Đăng nhập bằng Google" ,"Đăng nhập" ,"Quay lại", "Kho hình ảnh", "Xong", "Cần thiết", "Đầu tư", "Tiết kiệm dài hạn", "Giáo dục", "Giải trí", "Tiêu dùng", "Mặc định", "Huỷ" ], // BUTTON
-            ["Đăng nhập OFFLINE", "Ghi chú tài chính", "Ghi chú thời gian", "Cài đặt", "Ghi chú tiền", "Thêm tiền", "Hũ được chọn thay thay thế là: ", "Theo ngày", "Theo tháng", "Theo năm", "Chi tiền", "Lấy tiền để thay thế" ], // TITLE
+            ["Đăng nhập OFFLINE", "Ghi chú tài chính", "Ghi chú thời gian", "Cài đặt", "Ghi chú tiền", "Thêm tiền", "Hũ mượn tiền: ", "Theo ngày", "Theo tháng", "Theo năm", "Chi tiền", "Lấy tiền để thay thế" ], // TITLE
             ["Thêm tiền", "Thống kê", "Đồng bộ", "Cài đặt", "Đăng xuất"], //TABLE_MENU
             ["Chú ý", "Cảnh báo", "Chuyển tiền", "Chọn 1 tháng"], // MESSAGE_TITLE
-            ["Email không được bỏ trống!\nVui lòng thử lại", "Email của bạn không tồn tại!\nVui lòng kiểm tra lại!", "Tất cả các hũ hiện không có tiền", "Hũ bạn chọn hiện không có tiền", "Bạn cần chọn 1 hủ để chuyển tiền sang", "Tiền chi không được rỗng", "Ghi chú chi tiền không được rỗng", "Bạn chưa chọn (các) hủ cần thêm tiền!", "Bạn chưa nhập số tiền cần thêm!","Đồng bộ thành công", "Đồng bộ thất bại", "Bạn chưa hoàn thành công việc đã chọn xong!!!", "Không có dữ liệu để vẽ biểu đồ", "Chọn 1 tháng để xem thống kê", "Chi tiết chi tiền", "Không có ghi chú" , "Ngày của tháng ", "ngày không tồn tại"   ], //MESSAGE
-            ["Tài khoản google(gmail) của bạn", "Nhập số tiền cần dùng", "Thêm ghi chú cho lần lấy tiền này", "Nhập tiền và chọn hủ"], // PLACEHOLDER
+            ["Email không được bỏ trống!\nVui lòng thử lại", "Email của bạn không tồn tại!\nVui lòng kiểm tra lại!", "Tất cả các hũ hiện không có tiền", "Hũ bạn chọn hiện không có tiền", "Bạn cần chọn 1 hủ để chuyển tiền sang", "Tiền chi không được rỗng", "Ghi chú chi tiền không được rỗng", "Bạn chưa chọn (các) hủ cần thêm tiền!", "Bạn chưa nhập số tiền cần thêm!","Đồng bộ thành công", "Đồng bộ thất bại", "Bạn chưa hoàn thành công việc đã chọn xong!!!", "Không có dữ liệu để vẽ biểu đồ", "Chọn 1 tháng để xem thống kê", "Chi tiết chi tiền", "Không có ghi chú" , "Ngày của tháng ", "ngày không tồn tại", "Không có hủ nao có đủ tiền", "Bạn nên thêm tiền vào", "Bạn nên thêm ngày sử dụng tiền"     ], //MESSAGE
+            ["Tài khoản google(gmail) của bạn", "Nhập số tiền cần dùng", "Thêm ghi chú cho lần lấy tiền này", "Nhập tiền và chọn hủ", "Ngày dùng tiền", "Nhập ngày trong tháng", "Nhập vào tháng", "Ngày bắt đầu", "Ngày kết thúc", "Nhập nội dung ghi chú" ], // PLACEHOLDER
             ["Ứng dụng dành riêng cho bạn", "Email này sẽ được dùng khi bạn đồng bộ dữ liệu lên Cloud (nếu bạn cần). Do đó, bạn nên nhập đúng email mà bạn dự định dùng trong ứng dụng này (Nên dùng tài khoản gmail)."  ], // REMINDING
             ["Tiếng Anh", "Tiếng Việt"] // LANGUAGE
         ]

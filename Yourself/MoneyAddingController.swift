@@ -168,6 +168,8 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
         self.giveView.layer.borderWidth = 1
         self.giveView.layer.borderColor = borderColor
         
+        self.moneyTextField.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.TYPE_MONEY)
+        
         keyboard = Keyboard(arrTextField: [self.moneyTextField])
         keyboard?.createDoneButton()
         

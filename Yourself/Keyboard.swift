@@ -26,7 +26,7 @@ class Keyboard {
         let toolbar = UIToolbar()
         toolbar.barStyle = UIBarStyle.default
         toolbar.sizeToFit()
-        let done = UIBarButtonItem(title: "Xong", style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneButtonAction))
+        let done = UIBarButtonItem(title: Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneButtonAction))
         toolbar.items = [done]
         
         for i in 0..<self.arrTextField.count {

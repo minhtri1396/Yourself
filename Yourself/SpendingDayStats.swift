@@ -104,6 +104,9 @@ class SpendingDayStats: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        self.doneButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), for: .normal)
+        self.dateText.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.DATE_ON_MONTH)
+        
         keyboard = Keyboard(arrTextField: [self.dateText])
         keyboard?.createDoneButton()
         

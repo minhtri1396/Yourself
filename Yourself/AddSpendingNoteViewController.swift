@@ -2,20 +2,20 @@ import UIKit
 import SCLAlertView
 import BEMCheckBox
 
-class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMCheckBoxDelegate {
+class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
     
     // MARK: *** Local variables
-    private var keyboard: Keyboard?
+    var keyboard: Keyboard?
     
-    private var moneyOfBoxIsChoosed: Double = 0
-    private var moneyOfBoxReplace: Double = 0
-    private var maxMoney: Double = 0
-    private var isShow = 0
+    var moneyOfBoxIsChoosed: Double = 0
+    var moneyOfBoxReplace: Double = 0
+    var maxMoney: Double = 0
+    var isShow = 0
     
-    private var labelMoney: UILabel? = nil
-    private var type: JARS_TYPE? = nil
-    private var typeReplace: JARS_TYPE? = nil
-    private var preCheckBox: BEMCheckBox?
+    var labelMoney: UILabel? = nil
+    var type: JARS_TYPE? = nil
+    var typeReplace: JARS_TYPE? = nil
+    var preCheckBox: BEMCheckBox?
     
     
     // MARK: *** Data model
@@ -24,6 +24,8 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var textField_GivingMoney: UITextField!
     @IBOutlet weak var textField_Notes: UITextField!
+    @IBOutlet weak var textField_Date: UITextField!
+    
     
     
     @IBOutlet weak var button_Add: UIButton!
@@ -73,10 +75,18 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
     // MARK: *** UI events
     
     @IBAction func doneButton_Tapped(_ sender: AnyObject) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        
         if (self.textField_GivingMoney.text?.characters.count)! > 0 {
             if type == nil {
-                Alert.show(type: ALERT_TYPE.ERROR, title: "", msg: "Chưa chọn hủ để lấy tiền!")
-            } else {
+                Alert.show(type: ALERT_TYPE.ERROR, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.NOT_ADD_MONEY))
+            } else if (self.textField_Date.text?.characters.count)! == 0 {
+                Alert.show(type: ALERT_TYPE.ERROR, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.NOT_ADD_DATE))
+            } else if dateFormatter.date(from: self.textField_Date.text!) == nil {
+                Alert.show(type: ALERT_TYPE.ERROR, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: self.textField_Date.text! + " " + Language.BUILDER.get(group: Group.MESSAGE, view: Message.NOT_EXIST_DAY))
+            }
+            else {
                 // cap nhat tien
                 let timestamp = Date().ticks
                 var moneyNeedReplacing = 0.0
@@ -114,23 +124,6 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
     
     @IBAction func backButton_Tapped(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        if maxMoney == 0 {
-            Alert.show(type: ALERT_TYPE.ERROR, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.ALLBOX_NOMONEY))
-            textField.resignFirstResponder()
-            return false
-        }
-        
-        if (textField.text?.characters.count)! > 0 {
-            if Double((textField.text! + string))! > maxMoney {
-                textField.text = maxMoney.clean
-            }
-        }
-        
-        return true
     }
    
     
@@ -175,11 +168,16 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
                 }
                 
                 if isGettingMoneyOfBoxIsChoosed(type: type!, checkBox: checkBox) {
-                    if Double(self.textField_GivingMoney.text!)! > moneyOfBoxIsChoosed {
+                    if Double(self.textField_GivingMoney.text!)! > maxMoney {
+                        Alert.show(type: ALERT_TYPE.ERROR, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.NOT_ENOUGH_MONEY))
+                    }
+                    
+                    else if Double(self.textField_GivingMoney.text!)! > moneyOfBoxIsChoosed {
                         show_SwapMoneyBox_ChoosingView(type: type!, money: Double(self.textField_GivingMoney.text!)!)
                     }
                 }
-            } else {
+            }
+            else {
                 Alert.show(type: ALERT_TYPE.ERROR,
                            title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.ALLBOX_NOMONEY))
                 checkBox.on = false
@@ -208,6 +206,7 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
     func non_Acction() {
         preCheckBox?.on = false
         showMoneyLabelOfBox(checkBox: preCheckBox!)
+        self.reaplaceMoney.isHidden = true
     }
     
     
@@ -279,7 +278,7 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
         
         maxMoney = getMaxMoney()
         
-        keyboard = Keyboard(arrTextField: [self.textField_Notes, self.textField_GivingMoney])
+        keyboard = Keyboard(arrTextField: [self.textField_Notes, self.textField_Date, self.textField_GivingMoney])
         keyboard?.createDoneButton()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
@@ -309,7 +308,7 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
         self.label_Title.text = Language.BUILDER.get(group: Group.TITLE, view: TitleViews.ADD_SPENDING_NOTE_TITLE)
         self.textField_GivingMoney.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.TYPE_MONEY)
         self.textField_Notes.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.TYPE_NOTE)
-        
+        self.textField_Date.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.DATE_USE_MONEY)
     }
     
     private func configBorderBox() {
@@ -406,7 +405,7 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
     private func setNilForReplaceBox() {
         typeReplace = nil
         if labelMoney != nil {
-            labelMoney?.text = String(moneyOfBoxReplace)
+            labelMoney?.text = moneyOfBoxReplace.round(numberOfDecimal: 2).clean
         }
     }
     
@@ -431,12 +430,15 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
             self.giveMoney.isHidden = false
             break;
         }
+        self.reaplaceMoney.isHidden = true
     }
     
     private func setUnCheckForPreCheckBox(checkBox: BEMCheckBox) {
         
         if preCheckBox != nil {
-            preCheckBox?.on = false
+            if preCheckBox != checkBox {
+                preCheckBox?.on = false
+            }
             showMoneyLabelOfBox(checkBox: preCheckBox!)
         }
         
@@ -456,10 +458,10 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
         }
         
         labelMoney = labelMoneyOfGettingBox
-        labelMoneyOfGettingBox.text = (moneyOfBoxReplace - moneyNeedGetting).clean
+        labelMoneyOfGettingBox.text = (moneyOfBoxReplace - moneyNeedGetting).round(numberOfDecimal: 2).clean
         
         self.reaplaceMoney.isHidden = false
-        self.reaplaceMoney.text = self.reaplaceMoney.text! + " " + nameBox + " " + labelMoneyOfGettingBox.text! + "(" + currentUnit + ")"
+        self.reaplaceMoney.text = Language.BUILDER.get(group: Group.TITLE, view: TitleViews.REPLACE) + " " + nameBox + " " + labelMoneyOfGettingBox.text! + "(" + currentUnit + ")"
     }
     
     private func show_SwapMoneyBox_ChoosingView(type: JARS_TYPE, money: Double) {
@@ -526,4 +528,40 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
         return false
     }
     
+}
+
+extension AddSpendingNoteViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if !(string == "") && Int(string) == nil {
+            return false
+        }
+        
+        if textField == self.textField_Date {
+            // check the chars length dd -->2 at the same time calculate the dd-MM --> 5
+            if (textField.text?.characters.count == 2) || (textField.text?.characters.count == 5) {
+                //Handle backspace being pressed
+                if !(string == "") {
+                    textField.text = (textField.text)! + "-" // append the text
+                }
+            }
+            // check the condition not exceed 9 chars
+            return !(textField.text!.characters.count > 9 && (string.characters.count ) > range.length)
+        } else if textField == self.textField_GivingMoney {
+            if maxMoney == 0 {
+                Alert.show(type: ALERT_TYPE.ERROR, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.ALLBOX_NOMONEY))
+                textField.resignFirstResponder()
+                return false
+            }
+            
+            if (textField.text?.characters.count)! > 0 {
+                if Double((textField.text! + string))! > maxMoney {
+                    textField.text = maxMoney.clean
+                    return false
+                }
+            }
+        }
+        
+        return true
+    }
 }

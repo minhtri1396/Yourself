@@ -74,6 +74,10 @@ class SpendingYearStats: UIViewController {
         self.moneyUnit.text = "(" + ExchangeRate.BUILDER.RateType.rawValue + ")"
         self.notificationLabel.text = Language.BUILDER.get(group: Group.MESSAGE, view: Message.NO_DATA_CHARTS)
         
+        self.doneButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), for: <#T##UIControlState#>)
+        self.startDay.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.STR_DAY)
+        self.endDay.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.END_DAY)
+        
         keyboard = Keyboard(arrTextField: [self.startDay, self.endDay])
         keyboard?.createDoneButton()
         

@@ -205,12 +205,9 @@ class SpendingMonthStats: UIViewController {
         self.givingMoneyLabel.isHidden = true
         self.replacingMoneyLabel.isHidden = true
         
+        self.doneButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), for: <#T##UIControlState#>)
         self.moneyUnitLabel.text = "(" + ExchangeRate.BUILDER.RateType.rawValue + ")"
-        
-        self.monthGivingStats.noDataFont.withSize(100.0)
-        
-        self.mongthReplacingStats.noDataFont.withSize(100.0)
-        self.mongthReplacingStats.noDataText = Language.BUILDER.get(group: Group.MESSAGE, view: Message.NO_DATA_CHARTS)
+        self.chooseMonth.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.INPUT_MONTH)
         
         let borderColor = UIColor(colorLiteralRed: 224/255, green: 224/255, blue: 224/255, alpha: 1).cgColor
         

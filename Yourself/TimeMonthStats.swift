@@ -190,6 +190,8 @@ class TimeMonthStats: UIViewController {
         self.titleLabel.text = Language.BUILDER.get(group: Group.TITLE, view: TitleViews.STATS_MONTH)
         self.notificationLabel.text = Language.BUILDER.get(group: Group.MESSAGE, view: Message.NO_DATA_CHARTS)
         self.doneButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), for: .normal)
+        self.chooseMonth.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.INPUT_MONTH)
+        self.doneButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), for: <#T##UIControlState#>)
         self.chooseMonth.delegate = self
     }
     
@@ -235,7 +237,7 @@ class TimeMonthStats: UIViewController {
         if let timeStats = DAOTimeStats.BUILDER.GetAll() as? [DTOTimeStats] {
             
             var entries: [BarChartDataEntry] = []
-            let titles = ["", "NEC", "FFA", "LTSS", "EDU"]
+            let titles = ["", "Success", "Fail", "Total time", "Total note"]
             var result = getData(month: month, timeStats: timeStats)
             
             var flag = 0
@@ -260,7 +262,7 @@ class TimeMonthStats: UIViewController {
     private func drawBarChart(entries: [BarChartDataEntry], titleEachBar: [String], barChart:  BarChartView) {
         let dataSet = BarChartDataSet(values: entries, label: "")
         dataSet.axisDependency = .right
-        dataSet.colors = [#colorLiteral(red: 0.2235294118, green: 0.2862745098, blue: 0.6705882353, alpha: 1), #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1), #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1), #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)]
+        dataSet.colors = [#colorLiteral(red: 0.2235294118, green: 0.2862745098, blue: 0.6705882353, alpha: 1), #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1), #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)]
         
         let data:BarChartData = BarChartData(dataSet: dataSet)
         barChart.data = data

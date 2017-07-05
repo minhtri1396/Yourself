@@ -161,7 +161,7 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             isTextViewEmpty = true
-            textView.text = "Nhập nội dung ghi chú"
+            textView.text = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.NOTE_CONTENT)
             textView.textColor = UIColor.lightGray
         } else {
             isTextViewEmpty = false
@@ -197,13 +197,13 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
         
         isTextViewEmpty = true
         
-        self.contentTextView.text = "Nhập nội dung ghi chú"
+        self.contentTextView.text = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.NOTE_CONTENT)
         self.contentTextView.textColor = UIColor.lightGray
         self.contentTextView.delegate = self
         
         // keyboard
         
-        keyboard = Keyboard(arrTextField: [self.startTimeTextField, self.appointmentTimeTextField])
+        keyboard = Keyboard(arrTextField: [self.startTimeTextField, self.startTimeTextField, self.appointmentTimeTextField, self.appointmentDateTextField])
         keyboard?.createDoneButton()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
@@ -215,7 +215,6 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
         self.contentTextView.layer.borderColor = borderColor
         
         setGestureRecognizers()
-        
         tagMasks = [false, false, false, false, false, false, false]
     }
     

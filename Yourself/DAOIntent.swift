@@ -40,6 +40,12 @@ class DAOIntent: DAOSuper {
     }
     
     func Delete(timestamp: Int64) -> Bool {
-        return super.Delete(withWhere: "timestamp=\(timestamp)", id: "\(timestamp)")
+        let intents = GetAll(withWhere: "timestamp=\(timestamp)") as! [DTOIntent]
+        
+        for intent in intents {
+            _ = super.Delete(withWhere: "timestamp=\(timestamp)", id: "\(timestamp)_\(intent.type.rawValue)")
+        }
+        
+        return true
     }
 }

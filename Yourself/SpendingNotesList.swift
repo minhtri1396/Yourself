@@ -2,6 +2,7 @@ import UIKit
 
 class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableViewDelegate, UITableViewDataSource {
     // MARK: *** Local variables
+    @IBOutlet weak var emptyLabel: UILabel!
     private var selectedCellIndexPath: IndexPath?
     private let selectedCellHeight: CGFloat = 276
     private let unselectedCellHeight: CGFloat = 41.0
@@ -52,6 +53,8 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.emptyLabel.isHidden = intents.count > 0
+        self.expenseNotesList.isHidden = intents.count == 0
         return intents.count
     }
     
@@ -112,6 +115,7 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
     @objc private func deleteCellButtonTapped(sender: UIButton) {
         if intents.count > 0 {
             _ = DAOIntent.BUILDER.Delete(timestamp: intents[sender.tag].timestamp)
+            _ = DAOAlternatives.BUILDER.Delete(timestamp: intents[sender.tag].timestamp)
             let curMoney = DAOJars.BUILDER.GetJARS(with: intents[sender.tag].type).money
             _ = DAOJars.BUILDER.UpdateMoney(type: intents[sender.tag].type, money: curMoney + intents[sender.tag].money)
             self.intents.remove(at: sender.tag)

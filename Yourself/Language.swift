@@ -10,7 +10,7 @@ class LangTitles: ViewEnum {
 }
 
 enum Group: Int {
-    case OPTIONS = 0, BUTTON, TITLE, TABLE_MENU, MESSAGE_TITLE, MESSAGE, PLACEHOLDER, REMINDING, LANGUAGE
+    case OPTIONS = 0, BUTTON, TITLE, TABLE_MENU, MESSAGE_TITLE, MESSAGE, PLACEHOLDER, REMINDING, LANGUAGE, TIME_TAG
 }
 
 class ViewEnum {
@@ -87,36 +87,46 @@ class MessageTitle: ViewEnum {
 }
 
 class Message: ViewEnum {
-    public static let EMPTY_EMAIL = MessageTitle(id: 0)
-    public static let INVALID_EMAIL = MessageTitle(id: 1)
-    public static let ALLBOX_NOMONEY = MessageTitle(id: 2)
-    public static let BOXCHOOED_NOMONEY = MessageTitle(id: 3)
-    public static let CHOOSEBOX_SWAPMONEY = MessageTitle(id: 4)
-    public static let GIVINGMONEY_EMPTY = MessageTitle(id: 5)
-    public static let NOTEGIVINGMONEY_EMPTY = MessageTitle(id: 6)
-    public static let CHOOSE_JAR = MessageTitle(id: 7)
-    public static let SET_MONEY = MessageTitle(id: 8)
-    public static let SYNC_SUCCESS = MessageTitle(id: 9)
-    public static let SYNC_FAIL = MessageTitle(id: 10)
-    public static let NOT_DONE = MessageTitle(id: 11)
-    public static let NO_DATA_CHARTS = MessageTitle(id: 12)
-    public static let MONTH_STATS = MessageTitle(id: 13)
-    public static let GIVING_DETAIL = MessageTitle(id: 14)
-    public static let NO_NOTE = MessageTitle(id: 15)
-    public static let COUNT_DAY = MessageTitle(id: 16)
-    public static let NOT_EXIST_DAY = MessageTitle(id: 17)
+    public static let EMPTY_EMAIL = Message(id: 0)
+    public static let INVALID_EMAIL = Message(id: 1)
+    public static let ALLBOX_NOMONEY = Message(id: 2)
+    public static let BOXCHOOED_NOMONEY = Message(id: 3)
+    public static let CHOOSEBOX_SWAPMONEY = Message(id: 4)
+    public static let GIVINGMONEY_EMPTY = Message(id: 5)
+    public static let NOTEGIVINGMONEY_EMPTY = Message(id: 6)
+    public static let CHOOSE_JAR = Message(id: 7)
+    public static let SET_MONEY = Message(id: 8)
+    public static let SYNC_SUCCESS = Message(id: 9)
+    public static let SYNC_FAIL = Message(id: 10)
+    public static let NOT_DONE = Message(id: 11)
+    public static let NO_DATA_CHARTS = Message(id: 12)
+    public static let MONTH_STATS = Message(id: 13)
+    public static let GIVING_DETAIL = Message(id: 14)
+    public static let NO_NOTE = Message(id: 15)
+    public static let COUNT_DAY = Message(id: 16)
+    public static let NOT_EXIST_DAY = Message(id: 17)
 }
 
 class PlaceholderViews: ViewEnum {
-    public static let GMAIL_LOGIN_OFFLINE = MessageTitle(id: 0)
-    public static let TYPE_MONEY = MessageTitle(id: 1)
-    public static let TYPE_NOTE = MessageTitle(id: 2)
-    public static let TYPE_MONEY_JARS = MessageTitle(id: 3)
+    public static let GMAIL_LOGIN_OFFLINE = PlaceholderViews(id: 0)
+    public static let TYPE_MONEY = PlaceholderViews(id: 1)
+    public static let TYPE_NOTE = PlaceholderViews(id: 2)
+    public static let TYPE_MONEY_JARS = PlaceholderViews(id: 3)
 }
 
 class RemindingViews: ViewEnum {
-    public static let LOGIN = MessageTitle(id: 0)
-    public static let GMAIL_LOGIN_OFFLINE = MessageTitle(id: 1)
+    public static let LOGIN = RemindingViews(id: 0)
+    public static let GMAIL_LOGIN_OFFLINE = RemindingViews(id: 1)
+}
+
+class TimeTags: ViewEnum {
+    public static let FAMILY = TimeTags(id: TAG.FAMILY.rawValue)
+    public static let PERSONAL = TimeTags(id: TAG.PERSONAL.rawValue)
+    public static let FRIEND = TimeTags(id: TAG.FRIEND.rawValue)
+    public static let STUDY = TimeTags(id: TAG.STUDY.rawValue)
+    public static let WORK = TimeTags(id: TAG.WORK.rawValue)
+    public static let LOVE = TimeTags(id: TAG.LOVE.rawValue)
+    public static let RELAX = TimeTags(id: TAG.RELAX.rawValue)
 }
 
 class Language {
@@ -131,7 +141,8 @@ class Language {
             ["Email is not allowned empty!\nPlease try again!", "Your email is invalid!\nPlease check again!", "Your all box is no money", "Box which is choosed is no money", "Choose one box to swap money", "Giving money is not allow to empty", "Note for giving money is not allow to empty", "You must choose jar(s) which you want to set money for!", "You must set money before continuing!", "Sync completed!", "Sync failed!", "You don't complete your job!!!", "No data available to darw chart", "Choose month to show statistic", "Giving money details", "No note", "Day of ", "is not exist"], // MESSAGE
             ["Your google account(gmail)", "Type money which needs using", "Type note", "Type money to add to jar(s)"], // PLACEHOLDER
             ["Application exclusively for you", "This email will be used when you sync your data to Cloud (If you needed it). So, you should enter the correct email you intend to use in this app (it should be gmail account)." ], // REMINDING
-            ["English", "Vietnamese"] // LANGUAGE
+            ["English", "Vietnamese"], // LANGUAGE
+            ["Family", "Personal", "Friend", "Study", "Work", "Love", "Relax"] // TIME_TAG
         ],
         [
             ["Thống kê", "Thiết lập"], // OPTIONS
@@ -142,7 +153,8 @@ class Language {
             ["Email không được bỏ trống!\nVui lòng thử lại", "Email của bạn không tồn tại!\nVui lòng kiểm tra lại!", "Tất cả các hũ hiện không có tiền", "Hũ bạn chọn hiện không có tiền", "Bạn cần chọn 1 hủ để chuyển tiền sang", "Tiền chi không được rỗng", "Ghi chú chi tiền không được rỗng", "Bạn chưa chọn (các) hủ cần thêm tiền!", "Bạn chưa nhập số tiền cần thêm!","Đồng bộ thành công", "Đồng bộ thất bại", "Bạn chưa hoàn thành công việc đã chọn xong!!!", "Không có dữ liệu để vẽ biểu đồ", "Chọn 1 tháng để xem thống kê", "Chi tiết chi tiền", "Không có ghi chú" , "Ngày của tháng ", "ngày không tồn tại"   ], //MESSAGE
             ["Tài khoản google(gmail) của bạn", "Nhập số tiền cần dùng", "Thêm ghi chú cho lần lấy tiền này", "Nhập tiền và chọn hủ"], // PLACEHOLDER
             ["Ứng dụng dành riêng cho bạn", "Email này sẽ được dùng khi bạn đồng bộ dữ liệu lên Cloud (nếu bạn cần). Do đó, bạn nên nhập đúng email mà bạn dự định dùng trong ứng dụng này (Nên dùng tài khoản gmail)."  ], // REMINDING
-            ["Tiếng Anh", "Tiếng Việt"] // LANGUAGE
+            ["Tiếng Anh", "Tiếng Việt"], // LANGUAGE
+            ["Gia đình", "Cá nhân", "Bạn bè", "Học tập", "Công việc", "Tình cảm", "Giải trí"] // TIME_TAG
         ]
     ]
     

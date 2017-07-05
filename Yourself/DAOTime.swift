@@ -48,6 +48,14 @@ class DAOTime: DAOSuper {
         )
     }
     
+    func GetAll(hasStates: [TAG_STATE]) -> [DTOTime] {
+        var condition = "state=\(hasStates[0].rawValue)"
+        for iState in 1..<hasStates.count {
+            condition += " OR state=\(hasStates[iState].rawValue)"
+        }
+        return super.GetAll(withWhere: condition) as! [DTOTime]
+    }
+    
     override func Add(_ value: Any) -> Bool {
         let time = value as! DTOTime
         let query = "INSERT INTO \(self.GetName())_\(DAOSuper.userID) (id, content, startTime, appointment, finishTime, state, tag) VALUES (\(time.id), '\(time.content)', \(time.startTime), \(time.appointment), \(time.finishTime), \(time.state.rawValue), \(time.tag));"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rHB-im-4Nd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rHB-im-4Nd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -146,7 +146,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List is empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5A6-7V-PZf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List is empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5A6-7V-PZf">
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1479,7 +1479,6 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1-12-2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PIL-jX-V0s">
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="80" id="3LG-0z-zT8"/>
                                                                 <constraint firstAttribute="height" constant="22" id="Lss-MR-qLH"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1489,13 +1488,15 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31-12-2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ryG-hu-RuH">
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="22" id="25M-FC-fIb"/>
-                                                                <constraint firstAttribute="width" constant="80" id="gnL-Zz-Dav"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="đến" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jbL-Oc-aWY">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jbL-Oc-aWY">
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="28" id="6R3-bh-m4T"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -1508,8 +1509,10 @@
                                                         <constraint firstItem="ryG-hu-RuH" firstAttribute="centerY" secondItem="rRk-sd-pUd" secondAttribute="centerY" id="4Rw-kj-zmE"/>
                                                         <constraint firstAttribute="trailing" secondItem="ryG-hu-RuH" secondAttribute="trailing" constant="8" id="BjD-ev-kib"/>
                                                         <constraint firstItem="PIL-jX-V0s" firstAttribute="centerY" secondItem="rRk-sd-pUd" secondAttribute="centerY" id="EQp-tU-CH9"/>
+                                                        <constraint firstItem="jbL-Oc-aWY" firstAttribute="leading" secondItem="PIL-jX-V0s" secondAttribute="trailing" constant="8" id="IOX-Pe-ZTR"/>
                                                         <constraint firstItem="jbL-Oc-aWY" firstAttribute="centerY" secondItem="rRk-sd-pUd" secondAttribute="centerY" id="QQg-wb-WzS"/>
                                                         <constraint firstItem="jbL-Oc-aWY" firstAttribute="centerX" secondItem="rRk-sd-pUd" secondAttribute="centerX" id="RSM-se-7ud"/>
+                                                        <constraint firstItem="ryG-hu-RuH" firstAttribute="leading" secondItem="jbL-Oc-aWY" secondAttribute="trailing" constant="8" id="iqs-Q5-iC5"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SXc-4m-FND">
@@ -1587,10 +1590,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List is empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9Rj-5J-aVZ">
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="uiH-Zw-egf" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="KaT-g4-bN3"/>
+                            <constraint firstItem="9Rj-5J-aVZ" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Lvs-Iw-VVe"/>
+                            <constraint firstItem="9Rj-5J-aVZ" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="-25" id="PXY-hs-cJc"/>
                             <constraint firstAttribute="bottom" secondItem="uiH-Zw-egf" secondAttribute="bottom" id="b3P-RH-ZUt"/>
                             <constraint firstAttribute="trailing" secondItem="uiH-Zw-egf" secondAttribute="trailing" id="jHs-rQ-WDk"/>
                             <constraint firstItem="uiH-Zw-egf" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="uh7-TP-8x5"/>
@@ -1604,6 +1614,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emptyLabel" destination="9Rj-5J-aVZ" id="31j-fB-yXX"/>
                         <outlet property="navBar" destination="KVg-SE-Jmz" id="yEF-Ky-hc8"/>
                         <outlet property="timeNotesList" destination="uiH-Zw-egf" id="Lnp-tj-g8X"/>
                     </connections>
@@ -3138,7 +3149,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cD-XZ-nCO">
                                                 <subviews>
@@ -3326,7 +3337,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

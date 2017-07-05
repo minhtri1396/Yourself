@@ -83,7 +83,7 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
             let alts = DAOAlternatives.BUILDER.GetAlternative(with: intent.timestamp, ownerType: intent.type)
             if alts.count > 0 {
                 var str = "[" + alts[0].alts.rawValue + ": " + ExchangeRate.BUILDER.transfer(price: alts[0].money).clean
-                for iAlt in 0..<alts.count {
+                for iAlt in 1..<alts.count {
                     str += ", " + alts[iAlt].alts.rawValue + ": " + ExchangeRate.BUILDER.transfer(price: alts[iAlt].money).clean
                 }
                 str += "]"
@@ -109,7 +109,6 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
             self.intents.remove(at: sender.tag)
             self.expenseNotesList.reloadData()
         }
-        
     }
     
     @objc private func deleteCellButtonTapped(sender: UIButton) {
@@ -121,7 +120,6 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
             self.intents.remove(at: sender.tag)
             self.expenseNotesList.reloadData()
         }
-        
     }
     
     

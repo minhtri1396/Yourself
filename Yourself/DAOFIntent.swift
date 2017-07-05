@@ -11,6 +11,7 @@ class DAOFIntent: DAOFSuper {
         ref.child("type").setValue(intent.type.rawValue)
         ref.child("content").setValue(intent.content)
         ref.child("money").setValue(intent.money)
+        ref.child("state").setValue(intent.state.rawValue)
         
         super.SetTimestamp(timestamp: Date().ticks)
     }
@@ -21,7 +22,8 @@ class DAOFIntent: DAOFSuper {
             timestamp: Int64(id)!,
             type: JARS_TYPE(rawValue: values["type"] as! String)!,
             content: values["content"] as! String,
-            money: values["money"] as! Double
+            money: values["money"] as! Double,
+            state: INTENT_STATE(rawValue: values["state"] as! Int)!
         )
     }
 }

@@ -6,7 +6,7 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
     private let selectedCellHeight: CGFloat = 276
     private let unselectedCellHeight: CGFloat = 41.0
     private var isFirstTime = true
-    private var intents: [DTOIntent]?
+    private var intents: [DTOIntent]!
     
     // MARK: *** Data model
     @IBOutlet weak var navBar: UINavigationItem!
@@ -52,10 +52,7 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let intents = intents {
-            return intents.count
-        }
-        return 0
+        return intents.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,25 +65,56 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
         cell.bodyView.layer.borderWidth = 1
         cell.bodyView.layer.borderColor = borderColor
         
-        if let intents = intents {
+        if intents.count > 0 {
             let intent = intents[indexPath.row]
-            cell.dateLabel.text = Date.convertTimestampToDateString(timeStamp: intent.timestamp)
+            cell.dateLabel.text = Date.convertTimestampToDateString(timeStamp: intent.timestamp / 10)
             cell.ownedJarLabel.text = intent.type.rawValue
-            cell.noteTextView.text = intent.content
-            cell.moneyLabel.text = ExchangeRate.BUILDER.transfer(price: intent.money).clean
+            if intent.content.isEmpty {
+                cell.noteTextView.text = "Không có ghi chú"
+                cell.noteTextView.textColor = UIColor.lightGray
+            } else {
+                cell.noteTextView.text = intent.content
+            }
+            cell.moneyLabel.text = ExchangeRate.BUILDER.transfer(price: intent.money).clean + " " + ExchangeRate.BUILDER.RateType.rawValue
             
+            let alts = DAOAlternatives.BUILDER.GetAlternative(with: intent.timestamp, ownerType: intent.type)
+            if alts.count > 0 {
+                var str = "[" + alts[0].alts.rawValue + ": " + ExchangeRate.BUILDER.transfer(price: alts[0].money).clean
+                for iAlt in 0..<alts.count {
+                    str += ", " + alts[iAlt].alts.rawValue + ": " + ExchangeRate.BUILDER.transfer(price: alts[iAlt].money).clean
+                }
+                str += "]"
+                cell.altJarLabel.text = str
+            } else {
+                cell.altJarLabel.text = ""
+            }
+            // Set delete button for the cell
             cell.deleteButton.tag = indexPath.row
             cell.deleteButton.addTarget(self, action: #selector(deleteCellButtonTapped(sender:)), for: .touchUpInside)
+            // Set done button for the cell
+            cell.confirmButton.tag = indexPath.row
+            cell.confirmButton.addTarget(self, action: #selector(doneCellButtonTapped(sender:)), for: .touchUpInside)
         }
         
         return cell
     }
     
+    @objc private func doneCellButtonTapped(sender: UIButton) {
+        if intents.count > 0 {
+            intents[sender.tag].state = .DONE
+            _ = DAOIntent.BUILDER.Update(intent: intents[sender.tag])
+            self.intents.remove(at: sender.tag)
+            self.expenseNotesList.reloadData()
+        }
+        
+    }
+    
     @objc private func deleteCellButtonTapped(sender: UIButton) {
-        if let intents = intents {
+        if intents.count > 0 {
             _ = DAOIntent.BUILDER.Delete(timestamp: intents[sender.tag].timestamp)
-            _ = DAOJars.BUILDER.UpdateMoney(type: intents[sender.tag].type, money: intents[sender.tag].money)
-            self.intents?.remove(at: sender.tag)
+            let curMoney = DAOJars.BUILDER.GetJARS(with: intents[sender.tag].type).money
+            _ = DAOJars.BUILDER.UpdateMoney(type: intents[sender.tag].type, money: curMoney + intents[sender.tag].money)
+            self.intents.remove(at: sender.tag)
             self.expenseNotesList.reloadData()
         }
         
@@ -134,7 +162,7 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
         
         
         super.addSlideMenuButton()
-        intents = DAOIntent.BUILDER.GetAll() as? [DTOIntent]
+        intents = DAOIntent.BUILDER.GetAll(hasState: .NOT_YET)
         self.expenseNotesList.reloadData()
     }
    

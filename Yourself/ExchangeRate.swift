@@ -60,4 +60,8 @@ class ExchangeRate {
     func transfer(price: Double) -> Double {
         return (rate! * price).round(numberOfDecimal: 2)
     }
+    
+    func calcMoneyForDB(money: Double) -> Double {
+        return money / ExchangeRate.BUILDER.Rate
+    }
 }

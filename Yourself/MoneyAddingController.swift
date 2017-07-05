@@ -266,7 +266,9 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
         
         var moneys = [Double]()
         var moneySum: Double = 0
-        let money = (Double(moneyTextField.text!)! / ExchangeRate.BUILDER.Rate)
+        
+        let money =  ExchangeRate.BUILDER.calcMoneyForDB(money: Double(moneyTextField.text!)!)
+        
         var jars: DTOJars
         for type in jarsTypes {
             jars = DAOJars.BUILDER.GetJARS(with: type)

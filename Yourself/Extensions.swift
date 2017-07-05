@@ -29,6 +29,16 @@ extension Double {
     var clean: String {
         return self.remainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
     }
+    
+//    var formattedWithSeparator: String {
+//        let decimal = self.round(numberOfDecimal: 0) as! Int
+//        var res = decimal.formattedWithSeparator
+//        
+//        var numAsStr = self.clean
+//        
+//        return res
+//    }
+    
     func round(numberOfDecimal: Int) -> Double {
         let multiplier = pow(10.0, Double(numberOfDecimal))
         var cloned = self
@@ -38,3 +48,18 @@ extension Double {
         return cloned
     }
 }
+
+//extension Formatter {
+//    static let withSeparator: NumberFormatter = {
+//        let formatter = NumberFormatter()
+//        formatter.groupingSeparator = ","
+//        formatter.numberStyle = .decimal
+//        return formatter
+//    }()
+//}
+//
+//extension Integer {
+//    var formattedWithSeparator: String {
+//        return Formatter.withSeparator.string(for: self) ?? ""
+//    }
+//}

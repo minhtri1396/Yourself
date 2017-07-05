@@ -8,6 +8,7 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableView
     private var isFirstTime = true
     
     // MARK: *** Data model
+    @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var timeNotesList: UITableView!
     
     // MARK: *** Function
@@ -73,6 +74,8 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableView
         
         timeNotesList.delegate = self
         timeNotesList.dataSource = self
+        
+        navBar.title = "NOTES LIST"
     }
     
     override func viewWillAppear(_ animated: Bool) {

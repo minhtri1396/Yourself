@@ -717,7 +717,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="PhY-tH-iQz"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -738,7 +738,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="7kN-p4-ubT"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -752,7 +752,7 @@
                                     <constraint firstAttribute="trailing" secondItem="JfZ-oO-q0y" secondAttribute="trailing" constant="8" id="Sm1-c2-4zb"/>
                                     <constraint firstItem="L0F-ve-g9y" firstAttribute="leading" secondItem="kh0-M3-PEv" secondAttribute="leading" id="Tla-sZ-u9f"/>
                                     <constraint firstItem="kh0-M3-PEv" firstAttribute="leading" secondItem="sAx-id-dQk" secondAttribute="trailing" constant="16" id="UyX-2S-07f"/>
-                                    <constraint firstItem="JfZ-oO-q0y" firstAttribute="leading" secondItem="kh0-M3-PEv" secondAttribute="trailing" constant="16" id="ZyP-1k-wk1"/>
+                                    <constraint firstItem="JfZ-oO-q0y" firstAttribute="leading" secondItem="kh0-M3-PEv" secondAttribute="trailing" constant="18" id="ZyP-1k-wk1"/>
                                     <constraint firstItem="sAx-id-dQk" firstAttribute="leading" secondItem="jxm-Wu-Rfc" secondAttribute="leading" constant="10" id="oSy-7r-0Cx"/>
                                     <constraint firstItem="L0F-ve-g9y" firstAttribute="centerY" secondItem="jxm-Wu-Rfc" secondAttribute="centerY" constant="15" id="sDA-NZ-z0u"/>
                                     <constraint firstAttribute="height" constant="70" id="yHP-ri-Hxy"/>
@@ -1192,6 +1192,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="navBar" destination="KVg-SE-Jmz" id="yEF-Ky-hc8"/>
                         <outlet property="timeNotesList" destination="uiH-Zw-egf" id="Lnp-tj-g8X"/>
                     </connections>
                 </viewController>
@@ -3902,10 +3903,10 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4v3-rs-gEe">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="B7K-YN-KE7"/>
+                                            <constraint firstAttribute="width" constant="82" id="B7K-YN-KE7"/>
                                             <constraint firstAttribute="height" constant="30" id="oNP-kT-VeM"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Quay lại">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -3926,7 +3927,7 @@
                                             <constraint firstAttribute="height" constant="30" id="pxr-oI-zmT"/>
                                             <constraint firstAttribute="width" constant="60" id="y5a-xK-nk4"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <state key="normal" title="Thêm">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -3946,16 +3947,16 @@
                                 <color key="backgroundColor" red="0.22352941179999999" green="0.28627450980000002" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="njC-c3-i1N" firstAttribute="leading" secondItem="HiB-0I-Fil" secondAttribute="trailing" constant="16" id="3zJ-ME-8Md"/>
-                                    <constraint firstItem="HiB-0I-Fil" firstAttribute="centerY" secondItem="3C0-5s-D7w" secondAttribute="centerY" id="O9B-6w-zgT"/>
-                                    <constraint firstItem="4v3-rs-gEe" firstAttribute="leading" secondItem="3C0-5s-D7w" secondAttribute="leading" constant="16" id="P5i-YD-gvd"/>
-                                    <constraint firstAttribute="trailing" secondItem="1He-NT-TMp" secondAttribute="trailing" constant="132" id="QVO-yN-KHU"/>
+                                    <constraint firstItem="HiB-0I-Fil" firstAttribute="centerY" secondItem="3C0-5s-D7w" secondAttribute="centerY" constant="-7" id="O9B-6w-zgT"/>
+                                    <constraint firstItem="4v3-rs-gEe" firstAttribute="leading" secondItem="3C0-5s-D7w" secondAttribute="leading" constant="10" id="P5i-YD-gvd"/>
                                     <constraint firstItem="HiB-0I-Fil" firstAttribute="leading" secondItem="4v3-rs-gEe" secondAttribute="trailing" constant="16" id="UWP-qq-sBc"/>
-                                    <constraint firstItem="1He-NT-TMp" firstAttribute="leading" secondItem="3C0-5s-D7w" secondAttribute="leading" constant="132" id="Wff-pb-1TY"/>
                                     <constraint firstAttribute="height" constant="70" id="Xm0-BL-htA"/>
                                     <constraint firstItem="1He-NT-TMp" firstAttribute="top" secondItem="HiB-0I-Fil" secondAttribute="bottom" constant="3" id="ccO-fn-BE2"/>
                                     <constraint firstItem="4v3-rs-gEe" firstAttribute="centerY" secondItem="3C0-5s-D7w" secondAttribute="centerY" id="fbE-cA-CVB"/>
-                                    <constraint firstAttribute="trailing" secondItem="njC-c3-i1N" secondAttribute="trailing" constant="16" id="oEi-j5-JsA"/>
+                                    <constraint firstAttribute="trailing" secondItem="njC-c3-i1N" secondAttribute="trailing" constant="8" id="oEi-j5-JsA"/>
                                     <constraint firstItem="njC-c3-i1N" firstAttribute="centerY" secondItem="3C0-5s-D7w" secondAttribute="centerY" id="oa7-gO-jls"/>
+                                    <constraint firstItem="1He-NT-TMp" firstAttribute="trailing" secondItem="HiB-0I-Fil" secondAttribute="trailing" id="pec-zi-K0c"/>
+                                    <constraint firstItem="1He-NT-TMp" firstAttribute="leading" secondItem="HiB-0I-Fil" secondAttribute="leading" id="q2i-HV-6Jg"/>
                                 </constraints>
                             </view>
                         </subviews>

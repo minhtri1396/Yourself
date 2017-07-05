@@ -216,6 +216,8 @@ class SpendingMonthStats: UIViewController {
         self.chooseMonthView.layer.cornerRadius = 10
         self.chooseMonthView.layer.masksToBounds = true
         
+        self.mongthReplacingStats.noDataText = ""
+        
         self.chooseMonth.delegate = self
         self.doneButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), for: .normal)
         
@@ -261,7 +263,7 @@ class SpendingMonthStats: UIViewController {
             let date = Date(timeIntervalSince1970: TimeInterval(intent[i].timestamp / 10))
             
             if intent[i].type == type && Date.getMonth(date: date) == month {
-                totalMoney = totalMoney + intent[i].money
+                totalMoney = ExchangeRate.BUILDER.transfer(price: totalMoney + intent[i].money)
             }
         }
         

@@ -9,11 +9,17 @@ class Keyboard {
     //MARK **** Property
     
     var arrTextField = [UITextField]()
+    var arrTextView = [UITextView]()
     
     //MARK ***** Contructors ./.
     
     init(arrTextField: [UITextField]) {
         self.arrTextField = arrTextField
+    }
+    
+    init(arrTextField: [UITextField], arrTextView: [UITextView]) {
+        self.arrTextField = arrTextField
+        self.arrTextView = arrTextView
     }
     
     convenience init() {
@@ -32,6 +38,10 @@ class Keyboard {
         for i in 0..<self.arrTextField.count {
             self.arrTextField[i].inputAccessoryView = toolbar
         }
+        
+        for i in 0..<self.arrTextView.count {
+            self.arrTextView[i].inputAccessoryView = toolbar
+        }
     }
     
     func catchEventOfKeyboard(isScroll: Bool, notification: Notification)->CGPoint? {
@@ -49,6 +59,10 @@ class Keyboard {
     @objc private func doneButtonAction() {
         for i in 0..<self.arrTextField.count {
             self.arrTextField[i].resignFirstResponder()
+        }
+        
+        for i in 0..<self.arrTextView.count {
+            self.arrTextView[i].resignFirstResponder()
         }
     }
     

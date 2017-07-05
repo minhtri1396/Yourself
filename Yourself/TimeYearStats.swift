@@ -70,6 +70,7 @@ class TimeYearStats: UIViewController {
         self.doneButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), for: .normal)
         self.startDay.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.STR_DAY)
         self.endDay.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.END_DAY)
+        self.yearTimeStats.noDataText = ""
         
         keyboard = Keyboard(arrTextField: [self.startDay, self.endDay])
         keyboard?.createDoneButton()

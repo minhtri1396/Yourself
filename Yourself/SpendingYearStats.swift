@@ -78,6 +78,8 @@ class SpendingYearStats: UIViewController {
         self.startDay.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.STR_DAY)
         self.endDay.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.END_DAY)
         
+        self.yearGivingStats.noDataText = ""
+        
         keyboard = Keyboard(arrTextField: [self.startDay, self.endDay])
         keyboard?.createDoneButton()
         
@@ -114,7 +116,7 @@ class SpendingYearStats: UIViewController {
         
         for i in 0..<intent.count {
             if intent[i].type == type && intent[i].type == type && intent[i].timestamp >= fromTime! && intent[i].timestamp <= toTime! {
-                totalMoney = totalMoney + intent[i].money
+                totalMoney = ExchangeRate.BUILDER.transfer(price: totalMoney + intent[i].money)
             }
         }
         

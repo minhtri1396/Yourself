@@ -80,7 +80,7 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
         
         if (self.textField_GivingMoney.text?.characters.count)! > 0 {
             if type == nil {
-                Alert.show(type: ALERT_TYPE.ERROR, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.NOT_ADD_MONEY))
+                Alert.show(type: ALERT_TYPE.ERROR, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.NOT_CHOOSE_BOX))
             } else if (self.textField_Date.text?.characters.count)! == 0 {
                 Alert.show(type: ALERT_TYPE.ERROR, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.NOT_ADD_DATE))
             } else if dateFormatter.date(from: self.textField_Date.text!) == nil {
@@ -152,7 +152,7 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
         
         if (checkBox.on) {
             
-            setUnCheckForPreCheckBox(checkBox: checkBox)
+            setUnCheckForPreCheckBox(checkBox: checkBox, isHiden: false)
             setNilForReplaceBox()
             
             if maxMoney != 0 {
@@ -452,10 +452,10 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
         self.reaplaceMoney.isHidden = true
     }
     
-    private func setUnCheckForPreCheckBox(checkBox: BEMCheckBox) {
+    private func setUnCheckForPreCheckBox(checkBox: BEMCheckBox, isHiden: Bool) {
         
         if preCheckBox != nil {
-            if preCheckBox != checkBox {
+            if preCheckBox != checkBox || isHiden == true {
                 preCheckBox?.on = false
             }
             showMoneyLabelOfBox(checkBox: preCheckBox!)
@@ -542,7 +542,7 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
         
         Alert.show(type: ALERT_TYPE.ERROR, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.BOXCHOOED_NOMONEY))
         
-        setUnCheckForPreCheckBox(checkBox: checkBox)
+        setUnCheckForPreCheckBox(checkBox: checkBox, isHiden: true)
         
         return false
     }

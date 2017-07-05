@@ -170,6 +170,10 @@ class MoneyAddingController: UIViewController, BEMCheckBoxDelegate {
         
         self.moneyTextField.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.TYPE_MONEY)
         
+        self.titleLabel.text = Language.BUILDER.get(group: Group.TITLE, view: TitleViews.MONEY_ADDING_TITLE)
+        self.backButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.BACK_BUTTON), for: .normal)
+        self.doneButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), for: .normal)
+        
         keyboard = Keyboard(arrTextField: [self.moneyTextField])
         keyboard?.createDoneButton()
         

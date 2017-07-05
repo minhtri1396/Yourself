@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rHB-im-4Nd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rHB-im-4Nd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -1322,7 +1322,7 @@
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chi tiết chi tiền" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIy-iv-kWl">
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="Z9U-o3-cZ6"/>
+                                                    <constraint firstAttribute="height" constant="21" id="Cbu-Jt-NgY"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                 <color key="textColor" red="0.22352941179999999" green="0.28627450980000002" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1330,27 +1330,18 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nhập ngày trong tháng" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BAB-rD-kcP">
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="vCl-Rv-RaT"/>
+                                                    <constraint firstAttribute="width" constant="240" id="VIe-9g-HGo"/>
+                                                    <constraint firstAttribute="height" constant="30" id="ugg-Ye-S7V"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViE-J6-PgF">
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="kvO-zw-vqH"/>
-                                                    <constraint firstAttribute="width" constant="46" id="ojI-k1-mRh"/>
-                                                </constraints>
-                                                <state key="normal" title="Xong"/>
-                                                <connections>
-                                                    <action selector="doneButton_Tapped:" destination="n4U-I9-6fo" eventType="touchUpInside" id="oSY-9f-sCn"/>
-                                                </connections>
-                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fT-nc-xeP" customClass="BarChartView" customModule="Charts">
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="AWh-FS-zGg">
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="8Ob-bJ-Nr2"/>
+                                                            <constraint firstAttribute="height" constant="44" id="e70-Ck-f79"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <nil key="textColor"/>
@@ -1359,31 +1350,40 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="AWh-FS-zGg" firstAttribute="top" secondItem="4fT-nc-xeP" secondAttribute="top" constant="66" id="LvS-hY-BOv"/>
-                                                    <constraint firstAttribute="height" constant="226" id="pal-ZL-JwO"/>
-                                                    <constraint firstItem="AWh-FS-zGg" firstAttribute="leading" secondItem="4fT-nc-xeP" secondAttribute="leading" constant="25" id="rUQ-6e-q6b"/>
-                                                    <constraint firstAttribute="trailing" secondItem="AWh-FS-zGg" secondAttribute="trailing" constant="26" id="w0K-LA-5YT"/>
+                                                    <constraint firstAttribute="trailing" secondItem="AWh-FS-zGg" secondAttribute="trailing" constant="26" id="7Si-3F-74b"/>
+                                                    <constraint firstItem="AWh-FS-zGg" firstAttribute="leading" secondItem="4fT-nc-xeP" secondAttribute="leading" constant="25" id="90R-kz-vyB"/>
+                                                    <constraint firstItem="AWh-FS-zGg" firstAttribute="top" secondItem="4fT-nc-xeP" secondAttribute="top" constant="66" id="OAA-PE-xmt"/>
+                                                    <constraint firstAttribute="height" constant="226" id="z4o-Lr-zZP"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViE-J6-PgF">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="k9N-dn-GbZ"/>
+                                                    <constraint firstAttribute="width" constant="46" id="sz1-Mn-64a"/>
+                                                </constraints>
+                                                <state key="normal" title="Xong"/>
+                                                <connections>
+                                                    <action selector="doneButton_Tapped:" destination="n4U-I9-6fo" eventType="touchUpInside" id="oSY-9f-sCn"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="SIy-iv-kWl" firstAttribute="leading" secondItem="g1s-jh-633" secondAttribute="leading" constant="8" id="0Qg-Dr-Oca"/>
-                                            <constraint firstItem="BAB-rD-kcP" firstAttribute="leading" secondItem="g1s-jh-633" secondAttribute="leading" constant="94" id="6or-cc-ZQt"/>
-                                            <constraint firstAttribute="trailing" secondItem="BAB-rD-kcP" secondAttribute="trailing" constant="95" id="ALp-lb-AfQ"/>
-                                            <constraint firstItem="ViE-J6-PgF" firstAttribute="leading" secondItem="BAB-rD-kcP" secondAttribute="trailing" constant="21" id="E2r-LC-fPZ"/>
-                                            <constraint firstItem="7E5-CN-vS9" firstAttribute="top" secondItem="SIy-iv-kWl" secondAttribute="bottom" constant="29" id="NY5-yh-HfC"/>
-                                            <constraint firstAttribute="trailing" secondItem="SIy-iv-kWl" secondAttribute="trailing" constant="135" id="VfK-P8-2gU"/>
-                                            <constraint firstItem="7E5-CN-vS9" firstAttribute="leading" secondItem="g1s-jh-633" secondAttribute="leading" id="c8T-Cg-4ie"/>
-                                            <constraint firstAttribute="bottom" secondItem="7E5-CN-vS9" secondAttribute="bottom" id="fFL-AL-hEX"/>
-                                            <constraint firstAttribute="trailing" secondItem="7E5-CN-vS9" secondAttribute="trailing" id="fcZ-x0-sxu"/>
-                                            <constraint firstItem="ViE-J6-PgF" firstAttribute="top" secondItem="g1s-jh-633" secondAttribute="top" constant="25" id="hQe-P8-b7g"/>
-                                            <constraint firstItem="4fT-nc-xeP" firstAttribute="top" secondItem="BAB-rD-kcP" secondAttribute="bottom" constant="32" id="hWO-hR-mhf"/>
-                                            <constraint firstItem="BAB-rD-kcP" firstAttribute="top" secondItem="g1s-jh-633" secondAttribute="top" constant="25" id="kIf-A4-0HP"/>
+                                            <constraint firstItem="BAB-rD-kcP" firstAttribute="top" secondItem="g1s-jh-633" secondAttribute="top" constant="25" id="2v3-Wt-SLR"/>
+                                            <constraint firstAttribute="bottom" secondItem="7E5-CN-vS9" secondAttribute="bottom" id="8Fu-cl-fAZ"/>
+                                            <constraint firstItem="4fT-nc-xeP" firstAttribute="leading" secondItem="g1s-jh-633" secondAttribute="leading" id="AtS-B5-JfY"/>
+                                            <constraint firstItem="SIy-iv-kWl" firstAttribute="leading" secondItem="g1s-jh-633" secondAttribute="leading" constant="8" id="GO3-db-WbS"/>
+                                            <constraint firstAttribute="trailing" secondItem="SIy-iv-kWl" secondAttribute="trailing" constant="135" id="IdH-Fr-cLo"/>
+                                            <constraint firstItem="4fT-nc-xeP" firstAttribute="top" secondItem="ViE-J6-PgF" secondAttribute="bottom" constant="32" id="JmW-cx-qSF"/>
+                                            <constraint firstItem="SIy-iv-kWl" firstAttribute="top" secondItem="4fT-nc-xeP" secondAttribute="bottom" constant="49" id="LbI-62-4Np"/>
+                                            <constraint firstItem="BAB-rD-kcP" firstAttribute="centerX" secondItem="g1s-jh-633" secondAttribute="centerX" id="MV3-f8-Hrl"/>
+                                            <constraint firstAttribute="trailing" secondItem="7E5-CN-vS9" secondAttribute="trailing" id="Nri-y5-LkF"/>
+                                            <constraint firstItem="ViE-J6-PgF" firstAttribute="top" secondItem="g1s-jh-633" secondAttribute="top" constant="25" id="a4j-85-C43"/>
+                                            <constraint firstItem="ViE-J6-PgF" firstAttribute="leading" secondItem="BAB-rD-kcP" secondAttribute="trailing" constant="8" id="bS2-G4-SHC"/>
+                                            <constraint firstAttribute="trailing" secondItem="4fT-nc-xeP" secondAttribute="trailing" id="e5A-KG-eoj"/>
+                                            <constraint firstItem="7E5-CN-vS9" firstAttribute="leading" secondItem="g1s-jh-633" secondAttribute="leading" id="fy0-5u-N0D"/>
                                             <constraint firstAttribute="height" constant="850" id="n8E-zF-52a"/>
-                                            <constraint firstAttribute="trailing" secondItem="4fT-nc-xeP" secondAttribute="trailing" id="paF-Sv-A1q"/>
-                                            <constraint firstItem="SIy-iv-kWl" firstAttribute="top" secondItem="4fT-nc-xeP" secondAttribute="bottom" constant="49" id="wBU-29-GWn"/>
-                                            <constraint firstItem="4fT-nc-xeP" firstAttribute="leading" secondItem="g1s-jh-633" secondAttribute="leading" id="zET-rs-hMa"/>
+                                            <constraint firstItem="7E5-CN-vS9" firstAttribute="top" secondItem="SIy-iv-kWl" secondAttribute="bottom" constant="29" id="zj7-z5-XwU"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -3872,7 +3872,7 @@
         <scene sceneID="Zdt-Ni-JNO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1bt-p1-Hdo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="First" image="money" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FvY-Zp-qMG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -3891,7 +3891,7 @@
         <scene sceneID="lPx-Ap-OCF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jpp-TT-kfC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Second" image="time" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yf5-XL-5Yt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -4981,8 +4981,8 @@
         <image name="VietnamFlag" width="1200" height="900"/>
         <image name="dollar" width="1600" height="1600"/>
         <image name="euro" width="40" height="40"/>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="money" width="64" height="64"/>
+        <image name="time" width="64" height="64"/>
         <image name="vnd" width="40" height="40"/>
     </resources>
 </document>

@@ -221,7 +221,10 @@ class TimeMonthStats: UIViewController {
         
         for i in 0..<timeStats.count {
             let m = Date.getMonth(date: Date(timeIntervalSince1970: TimeInterval(timeStats[i].timestamp / 10)))
-            if m == month {
+            let y = Date.getYear(date: Date(timeIntervalSince1970: TimeInterval(timeStats[i].timestamp / 10)))
+            let nowY = Date.getYear(date: Date())
+            
+            if m == month && y == nowY {
                 result[0] = result[0] + Int64(timeStats[i].numberSuccessNotes)
                 result[1] = result[1] + Int64(timeStats[i].numberFailNotes)
                 result[2] = result[2] + Int64(timeStats[i].totalNumberNotes)

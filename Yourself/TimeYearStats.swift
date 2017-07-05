@@ -120,7 +120,7 @@ class TimeYearStats: UIViewController {
             
             var entries: [BarChartDataEntry] = []
             let titles = ["", "Success", "Fail", "Total note"]
-            var result = getData(strDay: strDay, endDay: strDay, timeStats: timeStats)
+            var result = getData(strDay: strDay, endDay: endDay, timeStats: timeStats)
             
             var flag = 0
             

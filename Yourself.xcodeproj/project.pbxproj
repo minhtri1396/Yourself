@@ -33,6 +33,7 @@
 		4423EA7A1EC637AA00C4F32C /* GSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4423EA791EC637AA00C4F32C /* GSignInController.swift */; };
 		4423EA7D1EC64BCB00C4F32C /* GAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4423EA7C1EC64BCB00C4F32C /* GAccount.swift */; };
 		4423EA801EC6636200C4F32C /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4423EA7F1EC6636200C4F32C /* AppManager.swift */; };
+		4426A2351F0C6A07007A21B5 /* SpendingStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4426A2341F0C6A07007A21B5 /* SpendingStatsCell.swift */; };
 		4428B5721ED4B18F0007DD70 /* DAOFCheerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428B5711ED4B18F0007DD70 /* DAOFCheerUp.swift */; };
 		4428B5741ED4B25E0007DD70 /* DAOFTimeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428B5731ED4B25E0007DD70 /* DAOFTimeStats.swift */; };
 		4428B5AA1ED4DC940007DD70 /* YourselfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428B5A91ED4DC940007DD70 /* YourselfTests.swift */; };
@@ -106,6 +107,7 @@
 		4423EA791EC637AA00C4F32C /* GSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSignInController.swift; sourceTree = "<group>"; };
 		4423EA7C1EC64BCB00C4F32C /* GAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GAccount.swift; sourceTree = "<group>"; };
 		4423EA7F1EC6636200C4F32C /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		4426A2341F0C6A07007A21B5 /* SpendingStatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpendingStatsCell.swift; sourceTree = "<group>"; };
 		4428B5711ED4B18F0007DD70 /* DAOFCheerUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOFCheerUp.swift; sourceTree = "<group>"; };
 		4428B5731ED4B25E0007DD70 /* DAOFTimeStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOFTimeStats.swift; sourceTree = "<group>"; };
 		4428B5A71ED4DC930007DD70 /* YourselfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YourselfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,6 +301,7 @@
 				441B4C431EBAF1DB00C5A90B /* SpendingYearStats.swift */,
 				442EAA611EE4A4E900C613DE /* AddSpendingNoteViewController.swift */,
 				441B4D881EDC920B000ED24C /* MoneyAddingController.swift */,
+				4426A2341F0C6A07007A21B5 /* SpendingStatsCell.swift */,
 			);
 			name = JARS;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				44A626A81EC5917E008D9B79 /* DTOUser.swift in Sources */,
 				445FE8EC1EDBDFF00044616C /* BaseViewController.swift in Sources */,
 				44A626A41EC58139008D9B79 /* DAOAlternatives.swift in Sources */,
+				4426A2351F0C6A07007A21B5 /* SpendingStatsCell.swift in Sources */,
 				44A626A21EC58126008D9B79 /* DAOIntent.swift in Sources */,
 				4428B5741ED4B25E0007DD70 /* DAOFTimeStats.swift in Sources */,
 				441B4C421EBAF19400C5A90B /* SpendingMonthStats.swift in Sources */,

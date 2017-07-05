@@ -246,9 +246,11 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableView
     
     func setTimeNotes() {
         let curTime = Date().ticks
+        var cnt = 0
         if let timeNotes = DAOTime.BUILDER.GetAll() as? [DTOTime] {
             for timeNote in timeNotes {
                 if curTime > timeNote.appointment {
+                    cnt += 1
                     let timeAsString = Date.convertTimestampToDateString(timeStamp: timeNote.appointment/10, withFormat: "01-MM-yyyy 00:00:00")
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
@@ -266,6 +268,38 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableView
             }
         }
         timeNotes = DAOTime.BUILDER.GetAll(hasStates: [.NOT_TIME, .DOING])
+        
+        if cnt > 3 {
+            
+            if let cheerUps = DAOCheerUp.BUILDER.GetAll() as? [DTOCheerUp] {
+                if cheerUps.count > 0 {
+                    let iRandom = Int(arc4random_uniform(UInt32(cheerUps.count))) // 0 -> (cheerUps.count - 1)
+                    let contents = cheerUps[iRandom].content.components(separatedBy: "***")
+                    let finishDate = contents[0]
+//                    var time = Int64(contents[contents.count - 1])! / 60000 // convert to minute
+//                    var timeUnit = "min(s)"
+//                    if time > 10000 {
+//                        time /= 60 // hour
+//                        timeUnit = "hour(s)"
+//                    }
+//                    if time > 10000 {
+//                        time /= 24 // day
+//                        timeUnit = "day(s)"
+//                    }
+                    
+                    var content = ""
+                    for iContent in 1..<(contents.count - 1) {
+                        content += contents[iContent]
+                    }
+                    
+                    Alert.show(type: .INFO, title: "Bỏ lỡ công việc", msg: "Có vẻ như bạn đã bỏ lỡ \(cnt) ghi chú. Bạn còn nhớ đã từng hoàn thành rất tốt một công việc vào ngày \(finishDate): \"\(content)\"")
+                    return
+                }
+            }
+            Alert.show(type: .INFO, title: "Bỏ lỡ công việc", msg: "Có vẻ như bạn đã bỏ lỡ \(cnt) ghi chú")
+        } else if cnt > 0 {
+            Alert.show(type: .INFO, title: "Bỏ lỡ công việc", msg: "Có vẻ như bạn đã bỏ lỡ \(cnt) ghi chú")
+        }
     }
     
 }

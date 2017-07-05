@@ -44,6 +44,7 @@ class SpendingMonthStats: UIViewController {
     @IBOutlet weak var octButton: UIButton!
     @IBOutlet weak var novButton: UIButton!
     @IBOutlet weak var decButton: UIButton!
+    @IBOutlet weak var doneButton: UIButton!
     
     
     
@@ -181,8 +182,8 @@ class SpendingMonthStats: UIViewController {
     
     @IBAction func doneButton_Tapped(_ sender: AnyObject) {
         if month != -1 {
-            loadGivingDataOnMonth(month: month)
-            loadReplacingDataOnMonth(month: month)
+            let intentData = loadGivingDataOnMonth(month: month)
+            loadReplacingDataOnMonth(intentData: intentData)
         }
         self.centerPopupContants.constant = -300
         UIView.animate(withDuration: 0.3, animations:{
@@ -207,7 +208,7 @@ class SpendingMonthStats: UIViewController {
         self.moneyUnitLabel.text = "(" + ExchangeRate.BUILDER.RateType.rawValue + ")"
         
         self.monthGivingStats.noDataFont.withSize(100.0)
-        self.monthGivingStats.noDataText = Language.BUILDER.get(group: Group.MESSAGE, view: Message.NO_DATA_CHARTS)
+        
         self.mongthReplacingStats.noDataFont.withSize(100.0)
         self.mongthReplacingStats.noDataText = Language.BUILDER.get(group: Group.MESSAGE, view: Message.NO_DATA_CHARTS)
         
@@ -219,6 +220,7 @@ class SpendingMonthStats: UIViewController {
         self.chooseMonthView.layer.masksToBounds = true
         
         self.chooseMonth.delegate = self
+        self.doneButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), for: .normal)
     }
     
     private func preventChooseMany(button: UIButton) {
@@ -257,14 +259,14 @@ class SpendingMonthStats: UIViewController {
     }
     
     
-    private func getTotalReplacingMoney(month: Int, type: JARS_TYPE, alternatives: [DTOAlternatives])->Double {
+    private func getTotalReplacingMoney(intentData: [DTOIntent], type: JARS_TYPE, alternatives: [DTOAlternatives])->Double {
         var totalMoney = 0.0
         
-        for i in 0..<alternatives.count {
-            let date = Date(timeIntervalSince1970: TimeInterval(alternatives[i].timestamp / 10))
-            
-            if alternatives[i].alts == type && Date.getMonth(date: date) == month {
-                totalMoney = totalMoney + alternatives[i].money
+        for i in 0..<intentData.count {
+            for j in 0..<alternatives.count {
+                if intentData[i].timestamp == alternatives[j].timestamp {
+                    totalMoney = totalMoney + alternatives[i].money
+                }
             }
         }
         
@@ -284,22 +286,23 @@ class SpendingMonthStats: UIViewController {
         return result
     }
     
-    private func createDataForReplacingChart(month: Int, replacingData: [DTOAlternatives])->[Double] {
+    private func createDataForReplacingChart(intentData: [DTOIntent], replacingData: [DTOAlternatives])->[Double] {
         var result = [Double]()
         
-        result.append(getTotalReplacingMoney(month: month,type: JARS_TYPE.NEC, alternatives: replacingData))
-        result.append(getTotalReplacingMoney(month: month,type: JARS_TYPE.FFA, alternatives: replacingData))
-        result.append(getTotalReplacingMoney(month: month,type: JARS_TYPE.LTSS, alternatives: replacingData))
-        result.append(getTotalReplacingMoney(month: month,type: JARS_TYPE.EDU, alternatives: replacingData))
-        result.append(getTotalReplacingMoney(month: month,type: JARS_TYPE.PLAY, alternatives: replacingData))
-        result.append(getTotalReplacingMoney(month: month,type: JARS_TYPE.GIVE, alternatives: replacingData))
+        result.append(getTotalReplacingMoney(intentData: intentData,type: JARS_TYPE.NEC, alternatives: replacingData))
+        result.append(getTotalReplacingMoney(intentData: intentData,type: JARS_TYPE.FFA, alternatives: replacingData))
+        result.append(getTotalReplacingMoney(intentData: intentData,type: JARS_TYPE.LTSS, alternatives: replacingData))
+        result.append(getTotalReplacingMoney(intentData: intentData,type: JARS_TYPE.EDU, alternatives: replacingData))
+        result.append(getTotalReplacingMoney(intentData: intentData,type: JARS_TYPE.PLAY, alternatives: replacingData))
+        result.append(getTotalReplacingMoney(intentData: intentData,type: JARS_TYPE.GIVE, alternatives: replacingData))
         
         return result
     }
     
     
-    func loadGivingDataOnMonth(month: Int) {
-        if let intentData = DAOIntent.BUILDER.GetAll() as? [DTOIntent] {
+    func loadGivingDataOnMonth(month: Int)->[DTOIntent] {
+        let intentData = DAOIntent.BUILDER.GetAll(hasState: .DONE)
+        if intentData.count > 0 {
             
             var entries: [BarChartDataEntry] = []
             let jar_Title = ["", "NEC", "FFA", "LTSS", "EDU", "PLAY", "GIVE"]
@@ -320,15 +323,21 @@ class SpendingMonthStats: UIViewController {
                 self.notificationLabel.isHighlighted = true
                 drawBarChart(entries: entries, titleEachBar: jar_Title, barChart: self.monthGivingStats)
             }
+            else {
+                self.givingMoneyLabel.isHidden = true
+                self.replacingMoneyLabel.isHidden = true
+                self.notificationLabel.isHighlighted = false
+            }
         }
+        return intentData
     }
     
-    func loadReplacingDataOnMonth(month: Int) {
+    func loadReplacingDataOnMonth(intentData: [DTOIntent]) {
         if let alternativesData = DAOAlternatives.BUILDER.GetAll() as? [DTOAlternatives] {
             
             var entries: [BarChartDataEntry] = []
             let jar_Title = ["", "NEC", "FFA", "LTSS", "EDU", "PLAY", "GIVE"]
-            let dataFromAlter = createDataForReplacingChart(month: month, replacingData: alternativesData)
+            let dataFromAlter = createDataForReplacingChart(intentData: intentData, replacingData: alternativesData)
             
             var flag = 0
             
@@ -342,12 +351,12 @@ class SpendingMonthStats: UIViewController {
             if flag == 1 {
                 self.givingMoneyLabel.isHidden = false
                 self.replacingMoneyLabel.isHidden = false
-                self.notificationLabel.isHighlighted = true
+                self.notificationLabel.isHidden = true
                drawBarChart(entries: entries, titleEachBar: jar_Title, barChart: self.mongthReplacingStats)
             } else {
                 self.givingMoneyLabel.isHidden = true
                 self.replacingMoneyLabel.isHidden = true
-                self.notificationLabel.isHighlighted = false
+                self.notificationLabel.isHidden = false
             }
         }
     }

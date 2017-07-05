@@ -133,7 +133,8 @@ class SpendingYearStats: UIViewController {
     
     
     func loadGivingDataOnCurrentYear(strDay: String, endDay: String) {
-        if let intentData = DAOIntent.BUILDER.GetAll() as? [DTOIntent] {
+        let intentData = DAOIntent.BUILDER.GetAll(hasState: .DONE)
+        if intentData.count > 0 {
             
             var entries: [BarChartDataEntry] = []
             let jar_Title = ["", "NEC", "FFA", "LTSS", "EDU", "PLAY", "GIVE"]

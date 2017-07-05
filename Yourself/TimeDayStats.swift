@@ -71,32 +71,32 @@ class TimeDayStats: UIViewController {
     func loadGivingDataOnDay(date: String) {
         if let intentData = DAOIntent.BUILDER.GetAll() as? [DTOIntent] {
             
-            var entries: [BarChartDataEntry] = []
-            let jar_Title = ["", "NEC", "FFA", "LTSS", "EDU", "PLAY", "GIVE"]
-            let dataFromIntent = createDataForGivingChart(date: date, intentData: intentData)
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-MM-yyyy HH-mm-ss"
-            
-            let fromTime = dateFormatter.date(from: date + " 00:00:00")?.ticks
-            let toTime = dateFormatter.date(from: date + " 23:59:59")?.ticks
-            
-            var flag = 0
-            
-            for i in 0..<dataFromIntent.count {
-                if dataFromIntent[i] != 0 {
-                    flag = 1
-                }
-                entries.append(BarChartDataEntry(x: Double(i + 1), yValues: [dataFromIntent[i]]))
-            }
-            
-            if flag == 1 {
-                self.notificationLabel.isHidden = true
-                drawBarChart(entries: entries, titleEachBar: jar_Title, barChart: self.timeDayStats)
-            }
-            else {
-                self.notificationLabel.isHidden = false
-            }
+//            var entries: [BarChartDataEntry] = []
+//            let jar_Title = ["", "NEC", "FFA", "LTSS", "EDU", "PLAY", "GIVE"]
+//            let dataFromIntent = createDataForGivingChart(date: date, intentData: intentData)
+//            
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "dd-MM-yyyy HH-mm-ss"
+//            
+//            let fromTime = dateFormatter.date(from: date + " 00:00:00")?.ticks
+//            let toTime = dateFormatter.date(from: date + " 23:59:59")?.ticks
+//            
+//            var flag = 0
+//            
+//            for i in 0..<dataFromIntent.count {
+//                if dataFromIntent[i] != 0 {
+//                    flag = 1
+//                }
+//                entries.append(BarChartDataEntry(x: Double(i + 1), yValues: [dataFromIntent[i]]))
+//            }
+//            
+//            if flag == 1 {
+//                self.notificationLabel.isHidden = true
+//                drawBarChart(entries: entries, titleEachBar: jar_Title, barChart: self.timeDayStats)
+//            }
+//            else {
+//                self.notificationLabel.isHidden = false
+//            }
         }
     }
     

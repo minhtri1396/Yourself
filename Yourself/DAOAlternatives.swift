@@ -57,6 +57,12 @@ class DAOAlternatives: DAOSuper {
     }
     
     func Delete(timestamp: Int64) -> Bool {
-        return super.Delete(withWhere: "timestamp=\(timestamp)", id: "\(timestamp)")
+        let alts = GetAll(withWhere: "timestamp=\(timestamp)") as! [DTOAlternatives]
+        
+        for alt in alts {
+            _ = super.Delete(withWhere: "timestamp=\(timestamp)", id: "\(timestamp)_\(alt.owner.rawValue)_\(alt.alts.rawValue)")
+        }
+        
+        return true
     }
 }

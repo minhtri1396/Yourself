@@ -146,10 +146,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List is empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5A6-7V-PZf">
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="OIH-ST-kso" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="D2I-tM-bda"/>
+                            <constraint firstItem="5A6-7V-PZf" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" constant="-25" id="D3W-fB-bPN"/>
+                            <constraint firstItem="5A6-7V-PZf" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Fql-bt-8pW"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="OIH-ST-kso" secondAttribute="bottom" id="aRk-vl-5dk"/>
                             <constraint firstAttribute="trailing" secondItem="OIH-ST-kso" secondAttribute="trailing" id="aUd-gw-m2n"/>
                             <constraint firstItem="OIH-ST-kso" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="uMR-aJ-qXJ"/>
@@ -163,6 +170,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emptyLabel" destination="5A6-7V-PZf" id="6C8-RW-DXo"/>
                         <outlet property="expenseNotesList" destination="OIH-ST-kso" id="8oc-JL-7nT"/>
                         <outlet property="navBar" destination="PuX-xO-PUl" id="ds2-mh-umo"/>
                         <outlet property="searchDisplayController" destination="ojd-3e-Qaw" id="bVf-8Q-YEt"/>

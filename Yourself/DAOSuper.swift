@@ -156,6 +156,7 @@ class DAOSuper: DB {
         return result
     }
     
+    // Don't use this method, it's not completed (miss save info to trash to delete it on Firebase)
     func DeleteAll() -> Bool {
         let query = "DELETE FROM \(self.GetName())_\(DAOSuper.userID);"
         return self.ExecQuery(query: query)

@@ -6,6 +6,7 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableView
     private let selectedCellHeight: CGFloat = 276
     private let unselectedCellHeight: CGFloat = 41.0
     private var isFirstTime = true
+    private var timeNotes: [DTOTime]!
     
     // MARK: *** Data model
     @IBOutlet weak var navBar: UINavigationItem!
@@ -86,7 +87,7 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableView
             Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.SETTINGS),
             Language.BUILDER.get(group: Group.TABLE_MENU, view: TableMenuViews.LOGOUT)
         ]
-        super.iconsForCells = ["AddMoney", "Synchronization", "Settings", "Logout"]
+        super.iconsForCells = ["Statistics", "Synchronization", "Settings", "Logout"]
         super.indentifiers = ["SpendingStatistics", "Synchronization", "SettingsController", "GSignInController" ]
         super.notIndentifiers = ["Synchronization"]
         
@@ -105,7 +106,7 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableView
             }
         }
         
-        
+        timeNotes = DAOTime.BUILDER.GetAll() as? [DTOTime]
         super.addSlideMenuButton()
     }
     

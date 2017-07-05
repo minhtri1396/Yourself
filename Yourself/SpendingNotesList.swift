@@ -16,6 +16,33 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
     
     // MARK: *** Fuction
     
+    func showActivityIndicatory(uiView: UIView) {
+        let container: UIView = UIView()
+        container.frame = uiView.frame
+        container.center = uiView.center
+        container.backgroundColor = UIColor.white
+        container.alpha = 0.3
+        
+        let loadingView: UIView = UIView()
+        loadingView.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 80.0)
+        loadingView.center = uiView.center
+        loadingView.backgroundColor = UIColor(colorLiteralRed: 68, green: 68, blue: 68, alpha: 0.7)
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        
+        let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+        actInd.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0)
+        actInd.activityIndicatorViewStyle =
+            UIActivityIndicatorViewStyle.whiteLarge
+        
+        
+        actInd.center = CGPoint(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
+        loadingView.addSubview(actInd)
+        container.addSubview(loadingView)
+        uiView.addSubview(container)
+        actInd.startAnimating()
+    }
+    
     // MARK: *** UI events
     
     @IBAction func addSpendingNote_Tapped(_ sender: AnyObject) {
@@ -73,7 +100,7 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
             cell.dateLabel.text = Date.convertTimestampToDateString(timeStamp: intent.timestamp / 10)
             cell.ownedJarLabel.text = intent.type.rawValue
             if intent.content.isEmpty {
-                cell.noteTextView.text = "Không có ghi chú"
+                cell.noteTextView.text = Language.BUILDER.get(group: Group.MESSAGE, view: Message.NO_NOTE)
                 cell.noteTextView.textColor = UIColor.lightGray
             } else {
                 cell.noteTextView.text = intent.content
@@ -152,6 +179,7 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
         }
         
         super.addCallback(forIdentifier: "Synchronization") {
+            self.showActivityIndicatory(uiView: self.view)
             DB.Sync() {
                 (result) in
                 if result {

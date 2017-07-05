@@ -193,6 +193,20 @@ class TimeMonthStats: UIViewController {
         self.chooseMonth.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.INPUT_MONTH)
         self.doneButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), for: .normal)
         self.chooseMonth.delegate = self
+        self.timeMonthStats.noDataText = ""
+        
+        unChoose(button: janButton)
+        unChoose(button: febButton)
+        unChoose(button: marchButton)
+        unChoose(button: aprilButton)
+        unChoose(button: mayButton)
+        unChoose(button: juneButton)
+        unChoose(button: julyButton)
+        unChoose(button: augButton)
+        unChoose(button: sepButton)
+        unChoose(button: octButton)
+        unChoose(button: novButton)
+        unChoose(button: decButton)
     }
     
     private func preventChooseMany(button: UIButton) {

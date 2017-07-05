@@ -213,7 +213,7 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
         
         // keyboard
         
-        keyboard = Keyboard(arrTextField: [self.startTimeTextField, self.startTimeTextField, self.appointmentTimeTextField, self.appointmentDateTextField])
+        keyboard = Keyboard(arrTextField: [self.startTimeTextField, self.startDateTextField, self.appointmentTimeTextField, self.appointmentDateTextField], arrTextView: [self.contentTextView])
         keyboard?.createDoneButton()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
@@ -266,27 +266,27 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
     
     private func isFilledCompletely() -> Bool {
         if isTextViewEmpty == true {
-            Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ban can dien noi dung ghi chu")
+            Alert.show(type: ALERT_TYPE.INFO, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.NOT_FILL_NOTE))
             return false
         }
         
         if (startDateTextField.text?.isEmpty)! {
-            Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ban can xac dinh ngay bat dau ghi chu")
+            Alert.show(type: ALERT_TYPE.INFO, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.NOT_START_DAY))
             return false
         }
         
         if (startTimeTextField.text?.isEmpty)! {
-            Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ban can xac dinh thoi diem bat dau ghi chu")
+            Alert.show(type: ALERT_TYPE.INFO, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.NOT_END_DAY))
             return false
         }
         
         if (appointmentDateTextField.text?.isEmpty)! {
-            Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ban can xac dinh ngay ket thuc ghi chu")
+            Alert.show(type: ALERT_TYPE.INFO, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.NOT_TIME_START))
             return false
         }
         
         if (appointmentTimeTextField.text?.isEmpty)! {
-            Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ban can xac dinh thoi diem ket thuc ghi chu")
+            Alert.show(type: ALERT_TYPE.INFO, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.NOT_TIME_END))
             return false
         }
         
@@ -296,15 +296,15 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
         if let startDate = dateFormatter.date(from: startDateTextField.text! + " " + startTimeTextField.text!) {
             if let appointmentDate = dateFormatter.date(from: appointmentDateTextField.text! + " " + appointmentTimeTextField.text!) {
                 if startDate.ticks > appointmentDate.ticks {
-                    Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ngay bat dau can phai truoc ngay ket thuc")
+                    Alert.show(type: ALERT_TYPE.INFO, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.ERROR_DAY_ONE))
                     return false
                 }
             } else {
-                Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ngay ket thuc khong hop le")
+                Alert.show(type: ALERT_TYPE.INFO, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.ERROR_DAY_TWO))
                 return false
             }
         } else {
-            Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ngay bat dau khong hop le")
+            Alert.show(type: ALERT_TYPE.INFO, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.ERROR_DAY_THREE))
             return false
         }
         
@@ -314,7 +314,7 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
             }
         }
         
-        Alert.show(type: ALERT_TYPE.INFO, title: "", msg: "Ban can xac dinh (cac) tag cho ghi chu")
+        Alert.show(type: ALERT_TYPE.INFO, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.NO_CHOOSE_TAG))
         return false
     }
     

@@ -216,8 +216,23 @@ class SpendingMonthStats: UIViewController {
         self.chooseMonthView.layer.cornerRadius = 10
         self.chooseMonthView.layer.masksToBounds = true
         
+        self.mongthReplacingStats.noDataText = ""
+        
         self.chooseMonth.delegate = self
         self.doneButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), for: .normal)
+        
+        unChoose(button: janButton)
+        unChoose(button: febButton)
+        unChoose(button: marchButton)
+        unChoose(button: aprilButton)
+        unChoose(button: mayButton)
+        unChoose(button: juneButton)
+        unChoose(button: julyButton)
+        unChoose(button: augButton)
+        unChoose(button: sepButton)
+        unChoose(button: octButton)
+        unChoose(button: novButton)
+        unChoose(button: decButton)
     }
     
     private func preventChooseMany(button: UIButton) {
@@ -248,7 +263,7 @@ class SpendingMonthStats: UIViewController {
             let date = Date(timeIntervalSince1970: TimeInterval(intent[i].timestamp / 10))
             
             if intent[i].type == type && Date.getMonth(date: date) == month {
-                totalMoney = totalMoney + intent[i].money
+                totalMoney = ExchangeRate.BUILDER.transfer(price: totalMoney + intent[i].money)
             }
         }
         

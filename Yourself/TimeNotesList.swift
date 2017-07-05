@@ -15,6 +15,33 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableView
     
     // MARK: *** Function
     
+    func showActivityIndicatory(uiView: UIView) {
+        let container: UIView = UIView()
+        container.frame = uiView.frame
+        container.center = uiView.center
+        container.backgroundColor = UIColor.white
+        container.alpha = 0.3
+        
+        let loadingView: UIView = UIView()
+        loadingView.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 80.0)
+        loadingView.center = uiView.center
+        loadingView.backgroundColor = UIColor(colorLiteralRed: 68, green: 68, blue: 68, alpha: 0.7)
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        
+        let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+        actInd.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0)
+        actInd.activityIndicatorViewStyle =
+            UIActivityIndicatorViewStyle.whiteLarge
+        
+        
+        actInd.center = CGPoint(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
+        loadingView.addSubview(actInd)
+        container.addSubview(loadingView)
+        uiView.addSubview(container)
+        actInd.startAnimating()
+    }
+    
     // MARK: *** UI events
     
     @IBAction func AddNoteTime_Tapped(_ sender: AnyObject) {
@@ -74,7 +101,7 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableView
             cell.appointmentDateLabel.text = Date.convertTimestampToDateString(timeStamp: timeNote.appointment / 10, withFormat: "dd-MM-yyyy (HH:mm)")
             
             if timeNote.content.isEmpty {
-                cell.contentTextView.text = "Không có ghi chú"
+                cell.contentTextView.text = Language.BUILDER.get(group: Group.MESSAGE, view: Message.NO_NOTE)
                 cell.contentTextView.textColor = UIColor.lightGray
             } else {
                 cell.contentTextView.text = timeNote.content
@@ -138,7 +165,7 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableView
                 _ = DAOTime.BUILDER.Delete(id: id)
                 self.timeNotes.remove(at: sender.tag)
             } else {
-                Alert.show(type: .INFO, title: "Chia buồn", msg: "Nội dung ghi chú này đã qua thời hạn thực hiện!")
+                Alert.show(type: .INFO, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.SO_SAD), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.OVERTIME_NOTE))
             }
             
             self.timeNotesList.reloadData()
@@ -209,7 +236,7 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableView
         timeNotesList.delegate = self
         timeNotesList.dataSource = self
         
-        navBar.title = "NOTES LIST"
+        navBar.title = Language.BUILDER.get(group: Group.TITLE, view: TitleViews.NOTES_LIST)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -229,6 +256,7 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableView
         }
         
         super.addCallback(forIdentifier: "Synchronization") {
+            self.showActivityIndicatory(uiView: self.view)
             DB.Sync() {
                 (result) in
                 if result {

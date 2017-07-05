@@ -107,6 +107,8 @@ class SpendingDayStats: UIViewController {
         self.doneButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), for: .normal)
         self.dateText.placeholder = Language.BUILDER.get(group: Group.PLACEHOLDER, view: PlaceholderViews.DATE_ON_MONTH)
         
+        self.dayStats.noDataText = ""
+        
         keyboard = Keyboard(arrTextField: [self.dateText])
         keyboard?.createDoneButton()
         
@@ -137,7 +139,7 @@ class SpendingDayStats: UIViewController {
         
         for i in 0..<intent.count {
             if intent[i].type == type && intent[i].timestamp >= fromTime! && intent[i].timestamp <= toTime! {
-                totalMoney = totalMoney + intent[i].money
+                totalMoney = ExchangeRate.BUILDER.transfer(price: totalMoney + intent[i].money)
             }
         }
         

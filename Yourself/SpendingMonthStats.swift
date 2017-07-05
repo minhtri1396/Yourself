@@ -317,13 +317,13 @@ class SpendingMonthStats: UIViewController {
             if flag == 1 {
                 self.givingMoneyLabel.isHidden = false
                 self.replacingMoneyLabel.isHidden = false
-                self.notificationLabel.isHighlighted = true
+                self.notificationLabel.isHidden = true
                 drawBarChart(entries: entries, titleEachBar: jar_Title, barChart: self.monthGivingStats)
             }
             else {
                 self.givingMoneyLabel.isHidden = true
                 self.replacingMoneyLabel.isHidden = true
-                self.notificationLabel.isHighlighted = false
+                self.notificationLabel.isHidden = false
             }
         }
         return intentData

@@ -95,7 +95,7 @@ class TimeYearStats: UIViewController {
     }
     
     private func getData(strDay: String, endDay: String, timeStats: [DTOTimeStats])->[Int64] {
-        var result:[Int64] = [0, 0, 0, 0]
+        var result:[Int64] = [0, 0, 0]
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy HH-mm-ss"
@@ -107,8 +107,7 @@ class TimeYearStats: UIViewController {
            if timeStats[i].timestamp >= fromTime! && timeStats[i].timestamp <= toTime! {
                 result[0] = result[0] + Int64(timeStats[i].numberSuccessNotes)
                 result[1] = result[1] + Int64(timeStats[i].numberFailNotes)
-                result[2] = result[2] + timeStats[i].totalCompletionTime
-                result[3] = result[3] + Int64(timeStats[i].totalNumberNotes)
+                result[2] = result[2] + Int64(timeStats[i].totalNumberNotes)
             }
         }
         
@@ -120,7 +119,7 @@ class TimeYearStats: UIViewController {
         if let timeStats = DAOTimeStats.BUILDER.GetAll() as? [DTOTimeStats] {
             
             var entries: [BarChartDataEntry] = []
-            let titles = ["", "Success", "Fail", "Total time", "Total note"]
+            let titles = ["", "Success", "Fail", "Total note"]
             var result = getData(strDay: strDay, endDay: strDay, timeStats: timeStats)
             
             var flag = 0
@@ -145,7 +144,7 @@ class TimeYearStats: UIViewController {
     private func drawBarChart(entries: [BarChartDataEntry], titleEachBar: [String], barChart:  BarChartView) {
         let dataSet = BarChartDataSet(values: entries, label: "")
         dataSet.axisDependency = .right
-        dataSet.colors = [#colorLiteral(red: 0.2235294118, green: 0.2862745098, blue: 0.6705882353, alpha: 1), #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1), #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)]
+        dataSet.colors = [#colorLiteral(red: 0.2235294118, green: 0.2862745098, blue: 0.6705882353, alpha: 1), #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1), #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)]
         
         let data:BarChartData = BarChartData(dataSet: dataSet)
         barChart.data = data

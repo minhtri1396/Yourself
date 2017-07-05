@@ -1105,11 +1105,11 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="vAM-Xs-6bv" firstAttribute="centerX" secondItem="iDo-dl-sRe" secondAttribute="centerX" constant="-300" id="3di-8Q-e4O"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ekx-K9-qLw" secondAttribute="trailing" constant="5" id="94D-U4-qNm"/>
-                                                    <constraint firstItem="ekx-K9-qLw" firstAttribute="leading" secondItem="vAM-Xs-6bv" secondAttribute="trailing" constant="5" id="GFu-IV-0eQ"/>
                                                     <constraint firstItem="vAM-Xs-6bv" firstAttribute="top" secondItem="iDo-dl-sRe" secondAttribute="top" constant="74" id="HD9-bw-yx9"/>
+                                                    <constraint firstItem="ekx-K9-qLw" firstAttribute="width" secondItem="iDo-dl-sRe" secondAttribute="width" id="JQT-DQ-HkV"/>
                                                     <constraint firstAttribute="height" constant="308" id="XoV-Nc-coq"/>
                                                     <constraint firstItem="ekx-K9-qLw" firstAttribute="top" secondItem="iDo-dl-sRe" secondAttribute="top" constant="115" id="hIh-84-1YO"/>
+                                                    <constraint firstItem="ekx-K9-qLw" firstAttribute="centerX" secondItem="iDo-dl-sRe" secondAttribute="centerX" id="zM2-Uh-WpU"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -3874,7 +3874,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1bt-p1-Hdo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FvY-Zp-qMG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FvY-Zp-qMG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

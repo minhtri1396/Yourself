@@ -73,7 +73,7 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
             cell.dateLabel.text = Date.convertTimestampToDateString(timeStamp: intent.timestamp)
             cell.ownedJarLabel.text = intent.type.rawValue
             cell.noteTextView.text = intent.content
-            cell.moneyLabel.text = intent.money.round(numberOfDecimal: 2).clean
+            cell.moneyLabel.text = ExchangeRate.BUILDER.transfer(price: intent.money).clean
             
             cell.deleteButton.tag = indexPath.row
             cell.deleteButton.addTarget(self, action: #selector(deleteCellButtonTapped(sender:)), for: .touchUpInside)

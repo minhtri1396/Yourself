@@ -7,7 +7,7 @@ class DAOAlternatives: DAOSuper {
     }
     
     func CreateTable() {
-        super.CreateTable(query: "CREATE TABLE if not exists \(self.GetName())_\(DAOSuper.userID) (timestamp INT64 NOT NULL PRIMARY KEY, owner NVARCHAR(4), alts NVARCHAR(4), money Double);")
+        super.CreateTable(query: "CREATE TABLE if not exists \(self.GetName())_\(DAOSuper.userID) (timestamp INT64 NOT NULL PRIMARY KEY, owner NVARCHAR(4) NOT NULL PRIMARY KEY, alts NVARCHAR(4) NOT NULL PRIMARY KEY, money Double);")
     }
     
     func Select(query: String) -> [Int64 : DTOAlternatives] {
@@ -28,8 +28,12 @@ class DAOAlternatives: DAOSuper {
         return altTuples
     }
     
-    func GetAlternative(with timestamp: Int64) -> DTOAlternatives? {
-        return super.Get(withWhere: "timestamp=\(timestamp)") as! DTOAlternatives?
+    func GetAlternative(with timestamp: Int64, ownerType: JARS_TYPE, altsType: JARS_TYPE) -> DTOAlternatives? {
+        return super.Get(withWhere: "timestamp=\(timestamp) AND owner='\(ownerType)' AND alts='\(altsType)'") as! DTOAlternatives?
+    }
+    
+    func GetAlternative(with timestamp: Int64, ownerType: JARS_TYPE) -> DTOAlternatives? {
+        return super.Get(withWhere: "timestamp=\(timestamp) AND owner='\(ownerType)'") as! DTOAlternatives?
     }
     
     // This method will be used by super class when we get any record from DB
@@ -49,7 +53,7 @@ class DAOAlternatives: DAOSuper {
     }
     
     func Update(alts: DTOAlternatives) -> Bool {
-        return super.Update(withSet: "owner='\(alts.owner)', alts='\(alts.alts)', money=\(alts.money)", withWhere: "timestamp=\(alts.timestamp)")
+        return super.Update(withSet: "money=\(alts.money)", withWhere: "timestamp=\(alts.timestamp) AND owner='\(alts.owner)' AND alts='\(alts.alts)'")
     }
     
     func Delete(timestamp: Int64) -> Bool {

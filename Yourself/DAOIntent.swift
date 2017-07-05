@@ -7,11 +7,11 @@ class DAOIntent: DAOSuper {
     }
     
     func CreateTable() {
-        super.CreateTable(query: "CREATE TABLE if not exists \(self.GetName())_\(DAOSuper.userID) (timestamp INT64 NOT NULL PRIMARY KEY, type NVARCHAR(4), content NVARCHAR(128), money Double);")
+        super.CreateTable(query: "CREATE TABLE if not exists \(self.GetName())_\(DAOSuper.userID) (timestamp INT64 NOT NULL PRIMARY KEY, type NVARCHAR(4) NOT NULL PRIMARY KEY, content NVARCHAR(128), money Double);")
     }
     
-    func GetIntent(with timestamp: Int64) -> DTOIntent? {
-        return super.Get(withWhere: "timestamp=\(timestamp)") as! DTOIntent?
+    func GetIntent(with timestamp: Int64, type: JARS_TYPE) -> DTOIntent? {
+        return super.Get(withWhere: "timestamp=\(timestamp) AND type='\(type)'") as! DTOIntent?
     }
     
     // This method will be used by super class when we get any record from DB
@@ -31,7 +31,7 @@ class DAOIntent: DAOSuper {
     }
     
     func Update(intent: DTOIntent) -> Bool {
-        return super.Update(withSet: "type='\(intent.type)', content='\(intent.content)', money=\(intent.money)", withWhere: "timestamp=\(intent.timestamp)")
+        return super.Update(withSet: "content='\(intent.content)', money=\(intent.money)", withWhere: "timestamp=\(intent.timestamp) AND type='\(intent.type)'")
     }
     
     func Delete(timestamp: Int64) -> Bool {

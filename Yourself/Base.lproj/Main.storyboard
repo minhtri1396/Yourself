@@ -821,7 +821,7 @@
             </objects>
             <point key="canvasLocation" x="1545" y="0.0"/>
         </scene>
-        <!--Item 2-->
+        <!--Month-->
         <scene sceneID="M2U-7a-hXB">
             <objects>
                 <viewController restorationIdentifier="SpendingMonthStats" storyboardIdentifier="SpendingMonthStats" id="M9V-nf-Dxn" customClass="SpendingMonthStats" customModule="Yourself" customModuleProvider="target" sceneMemberID="viewController">
@@ -1154,7 +1154,7 @@
                             <constraint firstAttribute="trailing" secondItem="ME9-qd-T3q" secondAttribute="trailing" id="xNy-7Y-B3B"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="Hqr-GJ-SAF"/>
+                    <tabBarItem key="tabBarItem" title="Month" image="month" id="Hqr-GJ-SAF"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
@@ -1188,7 +1188,7 @@
             </objects>
             <point key="canvasLocation" x="4056.8000000000002" y="-260.86956521739131"/>
         </scene>
-        <!--Item 1-->
+        <!--Day-->
         <scene sceneID="FR9-3S-AOS">
             <objects>
                 <viewController id="n4U-I9-6fo" customClass="SpendingDayStats" customModule="Yourself" customModuleProvider="target" sceneMemberID="viewController">
@@ -1407,7 +1407,7 @@
                             <constraint firstItem="Evu-z2-Jbl" firstAttribute="leading" secondItem="Cwt-5o-aHv" secondAttribute="leading" id="wHW-pR-G1d"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="7Xb-cn-vfN"/>
+                    <tabBarItem key="tabBarItem" title="Day" image="day" id="7Xb-cn-vfN"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
@@ -1624,7 +1624,7 @@
             </objects>
             <point key="canvasLocation" x="660" y="679.61019490254876"/>
         </scene>
-        <!--Item 2-->
+        <!--Year-->
         <scene sceneID="6WE-al-RhE">
             <objects>
                 <viewController id="A54-5w-We1" customClass="TimeYearStats" customModule="Yourself" customModuleProvider="target" sceneMemberID="viewController">
@@ -1771,7 +1771,7 @@
                             <constraint firstItem="UnN-yM-PT3" firstAttribute="top" secondItem="5fg-PR-IiC" secondAttribute="bottom" id="omE-A7-tWt"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="mfn-iF-cED"/>
+                    <tabBarItem key="tabBarItem" title="Year" image="year" id="mfn-iF-cED"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="850"/>
                     <connections>
@@ -1790,7 +1790,7 @@
             </objects>
             <point key="canvasLocation" x="3925.5999999999999" y="2292.0539730134933"/>
         </scene>
-        <!--Item 1-->
+        <!--Month-->
         <scene sceneID="PsE-2a-FTJ">
             <objects>
                 <viewController id="Y9b-Vj-aeq" customClass="TimeMonthStats" customModule="Yourself" customModuleProvider="target" sceneMemberID="viewController">
@@ -2096,7 +2096,7 @@
                             <constraint firstItem="hns-3F-s3s" firstAttribute="leading" secondItem="Uwx-q0-632" secondAttribute="leading" id="xRl-Bs-U54"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="1Yq-75-dvt"/>
+                    <tabBarItem key="tabBarItem" title="Month" image="month" id="1Yq-75-dvt"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="850"/>
                     <connections>
@@ -2145,7 +2145,7 @@
             </objects>
             <point key="canvasLocation" x="2487" y="1874"/>
         </scene>
-        <!--Item-->
+        <!--Year-->
         <scene sceneID="GqS-eQ-f6L">
             <objects>
                 <viewController id="0LY-oA-aNX" customClass="SpendingYearStats" customModule="Yourself" customModuleProvider="target" sceneMemberID="viewController">
@@ -2325,7 +2325,7 @@
                             <constraint firstAttribute="trailing" secondItem="ggu-qB-DXB" secondAttribute="trailing" id="ocT-tz-3WR"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="unn-e5-tYQ"/>
+                    <tabBarItem key="tabBarItem" title="Year" image="year" id="unn-e5-tYQ"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="750"/>
                     <connections>
@@ -3868,11 +3868,11 @@
             </objects>
             <point key="canvasLocation" x="-2290.4000000000001" y="-761.46926536731644"/>
         </scene>
-        <!--First-->
+        <!--Money-->
         <scene sceneID="Zdt-Ni-JNO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1bt-p1-Hdo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="First" image="money" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Money" image="money" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FvY-Zp-qMG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -3887,11 +3887,11 @@
             </objects>
             <point key="canvasLocation" x="-263.19999999999999" y="-0.44977511244377816"/>
         </scene>
-        <!--Second-->
+        <!--Time-->
         <scene sceneID="lPx-Ap-OCF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jpp-TT-kfC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Second" image="time" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Time" image="time" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yf5-XL-5Yt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -4979,10 +4979,13 @@
         <image name="GoogleIcon" width="512" height="512"/>
         <image name="LocalIcon" width="512" height="512"/>
         <image name="VietnamFlag" width="1200" height="900"/>
+        <image name="day" width="32" height="32"/>
         <image name="dollar" width="1600" height="1600"/>
         <image name="euro" width="40" height="40"/>
-        <image name="money" width="64" height="64"/>
-        <image name="time" width="64" height="64"/>
+        <image name="money" width="32" height="32"/>
+        <image name="month" width="32" height="32"/>
+        <image name="time" width="32" height="32"/>
         <image name="vnd" width="40" height="40"/>
+        <image name="year" width="32" height="32"/>
     </resources>
 </document>

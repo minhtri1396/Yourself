@@ -245,8 +245,6 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableView
         
         timeNotesList.delegate = self
         timeNotesList.dataSource = self
-        
-        navBar.title = Language.BUILDER.get(group: Group.TITLE, view: TitleViews.NOTES_LIST)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -277,6 +275,7 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableView
             }
         }
         
+        navBar.title = Language.BUILDER.get(group: Group.TITLE, view: TitleViews.NOTES_LIST)
         super.addSlideMenuButton()
         self.setTimeNotes()
         self.timeNotesList.reloadData()

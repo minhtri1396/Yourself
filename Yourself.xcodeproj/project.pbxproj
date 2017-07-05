@@ -301,7 +301,6 @@
 				441B4C371EBAE58A00C5A90B /* SpendingNotesList.swift */,
 				442EAA611EE4A4E900C613DE /* AddSpendingNoteViewController.swift */,
 				441B4D881EDC920B000ED24C /* MoneyAddingController.swift */,
-				4426A2341F0C6A07007A21B5 /* SpendingStatsCell.swift */,
 			);
 			name = JARS;
 			sourceTree = "<group>";
@@ -350,6 +349,7 @@
 		44562B071F0ABF52003C6632 /* Stats */ = {
 			isa = PBXGroup;
 			children = (
+				4426A2341F0C6A07007A21B5 /* SpendingStatsCell.swift */,
 				441B4C3F1EBAF18000C5A90B /* SpendingDayStats.swift */,
 				441B4C411EBAF19400C5A90B /* SpendingMonthStats.swift */,
 				441B4C431EBAF1DB00C5A90B /* SpendingYearStats.swift */,

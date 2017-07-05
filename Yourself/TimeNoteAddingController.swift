@@ -241,24 +241,59 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
     private func setGestureRecognizers() {
         self.familyTag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tagTapped(sender:))))
         self.familyUntag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(untagTapped(sender:))))
+        self.familyTagLabel.text = getTagName(tag: .FAMILY)
         
         self.friendTag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tagTapped(sender:))))
         self.friendUntag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(untagTapped(sender:))))
+        self.friendTagLabel.text = getTagName(tag: .FRIEND)
         
         self.personalTag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tagTapped(sender:))))
         self.personalUntag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(untagTapped(sender:))))
+        self.personalTagLabel.text = getTagName(tag: .PERSONAL)
         
         self.workTag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tagTapped(sender:))))
         self.workUntag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(untagTapped(sender:))))
+        self.workTagLabel.text = getTagName(tag: .WORK)
         
         self.relaxTag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tagTapped(sender:))))
         self.relaxUntag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(untagTapped(sender:))))
+        self.relaxTagLabel.text = getTagName(tag: .RELAX)
         
         self.studyTag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tagTapped(sender:))))
         self.studyUntag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(untagTapped(sender:))))
+        self.studyTagLabel.text = getTagName(tag: .STUDY)
         
         self.loveTag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tagTapped(sender:))))
         self.loveUntag.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(untagTapped(sender:))))
+        self.loveTagLabel.text = getTagName(tag: .LOVE)
+    }
+    
+    private func getTagName(tag: TAG) -> String {
+        var tagView: TimeTags
+        switch tag {
+        case .FAMILY:
+            tagView = TimeTags.FAMILY
+            break;
+        case .PERSONAL:
+            tagView = TimeTags.PERSONAL
+            break;
+        case .FRIEND:
+            tagView = TimeTags.FRIEND
+            break;
+        case .STUDY:
+            tagView = TimeTags.STUDY
+            break;
+        case .WORK:
+            tagView = TimeTags.WORK
+            break;
+        case .LOVE:
+            tagView = TimeTags.LOVE
+            break;
+        default:
+            tagView = TimeTags.RELAX
+        }
+        
+        return Language.BUILDER.get(group: .TIME_TAG, view: tagView)
     }
     
     private func getAllChosenTags() -> [TAG] {

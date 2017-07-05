@@ -156,7 +156,6 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
         super.viewDidLoad()
         self.tabBarController?.delegate = self
         
-        navBar.title = "EXPENSE LIST";
         expenseNotesList.delegate = self
         expenseNotesList.dataSource = self
     }
@@ -190,7 +189,7 @@ class SpedingNotesList: BaseViewController, UITabBarControllerDelegate, UITableV
             }
         }
         
-        
+        navBar.title = Language.BUILDER.get(group: Group.TITLE, view: TitleViews.SPENDING_LIST);
         super.addSlideMenuButton()
         intents = DAOIntent.BUILDER.GetAll(hasState: .NOT_YET)
         self.expenseNotesList.reloadData()

@@ -114,6 +114,20 @@ class DAOSuper: DB {
         return records
     }
     
+    func GetAll(withWhere: String) -> [Any] {
+        let query = "SELECT * FROM \(self.GetName())_\(DAOSuper.userID) WHERE \(withWhere);"
+        let statement = self.PrepareQuery(query: query)
+        
+        var records = [Any]()
+        while sqlite3_step(statement) == SQLITE_ROW {
+            let record = self.ParseStatement(statement!)
+            records.append(record)
+        }
+        
+        sqlite3_finalize(statement)
+        return records
+    }
+    
     // Every subclass should override this method
     // This method is necessary when we need to get (all) records from DB
     func ParseStatement(_ statement: OpaquePointer) -> Any {

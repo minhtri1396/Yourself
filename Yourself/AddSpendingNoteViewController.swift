@@ -74,31 +74,37 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
     
     @IBAction func doneButton_Tapped(_ sender: AnyObject) {
         if (self.textField_GivingMoney.text?.characters.count)! > 0 {
-           
-            // cap nhat tien
+            if type == nil {
+                Alert.show(type: ALERT_TYPE.ERROR, title: "", msg: "Chưa chọn hủ để lấy tiền!")
+            } else {
+                // cap nhat tien
+                let timestamp = Date().ticks
+                var moneyNeedReplacing = 0.0
+                
+                let money = ExchangeRate.BUILDER.calcMoneyForDB(money: Double(textField_GivingMoney.text!)!)
+                moneyOfBoxIsChoosed = ExchangeRate.BUILDER.calcMoneyForDB(money: moneyOfBoxIsChoosed)
+                let alpha = moneyOfBoxIsChoosed - money
+                
+                
+                _ = DAOIntent.BUILDER.Add(DTOIntent(timestamp: timestamp, type: type!, content: self.textField_Notes.text!, money: money)) // luu lai ghi cho lay tien
             
-            let timestamp = Date().ticks
-            var moneyNeedReplacing = 0.0
-            let alpha = moneyOfBoxIsChoosed - Double(self.textField_GivingMoney.text!)!
-           
-            _ = DAOIntent.BUILDER.Add(DTOIntent(timestamp: timestamp, type: type!, content: self.textField_Notes.text!, money: Double(self.textField_GivingMoney.text!)!)) // luu lai ghi cho lay tien
+                if typeReplace != nil { // th chon tien o hu khac de bo sung vao tien can lay ra
+                    moneyOfBoxReplace = ExchangeRate.BUILDER.calcMoneyForDB(money: moneyOfBoxReplace)
+                    moneyOfBoxIsChoosed = 0
+                    moneyNeedReplacing = -(alpha)
+                    moneyOfBoxReplace = moneyOfBoxReplace - moneyNeedReplacing
+                    _ = DAOJars.BUILDER.UpdateMoney(type: typeReplace!, money: moneyOfBoxReplace)
+                } else {
+                    typeReplace = type
+                    moneyOfBoxIsChoosed = alpha
+                }
+                
+                _ = DAOJars.BUILDER.UpdateMoney(type: type!, money: moneyOfBoxIsChoosed)
             
-            if typeReplace != nil { // th chon tien o hu khac de bo sung vao tien can lay ra
-                moneyOfBoxIsChoosed = 0
-                moneyNeedReplacing = -(alpha)
-                moneyOfBoxReplace = moneyOfBoxReplace - moneyNeedReplacing
-                _ = DAOJars.BUILDER.UpdateMoney(type: typeReplace!, money: moneyOfBoxReplace)
+                _ = DAOAlternatives.BUILDER.Add(DTOAlternatives(timestamp: timestamp, owner: type!, alts: typeReplace!, money: moneyNeedReplacing))
+                
+                self.dismiss(animated: true, completion: nil)
             }
-            else {
-                typeReplace = type
-                moneyOfBoxIsChoosed = alpha
-            }
-            
-            _ = DAOJars.BUILDER.UpdateMoney(type: type!, money: moneyOfBoxIsChoosed)
-            
-            _ = DAOAlternatives.BUILDER.Add(DTOAlternatives(timestamp: timestamp, owner: type!, alts: typeReplace!, money: moneyNeedReplacing))
-            
-            self.dismiss(animated: true, completion: nil)
         }
         else { // nhan xong khi chua lam gi
             Alert.show(type: ALERT_TYPE.ERROR, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.NOT_DONE))
@@ -173,8 +179,7 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
                         show_SwapMoneyBox_ChoosingView(type: type!, money: Double(self.textField_GivingMoney.text!)!)
                     }
                 }
-            }
-            else {
+            } else {
                 Alert.show(type: ALERT_TYPE.ERROR,
                            title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.WARNING_MONEY), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.ALLBOX_NOMONEY))
                 checkBox.on = false
@@ -186,6 +191,9 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
         if (!checkBox.on) {
             setNilForReplaceBox()
             showMoneyLabelOfBox(checkBox: checkBox)
+            if preCheckBox == checkBox {
+                preCheckBox = nil
+            }
         }
     }
 
@@ -371,24 +379,23 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
     }
     
     private func configLabelMoney() {
-        self.necMoney.text = String(Int(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .NEC).money)))
-        self.ffaMoney.text = String(Int(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .FFA).money)))
-        self.ltssMoney.text = String(Int(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .LTSS).money)))
-        self.eduMoney.text = String(Int(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .EDU).money)))
-        self.playMoney.text = String(Int(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .PLAY).money)))
-        self.giveMoney.text = String(Int(ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .GIVE).money)))
+        self.necMoney.text = ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .NEC).money).clean
+        self.ffaMoney.text = ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .FFA).money).clean
+        self.ltssMoney.text = ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .LTSS).money).clean
+        self.eduMoney.text = ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .EDU).money).clean
+        self.playMoney.text = ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .PLAY).money).clean
+        self.giveMoney.text = ExchangeRate.BUILDER.transfer(price: DAOJars.BUILDER.GetJARS(with: .GIVE).money).clean
     }
     
     private func configLabelNotification() {
+        // Set keyboard type
         if ExchangeRate.BUILDER.RateType == .VND {
-            self.typeMoney.text = "(VND)"
+            textField_GivingMoney.keyboardType = UIKeyboardType.numberPad
+        } else {
+            textField_GivingMoney.keyboardType = UIKeyboardType.decimalPad
         }
-        else if ExchangeRate.BUILDER.RateType == .EURO {
-            self.typeMoney.text = "(Euro)"
-        }
-        else {
-            self.typeMoney.text = "(Dollar)"
-        }
+        
+        self.typeMoney.text = "(" + ExchangeRate.BUILDER.RateType.rawValue + ")"
         
         self.reaplaceMoney.isHidden = true
         self.reaplaceMoney.text = Language.BUILDER.get(group: Group.TITLE, view: TitleViews.REPLACE)
@@ -432,6 +439,7 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
             preCheckBox?.on = false
             showMoneyLabelOfBox(checkBox: preCheckBox!)
         }
+        
         preCheckBox = checkBox
     }
   
@@ -517,4 +525,5 @@ class AddSpendingNoteViewController: UIViewController, UITextFieldDelegate, BEMC
         
         return false
     }
+    
 }

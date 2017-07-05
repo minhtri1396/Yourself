@@ -12,6 +12,7 @@ target 'Yourself' do
   pod 'SCLAlertView'
   pod 'BEMCheckBox'
   pod 'Charts'
+  pod 'Koyomi'
 
   target 'YourselfTests' do
     inherit! :complete

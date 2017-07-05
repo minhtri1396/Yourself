@@ -10,6 +10,11 @@ extension Date {
         return calendar.component(.month, from: date)
     }
     
+    static func getYear(date: Date)->Int {
+        let calendar = Calendar.current
+        return calendar.component(.year, from: date)
+    }
+    
     static func convertDateToDateString(date: Date)->String {
         // convert date to string (format: dd-MM-yyyy)s
         let dateFormatter = DateFormatter()

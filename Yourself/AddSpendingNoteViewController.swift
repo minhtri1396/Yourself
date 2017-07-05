@@ -98,9 +98,15 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
                 moneyOfBoxIsChoosed = ExchangeRate.BUILDER.calcMoneyForDB(money: moneyOfBoxIsChoosed)
                 let alpha = moneyOfBoxIsChoosed - money
                 
+                // Set data to intent DB
+                if let intent = DAOIntent.BUILDER.GetIntent(with: timestamp!, type: type!) {
+                    intent.content += "\n\(self.textField_Notes.text!)"
+                    intent.money += money
+                    _ = DAOIntent.BUILDER.Update(intent: intent)
+                } else {
+                    _ = DAOIntent.BUILDER.Add(DTOIntent(timestamp: timestamp!, type: type!, content: self.textField_Notes.text!, money: money)) // luu lai ghi cho lay tien
+                }
                 
-                _ = DAOIntent.BUILDER.Add(DTOIntent(timestamp: timestamp!, type: type!, content: self.textField_Notes.text!, money: money)) // luu lai ghi cho lay tien
-            
                 if typeReplace != nil { // th chon tien o hu khac de bo sung vao tien can lay ra
                     moneyOfBoxReplace = ExchangeRate.BUILDER.calcMoneyForDB(money: moneyOfBoxReplace)
                     moneyOfBoxIsChoosed = 0
@@ -114,7 +120,14 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
                 
                 _ = DAOJars.BUILDER.UpdateMoney(type: type!, money: moneyOfBoxIsChoosed)
             
-                _ = DAOAlternatives.BUILDER.Add(DTOAlternatives(timestamp: timestamp!, owner: type!, alts: typeReplace!, money: moneyNeedReplacing))
+                
+                // Set data to alternatives DB
+                if let alt = DAOAlternatives.BUILDER.GetAlternative(with: timestamp!, ownerType: type!, altsType: typeReplace!) {
+                    alt.money += moneyNeedReplacing
+                    _ = DAOAlternatives.BUILDER.Update(alts: alt)
+                } else {
+                    _ = DAOAlternatives.BUILDER.Add(DTOAlternatives(timestamp: timestamp!, owner: type!, alts: typeReplace!, money: moneyNeedReplacing))
+                }
                 
                 self.dismiss(animated: true, completion: nil)
             }
@@ -539,11 +552,10 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
 extension AddSpendingNoteViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if !(string == "") && Int(string) == nil {
-            return false
-        }
-        
         if textField == self.textField_Date {
+            if !(string == "") && Int(string) == nil {
+                return false
+            }
             // check the chars length dd -->2 at the same time calculate the dd-MM --> 5
             if (textField.text?.characters.count == 2) || (textField.text?.characters.count == 5) {
                 //Handle backspace being pressed
@@ -561,9 +573,11 @@ extension AddSpendingNoteViewController: UITextFieldDelegate {
             }
             
             if (textField.text?.characters.count)! > 0 {
-                if Double((textField.text! + string))! > maxMoney {
-                    textField.text = maxMoney.clean
-                    return false
+                if let money = Double((textField.text! + string)) {
+                    if money > maxMoney {
+                        textField.text = maxMoney.clean
+                        return false
+                    }
                 }
             }
         }

@@ -7,6 +7,7 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
     private var keyboard: Keyboard?
     private var isShow = 0
     private var isTextViewEmpty: Bool!
+    private var timeNote: DTOTime?
     
     // MARK: *** Data model
     @IBOutlet weak var backButton: UIButton!
@@ -72,11 +73,18 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
                 state = .DOING
             }
             
-            let dtoTime = DTOTime(id: Date().ticks, content: contentTextView.text, startTime: startTime, appointment: appointmentTime, finishTime: 0, state: state)
-            dtoTime.setTags(tags: self.getAllChosenTags())
-            
-            _ = DAOTime.BUILDER.Add(dtoTime) // save to DB
-            
+            if let timeNote = timeNote {
+                timeNote.content = contentTextView.text
+                timeNote.startTime = startTime
+                timeNote.appointment = appointmentTime
+                timeNote.state = state
+                timeNote.setTags(tags: self.getAllChosenTags())
+                _ = DAOTime.BUILDER.Update(time: timeNote) // update on DB
+            } else {
+                let dtoTime = DTOTime(id: Date().ticks, content: contentTextView.text, startTime: startTime, appointment: appointmentTime, finishTime: 0, state: state)
+                dtoTime.setTags(tags: self.getAllChosenTags())
+                _ = DAOTime.BUILDER.Add(dtoTime) // save to DB
+            }
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -226,6 +234,8 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
         
         setGestureRecognizers()
         tagMasks = [false, false, false, false, false, false, false]
+        
+        setContents() // if can, used for updating case
     }
     
     private func setGestureRecognizers() {
@@ -316,6 +326,54 @@ class TimeNoteAddingController: UIViewController, UITextFieldDelegate, UITextVie
         
         Alert.show(type: ALERT_TYPE.INFO, title: Language.BUILDER.get(group: Group.MESSAGE_TITLE, view: MessageTitle.NOTICE), msg: Language.BUILDER.get(group: Group.MESSAGE, view: Message.NO_CHOOSE_TAG))
         return false
+    }
+    
+    func setTimeNote(timeNote: DTOTime) {
+        self.timeNote = timeNote
+    }
+    
+    private func setContents() {
+        if let timeNote = timeNote {
+            let tags = timeNote.getAllTags()
+            
+            for tag in tags {
+                if tag == TAG.FAMILY{
+                    tagMasks[TAG.FAMILY.rawValue] = true
+                    familyUntag.isHidden = true
+                } else if tag == TAG.FRIEND {
+                    tagMasks[TAG.FRIEND.rawValue] = true
+                    friendUntag.isHidden = true
+                } else if tag == TAG.PERSONAL {
+                    tagMasks[TAG.PERSONAL.rawValue] = true
+                    personalUntag.isHidden = true
+                } else if tag == TAG.WORK {
+                    tagMasks[TAG.WORK.rawValue] = true
+                    workUntag.isHidden = true
+                } else if tag == TAG.RELAX {
+                    tagMasks[TAG.RELAX.rawValue] = true
+                    relaxUntag.isHidden = true
+                } else if tag == TAG.STUDY {
+                    tagMasks[TAG.STUDY.rawValue] = true
+                    studyUntag.isHidden = true
+                } else if tag == TAG.LOVE {
+                    tagMasks[TAG.LOVE.rawValue] = true
+                    loveUntag.isHidden = true
+                }
+            }
+            
+            contentTextView.text = timeNote.content
+            isTextViewEmpty = contentTextView.text.isEmpty
+            if !isTextViewEmpty {
+                contentTextView.textColor = UIColor.black
+            }
+            
+            startDateTextField.text = Date.convertTimestampToDateString(timeStamp: timeNote.startTime/10, withFormat: "dd-MM-yyyy")
+            startTimeTextField.text = Date.convertTimestampToDateString(timeStamp: timeNote.startTime/10, withFormat: "HH:mm")
+            
+            appointmentDateTextField.text = Date.convertTimestampToDateString(timeStamp: timeNote.appointment/10, withFormat: "dd-MM-yyyy")
+            appointmentTimeTextField.text = Date.convertTimestampToDateString(timeStamp: timeNote.appointment/10, withFormat: "HH:mm")
+            
+        }
     }
     
 }

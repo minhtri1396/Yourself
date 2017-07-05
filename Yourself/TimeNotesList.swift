@@ -93,6 +93,9 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableView
             // Set done button for the cell
             cell.doneButton.tag = indexPath.row
             cell.doneButton.addTarget(self, action: #selector(doneCellButtonTapped(sender:)), for: .touchUpInside)
+            // Set body gesture
+            cell.bodyView.tag = indexPath.row
+            cell.bodyView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cellTapped(sender:))))
         }
 
         
@@ -199,6 +202,13 @@ class TimeNotesList: BaseViewController, UITabBarControllerDelegate, UITableView
             self.timeNotes.remove(at: sender.tag)
             self.timeNotesList.reloadData()
         }
+    }
+    
+    @objc private func cellTapped(sender: UITapGestureRecognizer) {
+        let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let addNoteView = mainStoryboard.instantiateViewController(withIdentifier: "TimeNoteAddingController") as! TimeNoteAddingController
+        addNoteView.setTimeNote(timeNote: timeNotes[sender.view!.tag])
+        self.present(addNoteView, animated: true, completion: nil)
     }
     
     // MARK: *** UIViewController

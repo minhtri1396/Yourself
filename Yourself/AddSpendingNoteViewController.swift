@@ -552,11 +552,10 @@ class AddSpendingNoteViewController: UIViewController, BEMCheckBoxDelegate {
 extension AddSpendingNoteViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if !(string == "") && Int(string) == nil {
-            return false
-        }
-        
         if textField == self.textField_Date {
+            if !(string == "") && Int(string) == nil {
+                return false
+            }
             // check the chars length dd -->2 at the same time calculate the dd-MM --> 5
             if (textField.text?.characters.count == 2) || (textField.text?.characters.count == 5) {
                 //Handle backspace being pressed
@@ -574,9 +573,11 @@ extension AddSpendingNoteViewController: UITextFieldDelegate {
             }
             
             if (textField.text?.characters.count)! > 0 {
-                if Double((textField.text! + string))! > maxMoney {
-                    textField.text = maxMoney.clean
-                    return false
+                if let money = Double((textField.text! + string)) {
+                    if money > maxMoney {
+                        textField.text = maxMoney.clean
+                        return false
+                    }
                 }
             }
         }

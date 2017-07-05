@@ -218,6 +218,19 @@ class SpendingMonthStats: UIViewController {
         
         self.chooseMonth.delegate = self
         self.doneButton.setTitle(Language.BUILDER.get(group: Group.BUTTON, view: ButtonViews.DONE), for: .normal)
+        
+        unChoose(button: janButton)
+        unChoose(button: febButton)
+        unChoose(button: marchButton)
+        unChoose(button: aprilButton)
+        unChoose(button: mayButton)
+        unChoose(button: juneButton)
+        unChoose(button: julyButton)
+        unChoose(button: augButton)
+        unChoose(button: sepButton)
+        unChoose(button: octButton)
+        unChoose(button: novButton)
+        unChoose(button: decButton)
     }
     
     private func preventChooseMany(button: UIButton) {
